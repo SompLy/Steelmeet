@@ -1,0 +1,6 @@
+﻿//Namn,Viktklass,Kategori,Licensnummer,Förening:
+Edvin Öhrström,74,Herr Junior,030805aa,ÖrebroKK:
+Sara Sandberg,63,Dam Junior,030805aa,ÖrebroKK:
+Simon Rövhål,83,Herr Junior,030805aa,ÖrebroKK:
+Bullen Ostätare,120+,Herr Veteran,030805aa,ÖrebroKK:
+Kalle Knasboll,93,Herr Ungdom,030805aa,ÖrebroKK

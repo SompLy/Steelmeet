@@ -1,0 +1,73 @@
+Powermeet TODO
+
+Aktuelt !! : 
+LiftingOderList2.add vart ska den hamna??? ta 
+
+
+Projector :
+1920x1080
+1280x720
+Gör programmet i olika upplösningar gör projector
+SVGA (800x600 pixels, 4:3 aspect ratio)
+XGA (1024x768 pixels, 4:3 aspect ratio) ÖKKs projector
+WXGA (1280x800 pixels, 16:10 aspect ratio)
+WUXGA (1920x1200 pixels, 16:10 aspect ratio)
+720p (1280x720 pixels, 16:9 aspect ratio)
+1080p (1920x1080 pixels, 16:9 aspect ratio)
+upplösnings problremet skulle man unna lösa med att sätta upplösning automatiskt om det inte funkar så kan man 
+intruera användaren att göra det själv ovh hur man gör det
+
+
+Timer :
+✅1 Min lyfar timer
+✅1 Min lämna lapp timer
+✅alla tids alternativ man skulle vilja ha för timers
+fråga dommare om det behövs mer timer val
+
+Invägning :
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅system för två grupper
+✅Bättre ording
+✅Lottnummer
+✅Gruppnummer
+
+Tävlingsfönster :
+
+berätta om fråm hotell saken
+
+om en lyftare behöver gå om i slutet av rundan så ska den hamn längst ner i lyftar ordningen 
+efter att ha sorterat listor för vikt och namn för lyfter ordning, ta bort lyft när det blir underkänt eller godkänt
+gl points
+när man byter index på gruppen så ska nästa grupps ingångar visas
+För varje gång man skriver in en bokstav och det blir en varning så tar det bort från någon lista så att man inte kan få all lyft godkända utan att programmet krashar
+gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
+om man ångrar ett lyft så ändras inte totalen tillbaka
+2,5 plussas på även vid över gång till bänk och mark
+✅Problem med viktkalkulatorn när man ändrar grupper ibland, tror den plussar på någon variable så det blir mer vikt än det finns (har med att den resettas i cellleave och den körs ju inte när man byter grupp)
+✅gör så man kan exportera data till usb
+✅Ogiltig viktklass kommer upp vet inte varför (dålig fil med fel format)
+✅gör en separat ruta med Plats sortering total( spara varje bästa böj bänk mark så listan kan sorteras och sen igen rita ut färgerna)
+✅om man råkar ange g, u, r så godkänner, underkänner det medans man anger vikt vilket skapar ett hål med en grå ruta och sedan en orange ruta
+✅OM en ruta är tom så ska det vara 0 annars blir det error med MoreMath.Max när man ska lägga till bestS, besB, bestD
+✅bokstäver och komma täcken blir error
+✅Problem med att färgerna inte hänger med när man ändrar grupper i tävlingsfönster
+✅✅✅✅✅✅✅✅✅system för två grupper
+✅spara s1,s2,s3 osv. när det blivit inskrivet
+✅historik av lyft, godkänt/underkänt i LifterID
+✅Visa grupp vid namnet i info panelen
+✅Total
+✅gör så man kan få godkänt på den sista marken utan att total blir orange
+✅om man skriver in punkt så krashar programmet
+✅om man skriver bokstäver så krashar programmet (man måste göra lite string hantering på CellLeave eller exit eller vad den heter)
+✅Gör ett strek över texten när den blir röd kanske
+✅om man klara lyftet fylls nästa lyft i automatiskt med +2,5kg om man missar fylls det i med samma vikt
+✅Fixa formatering på underkänt lyft
+✅Om ett lyft blir underkänt och sen godkänt så stannar formateringen
+
+Resultat :
+Visa bästa lyftare på poäng på projektor
+Gör en resulat lista som man kan exportera till .xlsx i ett trevligt format som också memorerar om det var ett godkänd rekord försök
+
+
+
+✅2023-06-01 rad 633
+✅

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "a6GS8jRoMX1RmsD5JSYfokxoD3o2Q7Q/aKox5dpskkFeqJXlgpKMrk4hjU3KVu1QoZebNzvqpJVNxeXvl15/Bg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ninja\\source\\repos\\Steelmeet!\\Steelmeet\\Steelmeet\\SteelMeet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ninja\\.nuget\\packages\\exceldna.interop\\15.0.1\\exceldna.interop.15.0.1.nupkg.sha512",
+    "C:\\Users\\ninja\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
+  ],
+  "logs": []
+}

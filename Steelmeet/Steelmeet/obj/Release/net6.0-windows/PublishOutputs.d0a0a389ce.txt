@@ -1,0 +1,8 @@
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Powermeet2.exe
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Powermeet2.dll
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Powermeet2.deps.json
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Powermeet2.runtimeconfig.json
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Powermeet2.pdb
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Microsoft.Vbe.Interop.dll
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Office.dll
+C:\Users\ninja\source\repos\Powermeet2\Powermeet2\bin\Release\net6.0-windows\publish\Microsoft.Office.Interop.Excel.dll
