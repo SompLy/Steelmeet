@@ -8,17 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
 using System.Linq;
+using SpreadsheetLight.Charts;
+using SpreadsheetLight.Drawing;
 
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections;
-using Microsoft.Office.Interop.Excel;
 using SteelMeet;
 using System.Diagnostics;
 using DataTable = System.Data.DataTable;
+using SpreadsheetLight;
 
 namespace Powermeet2
 {
@@ -59,8 +59,6 @@ namespace Powermeet2
         int group3Count;            //Antal lyftare i grupp
         int groupRowFixer;          //Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
         int firstLftdatagridviewColumn = 11;
-
-        Excel.Application excelApp = new();
 
         public Dictionary<int, Lifter> LifterID = new();
 
@@ -311,18 +309,20 @@ namespace Powermeet2
 
         public void ExcelImportHandler()                                                                                               //Hanterar text impoteringen av excel
         {
-            Excel.Workbook excelbook = excelApp.Workbooks.Open(BrowsedFile);
-            Excel._Worksheet excelsheet = excelbook.Sheets[1];
-            Excel.Range excelRange = excelsheet.UsedRange;
+            //Excel.Workbook excelbook = excelApp.Workbooks.BrowsedFile);
+            //Excel._Worksheet excelsheet = excelbook.Sheets[1];
+            //Excel.Range excelRange = excelsheet.UsedRange;
+            using SLDocument sl = new SLDocument(BrowsedFile);
+            SLWorksheetStatistics stats = sl.GetWorksheetStatistics();
 
-            int rowCount = excelRange.Rows.Count;
+            int rowCount = stats.NumberOfRows;
             int realRowCount = 0;
-            int columnCount = excelRange.Columns.Count;
+            int columnCount = stats.NumberOfColumns;
 
             List<string> data = new List<string>();
             for (int i = 1; i < 1000; i++) //Hittar antal rader som är ifyllda
             {
-                if (string.IsNullOrWhiteSpace(excelRange.Cells[i, 1].Value?.ToString()))
+                if (string.IsNullOrWhiteSpace(sl.GetCellValueAsString(i, 1)))
                 {
                     realRowCount = i;
                     i = 2000;
@@ -333,43 +333,63 @@ namespace Powermeet2
             {
                 for (int i = 0; i < realRowCount - 1; i++)
                 {
-                    if (excelRange.Cells[i + 1, 1].Value2?.ToString() != "Grupp")
+                    //if (excelRange.Cells[i + 1, 1].Value2?.ToString() != "Grupp")
+                    if (sl.GetCellValueAsString(i, 1) != "Grupp")
                     {
                         Display(
-                            excelRange.Cells[i + 1, 1].Value2.ToString(),
-                            excelRange.Cells[i + 1, 2].Value2.ToString(),
-                            excelRange.Cells[i + 1, 3].Value2.ToString(),
-                            excelRange.Cells[i + 1, 4].Value2.ToString(),
-                            excelRange.Cells[i + 1, 5].Value2.ToString());
+                            sl.GetCellValueAsString(i, 1),
+                            sl.GetCellValueAsString(i, 2),
+                            sl.GetCellValueAsString(i, 3),
+                            sl.GetCellValueAsString(i, 4),
+                            sl.GetCellValueAsString(i, 5));
+                            //excelRange.Cells[i + 1, 1].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 2].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 3].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 4].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 5].Value2.ToString());
                     }
                 }
             }
             else
             {
-                for (int i = 0; i < realRowCount - 1; i++)
+                for (int i = 1; i < realRowCount - 1; i++)
                 {
-                    if (excelRange.Cells[i + 1, 1].Value2?.ToString() != "Grupp")
+                    if (sl.GetCellValueAsString(i, 1) != "Grupp")
                     {
                         DisplayDebug(
-                            excelRange.Cells[i + 1, 1].Value2.ToString(),
-                            excelRange.Cells[i + 1, 2].Value2.ToString(),
-                            excelRange.Cells[i + 1, 3].Value2.ToString(),
-                            excelRange.Cells[i + 1, 4].Value2.ToString(),
-                            excelRange.Cells[i + 1, 5].Value2.ToString(),
-                            excelRange.Cells[i + 1, 6].Value2.ToString(),
-                            excelRange.Cells[i + 1, 7].Value2.ToString(),
-                            excelRange.Cells[i + 1, 8].Value2.ToString(),
-                            excelRange.Cells[i + 1, 9].Value2.ToString(),
-                            excelRange.Cells[i + 1, 10].Value2.ToString(),
-                            excelRange.Cells[i + 1, 11].Value2.ToString(),
-                            excelRange.Cells[i + 1, 12].Value2.ToString(),
-                            excelRange.Cells[i + 1, 13].Value2.ToString(),
-                            excelRange.Cells[i + 1, 14].Value2.ToString());
+                            sl.GetCellValueAsString(i, 1),
+                            sl.GetCellValueAsString(i, 2),
+                            sl.GetCellValueAsString(i, 3),
+                            sl.GetCellValueAsString(i, 4),
+                            sl.GetCellValueAsString(i, 5),
+                            sl.GetCellValueAsString(i, 6),
+                            sl.GetCellValueAsString(i, 7),
+                            sl.GetCellValueAsString(i, 8),
+                            sl.GetCellValueAsString(i, 9),
+                            sl.GetCellValueAsString(i, 10),
+                            sl.GetCellValueAsString(i, 11),
+                            sl.GetCellValueAsString(i, 12),
+                            sl.GetCellValueAsString(i, 13),
+                            sl.GetCellValueAsString(i, 14));
+                            //excelRange.Cells[i + 1, 1].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 2].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 3].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 4].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 5].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 6].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 7].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 8].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 9].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 10].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 11].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 12].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 13].Value2.ToString(),
+                            //excelRange.Cells[i + 1, 14].Value2.ToString());
                     }
                 }
                 WeighInDataUpdate();
             }
-            excelApp.Quit();
+            //excelApp.Quit();
 
             //https://www.youtube.com/watch?v=kF2PGCl-rXU&ab_channel=AzharTechnoCoder
 
@@ -811,6 +831,7 @@ namespace Powermeet2
                     //Visar Info om nuvarande lyftare i informationsrutan
                     lblName.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
                     PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()), plateInfo);
+                    GLPointsCalculator();
                     lbl_Grupp_control.Text = LifterID[SelectedRowIndex + groupRowFixer].groupNumber.ToString();
                     lbl_Lot_control.Text = LifterID[SelectedRowIndex + groupRowFixer].lotNumber.ToString();
 
@@ -831,7 +852,7 @@ namespace Powermeet2
 
                 if (!s.Any(char.IsLetter))
                 {
-                    s = (Math.Round(float.Parse(s.Replace(".", ",")) / .5f) * .5f).ToString();
+                    s = (Math.Round(float.Parse(s.Replace(",", ".")) / .5f) * .5f).ToString();
                     dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = s;
 
                     LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count] =
@@ -864,6 +885,7 @@ namespace Powermeet2
                 {
 
                     MessageBox.Show(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString() + " Är inte ett nummer", "⚠Varning!⚠");
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 0;
                     if (SelectedColumnIndex < 14)
                     {
                         dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
@@ -1790,7 +1812,37 @@ namespace Powermeet2
 
         }
 
+        public void GLPointsCalculator() 
+        {
+            //Men
+            double MenEquippedA = 1236.25115;
+            double MenEquippedB = 1449.21864;
+            double MenEquippedC = 0.01644;
+            double MenClassicA = 1199.72839;
+            double MenClassicB = 1025.18162;
+            double MenClassicC = 0.00921;
+            double MenEquippedBenchA = 381.22073;
+            double MenEquippedBenchB = 733.79378;
+            double MenEquippedBenchC = 0.02398;
+            double MenClassicBenchA = 320.98041;
+            double MenClassicBenchB = 281.40258;
+            double MenClassicBenchC = 0.01008;
+            //Women
+            double WomenEquippedA = 758.63878;
+            double WomenEquippedB = 949.31382;
+            double WomenEquippedC = 0.02435;
+            double WomenClassicA = 610.32796;
+            double WomenClassicB = 1045.59282;
+            double WomenClassicC = 0.03048;
+            double WomenEquippedBenchA = 221.82209;
+            double WomenEquippedBenchB = 357.00377;
+            double WomenEquippedBenchC = 0.02937;
+            double WomenClassicBenchA = 142.40398;
+            double WomenClassicBenchB = 442.52671;
+            double WomenClassicBenchC = 0.04724;
 
+            
+        }
 
 
 

@@ -8,11 +8,23 @@
     ".NETCoreApp,Version=v6.0": {
       "SteelMeet/1.0.0": {
         "dependencies": {
+          "DocumentFormat.OpenXml": "2.20.0",
           "ExcelDna.Interop": "15.0.1",
           "Microsoft.Office.Interop.Excel": "15.0.4795.1001"
         },
         "runtime": {
           "SteelMeet.dll": {}
+        }
+      },
+      "DocumentFormat.OpenXml/2.20.0": {
+        "dependencies": {
+          "System.IO.Packaging": "4.7.0"
+        },
+        "runtime": {
+          "lib/net6.0/DocumentFormat.OpenXml.dll": {
+            "assemblyVersion": "2.20.0.0",
+            "fileVersion": "2.20.0.0"
+          }
         }
       },
       "ExcelDna.Interop/15.0.1": {
@@ -34,7 +46,8 @@
             "fileVersion": "15.0.4795.1000"
           }
         }
-      }
+      },
+      "System.IO.Packaging/4.7.0": {}
     }
   },
   "libraries": {
@@ -42,6 +55,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DocumentFormat.OpenXml/2.20.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+oFMsEppo/W6KpGTRXaJl2jTFYn9zeon4FaZuDoCijQ1/0JaPENaCef7d4Y3f8v116eKhVBwd4Ya+/NDglxkjw==",
+      "path": "documentformat.openxml/2.20.0",
+      "hashPath": "documentformat.openxml.2.20.0.nupkg.sha512"
     },
     "ExcelDna.Interop/15.0.1": {
       "type": "package",
@@ -56,6 +76,13 @@
       "sha512": "sha512-cuvqi/U5MYSM0gvR2l90q0m/urRgmg69EiwP5VWp1RcaJ0YT5G26Va5LaOZ3KJFc22FNihS5CUjeePUp2YpGQA==",
       "path": "microsoft.office.interop.excel/15.0.4795.1001",
       "hashPath": "microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
+    },
+    "System.IO.Packaging/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9VV4KAbgRQZ79iEoG40KIeZy38O30oWwewScAST879+oki8g/Wa2HXZQgrhDDxQM4GkP1PnRJll05NMiVPbYAw==",
+      "path": "system.io.packaging/4.7.0",
+      "hashPath": "system.io.packaging.4.7.0.nupkg.sha512"
     }
   }
 }
