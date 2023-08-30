@@ -19,6 +19,7 @@ using SteelMeet;
 using System.Diagnostics;
 using DataTable = System.Data.DataTable;
 using SpreadsheetLight;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 namespace Powermeet2
 {
@@ -123,6 +124,19 @@ namespace Powermeet2
             public float lotNumber { get; set; }
             public string weightClass { get; set; }
             public string Kategory { get; set; }
+            public enum eCategory
+            {
+                MenEquipped,
+                MenClassic,
+                MenEquippedBench,
+                MenClassicBench,
+                WomenEquipped,
+                WomenClassic,
+                WomenEquippedBench,
+                WomenClassicBench
+
+            }
+            public eCategory CategoryEnum { get; set; }
             public string licenceNumber { get; set; }
             public string accossiation { get; set; }
 
@@ -218,7 +232,7 @@ namespace Powermeet2
         }
         private void dataGridViewWeighIn_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            WeighInDataUpdate();
+            WeighInInfoUpdate();
         }
         private void btn_Import_Click(object sender, EventArgs e)
         {
@@ -342,11 +356,11 @@ namespace Powermeet2
                             sl.GetCellValueAsString(i, 3),
                             sl.GetCellValueAsString(i, 4),
                             sl.GetCellValueAsString(i, 5));
-                            //excelRange.Cells[i + 1, 1].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 2].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 3].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 4].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 5].Value2.ToString());
+                        //excelRange.Cells[i + 1, 1].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 2].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 3].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 4].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 5].Value2.ToString());
                     }
                 }
             }
@@ -371,23 +385,23 @@ namespace Powermeet2
                             sl.GetCellValueAsString(i, 12),
                             sl.GetCellValueAsString(i, 13),
                             sl.GetCellValueAsString(i, 14));
-                            //excelRange.Cells[i + 1, 1].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 2].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 3].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 4].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 5].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 6].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 7].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 8].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 9].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 10].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 11].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 12].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 13].Value2.ToString(),
-                            //excelRange.Cells[i + 1, 14].Value2.ToString());
+                        //excelRange.Cells[i + 1, 1].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 2].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 3].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 4].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 5].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 6].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 7].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 8].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 9].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 10].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 11].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 12].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 13].Value2.ToString(),
+                        //excelRange.Cells[i + 1, 14].Value2.ToString());
                     }
                 }
-                WeighInDataUpdate();
+                WeighInInfoUpdate();
             }
             //excelApp.Quit();
 
@@ -629,6 +643,8 @@ namespace Powermeet2
                 //Lägger till lyftare adderar lyftare ny lyftare
                 LifterID.Add(o, new Lifter(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13]));
 
+                SetCategoryEnum(list[4]);
+
                 list.Clear();
             }
 
@@ -638,13 +654,93 @@ namespace Powermeet2
             }
         }
 
-        void WeighInDataUpdate()
+        void WeighInInfoUpdate()
         {
             string gindex = dataGridViewWeighIn.Rows[dataGridViewWeighIn.RowCount - 2].Cells[0].Value.ToString();                          //Tar den sista lyftarens grupp
             dataGridViewWeighIn.Rows[0].Selected = false;
             lbl_WeightInData.Text = "Antal Lyftare : " + (dataGridViewWeighIn.RowCount - 1).ToString() + "\nAntal Grupper : " + gindex; //Uppdaterar data för invägning
         }
 
+        void SetCategoryEnum(string Category)
+        {
+            string[] wholeThing;
+
+            string sex;
+            string yearclass;
+            bool Equipped;
+            bool BenchOnly;
+
+            wholeThing = Category.Split(' ');
+            sex = wholeThing[0].ToLower();
+            yearclass = wholeThing[1].ToLower();
+            if (wholeThing[2].ToLower() == "utrustat")
+            {
+                Equipped = true;
+            }
+            else
+            {
+                Equipped = true;
+            }
+            if (wholeThing[3].ToLower() == "bänk")
+            {
+                BenchOnly = true;
+            }
+            else
+            {
+                BenchOnly = true;
+            }
+
+            if (sex == "herr")
+            {
+                if (BenchOnly)
+                {
+                    if (Equipped == true)
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.MenEquipped;
+                    }
+                    else
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.MenClassicBench;
+                    }
+                }
+                else
+                {
+                    if (Equipped == true)
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.MenEquipped;
+                    }
+                    else
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.MenClassic;
+                    }
+                }
+            }
+            else
+            {
+                if (BenchOnly)
+                {
+                    if (Equipped == true)
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.WomenEquipped;
+                    }
+                    else
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.WomenClassicBench;
+                    }
+                }
+                else
+                {
+                    if (Equipped == true)
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.WomenEquipped;
+                    }
+                    else
+                    {
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.WomenClassic;
+                    }
+                }
+            }
+        }
 
         //Invägning
         //Invägning
@@ -831,7 +927,7 @@ namespace Powermeet2
                     //Visar Info om nuvarande lyftare i informationsrutan
                     lblName.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
                     PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()), plateInfo);
-                    GLPointsCalculator();
+                    lbl_GLPoints_control.Text = GLPointsCalculator(LifterID[SelectedRowIndex + groupRowFixer]).ToString();
                     lbl_Grupp_control.Text = LifterID[SelectedRowIndex + groupRowFixer].groupNumber.ToString();
                     lbl_Lot_control.Text = LifterID[SelectedRowIndex + groupRowFixer].lotNumber.ToString();
 
@@ -885,7 +981,7 @@ namespace Powermeet2
                 {
 
                     MessageBox.Show(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString() + " Är inte ett nummer", "⚠Varning!⚠");
-                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 0;
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 25;
                     if (SelectedColumnIndex < 14)
                     {
                         dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
@@ -937,7 +1033,7 @@ namespace Powermeet2
         public void goodLift()
         {
             LiftOrderUpdate();//Updaterar lyftar ordning
-            LiftingOrderList.RemoveAt(0);
+            //LiftingOrderList.RemoveAt(0);
 
             TimerController(8); //Startar lapp timern på 1 minut
             TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1812,8 +1908,9 @@ namespace Powermeet2
 
         }
 
-        public void GLPointsCalculator() 
+        public double GLPointsCalculator(Lifter lifter)
         {
+
             //Men
             double MenEquippedA = 1236.25115;
             double MenEquippedB = 1449.21864;
@@ -1841,7 +1938,62 @@ namespace Powermeet2
             double WomenClassicBenchB = 442.52671;
             double WomenClassicBenchC = 0.04724;
 
-            
+            double A = 1;
+            double B = 1;
+            double C = 1;
+
+            double GLPointsCoeff = 0;
+            double GLPoints = 0;
+
+            switch (lifter.CategoryEnum)
+            {
+                case Lifter.eCategory.MenEquipped:
+                    A = MenEquippedA;
+                    B = MenEquippedB;
+                    C = MenEquippedC;
+                    break;
+                case Lifter.eCategory.MenClassic:
+                    A = MenClassicA;
+                    B = MenClassicB;
+                    C = MenClassicC;
+                    break;
+                case Lifter.eCategory.MenEquippedBench:
+                    A = MenEquippedBenchA;
+                    B = MenEquippedBenchB;
+                    C = MenEquippedBenchC;
+                    break;
+                case Lifter.eCategory.MenClassicBench:
+                    A = MenClassicBenchA;
+                    B = MenClassicBenchB;
+                    C = MenClassicBenchC;
+                    break;
+                case Lifter.eCategory.WomenEquipped:
+                    A = WomenEquippedA;
+                    B = WomenEquippedB;
+                    C = WomenEquippedC;
+                    break;
+                case Lifter.eCategory.WomenClassic:
+                    A = WomenClassicA;
+                    B = WomenClassicB;
+                    C = WomenClassicC;
+                    break;
+                case Lifter.eCategory.WomenEquippedBench:
+                    A = WomenEquippedBenchA;
+                    B = WomenEquippedBenchB;
+                    C = WomenEquippedBenchC;
+                    break;
+                case Lifter.eCategory.WomenClassicBench:
+                    A = WomenClassicBenchA;
+                    B = WomenClassicBenchB;
+                    C = WomenClassicBenchC;
+                    break;
+                default:
+                    break;
+            }
+            GLPointsCoeff = 100 / (A - B * Math.Pow(Math.E, -C * lifter.bodyWeight));
+            GLPoints = lifter.total * GLPointsCoeff;
+
+            return GLPoints;
         }
 
 
