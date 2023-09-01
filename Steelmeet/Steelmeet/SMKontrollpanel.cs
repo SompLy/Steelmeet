@@ -71,9 +71,9 @@ namespace Powermeet2
         List<float> LiftingOrderList = new List<float>(); //För att sortera viktera
         List<float> LiftingOrderList2 = new List<float>(); //För att sortera viktera
 
-        List<System.Windows.Forms.Label> GroupLiftingOrderList = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning för nästa grupp.
-        Dictionary<float, string> GroupLiftingOrderListSorting = new Dictionary<float, string>(); //För att sortera vikterna för nästa grupp (Sorterar på första  (key, value))
-
+        List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
+        List<float> GroupLiftingOrderList = new List<float>(); //För att sortera viktera
+        
         MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
 
         //Default Plate setup 16x25kg
@@ -955,6 +955,7 @@ namespace Powermeet2
                         float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()); // Sätter vikten till sbdlist
 
                     LiftOrderUpdate();//Updaterar lyftar ordning
+                    GroupLiftOrderUpdate();//Updaterar nästa grupps lyftar ordning
 
                     if (float.Parse(s) <= float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString()) &&
                         SelectedColumnIndex < 14)
@@ -1000,6 +1001,13 @@ namespace Powermeet2
             }
 
         }
+        private void dataGridViewControlPanel_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) && float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) >= 25)
+            {
+                LiftingOrderList2.Add(float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()));
+            }
+        }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //Hanterar all input från tagentbord
         {
@@ -1033,7 +1041,7 @@ namespace Powermeet2
         public void goodLift()
         {
             LiftOrderUpdate();//Updaterar lyftar ordning
-            //LiftingOrderList.RemoveAt(0);
+            LiftingOrderList.RemoveAt(0);
 
             TimerController(8); //Startar lapp timern på 1 minut
             TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1421,6 +1429,7 @@ namespace Powermeet2
                     infopanel_Controlpanel.Invalidate();
                 }
                 else { i++; }
+
             }
 
             if (weightSum == targetWeight) //Tar totala summan och kollar om det är samma som målsumman
@@ -1559,7 +1568,7 @@ namespace Powermeet2
             lbl_timerLapp.Text = (minutesLapp.ToString()).PadLeft(2, '0') + ":" + (secondsLapp.ToString()).PadLeft(2, '0');
         }
 
-        public void LiftOrderUpdate()   //Uppdaerar nuvarandes grupps lyftarordning och den lär uppdaeras i cellleave då man anger ny vikt
+        public void LiftOrderUpdate()   //Uppdaerar nuvarandes grupps lyftarordning och den läggs till i när man klickar på go
         {                               //förta listan fylls och sen tas det bort lyftare allt eftersom och när den är tom så byts informationen från lista två ut mot informationen i lista 1 så det blir infinate loop,
                                         //man tar bara bort lyftare från lista 1 och lägger bara till i lista 2
             LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
@@ -1603,14 +1612,36 @@ namespace Powermeet2
         }
         public void GroupLiftOrderUpdate() //Updaterar nästa grupps ingångar
         {
-            LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
-                                                        lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
-                                                        lbl_liftOrder_control_9, lbl_liftOrder_control_10, lbl_liftOrder_control_11, lbl_liftOrder_control_12,
-                                                        lbl_liftOrder_control_13, lbl_liftOrder_control_14, lbl_liftOrder_control_15, lbl_liftOrder_control_16,
-                                                        lbl_liftOrder_control_17, lbl_liftOrder_control_18, lbl_liftOrder_control_19, lbl_liftOrder_control_20});
-            for (int i = 0; i < LiftingOrderListLabels.Count; i++)
+            group2Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
+            for (int i = 0; i < LifterID.Count; i++) //Antal lyftare i grupp 1
             {
-                LiftingOrderListLabels[i].Text = "";
+                if (LifterID[i].groupNumber == 1)
+                {
+                    group2Count += 1;
+                }
+            }
+
+            GroupLiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
+                                                        lbl_groupLiftOrder_control_5, lbl_groupLiftOrder_control_6, lbl_groupLiftOrder_control_7, lbl_groupLiftOrder_control_8,
+                                                        lbl_groupLiftOrder_control_9, lbl_groupLiftOrder_control_10, lbl_groupLiftOrder_control_11, lbl_groupLiftOrder_control_12,
+                                                        lbl_groupLiftOrder_control_13, lbl_groupLiftOrder_control_14, lbl_groupLiftOrder_control_15, lbl_groupLiftOrder_control_16,
+                                                        lbl_groupLiftOrder_control_17, lbl_groupLiftOrder_control_18, lbl_groupLiftOrder_control_19, lbl_groupLiftOrder_control_20});
+            for (int i = 0; i < GroupLiftingOrderListLabels.Count; i++)
+            {
+                GroupLiftingOrderListLabels[i].Text = "";
+            }
+            if (groupIndexCurrent == 0)     //Fyller listan, om den aktiva gruppen är grupp 1
+            {
+                GroupLiftingOrderList.Clear();
+                for (int i = group1Count; i < group2Count + group1Count - 1; i++)
+                {
+                    GroupLiftingOrderList.Add(LifterID[i].sbdList[LifterID[i].CurrentLift - 11]);
+                }
+            }
+            GroupLiftingOrderList.Sort();
+            for (int i = 0; i < GroupLiftingOrderList.Count; i++)
+            {
+                GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].ToString();
             }
         }
 
@@ -1767,6 +1798,8 @@ namespace Powermeet2
                     {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
+
+
                     break;
                 case 1:
                     //ladda andra gruppen
@@ -1777,6 +1810,7 @@ namespace Powermeet2
                     //222222222222
                     dt2.Rows.Clear();
                     groupRowFixer = group1Count;
+                    weightsList.Clear();
                     group2Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
                     for (int i = 0; i < LifterID.Count; i++) //Antal lyftare i grupp 1
                     {
