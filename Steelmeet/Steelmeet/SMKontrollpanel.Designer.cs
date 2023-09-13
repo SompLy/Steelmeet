@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -161,6 +161,13 @@
             lbl_liftOrder_control_1 = new Label();
             label30 = new Label();
             panel9 = new Panel();
+            checkBox3 = new CheckBox();
+            checkBox4 = new CheckBox();
+            checkBox2 = new CheckBox();
+            checkBox1 = new CheckBox();
+            radioButton7 = new RadioButton();
+            radioButton6 = new RadioButton();
+            radioButton5 = new RadioButton();
             label31 = new Label();
             button5 = new Button();
             panel8 = new Panel();
@@ -198,13 +205,6 @@
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
-            radioButton4 = new RadioButton();
-            radioButton5 = new RadioButton();
-            radioButton6 = new RadioButton();
-            radioButton7 = new RadioButton();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -428,8 +428,8 @@
             // 
             // dataGridViewWeighIn
             // 
-            dataGridViewCellStyle16.BackColor = SystemColors.WindowFrame;
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = SystemColors.WindowFrame;
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -437,23 +437,23 @@
             dataGridViewWeighIn.BorderStyle = BorderStyle.None;
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = SystemColors.ControlDarkDark;
-            dataGridViewCellStyle17.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = Color.DarkGray;
-            dataGridViewCellStyle18.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle18.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.DarkGray;
+            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewWeighIn.GridColor = SystemColors.ControlDarkDark;
             dataGridViewWeighIn.Location = new Point(9, 164);
             dataGridViewWeighIn.Name = "dataGridViewWeighIn";
@@ -1204,7 +1204,7 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_8);
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
-            panel11.Location = new Point(804, 237);
+            panel11.Location = new Point(1357, 209);
             panel11.Name = "panel11";
             panel11.Size = new Size(266, 784);
             panel11.TabIndex = 11;
@@ -1482,220 +1482,220 @@
             // lbl_liftOrder_control_20
             // 
             lbl_liftOrder_control_20.AutoSize = true;
-            lbl_liftOrder_control_20.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_20.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_20.Location = new Point(5, 608);
+            lbl_liftOrder_control_20.Location = new Point(5, 441);
             lbl_liftOrder_control_20.Name = "lbl_liftOrder_control_20";
-            lbl_liftOrder_control_20.Size = new Size(133, 30);
+            lbl_liftOrder_control_20.Size = new Size(101, 21);
             lbl_liftOrder_control_20.TabIndex = 33;
             lbl_liftOrder_control_20.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_19
             // 
             lbl_liftOrder_control_19.AutoSize = true;
-            lbl_liftOrder_control_19.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_19.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_19.Location = new Point(5, 578);
+            lbl_liftOrder_control_19.Location = new Point(5, 420);
             lbl_liftOrder_control_19.Name = "lbl_liftOrder_control_19";
-            lbl_liftOrder_control_19.Size = new Size(133, 30);
+            lbl_liftOrder_control_19.Size = new Size(101, 21);
             lbl_liftOrder_control_19.TabIndex = 32;
             lbl_liftOrder_control_19.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_18
             // 
             lbl_liftOrder_control_18.AutoSize = true;
-            lbl_liftOrder_control_18.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_18.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_18.Location = new Point(5, 548);
+            lbl_liftOrder_control_18.Location = new Point(5, 399);
             lbl_liftOrder_control_18.Name = "lbl_liftOrder_control_18";
-            lbl_liftOrder_control_18.Size = new Size(133, 30);
+            lbl_liftOrder_control_18.Size = new Size(101, 21);
             lbl_liftOrder_control_18.TabIndex = 31;
             lbl_liftOrder_control_18.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_17
             // 
             lbl_liftOrder_control_17.AutoSize = true;
-            lbl_liftOrder_control_17.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_17.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_17.Location = new Point(5, 518);
+            lbl_liftOrder_control_17.Location = new Point(5, 377);
             lbl_liftOrder_control_17.Name = "lbl_liftOrder_control_17";
-            lbl_liftOrder_control_17.Size = new Size(133, 30);
+            lbl_liftOrder_control_17.Size = new Size(101, 21);
             lbl_liftOrder_control_17.TabIndex = 30;
             lbl_liftOrder_control_17.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_16
             // 
             lbl_liftOrder_control_16.AutoSize = true;
-            lbl_liftOrder_control_16.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_16.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_16.Location = new Point(5, 488);
+            lbl_liftOrder_control_16.Location = new Point(5, 357);
             lbl_liftOrder_control_16.Name = "lbl_liftOrder_control_16";
-            lbl_liftOrder_control_16.Size = new Size(133, 30);
+            lbl_liftOrder_control_16.Size = new Size(101, 21);
             lbl_liftOrder_control_16.TabIndex = 29;
             lbl_liftOrder_control_16.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_15
             // 
             lbl_liftOrder_control_15.AutoSize = true;
-            lbl_liftOrder_control_15.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_15.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_15.Location = new Point(5, 458);
+            lbl_liftOrder_control_15.Location = new Point(5, 336);
             lbl_liftOrder_control_15.Name = "lbl_liftOrder_control_15";
-            lbl_liftOrder_control_15.Size = new Size(133, 30);
+            lbl_liftOrder_control_15.Size = new Size(101, 21);
             lbl_liftOrder_control_15.TabIndex = 28;
             lbl_liftOrder_control_15.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_14
             // 
             lbl_liftOrder_control_14.AutoSize = true;
-            lbl_liftOrder_control_14.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_14.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_14.Location = new Point(5, 428);
+            lbl_liftOrder_control_14.Location = new Point(5, 316);
             lbl_liftOrder_control_14.Name = "lbl_liftOrder_control_14";
-            lbl_liftOrder_control_14.Size = new Size(133, 30);
+            lbl_liftOrder_control_14.Size = new Size(101, 21);
             lbl_liftOrder_control_14.TabIndex = 27;
             lbl_liftOrder_control_14.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_13
             // 
             lbl_liftOrder_control_13.AutoSize = true;
-            lbl_liftOrder_control_13.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_13.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_13.Location = new Point(5, 398);
+            lbl_liftOrder_control_13.Location = new Point(5, 296);
             lbl_liftOrder_control_13.Name = "lbl_liftOrder_control_13";
-            lbl_liftOrder_control_13.Size = new Size(133, 30);
+            lbl_liftOrder_control_13.Size = new Size(101, 21);
             lbl_liftOrder_control_13.TabIndex = 26;
             lbl_liftOrder_control_13.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_12
             // 
             lbl_liftOrder_control_12.AutoSize = true;
-            lbl_liftOrder_control_12.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_12.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_12.Location = new Point(5, 368);
+            lbl_liftOrder_control_12.Location = new Point(5, 274);
             lbl_liftOrder_control_12.Name = "lbl_liftOrder_control_12";
-            lbl_liftOrder_control_12.Size = new Size(133, 30);
+            lbl_liftOrder_control_12.Size = new Size(101, 21);
             lbl_liftOrder_control_12.TabIndex = 25;
             lbl_liftOrder_control_12.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_11
             // 
             lbl_liftOrder_control_11.AutoSize = true;
-            lbl_liftOrder_control_11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_11.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_11.Location = new Point(5, 338);
+            lbl_liftOrder_control_11.Location = new Point(5, 253);
             lbl_liftOrder_control_11.Name = "lbl_liftOrder_control_11";
-            lbl_liftOrder_control_11.Size = new Size(133, 30);
+            lbl_liftOrder_control_11.Size = new Size(101, 21);
             lbl_liftOrder_control_11.TabIndex = 24;
             lbl_liftOrder_control_11.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_10
             // 
             lbl_liftOrder_control_10.AutoSize = true;
-            lbl_liftOrder_control_10.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_10.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_10.Location = new Point(5, 309);
+            lbl_liftOrder_control_10.Location = new Point(5, 231);
             lbl_liftOrder_control_10.Name = "lbl_liftOrder_control_10";
-            lbl_liftOrder_control_10.Size = new Size(133, 30);
+            lbl_liftOrder_control_10.Size = new Size(101, 21);
             lbl_liftOrder_control_10.TabIndex = 23;
             lbl_liftOrder_control_10.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_9
             // 
             lbl_liftOrder_control_9.AutoSize = true;
-            lbl_liftOrder_control_9.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_9.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_9.Location = new Point(5, 279);
+            lbl_liftOrder_control_9.Location = new Point(5, 210);
             lbl_liftOrder_control_9.Name = "lbl_liftOrder_control_9";
-            lbl_liftOrder_control_9.Size = new Size(133, 30);
+            lbl_liftOrder_control_9.Size = new Size(101, 21);
             lbl_liftOrder_control_9.TabIndex = 22;
             lbl_liftOrder_control_9.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_8
             // 
             lbl_liftOrder_control_8.AutoSize = true;
-            lbl_liftOrder_control_8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_8.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_8.Location = new Point(5, 249);
+            lbl_liftOrder_control_8.Location = new Point(5, 189);
             lbl_liftOrder_control_8.Name = "lbl_liftOrder_control_8";
-            lbl_liftOrder_control_8.Size = new Size(133, 30);
+            lbl_liftOrder_control_8.Size = new Size(101, 21);
             lbl_liftOrder_control_8.TabIndex = 21;
             lbl_liftOrder_control_8.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_7
             // 
             lbl_liftOrder_control_7.AutoSize = true;
-            lbl_liftOrder_control_7.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_7.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_7.Location = new Point(5, 219);
+            lbl_liftOrder_control_7.Location = new Point(5, 166);
             lbl_liftOrder_control_7.Name = "lbl_liftOrder_control_7";
-            lbl_liftOrder_control_7.Size = new Size(133, 30);
+            lbl_liftOrder_control_7.Size = new Size(101, 21);
             lbl_liftOrder_control_7.TabIndex = 20;
             lbl_liftOrder_control_7.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_6
             // 
             lbl_liftOrder_control_6.AutoSize = true;
-            lbl_liftOrder_control_6.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_6.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_6.Location = new Point(5, 189);
+            lbl_liftOrder_control_6.Location = new Point(5, 144);
             lbl_liftOrder_control_6.Name = "lbl_liftOrder_control_6";
-            lbl_liftOrder_control_6.Size = new Size(133, 30);
+            lbl_liftOrder_control_6.Size = new Size(101, 21);
             lbl_liftOrder_control_6.TabIndex = 19;
             lbl_liftOrder_control_6.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_5
             // 
             lbl_liftOrder_control_5.AutoSize = true;
-            lbl_liftOrder_control_5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_5.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_5.Location = new Point(5, 159);
+            lbl_liftOrder_control_5.Location = new Point(5, 123);
             lbl_liftOrder_control_5.Name = "lbl_liftOrder_control_5";
-            lbl_liftOrder_control_5.Size = new Size(133, 30);
+            lbl_liftOrder_control_5.Size = new Size(101, 21);
             lbl_liftOrder_control_5.TabIndex = 18;
             lbl_liftOrder_control_5.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_4
             // 
             lbl_liftOrder_control_4.AutoSize = true;
-            lbl_liftOrder_control_4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_4.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_4.Location = new Point(5, 129);
+            lbl_liftOrder_control_4.Location = new Point(5, 102);
             lbl_liftOrder_control_4.Name = "lbl_liftOrder_control_4";
-            lbl_liftOrder_control_4.Size = new Size(133, 30);
+            lbl_liftOrder_control_4.Size = new Size(101, 21);
             lbl_liftOrder_control_4.TabIndex = 17;
             lbl_liftOrder_control_4.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_3
             // 
             lbl_liftOrder_control_3.AutoSize = true;
-            lbl_liftOrder_control_3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_3.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_3.Location = new Point(5, 99);
+            lbl_liftOrder_control_3.Location = new Point(5, 81);
             lbl_liftOrder_control_3.Name = "lbl_liftOrder_control_3";
-            lbl_liftOrder_control_3.Size = new Size(133, 30);
+            lbl_liftOrder_control_3.Size = new Size(101, 21);
             lbl_liftOrder_control_3.TabIndex = 16;
             lbl_liftOrder_control_3.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_2
             // 
             lbl_liftOrder_control_2.AutoSize = true;
-            lbl_liftOrder_control_2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_2.ForeColor = SystemColors.Window;
-            lbl_liftOrder_control_2.Location = new Point(5, 69);
+            lbl_liftOrder_control_2.Location = new Point(5, 60);
             lbl_liftOrder_control_2.Name = "lbl_liftOrder_control_2";
-            lbl_liftOrder_control_2.Size = new Size(133, 30);
+            lbl_liftOrder_control_2.Size = new Size(101, 21);
             lbl_liftOrder_control_2.TabIndex = 15;
             lbl_liftOrder_control_2.Text = "Lyftare + vikt";
             // 
             // lbl_liftOrder_control_1
             // 
             lbl_liftOrder_control_1.AutoSize = true;
-            lbl_liftOrder_control_1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_liftOrder_control_1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_liftOrder_control_1.ForeColor = SystemColors.Window;
             lbl_liftOrder_control_1.Location = new Point(5, 39);
             lbl_liftOrder_control_1.Name = "lbl_liftOrder_control_1";
-            lbl_liftOrder_control_1.Size = new Size(133, 30);
+            lbl_liftOrder_control_1.Size = new Size(101, 21);
             lbl_liftOrder_control_1.TabIndex = 14;
             lbl_liftOrder_control_1.Text = "Lyftare + vikt";
             // 
@@ -1713,13 +1713,13 @@
             // panel9
             // 
             panel9.BackColor = SystemColors.WindowFrame;
+            panel9.Controls.Add(checkBox3);
+            panel9.Controls.Add(checkBox4);
+            panel9.Controls.Add(checkBox2);
+            panel9.Controls.Add(checkBox1);
             panel9.Controls.Add(radioButton7);
             panel9.Controls.Add(radioButton6);
             panel9.Controls.Add(radioButton5);
-            panel9.Controls.Add(radioButton3);
-            panel9.Controls.Add(radioButton4);
-            panel9.Controls.Add(radioButton2);
-            panel9.Controls.Add(radioButton1);
             panel9.Controls.Add(label31);
             panel9.Controls.Add(button5);
             panel9.Location = new Point(224, 160);
@@ -1727,12 +1727,96 @@
             panel9.Size = new Size(605, 43);
             panel9.TabIndex = 6;
             // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.BackColor = Color.Transparent;
+            checkBox3.ForeColor = SystemColors.Window;
+            checkBox3.Location = new Point(154, 23);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(51, 19);
+            checkBox3.TabIndex = 40;
+            checkBox3.Text = "Total";
+            checkBox3.UseVisualStyleBackColor = false;
+            // 
+            // checkBox4
+            // 
+            checkBox4.AutoSize = true;
+            checkBox4.BackColor = Color.Transparent;
+            checkBox4.ForeColor = SystemColors.Window;
+            checkBox4.Location = new Point(154, 4);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(53, 19);
+            checkBox4.TabIndex = 39;
+            checkBox4.Text = "Mark";
+            checkBox4.UseVisualStyleBackColor = false;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.BackColor = Color.Transparent;
+            checkBox2.ForeColor = SystemColors.Window;
+            checkBox2.Location = new Point(98, 23);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(52, 19);
+            checkBox2.TabIndex = 38;
+            checkBox2.Text = "Bänk";
+            checkBox2.UseVisualStyleBackColor = false;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.BackColor = Color.Transparent;
+            checkBox1.ForeColor = SystemColors.Window;
+            checkBox1.Location = new Point(98, 4);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(43, 19);
+            checkBox1.TabIndex = 13;
+            checkBox1.Text = "Böj";
+            checkBox1.UseVisualStyleBackColor = false;
+            // 
+            // radioButton7
+            // 
+            radioButton7.AutoSize = true;
+            radioButton7.ForeColor = SystemColors.Window;
+            radioButton7.Location = new Point(375, 12);
+            radioButton7.Name = "radioButton7";
+            radioButton7.Size = new Size(77, 19);
+            radioButton7.TabIndex = 37;
+            radioButton7.TabStop = true;
+            radioButton7.Text = "Nationellt";
+            radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            radioButton6.AutoSize = true;
+            radioButton6.ForeColor = SystemColors.Window;
+            radioButton6.Location = new Point(307, 12);
+            radioButton6.Name = "radioButton6";
+            radioButton6.Size = new Size(62, 19);
+            radioButton6.TabIndex = 36;
+            radioButton6.TabStop = true;
+            radioButton6.Text = "Distrikt";
+            radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            radioButton5.AutoSize = true;
+            radioButton5.ForeColor = SystemColors.Window;
+            radioButton5.Location = new Point(245, 13);
+            radioButton5.Name = "radioButton5";
+            radioButton5.Size = new Size(56, 19);
+            radioButton5.TabIndex = 35;
+            radioButton5.TabStop = true;
+            radioButton5.Text = "Klubb";
+            radioButton5.UseVisualStyleBackColor = true;
+            // 
             // label31
             // 
             label31.AutoSize = true;
             label31.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label31.ForeColor = SystemColors.Window;
-            label31.Location = new Point(7, 5);
+            label31.Location = new Point(7, 4);
             label31.Name = "label31";
             label31.Size = new Size(88, 30);
             label31.TabIndex = 12;
@@ -1742,9 +1826,9 @@
             // 
             button5.BackColor = Color.Silver;
             button5.FlatStyle = FlatStyle.Popup;
-            button5.Location = new Point(493, 10);
+            button5.Location = new Point(490, 10);
             button5.Name = "button5";
-            button5.Size = new Size(99, 23);
+            button5.Size = new Size(102, 23);
             button5.TabIndex = 30;
             button5.Text = "Aktivera rekord";
             button5.UseVisualStyleBackColor = false;
@@ -2110,31 +2194,31 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = Color.Gainsboro;
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.BackColor = Color.Gainsboro;
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewControlPanel.BackgroundColor = SystemColors.WindowFrame;
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = Color.Silver;
-            dataGridViewCellStyle14.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Silver;
+            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle15.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewControlPanel.GridColor = SystemColors.ControlDarkDark;
             dataGridViewControlPanel.Location = new Point(7, 209);
             dataGridViewControlPanel.Name = "dataGridViewControlPanel";
@@ -2151,13 +2235,13 @@
             // 
             // tabPage3
             // 
+            tabPage3.BackColor = SystemColors.WindowText;
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(1358, 740);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Resultat";
-            tabPage3.UseVisualStyleBackColor = true;
             // 
             // timerLyft
             // 
@@ -2173,90 +2257,6 @@
             // 
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.ForeColor = SystemColors.Window;
-            radioButton1.Location = new Point(95, 2);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(42, 19);
-            radioButton1.TabIndex = 31;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Böj";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.ForeColor = SystemColors.Window;
-            radioButton2.Location = new Point(95, 22);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(51, 19);
-            radioButton2.TabIndex = 32;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Bänk";
-            radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            radioButton3.AutoSize = true;
-            radioButton3.ForeColor = SystemColors.Window;
-            radioButton3.Location = new Point(156, 22);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(50, 19);
-            radioButton3.TabIndex = 34;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Total\r\n";
-            radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            radioButton4.AutoSize = true;
-            radioButton4.ForeColor = SystemColors.Window;
-            radioButton4.Location = new Point(156, 2);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(52, 19);
-            radioButton4.TabIndex = 33;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Mark";
-            radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            radioButton5.AutoSize = true;
-            radioButton5.ForeColor = SystemColors.Window;
-            radioButton5.Location = new Point(244, 12);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(56, 19);
-            radioButton5.TabIndex = 35;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "Klubb";
-            radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            radioButton6.AutoSize = true;
-            radioButton6.ForeColor = SystemColors.Window;
-            radioButton6.Location = new Point(306, 12);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(62, 19);
-            radioButton6.TabIndex = 36;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Distrikt";
-            radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // radioButton7
-            // 
-            radioButton7.AutoSize = true;
-            radioButton7.ForeColor = SystemColors.Window;
-            radioButton7.Location = new Point(374, 12);
-            radioButton7.Name = "radioButton7";
-            radioButton7.Size = new Size(77, 19);
-            radioButton7.TabIndex = 37;
-            radioButton7.TabStop = true;
-            radioButton7.Text = "Nationellt";
-            radioButton7.UseVisualStyleBackColor = true;
             // 
             // SMKontrollpanel
             // 
@@ -2469,12 +2469,12 @@
         private Label label41;
         private Label label42;
         private Label label43;
-        private RadioButton radioButton5;
-        private RadioButton radioButton3;
-        private RadioButton radioButton4;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
         private RadioButton radioButton7;
         private RadioButton radioButton6;
+        private CheckBox checkBox1;
+        private CheckBox checkBox3;
+        private CheckBox checkBox4;
+        private CheckBox checkBox2;
+        private RadioButton radioButton5;
     }
 }

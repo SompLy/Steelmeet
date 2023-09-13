@@ -36,12 +36,12 @@ Tävlingsfönster :
 berätta om fråm hotell saken
 
 om en lyftare behöver gå om i slutet av rundan så ska den hamn längst ner i lyftar ordningen 
-efter att ha sorterat listor för vikt och namn för lyfter ordning, ta bort lyft när det blir underkänt eller godkänt
-när man byter index på gruppen så ska nästa grupps ingångar visas
 För varje gång man skriver in en bokstav och det blir en varning så tar det bort från någon lista så att man inte kan få all lyft godkända utan att programmet krashar
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
 om man ångrar ett lyft så ändras inte totalen tillbaka
 2,5 plussas på även vid över gång till bänk och mark
+✅efter att ha sorterat listor för vikt och namn för lyfter ordning, ta bort lyft när det blir underkänt eller godkänt
+✅när man byter index på gruppen så ska nästa grupps ingångar visas
 ✅gl points
 ✅Problem med viktkalkulatorn när man ändrar grupper ibland, tror den plussar på någon variable så det blir mer vikt än det finns (har med att den resettas i cellleave och den körs ju inte när man byter grupp)
 ✅gör så man kan exportera data till usb
