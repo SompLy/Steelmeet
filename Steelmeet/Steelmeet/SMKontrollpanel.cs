@@ -1,25 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Windows.Forms;
-using System.Linq;
-using SpreadsheetLight.Charts;
-using SpreadsheetLight.Drawing;
 
-using Microsoft.VisualBasic.ApplicationServices;
-using static System.Net.Mime.MediaTypeNames;
-using System.Collections;
 using SteelMeet;
-using System.Diagnostics;
 using DataTable = System.Data.DataTable;
 using SpreadsheetLight;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 namespace Powermeet2
 {
@@ -73,7 +57,7 @@ namespace Powermeet2
 
         List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
         List<float> GroupLiftingOrderList = new List<float>(); //För att sortera viktera
-        
+
         MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
 
         //Default Plate setup 16x25kg
@@ -1003,7 +987,8 @@ namespace Powermeet2
         }
         private void dataGridViewControlPanel_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) && float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) >= 25)
+            if (!string.IsNullOrWhiteSpace(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) &&
+                float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) >= 25)
             {
                 LiftingOrderList2.Add(float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()));
             }
@@ -1136,6 +1121,7 @@ namespace Powermeet2
                 case 0:
                     {
                         //Invägning tabben laddas
+
                         break;
                     }
                 case 1:
@@ -1300,13 +1286,13 @@ namespace Powermeet2
                 dt2.Columns.Add("Namn");        //1
                 dt2.Columns.Add("Lot");         //2 
                 dt2.Columns.Add("Klass");       //3
-                dt2.Columns.Add("Kategori");    //4
-                dt2.Columns.Add("Licensnr");//5
+                dt2.Columns.Add("Kat.");        //4
+                dt2.Columns.Add("Lic.nr");      //5
                 dt2.Columns.Add("Förening");    //6
                 dt2.Columns.Add("Kv");          //7
-                dt2.Columns.Add("H\nBöj");       //8
-                dt2.Columns.Add("H\nBänk");      //9
-                dt2.Columns.Add("R\nBänk");      //10
+                dt2.Columns.Add("H\nBöj");      //8
+                dt2.Columns.Add("H\nBänk");     //9
+                dt2.Columns.Add("R\nBänk");     //10
                 dt2.Columns.Add("S1");          //11
                 dt2.Columns.Add("S2");          //12
                 dt2.Columns.Add("S3");          //13
@@ -1754,7 +1740,7 @@ namespace Powermeet2
 
                     for (int i = 0; i < group1Count - 1; i++)
                     {
-                        DisplayAll(LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, LifterID[i].Kategory, LifterID[i].licenceNumber
+                        DisplayAll(LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
                             , LifterID[i].benchRack.ToString()
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()

@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -105,6 +105,15 @@
             btn25 = new Button();
             txtb25 = new TextBox();
             tabPage2 = new TabPage();
+            panel12 = new Panel();
+            label36 = new Label();
+            label37 = new Label();
+            label38 = new Label();
+            label39 = new Label();
+            label40 = new Label();
+            label41 = new Label();
+            label42 = new Label();
+            label43 = new Label();
             pictureBox1 = new PictureBox();
             panel11 = new Panel();
             lbl_groupLiftOrder_control_20 = new Label();
@@ -154,16 +163,14 @@
             panel9 = new Panel();
             label31 = new Label();
             button5 = new Button();
-            button4 = new Button();
-            button2 = new Button();
             panel8 = new Panel();
             combo_Aktivgrupp = new ComboBox();
             label29 = new Label();
             panel6 = new Panel();
             btn_ångralyft = new Button();
-            btn_underkänt = new Button();
             btn_godkänt = new Button();
             btn_klovad = new Button();
+            btn_underkänt = new Button();
             panel5 = new Panel();
             btn_60min = new Button();
             btn_4min = new Button();
@@ -191,6 +198,13 @@
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton3 = new RadioButton();
+            radioButton4 = new RadioButton();
+            radioButton5 = new RadioButton();
+            radioButton6 = new RadioButton();
+            radioButton7 = new RadioButton();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -203,6 +217,7 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
+            panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel11.SuspendLayout();
             panel10.SuspendLayout();
@@ -223,7 +238,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1920, 1080);
+            tabControl1.Size = new Size(1366, 768);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -237,7 +252,7 @@
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1912, 1052);
+            tabPage4.Size = new Size(1358, 740);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Invägning";
             // 
@@ -248,9 +263,9 @@
             panel7.Controls.Add(label28);
             panel7.Controls.Add(label27);
             panel7.Controls.Add(label26);
-            panel7.Location = new Point(745, 14);
+            panel7.Location = new Point(656, 9);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1103, 144);
+            panel7.Size = new Size(686, 144);
             panel7.TabIndex = 15;
             // 
             // label28
@@ -258,7 +273,7 @@
             label28.AutoSize = true;
             label28.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label28.ForeColor = SystemColors.Window;
-            label28.Location = new Point(561, 9);
+            label28.Location = new Point(10, 98);
             label28.Name = "label28";
             label28.Size = new Size(464, 108);
             label28.TabIndex = 14;
@@ -280,7 +295,7 @@
             label26.AutoSize = true;
             label26.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label26.ForeColor = SystemColors.Window;
-            label26.Location = new Point(11, 45);
+            label26.Location = new Point(11, 42);
             label26.Name = "label26";
             label26.Size = new Size(530, 54);
             label26.TabIndex = 12;
@@ -300,9 +315,9 @@
             panel4.Controls.Add(btn_Refresh);
             panel4.Controls.Add(lbl_ImportedfilePath);
             panel4.ForeColor = SystemColors.Window;
-            panel4.Location = new Point(14, 14);
+            panel4.Location = new Point(9, 9);
             panel4.Name = "panel4";
-            panel4.Size = new Size(725, 144);
+            panel4.Size = new Size(641, 144);
             panel4.TabIndex = 14;
             // 
             // label35
@@ -310,7 +325,7 @@
             label35.AutoSize = true;
             label35.Font = new Font("Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label35.ForeColor = SystemColors.Window;
-            label35.Location = new Point(565, 9);
+            label35.Location = new Point(477, 9);
             label35.Name = "label35";
             label35.Size = new Size(148, 24);
             label35.TabIndex = 15;
@@ -321,7 +336,7 @@
             lbl_WeightInData.AutoSize = true;
             lbl_WeightInData.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_WeightInData.ForeColor = SystemColors.Window;
-            lbl_WeightInData.Location = new Point(567, 41);
+            lbl_WeightInData.Location = new Point(479, 41);
             lbl_WeightInData.Name = "lbl_WeightInData";
             lbl_WeightInData.Size = new Size(109, 36);
             lbl_WeightInData.TabIndex = 15;
@@ -341,7 +356,7 @@
             // 
             lbl_Lyftare.AutoSize = true;
             lbl_Lyftare.Font = new Font("Trebuchet MS", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Lyftare.Location = new Point(157, 0);
+            lbl_Lyftare.Location = new Point(157, 19);
             lbl_Lyftare.Name = "lbl_Lyftare";
             lbl_Lyftare.Size = new Size(316, 49);
             lbl_Lyftare.TabIndex = 7;
@@ -352,7 +367,7 @@
             btn_Comp.BackColor = Color.Green;
             btn_Comp.FlatStyle = FlatStyle.Popup;
             btn_Comp.ForeColor = SystemColors.WindowText;
-            btn_Comp.Location = new Point(567, 92);
+            btn_Comp.Location = new Point(479, 92);
             btn_Comp.Name = "btn_Comp";
             btn_Comp.Size = new Size(151, 25);
             btn_Comp.TabIndex = 13;
@@ -379,7 +394,7 @@
             button3.BackColor = SystemColors.WindowFrame;
             button3.FlatStyle = FlatStyle.Popup;
             button3.ForeColor = SystemColors.WindowText;
-            button3.Location = new Point(410, 92);
+            button3.Location = new Point(322, 92);
             button3.Name = "button3";
             button3.Size = new Size(151, 25);
             button3.TabIndex = 12;
@@ -413,8 +428,8 @@
             // 
             // dataGridViewWeighIn
             // 
-            dataGridViewCellStyle1.BackColor = SystemColors.WindowFrame;
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.BackColor = SystemColors.WindowFrame;
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -422,30 +437,30 @@
             dataGridViewWeighIn.BorderStyle = BorderStyle.None;
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = SystemColors.ControlDarkDark;
+            dataGridViewCellStyle17.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.DarkGray;
-            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = Color.DarkGray;
+            dataGridViewCellStyle18.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle18.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle18;
             dataGridViewWeighIn.GridColor = SystemColors.ControlDarkDark;
-            dataGridViewWeighIn.Location = new Point(14, 164);
+            dataGridViewWeighIn.Location = new Point(9, 164);
             dataGridViewWeighIn.Name = "dataGridViewWeighIn";
             dataGridViewWeighIn.RowHeadersVisible = false;
             dataGridViewWeighIn.RowTemplate.Height = 25;
             dataGridViewWeighIn.ScrollBars = ScrollBars.Vertical;
-            dataGridViewWeighIn.Size = new Size(1834, 737);
+            dataGridViewWeighIn.Size = new Size(1333, 529);
             dataGridViewWeighIn.TabIndex = 8;
             dataGridViewWeighIn.CellEnter += dataGridViewWeighIn_CellEnter;
             dataGridViewWeighIn.CellLeave += dataGridViewWeighIn_CellLeave;
@@ -459,7 +474,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1912, 1052);
+            tabPage1.Size = new Size(1358, 740);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Inställningar";
             // 
@@ -471,7 +486,7 @@
             panel3.Controls.Add(label18);
             panel3.Controls.Add(label19);
             panel3.ForeColor = SystemColors.Window;
-            panel3.Location = new Point(736, 14);
+            panel3.Location = new Point(731, 9);
             panel3.Name = "panel3";
             panel3.Size = new Size(400, 514);
             panel3.TabIndex = 41;
@@ -533,7 +548,7 @@
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
             panel2.ForeColor = SystemColors.Window;
-            panel2.Location = new Point(15, 14);
+            panel2.Location = new Point(10, 9);
             panel2.Name = "panel2";
             panel2.Size = new Size(434, 514);
             panel2.TabIndex = 15;
@@ -672,7 +687,7 @@
             panel1.Controls.Add(btn25);
             panel1.Controls.Add(txtb25);
             panel1.ForeColor = SystemColors.Window;
-            panel1.Location = new Point(455, 14);
+            panel1.Location = new Point(450, 9);
             panel1.Name = "panel1";
             panel1.Size = new Size(275, 514);
             panel1.TabIndex = 14;
@@ -1033,6 +1048,7 @@
             // tabPage2
             // 
             tabPage2.BackColor = SystemColors.WindowText;
+            tabPage2.Controls.Add(panel12);
             tabPage2.Controls.Add(pictureBox1);
             tabPage2.Controls.Add(panel11);
             tabPage2.Controls.Add(panel10);
@@ -1045,16 +1061,120 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1912, 1052);
+            tabPage2.Size = new Size(1358, 740);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Tävling";
+            // 
+            // panel12
+            // 
+            panel12.BackColor = SystemColors.WindowFrame;
+            panel12.Controls.Add(label36);
+            panel12.Controls.Add(label37);
+            panel12.Controls.Add(label38);
+            panel12.Controls.Add(label39);
+            panel12.Controls.Add(label40);
+            panel12.Controls.Add(label41);
+            panel12.Controls.Add(label42);
+            panel12.Controls.Add(label43);
+            panel12.Location = new Point(421, 7);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(408, 147);
+            panel12.TabIndex = 12;
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label36.ForeColor = SystemColors.Window;
+            label36.Location = new Point(366, 59);
+            label36.Name = "label36";
+            label36.Size = new Size(40, 30);
+            label36.TabIndex = 11;
+            label36.Text = "\"0\"";
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label37.ForeColor = SystemColors.Window;
+            label37.Location = new Point(264, 59);
+            label37.Name = "label37";
+            label37.Size = new Size(116, 30);
+            label37.TabIndex = 10;
+            label37.Text = "GL Points : ";
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label38.ForeColor = SystemColors.Window;
+            label38.Location = new Point(366, 4);
+            label38.Name = "label38";
+            label38.Size = new Size(40, 30);
+            label38.TabIndex = 9;
+            label38.Text = "\"0\"";
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label39.ForeColor = SystemColors.Window;
+            label39.Location = new Point(366, 33);
+            label39.Name = "label39";
+            label39.Size = new Size(40, 30);
+            label39.TabIndex = 8;
+            label39.Text = "\"0\"";
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label40.ForeColor = SystemColors.Window;
+            label40.Location = new Point(321, 32);
+            label40.Name = "label40";
+            label40.Size = new Size(59, 30);
+            label40.TabIndex = 7;
+            label40.Text = "Lot : ";
+            // 
+            // label41
+            // 
+            label41.AutoSize = true;
+            label41.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label41.ForeColor = SystemColors.Window;
+            label41.Location = new Point(293, 3);
+            label41.Name = "label41";
+            label41.Size = new Size(87, 30);
+            label41.TabIndex = 6;
+            label41.Text = "Grupp : ";
+            // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label42.ForeColor = SystemColors.Window;
+            label42.Location = new Point(205, 3);
+            label42.Name = "label42";
+            label42.Size = new Size(64, 30);
+            label42.TabIndex = 4;
+            label42.Text = "\"Vikt\"";
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label43.ForeColor = SystemColors.Window;
+            label43.Location = new Point(11, 3);
+            label43.Name = "label43";
+            label43.Size = new Size(150, 30);
+            label43.TabIndex = 3;
+            label43.Text = "\"Lyftare namn\"";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(893, 12);
+            pictureBox1.Location = new Point(441, 584);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(193, 121);
+            pictureBox1.Size = new Size(176, 121);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
@@ -1084,9 +1204,9 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_8);
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
-            panel11.Location = new Point(1639, 201);
+            panel11.Location = new Point(804, 237);
             panel11.Name = "panel11";
-            panel11.Size = new Size(277, 784);
+            panel11.Size = new Size(266, 784);
             panel11.TabIndex = 11;
             // 
             // lbl_groupLiftOrder_control_20
@@ -1126,7 +1246,7 @@
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label32.ForeColor = SystemColors.Window;
-            label32.Location = new Point(57, 4);
+            label32.Location = new Point(43, 4);
             label32.Name = "label32";
             label32.Size = new Size(176, 30);
             label32.TabIndex = 10;
@@ -1354,9 +1474,9 @@
             panel10.Controls.Add(lbl_liftOrder_control_2);
             panel10.Controls.Add(lbl_liftOrder_control_1);
             panel10.Controls.Add(label30);
-            panel10.Location = new Point(1373, 201);
+            panel10.Location = new Point(1127, 209);
             panel10.Name = "panel10";
-            panel10.Size = new Size(260, 784);
+            panel10.Size = new Size(224, 784);
             panel10.TabIndex = 7;
             // 
             // lbl_liftOrder_control_20
@@ -1584,7 +1704,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label30.ForeColor = SystemColors.Window;
-            label30.Location = new Point(59, 4);
+            label30.Location = new Point(50, 4);
             label30.Name = "label30";
             label30.Size = new Size(142, 30);
             label30.TabIndex = 13;
@@ -1593,13 +1713,18 @@
             // panel9
             // 
             panel9.BackColor = SystemColors.WindowFrame;
+            panel9.Controls.Add(radioButton7);
+            panel9.Controls.Add(radioButton6);
+            panel9.Controls.Add(radioButton5);
+            panel9.Controls.Add(radioButton3);
+            panel9.Controls.Add(radioButton4);
+            panel9.Controls.Add(radioButton2);
+            panel9.Controls.Add(radioButton1);
             panel9.Controls.Add(label31);
             panel9.Controls.Add(button5);
-            panel9.Controls.Add(button4);
-            panel9.Controls.Add(button2);
-            panel9.Location = new Point(1100, 152);
+            panel9.Location = new Point(224, 160);
             panel9.Name = "panel9";
-            panel9.Size = new Size(612, 43);
+            panel9.Size = new Size(605, 43);
             panel9.TabIndex = 6;
             // 
             // label31
@@ -1607,53 +1732,31 @@
             label31.AutoSize = true;
             label31.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label31.ForeColor = SystemColors.Window;
-            label31.Location = new Point(16, 5);
+            label31.Location = new Point(7, 5);
             label31.Name = "label31";
-            label31.Size = new Size(227, 30);
+            label31.Size = new Size(88, 30);
             label31.TabIndex = 12;
-            label31.Text = "Aktivera rekordförsök : ";
+            label31.Text = "Rekord :";
             // 
             // button5
             // 
             button5.BackColor = Color.Silver;
             button5.FlatStyle = FlatStyle.Popup;
-            button5.Location = new Point(485, 10);
+            button5.Location = new Point(493, 10);
             button5.Name = "button5";
             button5.Size = new Size(99, 23);
             button5.TabIndex = 30;
-            button5.Text = "Svenskt rekord";
+            button5.Text = "Aktivera rekord";
             button5.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.Silver;
-            button4.FlatStyle = FlatStyle.Popup;
-            button4.Location = new Point(370, 10);
-            button4.Name = "button4";
-            button4.Size = new Size(99, 23);
-            button4.TabIndex = 29;
-            button4.Text = "Distrikts rekord";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.Silver;
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.Location = new Point(255, 10);
-            button2.Name = "button2";
-            button2.Size = new Size(99, 23);
-            button2.TabIndex = 28;
-            button2.Text = "Klubb rekord";
-            button2.UseVisualStyleBackColor = false;
             // 
             // panel8
             // 
             panel8.BackColor = SystemColors.WindowFrame;
             panel8.Controls.Add(combo_Aktivgrupp);
             panel8.Controls.Add(label29);
-            panel8.Location = new Point(0, 152);
+            panel8.Location = new Point(7, 160);
             panel8.Name = "panel8";
-            panel8.Size = new Size(1094, 43);
+            panel8.Size = new Size(211, 43);
             panel8.TabIndex = 5;
             // 
             // combo_Aktivgrupp
@@ -1680,45 +1783,33 @@
             // 
             panel6.BackColor = SystemColors.WindowFrame;
             panel6.Controls.Add(btn_ångralyft);
-            panel6.Controls.Add(btn_underkänt);
             panel6.Controls.Add(btn_godkänt);
             panel6.Controls.Add(btn_klovad);
-            panel6.Location = new Point(1718, -1);
+            panel6.Controls.Add(btn_underkänt);
+            panel6.Location = new Point(835, 160);
             panel6.Name = "panel6";
-            panel6.Size = new Size(198, 196);
+            panel6.Size = new Size(516, 43);
             panel6.TabIndex = 4;
             // 
             // btn_ångralyft
             // 
             btn_ångralyft.BackColor = Color.Orange;
             btn_ångralyft.FlatStyle = FlatStyle.Popup;
-            btn_ångralyft.Location = new Point(20, 141);
+            btn_ångralyft.Location = new Point(405, 9);
             btn_ångralyft.Name = "btn_ångralyft";
-            btn_ångralyft.Size = new Size(154, 26);
+            btn_ångralyft.Size = new Size(95, 26);
             btn_ångralyft.TabIndex = 24;
             btn_ångralyft.Text = "Ångra Lyft";
             btn_ångralyft.UseVisualStyleBackColor = false;
             btn_ångralyft.Click += btn_ångralyft_Click;
             // 
-            // btn_underkänt
-            // 
-            btn_underkänt.BackColor = Color.Red;
-            btn_underkänt.FlatStyle = FlatStyle.Popup;
-            btn_underkänt.Location = new Point(20, 109);
-            btn_underkänt.Name = "btn_underkänt";
-            btn_underkänt.Size = new Size(154, 26);
-            btn_underkänt.TabIndex = 23;
-            btn_underkänt.Text = "Lyft Underkänt";
-            btn_underkänt.UseVisualStyleBackColor = false;
-            btn_underkänt.Click += btn_underkänt_Click;
-            // 
             // btn_godkänt
             // 
             btn_godkänt.BackColor = Color.ForestGreen;
             btn_godkänt.FlatStyle = FlatStyle.Popup;
-            btn_godkänt.Location = new Point(20, 77);
+            btn_godkänt.Location = new Point(140, 9);
             btn_godkänt.Name = "btn_godkänt";
-            btn_godkänt.Size = new Size(154, 26);
+            btn_godkänt.Size = new Size(121, 26);
             btn_godkänt.TabIndex = 22;
             btn_godkänt.Text = "Lyft Godkänt";
             btn_godkänt.UseVisualStyleBackColor = false;
@@ -1728,13 +1819,25 @@
             // 
             btn_klovad.BackColor = Color.DodgerBlue;
             btn_klovad.FlatStyle = FlatStyle.Popup;
-            btn_klovad.Location = new Point(20, 17);
+            btn_klovad.Location = new Point(8, 3);
             btn_klovad.Name = "btn_klovad";
-            btn_klovad.Size = new Size(154, 47);
+            btn_klovad.Size = new Size(126, 37);
             btn_klovad.TabIndex = 21;
             btn_klovad.Text = "Stången är klovad";
             btn_klovad.UseVisualStyleBackColor = false;
             btn_klovad.Click += btn_klovad_Click;
+            // 
+            // btn_underkänt
+            // 
+            btn_underkänt.BackColor = Color.Red;
+            btn_underkänt.FlatStyle = FlatStyle.Popup;
+            btn_underkänt.Location = new Point(267, 9);
+            btn_underkänt.Name = "btn_underkänt";
+            btn_underkänt.Size = new Size(131, 26);
+            btn_underkänt.TabIndex = 23;
+            btn_underkänt.Text = "Lyft Underkänt";
+            btn_underkänt.UseVisualStyleBackColor = false;
+            btn_underkänt.Click += btn_underkänt_Click;
             // 
             // panel5
             // 
@@ -1752,16 +1855,16 @@
             panel5.Controls.Add(lbl_timerLapp);
             panel5.Controls.Add(lbl_timerLyft);
             panel5.ForeColor = SystemColors.WindowText;
-            panel5.Location = new Point(1100, -1);
+            panel5.Location = new Point(835, 7);
             panel5.Name = "panel5";
-            panel5.Size = new Size(612, 147);
+            panel5.Size = new Size(516, 147);
             panel5.TabIndex = 3;
             // 
             // btn_60min
             // 
             btn_60min.BackColor = Color.Silver;
             btn_60min.FlatStyle = FlatStyle.Popup;
-            btn_60min.Location = new Point(158, 105);
+            btn_60min.Location = new Point(136, 105);
             btn_60min.Name = "btn_60min";
             btn_60min.Size = new Size(99, 23);
             btn_60min.TabIndex = 28;
@@ -1773,7 +1876,7 @@
             // 
             btn_4min.BackColor = Color.Silver;
             btn_4min.FlatStyle = FlatStyle.Popup;
-            btn_4min.Location = new Point(38, 105);
+            btn_4min.Location = new Point(16, 105);
             btn_4min.Name = "btn_4min";
             btn_4min.Size = new Size(99, 23);
             btn_4min.TabIndex = 27;
@@ -1785,7 +1888,7 @@
             // 
             btn_30min.BackColor = Color.Silver;
             btn_30min.FlatStyle = FlatStyle.Popup;
-            btn_30min.Location = new Point(158, 76);
+            btn_30min.Location = new Point(136, 76);
             btn_30min.Name = "btn_30min";
             btn_30min.Size = new Size(99, 23);
             btn_30min.TabIndex = 26;
@@ -1797,7 +1900,7 @@
             // 
             btn_20min.BackColor = Color.Silver;
             btn_20min.FlatStyle = FlatStyle.Popup;
-            btn_20min.Location = new Point(158, 47);
+            btn_20min.Location = new Point(136, 47);
             btn_20min.Name = "btn_20min";
             btn_20min.Size = new Size(99, 23);
             btn_20min.TabIndex = 25;
@@ -1809,7 +1912,7 @@
             // 
             btn_10min.BackColor = Color.Silver;
             btn_10min.FlatStyle = FlatStyle.Popup;
-            btn_10min.Location = new Point(158, 18);
+            btn_10min.Location = new Point(136, 18);
             btn_10min.Name = "btn_10min";
             btn_10min.Size = new Size(99, 23);
             btn_10min.TabIndex = 24;
@@ -1821,7 +1924,7 @@
             // 
             btn_3min.BackColor = Color.Silver;
             btn_3min.FlatStyle = FlatStyle.Popup;
-            btn_3min.Location = new Point(38, 76);
+            btn_3min.Location = new Point(16, 76);
             btn_3min.Name = "btn_3min";
             btn_3min.Size = new Size(99, 23);
             btn_3min.TabIndex = 23;
@@ -1833,7 +1936,7 @@
             // 
             btn_2min.BackColor = Color.Silver;
             btn_2min.FlatStyle = FlatStyle.Popup;
-            btn_2min.Location = new Point(38, 47);
+            btn_2min.Location = new Point(16, 47);
             btn_2min.Name = "btn_2min";
             btn_2min.Size = new Size(99, 23);
             btn_2min.TabIndex = 22;
@@ -1845,7 +1948,7 @@
             // 
             btn_1min.BackColor = Color.Silver;
             btn_1min.FlatStyle = FlatStyle.Popup;
-            btn_1min.Location = new Point(38, 18);
+            btn_1min.Location = new Point(16, 18);
             btn_1min.Name = "btn_1min";
             btn_1min.Size = new Size(99, 23);
             btn_1min.TabIndex = 21;
@@ -1857,7 +1960,7 @@
             // 
             label25.AutoSize = true;
             label25.ForeColor = SystemColors.Window;
-            label25.Location = new Point(517, 96);
+            label25.Location = new Point(439, 96);
             label25.Name = "label25";
             label25.Size = new Size(33, 15);
             label25.TabIndex = 3;
@@ -1867,7 +1970,7 @@
             // 
             label24.AutoSize = true;
             label24.ForeColor = SystemColors.Window;
-            label24.Location = new Point(351, 96);
+            label24.Location = new Point(308, 96);
             label24.Name = "label24";
             label24.Size = new Size(26, 15);
             label24.TabIndex = 2;
@@ -1878,7 +1981,7 @@
             lbl_timerLapp.AutoSize = true;
             lbl_timerLapp.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_timerLapp.ForeColor = SystemColors.Window;
-            lbl_timerLapp.Location = new Point(483, 39);
+            lbl_timerLapp.Location = new Point(405, 39);
             lbl_timerLapp.Name = "lbl_timerLapp";
             lbl_timerLapp.Size = new Size(110, 50);
             lbl_timerLapp.TabIndex = 1;
@@ -1889,7 +1992,7 @@
             lbl_timerLyft.AutoSize = true;
             lbl_timerLyft.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_timerLyft.ForeColor = SystemColors.Window;
-            lbl_timerLyft.Location = new Point(272, 10);
+            lbl_timerLyft.Location = new Point(229, 10);
             lbl_timerLyft.Name = "lbl_timerLyft";
             lbl_timerLyft.Size = new Size(191, 86);
             lbl_timerLyft.TabIndex = 0;
@@ -1906,9 +2009,9 @@
             infopanel_Controlpanel.Controls.Add(label23);
             infopanel_Controlpanel.Controls.Add(lbl_currentWeight);
             infopanel_Controlpanel.Controls.Add(lblName);
-            infopanel_Controlpanel.Location = new Point(0, -1);
+            infopanel_Controlpanel.Location = new Point(7, 7);
             infopanel_Controlpanel.Name = "infopanel_Controlpanel";
-            infopanel_Controlpanel.Size = new Size(879, 147);
+            infopanel_Controlpanel.Size = new Size(408, 147);
             infopanel_Controlpanel.TabIndex = 0;
             infopanel_Controlpanel.Paint += infopanel_Controlpanel_Paint;
             // 
@@ -1917,7 +2020,7 @@
             lbl_GLPoints_control.AutoSize = true;
             lbl_GLPoints_control.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_GLPoints_control.ForeColor = SystemColors.Window;
-            lbl_GLPoints_control.Location = new Point(650, 59);
+            lbl_GLPoints_control.Location = new Point(366, 59);
             lbl_GLPoints_control.Name = "lbl_GLPoints_control";
             lbl_GLPoints_control.Size = new Size(40, 30);
             lbl_GLPoints_control.TabIndex = 11;
@@ -1928,7 +2031,7 @@
             label34.AutoSize = true;
             label34.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label34.ForeColor = SystemColors.Window;
-            label34.Location = new Point(548, 59);
+            label34.Location = new Point(264, 59);
             label34.Name = "label34";
             label34.Size = new Size(116, 30);
             label34.TabIndex = 10;
@@ -1939,7 +2042,7 @@
             lbl_Grupp_control.AutoSize = true;
             lbl_Grupp_control.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Grupp_control.ForeColor = SystemColors.Window;
-            lbl_Grupp_control.Location = new Point(650, 4);
+            lbl_Grupp_control.Location = new Point(366, 4);
             lbl_Grupp_control.Name = "lbl_Grupp_control";
             lbl_Grupp_control.Size = new Size(40, 30);
             lbl_Grupp_control.TabIndex = 9;
@@ -1950,7 +2053,7 @@
             lbl_Lot_control.AutoSize = true;
             lbl_Lot_control.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Lot_control.ForeColor = SystemColors.Window;
-            lbl_Lot_control.Location = new Point(650, 33);
+            lbl_Lot_control.Location = new Point(366, 33);
             lbl_Lot_control.Name = "lbl_Lot_control";
             lbl_Lot_control.Size = new Size(40, 30);
             lbl_Lot_control.TabIndex = 8;
@@ -1961,7 +2064,7 @@
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label22.ForeColor = SystemColors.Window;
-            label22.Location = new Point(605, 32);
+            label22.Location = new Point(321, 32);
             label22.Name = "label22";
             label22.Size = new Size(59, 30);
             label22.TabIndex = 7;
@@ -1972,7 +2075,7 @@
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label23.ForeColor = SystemColors.Window;
-            label23.Location = new Point(577, 3);
+            label23.Location = new Point(293, 3);
             label23.Name = "label23";
             label23.Size = new Size(87, 30);
             label23.TabIndex = 6;
@@ -2007,38 +2110,38 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.Gainsboro;
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.BackColor = Color.Gainsboro;
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewControlPanel.BackgroundColor = SystemColors.WindowFrame;
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Silver;
-            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = Color.Silver;
+            dataGridViewCellStyle14.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle15.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle15;
             dataGridViewControlPanel.GridColor = SystemColors.ControlDarkDark;
-            dataGridViewControlPanel.Location = new Point(0, 201);
+            dataGridViewControlPanel.Location = new Point(7, 209);
             dataGridViewControlPanel.Name = "dataGridViewControlPanel";
             dataGridViewControlPanel.RowHeadersVisible = false;
             dataGridViewControlPanel.RowTemplate.Height = 25;
             dataGridViewControlPanel.ScrollBars = ScrollBars.Vertical;
-            dataGridViewControlPanel.Size = new Size(1366, 784);
+            dataGridViewControlPanel.Size = new Size(1114, 548);
             dataGridViewControlPanel.TabIndex = 2;
             dataGridViewControlPanel.CellEndEdit += dataGridViewControlPanel_CellEndEdit;
             dataGridViewControlPanel.CellEnter += dataGridViewControlPanel_CellEnter;
@@ -2051,7 +2154,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1912, 1052);
+            tabPage3.Size = new Size(1358, 740);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Resultat";
             tabPage3.UseVisualStyleBackColor = true;
@@ -2071,18 +2174,101 @@
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
             // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.ForeColor = SystemColors.Window;
+            radioButton1.Location = new Point(95, 2);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(42, 19);
+            radioButton1.TabIndex = 31;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Böj";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.ForeColor = SystemColors.Window;
+            radioButton2.Location = new Point(95, 22);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(51, 19);
+            radioButton2.TabIndex = 32;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Bänk";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            radioButton3.AutoSize = true;
+            radioButton3.ForeColor = SystemColors.Window;
+            radioButton3.Location = new Point(156, 22);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(50, 19);
+            radioButton3.TabIndex = 34;
+            radioButton3.TabStop = true;
+            radioButton3.Text = "Total\r\n";
+            radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            radioButton4.AutoSize = true;
+            radioButton4.ForeColor = SystemColors.Window;
+            radioButton4.Location = new Point(156, 2);
+            radioButton4.Name = "radioButton4";
+            radioButton4.Size = new Size(52, 19);
+            radioButton4.TabIndex = 33;
+            radioButton4.TabStop = true;
+            radioButton4.Text = "Mark";
+            radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            radioButton5.AutoSize = true;
+            radioButton5.ForeColor = SystemColors.Window;
+            radioButton5.Location = new Point(244, 12);
+            radioButton5.Name = "radioButton5";
+            radioButton5.Size = new Size(56, 19);
+            radioButton5.TabIndex = 35;
+            radioButton5.TabStop = true;
+            radioButton5.Text = "Klubb";
+            radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            radioButton6.AutoSize = true;
+            radioButton6.ForeColor = SystemColors.Window;
+            radioButton6.Location = new Point(306, 12);
+            radioButton6.Name = "radioButton6";
+            radioButton6.Size = new Size(62, 19);
+            radioButton6.TabIndex = 36;
+            radioButton6.TabStop = true;
+            radioButton6.Text = "Distrikt";
+            radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton7
+            // 
+            radioButton7.AutoSize = true;
+            radioButton7.ForeColor = SystemColors.Window;
+            radioButton7.Location = new Point(374, 12);
+            radioButton7.Name = "radioButton7";
+            radioButton7.Size = new Size(77, 19);
+            radioButton7.TabIndex = 37;
+            radioButton7.TabStop = true;
+            radioButton7.Text = "Nationellt";
+            radioButton7.UseVisualStyleBackColor = true;
+            // 
             // SMKontrollpanel
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoSize = true;
             BackColor = Color.Black;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1501, 729);
             Controls.Add(tabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SMKontrollpanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Steelmeet Kontrollpanel - v1.0.0";
-            WindowState = FormWindowState.Maximized;
             tabControl1.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             panel7.ResumeLayout(false);
@@ -2100,6 +2286,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
+            panel12.ResumeLayout(false);
+            panel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
@@ -2224,8 +2412,6 @@
         private Label label32;
         private Label label31;
         private Button button5;
-        private Button button4;
-        private Button button2;
         private Label lbl_liftOrder_control_20;
         private Label lbl_liftOrder_control_19;
         private Label lbl_liftOrder_control_18;
@@ -2274,5 +2460,21 @@
         private Label label35;
         private Label lbl_GLPoints_control;
         private Label label34;
+        private Panel panel12;
+        private Label label36;
+        private Label label37;
+        private Label label38;
+        private Label label39;
+        private Label label40;
+        private Label label41;
+        private Label label42;
+        private Label label43;
+        private RadioButton radioButton5;
+        private RadioButton radioButton3;
+        private RadioButton radioButton4;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private RadioButton radioButton7;
+        private RadioButton radioButton6;
     }
 }
