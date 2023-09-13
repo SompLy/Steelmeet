@@ -4,6 +4,7 @@ using System.Data;
 using SteelMeet;
 using DataTable = System.Data.DataTable;
 using SpreadsheetLight;
+using System.Globalization;
 
 namespace Powermeet2
 {
@@ -13,6 +14,8 @@ namespace Powermeet2
         public SMKontrollpanel()
         {
             InitializeComponent();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
         }
 
         System.Data.DataTable dt = new();
@@ -65,6 +68,8 @@ namespace Powermeet2
 
         //Default Plate setup 16x25kg
         public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2, Color.ForestGreen, Color.Red, Color.Blue, Color.Yellow, Color.LimeGreen, Color.WhiteSmoke, Color.Black, Color.Silver, Color.Gainsboro, Color.Gainsboro);
+
+        public CultureInfo customCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
         public class Lifter
         {
@@ -1580,44 +1585,8 @@ namespace Powermeet2
 
         public void LiftOrderUpdate()   //Uppdaerar nuvarandes grupps lyftarordning och den läggs till i när man klickar på go
         {                               //förta listan fylls och sen tas det bort lyftare allt eftersom och när den är tom så byts informationen från lista två ut mot informationen i lista 1 så det blir infinate loop,
-            //man tar bara bort lyftare från lista 1 och lägger bara till i lista 2
-            //                            LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
-            //                                                                        lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
-            //                                                                        lbl_liftOrder_control_9, lbl_liftOrder_control_10, lbl_liftOrder_control_11, lbl_liftOrder_control_12,
-            //                                                                        lbl_liftOrder_control_13, lbl_liftOrder_control_14, lbl_liftOrder_control_15, lbl_liftOrder_control_16,
-            //                                                                        lbl_liftOrder_control_17, lbl_liftOrder_control_18, lbl_liftOrder_control_19, lbl_liftOrder_control_20});
-            //if (restartLiftingOrderList == true)     //Fyller listan för första gången
-            //{
-            //    LiftingOrderList.Clear();
-            //    for (int i = 0; i < group1Count - 1; i++)
-            //    {
-            //        LiftingOrderList.Add(LifterID[i].sbdList[LifterID[i].CurrentLift - 11]);
-            //        restartLiftingOrderList = false;
-            //    }
-            //}
-            //if (LiftingOrderList.Count == 0)       //Om andra listan är tom så fylls den tills den första listan är tom.
-            //{
-            //    for (int i = 0; i < LiftingOrderList2.Count; i++)
-            //    {
-            //        LiftingOrderList.Add(LiftingOrderList2[i]);
-            //    }
-            //    LiftingOrderList2.Clear();
-            //}
-
-            //for (int i = 0; i < LiftingOrderListLabels.Count; i++)
-            //{
-            //    LiftingOrderListLabels[i].Text = "";
-            //}
-            //LiftingOrderList.Sort();
-            //for (int i = 0; i < LiftingOrderList.Count; i++)
-            //{
-            //    LiftingOrderListLabels[i].Text = LiftingOrderList[i].ToString();
-            //    if (LiftingOrderListLabels.Count <= 20 && LiftingOrderList2.Contains(i))
-            //    {
-            //        MessageBox.Show(i + LiftingOrderList.Count.ToString());
-            //        LiftingOrderListLabels[i + LiftingOrderList.Count].Text = LiftingOrderList2[i].ToString();
-            //    }
-            //}
+                                        //man tar bara bort lyftare från lista 1 och lägger bara till i lista 2
+            
 
             LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
                                                         lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
