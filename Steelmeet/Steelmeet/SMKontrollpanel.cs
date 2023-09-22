@@ -86,6 +86,7 @@ namespace Powermeet2
                 string s1,
                 string benchHeight,
                 string benchRack,
+                string liftoff,
                 string b1,
                 string d1)
             {
@@ -101,6 +102,7 @@ namespace Powermeet2
                 this.s1 = float.Parse(s1);
                 this.benchHeight = Int16.Parse(benchHeight);
                 this.benchRack = Int16.Parse(benchRack);
+                this.liftoff = liftoff;
                 this.b1 = float.Parse(b1);
                 this.d1 = float.Parse(d1);
                 CurrentLift = 11;       //Väljer vilken column som första böjen börjar på
@@ -139,6 +141,7 @@ namespace Powermeet2
             public float s3 { get; set; }
             public int benchHeight { get; set; }
             public int benchRack { get; set; }
+            public string liftoff { get; set; }
             public float b1 { get; set; }
             public float b2 { get; set; }
             public float b3 { get; set; }
@@ -328,7 +331,7 @@ namespace Powermeet2
             for (int i = 0; i < LyftarID.Count; i++)
             {
                 string[] data = LyftarID[i].Split(',');
-                Display(data[0], data[1], data[2], data[3], data[4]);
+                //Display(data[0], data[1], data[2], data[3], data[4]);
             }
 
         }
@@ -362,12 +365,12 @@ namespace Powermeet2
                     //if (excelRange.Cells[i + 1, 1].Value2?.ToString() != "Grupp")
                     if (sl.GetCellValueAsString(i, 1) != "Grupp")
                     {
-                        Display(
-                            sl.GetCellValueAsString(i, 1),
-                            sl.GetCellValueAsString(i, 2),
-                            sl.GetCellValueAsString(i, 3),
-                            sl.GetCellValueAsString(i, 4),
-                            sl.GetCellValueAsString(i, 5));
+                        //Display(
+                        //    sl.GetCellValueAsString(i, 1),
+                        //    sl.GetCellValueAsString(i, 2),
+                        //    sl.GetCellValueAsString(i, 3),
+                        //    sl.GetCellValueAsString(i, 4),
+                        //    sl.GetCellValueAsString(i, 5));
                         //excelRange.Cells[i + 1, 1].Value2.ToString(),
                         //excelRange.Cells[i + 1, 2].Value2.ToString(),
                         //excelRange.Cells[i + 1, 3].Value2.ToString(),
@@ -378,6 +381,7 @@ namespace Powermeet2
             }
             else
             {
+
                 for (int i = 1; i < realRowCount - 1; i++)
                 {
                     if (sl.GetCellValueAsString(i, 1) != "Grupp")
@@ -396,23 +400,11 @@ namespace Powermeet2
                             sl.GetCellValueAsString(i, 11),
                             sl.GetCellValueAsString(i, 12),
                             sl.GetCellValueAsString(i, 13),
-                            sl.GetCellValueAsString(i, 14));
-                        //excelRange.Cells[i + 1, 1].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 2].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 3].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 4].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 5].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 6].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 7].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 8].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 9].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 10].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 11].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 12].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 13].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 14].Value2.ToString());
+                            sl.GetCellValueAsString(i, 14),
+                            sl.GetCellValueAsString(i, 15));
                     }
                 }
+
                 WeighInInfoUpdate();
             }
             //excelApp.Quit();
@@ -420,38 +412,38 @@ namespace Powermeet2
             //https://www.youtube.com/watch?v=kF2PGCl-rXU&ab_channel=AzharTechnoCoder
 
         }
-        public void Display(string Namn, string Viktklass, string Kategori, string Licensnummer, string Förening)
-        {
-            if (a)
-            {
-                dt.Columns.Add("Namn");                 //
-                dt.Columns.Add("Viktklass");            //1
-                dt.Columns.Add("Kategori");             //2
-                dt.Columns.Add("Licensnummer");         //3
-                dt.Columns.Add("Förening");             //4
-                dt.Columns.Add("Kroppsvikt");           //5
-                dt.Columns.Add("Höjd Bänk");            //6
-                dt.Columns.Add("Rack Bänk");            //6
-                dt.Columns.Add("Ingång Bänk");          //7
-                dt.Columns.Add("Höjd Böj");             //8
-                dt.Columns.Add("Ingång Böj");           //9
-                dt.Columns.Add("Ingång Mark");          //10    hemilga koden blir 0 4 1 2 5 6 8 9 7 10
+        //public void Display(string Namn, string Viktklass, string Kategori, string Licensnummer, string Förening)
+        //{
+        //    if (a)
+        //    {
+        //        dt.Columns.Add("Namn");                 //
+        //        dt.Columns.Add("Viktklass");            //1
+        //        dt.Columns.Add("Kategori");             //2
+        //        dt.Columns.Add("Licensnummer");         //3
+        //        dt.Columns.Add("Förening");             //4
+        //        dt.Columns.Add("Kroppsvikt");           //5
+        //        dt.Columns.Add("Höjd Bänk");            //6
+        //        dt.Columns.Add("Rack Bänk");            //6
+        //        dt.Columns.Add("Ingång Bänk");          //7
+        //        dt.Columns.Add("Höjd Böj");             //8
+        //        dt.Columns.Add("Ingång Böj");           //9
+        //        dt.Columns.Add("Ingång Mark");          //10    hemilga koden blir 0 4 1 2 5 6 8 9 7 10
 
 
-                a = false;
-            }
-            DataRow dr = dt.NewRow();
+        //        a = false;
+        //    }
+        //    DataRow dr = dt.NewRow();
 
-            dr[0] = Namn;
-            dr[1] = Kategori;
-            dr[2] = Viktklass;
-            dr[3] = Licensnummer;
-            dr[4] = Förening;
+        //    dr[0] = Namn;
+        //    dr[1] = Kategori;
+        //    dr[2] = Viktklass;
+        //    dr[3] = Licensnummer;
+        //    dr[4] = Förening;
 
-            dt.Rows.Add(dr);
-            dataGridViewWeighIn.DataSource = dt;
+        //    dt.Rows.Add(dr);
+        //    dataGridViewWeighIn.DataSource = dt;
 
-        }
+        //}
         public void DisplayDebug(
             string Gruppnummer,
             string Namn, //Testerläge då hela filen är ifylld med random värden så man inte behöver skriva in
@@ -465,6 +457,7 @@ namespace Powermeet2
             string IngångBöj,
             string HöjdBänk,
             string RackBänk,
+            string Avlyft,
             string IngångBänk,
             string IngångMark)
         {
@@ -473,17 +466,18 @@ namespace Powermeet2
                 dt.Columns.Add("Grupp");                //0
                 dt.Columns.Add("Namn");                 //1
                 dt.Columns.Add("Lot");                  //2
-                dt.Columns.Add("Viktklass");            //3
+                dt.Columns.Add("Klass");            //3
                 dt.Columns.Add("Kategori");             //4
-                dt.Columns.Add("Licensnummer");         //5
+                dt.Columns.Add("Licens\nnr");         //5
                 dt.Columns.Add("Förening");             //6
-                dt.Columns.Add("Kroppsvikt");           //7
-                dt.Columns.Add("Höjd Böj");             //8
-                dt.Columns.Add("Ingång Böj");           //9
-                dt.Columns.Add("Höjd Bänk");            //10
-                dt.Columns.Add("Rack Bänk");            //11
-                dt.Columns.Add("Ingång Bänk");          //12
-                dt.Columns.Add("Ingång Mark");          //13
+                dt.Columns.Add("Kv");           //7
+                dt.Columns.Add("Höjd\nBöj");             //8
+                dt.Columns.Add("Böj");           //9
+                dt.Columns.Add("Höjd\nBänk");            //10
+                dt.Columns.Add("Rack\nBänk");            //11
+                dt.Columns.Add("Avlyft");            //11
+                dt.Columns.Add("Bänk");          //12
+                dt.Columns.Add("Mark");          //13
 
                 a = false;
             }
@@ -501,8 +495,9 @@ namespace Powermeet2
             dr[9] = IngångBöj;
             dr[10] = HöjdBänk;
             dr[11] = RackBänk;
-            dr[12] = IngångBänk;
-            dr[13] = IngångMark;
+            dr[12] = Avlyft;
+            dr[13] = IngångBänk;
+            dr[14] = IngångMark;
 
             dt.Rows.Add(dr);
             dataGridViewWeighIn.DataSource = dt;
@@ -557,6 +552,7 @@ namespace Powermeet2
 
                 if (list[4].ToLower().Contains("herr"))                      //kollar om viktklassen är giltig för dam och herr
                 {
+
                     if (list[3].ToLower().Contains("120+") || list[3].ToLower().Contains("+120"))
                     {
                         list[3] = "+120";
@@ -592,6 +588,14 @@ namespace Powermeet2
                     else if (list[3].ToLower().Contains("53"))
                     {
                         list[3] = "-53";
+                    }
+                    else if (list[3].ToLower().Contains("koeffhk"))          //Herr Klassiskt
+                    {
+                        list[3] = "koeffHK";
+                    }
+                    else if (list[3].ToLower().Contains("koeffhu"))          //Herr Utrustat
+                    {
+                        list[3] = "koeffHU";
                     }
                     else
                     {
@@ -637,6 +641,14 @@ namespace Powermeet2
                     {
                         list[3] = "-43";
                     }
+                    else if (list[3].ToLower().Contains("koeffdk"))      //Dam Klassiskt
+                    {
+                        list[3] = "koeffDK";
+                    }
+                    else if (list[3].ToLower().Contains("koeffdu"))      //Dam Utrustat
+                    {
+                        list[3] = "koeffDU";
+                    }
                     else
                     {
                         MessageBox.Show("Ogiltig viktklass, \"⚠Varning!⚠\""); //Varning 
@@ -653,7 +665,7 @@ namespace Powermeet2
                 dataGridViewWeighIn.Rows[o].Cells[3].Value = list[3];
 
                 //Lägger till lyftare adderar lyftare ny lyftare
-                LifterID.Add(o, new Lifter(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13]));
+                LifterID.Add(o, new Lifter(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13], list[14]));
 
                 SetCategoryEnum(list[4]);
 
@@ -878,7 +890,35 @@ namespace Powermeet2
             p.Color = Color.DarkGray;
             g.DrawLine(p, x1 + offset, 60, x2 + offset, 80);
         }
+        private void infopanel_Controlpanel_Paint2(object sender, PaintEventArgs e)
+        {
+            int x1 = 10, y1 = 40, x2 = 10, y2 = 100;
+            Pen p = new Pen(Color.Red, 10);
+            int offset = 12;
+            Graphics g = e.Graphics;
 
+            List<Color> plateColorList = new List<Color>();
+            plateColorList.AddRange(new Color[] {plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
+            plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025});
+
+            List<int> paintedPlatesList = new List<int>();
+            paintedPlatesList.AddRange(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+
+            for (int i = 0; i < 10;)
+            {
+                if (Enumerable.Any(usedPlatesList) && usedPlatesList[i] > paintedPlatesList[i])
+                {
+                    p.Color = plateColorList[i];
+                    g.DrawLine(p, x1 + offset, y1, x2 + offset, y2);
+                    offset += 12;
+
+                    paintedPlatesList[i]++;
+                }
+                else { i++; }
+            }
+            p.Color = Color.DarkGray;
+            g.DrawLine(p, x1 + offset, 60, x2 + offset, 80);
+        }
         public void BestSBDUpdate()
         {
 #pragma warning disable CA1305
@@ -963,9 +1003,12 @@ namespace Powermeet2
                     s = (Math.Round(float.Parse(s.Replace(",", ".")) / .5f) * .5f).ToString();
                     dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = s;
 
-                    LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count] =
-                        float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()); // Sätter vikten till sbdlist
+                    if (SelectedColumnIndex < 18)
+                    {
+                        LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count] =
+                            float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()); // Sätter vikten till sbdlist
 
+                    }
                     LiftOrderUpdate();//Updaterar lyftar ordning
                     GroupLiftOrderUpdate();//Updaterar nästa grupps lyftar ordning
 
@@ -1008,18 +1051,23 @@ namespace Powermeet2
             }
             else
             {
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 0f;
-                MessageBox.Show("gay");
+
+                MessageBox.Show("det var en string");
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 25f;
             }
 
         }
         private void dataGridViewControlPanel_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) &&
-                float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) >= 25)
-            {
-                LiftingOrderList2.Add(float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()));
-            }
+
+            //    if (!string.IsNullOrWhiteSpace(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) &&
+            //    float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) >= 25)
+            //    {
+            //        LiftingOrderList2New.Add(float.Parse(dataGridViewControlPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()));
+            //    }
+
+
+            //dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 25f;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //Hanterar all input från tagentbord
@@ -1053,8 +1101,27 @@ namespace Powermeet2
         }
         public void goodLift()
         {
-            LiftOrderUpdate();//Updaterar lyftar ordning
-            LiftingOrderListNew.RemoveAt(0);
+            //Updaterar lyftar ordning
+            LiftOrderUpdate();
+            //Tar bort rätt lyftare
+            if (!(LiftingOrderListNew.Count <= 0))
+            {
+                for (int i = 0; i < LiftingOrderListNew.Count - 1; i++)
+                {
+
+                    if (LifterID[SelectedRowIndex + groupRowFixer] == LiftingOrderListNew[i])
+                    {
+                        LiftingOrderListNew.RemoveAt(i);
+                    }
+
+                }
+                // Medelande om lyftaren redan lyft funkar inte ?!?!?!?!?
+                if (LiftingOrderListNew.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
+                {
+                    MessageBox.Show("Denna lyftare har redan lyft denna omgång");
+                    return;
+                }
+            }
 
             TimerController(8); //Startar lapp timern på 1 minut
             TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1074,8 +1141,12 @@ namespace Powermeet2
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Style.BackColor = Color.FromArgb(255, 127, 80);
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1];
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Value = //Lägger till 2,5 automatiskt när man godkänner ett lyft
-                    2.5f + float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
+                if (SelectedColumnIndex != 14 && SelectedColumnIndex != 17)
+                {
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Value = //Lägger till 2,5 automatiskt när man godkänner ett lyft
+                        2.5f + float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
+
+                }
 
                 dataGridViewControlPanel.BeginEdit(true);
             }
@@ -1093,8 +1164,10 @@ namespace Powermeet2
         public void badLift()
         {
             LiftOrderUpdate();//Updaterar lyftar ordning
-            LiftingOrderList.RemoveAt(0);
-
+            if (!(LiftingOrderListNew.Count <= 0))
+            {
+                LiftingOrderListNew.RemoveAt(0);
+            }
             TimerController(8); //Startar lapp timern på 1 minut
             TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
 
@@ -1109,9 +1182,11 @@ namespace Powermeet2
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Style.BackColor = Color.FromArgb(255, 127, 80);
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1];
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Value = //Upprepar samma lyft i nästa ruta för underkänt lyft
+                if (SelectedColumnIndex != 14 && SelectedColumnIndex != 17)
+                {
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Value = //Upprepar samma lyft i nästa ruta för underkänt lyft
                     float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
-
+                }
                 dataGridViewControlPanel.BeginEdit(true);
             }
 
@@ -1140,8 +1215,19 @@ namespace Powermeet2
                 BestSBDUpdate(); //Updaterar bästa lyften sedan sätter totalen
                 LifterID[SelectedRowIndex + groupRowFixer].total = LifterID[SelectedRowIndex + groupRowFixer].bestS +
                 LifterID[SelectedRowIndex + groupRowFixer].bestB + LifterID[SelectedRowIndex + groupRowFixer].bestD;
+                //Visuellt sätter totalen
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LifterID[SelectedRowIndex + groupRowFixer].total;
             }
         }
+
+        public void redoLift()
+        {
+            undoLift();
+            LiftOrderUpdate();//Updaterar lyftar ordning
+            LiftingOrderListNew.Add(LifterID[SelectedRowIndex + groupRowFixer]);
+        }
+
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl1.SelectedIndex)
@@ -1586,7 +1672,6 @@ namespace Powermeet2
         public void LiftOrderUpdate()   //Uppdaerar nuvarandes grupps lyftarordning och den läggs till i när man klickar på go
         {                               //förta listan fylls och sen tas det bort lyftare allt eftersom och när den är tom så byts informationen från lista två ut mot informationen i lista 1 så det blir infinate loop,
                                         //man tar bara bort lyftare från lista 1 och lägger bara till i lista 2
-            
 
             LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
                                                         lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
@@ -1596,7 +1681,7 @@ namespace Powermeet2
             if (restartLiftingOrderList == true)     //Fyller listan för första gången
             {
                 LiftingOrderListNew.Clear();
-                for (int i = 0; i < group1Count - 1; i++)
+                for (int i = 0; i < group1Count; i++)
                 {
                     LiftingOrderListNew.Add(LifterID[i]);
                     restartLiftingOrderList = false;
@@ -1655,10 +1740,10 @@ namespace Powermeet2
             if (groupIndexCurrent == 0)     //Fyller listan, om den aktiva gruppen är grupp 1
             {
                 GroupLiftingOrderList.Clear();
-                for (int i = group1Count; i < group2Count + group1Count; i++)
-                {
-                    GroupLiftingOrderList.Add(LifterID[i].sbdList[LifterID[i].CurrentLift - 11]);
-                }
+                //for (int i = group1Count; i < group2Count + group1Count; i++)
+                //{
+                //    GroupLiftingOrderList.Add(LifterID[i].sbdList[LifterID[i].CurrentLift - 11]);
+                //}
             }
             GroupLiftingOrderList.Sort();
             for (int i = 0; i < GroupLiftingOrderList.Count; i++)
@@ -1737,6 +1822,10 @@ namespace Powermeet2
             undoLift();
         }
 
+        private void btn_Gåom_Click(object sender, EventArgs e)
+        {
+            redoLift();
+        }
         private void dataGridViewControlPanel_KeyDown(object sender, KeyEventArgs e)    //Tar bort möjligheten att nagigera med höger och vänster piltagenter
         {                                                                               //Det var möjligt att nagigera höger väntster utan att rutn blev blå
             switch (e.KeyData & Keys.KeyCode)                                           //Men sen när man skrev så bled det i den rutan ändå även om den inte var blå
@@ -2051,6 +2140,68 @@ namespace Powermeet2
 
             return GLPoints;
         }
+
+        bool active = false;
+        private void btn_rekord_Click(object sender, EventArgs e)
+        {
+            //TODO 
+            //fixa en klocka så bilderna kan blinka
+            active = !active;
+            if (active)
+            {
+                btn_rekord.Text = "Deaktivera rekord";
+
+                if (cb_squat.Checked && !cb_bench.Checked && !cb_deadlift.Checked && !cb_total.Checked)
+                {
+                    //visa "Böj"
+                }
+                else if (!cb_squat.Checked && cb_bench.Checked && !cb_deadlift.Checked && !cb_total.Checked)
+                {
+                    //visa "Bänkpress"
+                }
+                else if (!cb_squat.Checked && !cb_bench.Checked && cb_deadlift.Checked && !cb_total.Checked)
+                {
+                    //visa "Marklyft"
+                }
+                else if (!cb_squat.Checked && !cb_bench.Checked && !cb_deadlift.Checked && cb_total.Checked)
+                {
+                    //visa "Total"
+                }
+                else if (!cb_squat.Checked && !cb_bench.Checked && cb_deadlift.Checked && cb_total.Checked)
+                {
+                    //visa "Marklyft & total"
+                }
+                else
+                {
+                    //visa "kontrollera att du har klickat i rätt rekord"
+                }
+            }
+            else
+            {
+                btn_rekord.Text = "Aktivera rekord";
+            }
+            if (rb_club.Checked)
+            {
+                //visa "kubb rekord"
+            }
+            else if (rb_district.Checked)
+            {
+                //visa "distrikt rekord"
+            }
+            else if (rb_national.Checked)
+            {
+                //visa "nationellt rekord"
+            }
+
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
 
 
 

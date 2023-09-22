@@ -1,7 +1,7 @@
 Powermeet TODO
 
 Aktuellt !! : 
-LiftingOderList2.add vart ska den hamna??? ta 
+LiftingOderList2New.add vart ska den hamna??? ta 
 
 
 Projector :
@@ -25,6 +25,7 @@ Timer :
 fråga dommare om det behövs mer timer val
 
 Invägning :
+Gör invägning mindre
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅system för två grupper
 ✅Bättre ording
 ✅Lottnummer
@@ -33,13 +34,13 @@ Invägning :
 
 Tävlingsfönster :
 
-berätta om fråm hotell saken
-
+Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
+ranking för de olika enum kategorierna och viktklasser
 om en lyftare behöver gå om i slutet av rundan så ska den hamn längst ner i lyftar ordningen 
 För varje gång man skriver in en bokstav och det blir en varning så tar det bort från någon lista så att man inte kan få all lyft godkända utan att programmet krashar
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
 om man ångrar ett lyft så ändras inte totalen tillbaka
-2,5 plussas på även vid över gång till bänk och mark
+✅2,5 plussas på även vid över gång till bänk och mark
 ✅efter att ha sorterat listor för vikt och namn för lyfter ordning, ta bort lyft när det blir underkänt eller godkänt
 ✅när man byter index på gruppen så ska nästa grupps ingångar visas
 ✅gl points
