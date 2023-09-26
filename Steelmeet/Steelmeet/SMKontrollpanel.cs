@@ -180,6 +180,14 @@ namespace Powermeet2
                 return 0; // Or any other appropriate value.
             }
         }
+        public class LifterComparerTotal : IComparer<Lifter>
+        {
+            public int Compare(Lifter x, Lifter y)
+            {
+                // Compare lifters based on their total
+                return x.total.CompareTo(y.total);
+            }
+        }
         public class PlateInfo
         {
             public PlateInfo(int plate50, int plate25, int plate20, int plate15, int plate10, int plate5, int plate25small, int plate05, int plate125, int plate025
@@ -919,32 +927,7 @@ namespace Powermeet2
             p.Color = Color.DarkGray;
             g.DrawLine(p, x1 + offset, 60, x2 + offset, 80);
         }
-        public void BestSBDUpdate()
-        {
-#pragma warning disable CA1305
-            if (SelectedColumnIndex < 14)
-            {
-                LifterID[SelectedRowIndex + groupRowFixer].bestS = MoreMath.Max(
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[11].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[12].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[13].Value.ToString()));
-            }
-#pragma warning restore CA1305
-            else if (SelectedColumnIndex > 13 && SelectedColumnIndex < 17)
-            {
-                LifterID[SelectedRowIndex + groupRowFixer].bestB = MoreMath.Max(
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[14].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[15].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[16].Value.ToString()));
-            }
-            else
-            {
-                LifterID[SelectedRowIndex + groupRowFixer].bestD = MoreMath.Max(
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[17].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[18].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[19].Value.ToString()));
-            }
-        }
+
 
         private void dataGridViewControlPanel_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -977,12 +960,12 @@ namespace Powermeet2
                 if (Enumerable.Any(LifterID) && dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value) //Kollar om det finns något i LifterID listan annars blir det error
                 {
                     //Visar Info om nuvarande lyftare i informationsrutan
-                    lblName.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
+                    lbl_Name.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
                     PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()), plateInfo);
                     lbl_GLPoints_control.Text = GLPointsCalculator(LifterID[SelectedRowIndex + groupRowFixer]).ToString();
                     lbl_Grupp_control.Text = LifterID[SelectedRowIndex + groupRowFixer].groupNumber.ToString();
                     lbl_Lot_control.Text = LifterID[SelectedRowIndex + groupRowFixer].lotNumber.ToString();
-
+                    lbl_Placement.Text = LifterID[SelectedRowIndex + groupRowFixer].place.ToString();
 
                 }
             }
@@ -990,6 +973,7 @@ namespace Powermeet2
         private void dataGridViewControlPanel_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewControlPanel.EndEdit();
+            RankUpdate();
             if (dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value)
             {
 
@@ -1103,6 +1087,8 @@ namespace Powermeet2
         {
             //Updaterar lyftar ordning
             LiftOrderUpdate();
+            //Uppdaterar placering
+            RankUpdate();
             //Tar bort rätt lyftare
             if (!(LiftingOrderListNew.Count <= 0))
             {
@@ -1213,6 +1199,7 @@ namespace Powermeet2
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
 
                 BestSBDUpdate(); //Updaterar bästa lyften sedan sätter totalen
+                RankUpdate();
                 LifterID[SelectedRowIndex + groupRowFixer].total = LifterID[SelectedRowIndex + groupRowFixer].bestS +
                 LifterID[SelectedRowIndex + groupRowFixer].bestB + LifterID[SelectedRowIndex + groupRowFixer].bestD;
                 //Visuellt sätter totalen
@@ -1373,6 +1360,7 @@ namespace Powermeet2
         //    dataGridViewControlPanel.DataSource = dt2;
         //}
         public void DisplayAll(
+            string Place,
             string Namn,
             string Lotnummer,
             string Viktklass,
@@ -1423,6 +1411,7 @@ namespace Powermeet2
             }
             DataRow dr2 = dt2.NewRow();
 
+            dr2[0] = Place;
             dr2[1] = Namn;
             dr2[2] = Lotnummer;
             dr2[3] = Viktklass;
@@ -1751,6 +1740,85 @@ namespace Powermeet2
                 GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].ToString();
             }
         }
+        public void BestSBDUpdate()
+        {
+#pragma warning disable CA1305
+            if (SelectedColumnIndex < 14)
+            {
+                LifterID[SelectedRowIndex + groupRowFixer].bestS = MoreMath.Max(
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[11].Value.ToString()),
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[12].Value.ToString()),
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[13].Value.ToString()));
+            }
+#pragma warning restore CA1305
+            else if (SelectedColumnIndex > 13 && SelectedColumnIndex < 17)
+            {
+                LifterID[SelectedRowIndex + groupRowFixer].bestB = MoreMath.Max(
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[14].Value.ToString()),
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[15].Value.ToString()),
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[16].Value.ToString()));
+            }
+            else
+            {
+                LifterID[SelectedRowIndex + groupRowFixer].bestD = MoreMath.Max(
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[17].Value.ToString()),
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[18].Value.ToString()),
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[19].Value.ToString()));
+            }
+        }
+        public void RankUpdate()
+        {
+            var groupedLifters = LifterID.Values.GroupBy(l => l.weightClass);
+
+            // Iterate through each group
+            foreach (var group in groupedLifters)
+            {
+
+                // Sort the lifters within the filtered group based on their total in descending order
+                var sortedLifters = group.OrderByDescending(l => l.total).ToList();
+
+                // Assign places within the group
+                for (int i = 0; i < sortedLifters.Count; i++)
+                {
+                    sortedLifters[i].place = i + 1;
+
+                    // Update the place in the LifterID dictionary
+                    foreach (var lifter in LifterID.Values.Where(l => l.weightClass == group.Key && (l.CategoryEnum == Lifter.eCategory.MenClassic || l.CategoryEnum == Lifter.eCategory.WomenClassic)))
+                    {
+                        lifter.place = sortedLifters[i].place;
+
+                    }
+                }
+            }
+
+            switch (groupIndexCurrent)
+            {
+
+                case 0:
+                    {
+                        for (int i = 0; i < group1Count - 1; i++)
+                        {
+                            dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
+                        }
+                    } break;
+                case 1:
+                    {
+                        for (int i = 0; i < group1Count + group2Count - 1; i++)
+                        {
+                            dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        for (int i = 0; i < group1Count + group2Count + group3Count - 1; i++)
+                        {
+                            dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
+                        }
+                    }
+                    break;
+            }
+    }
 
         private void TimerTickRekordAnimering(object sender, EventArgs e)
         {
@@ -1760,7 +1828,6 @@ namespace Powermeet2
 
             }
         }
-
 
         private void btn_1min_Click(object sender, EventArgs e)
         {
@@ -1841,7 +1908,7 @@ namespace Powermeet2
         private void combo_Aktivgrupp_SelectedIndexChanged(object sender, EventArgs e)
         {
             groupIndexCurrent = combo_Aktivgrupp.SelectedIndex;
-
+            RankUpdate();
             switch (combo_Aktivgrupp.SelectedIndex)
             {
                 case 0:
@@ -1865,7 +1932,7 @@ namespace Powermeet2
 
                     for (int i = 0; i < group1Count - 1; i++)
                     {
-                        DisplayAll(LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
+                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
                             , LifterID[i].benchRack.ToString()
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
@@ -1934,7 +2001,7 @@ namespace Powermeet2
                     for (int i = group1Count; i < group1Count + group2Count - 1; i++)
                     {
 
-                        DisplayAll(LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
+                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
                             , LifterID[i].benchRack.ToString()
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
@@ -1998,7 +2065,7 @@ namespace Powermeet2
 
                     for (int i = 0; i < group3Count - 1; i++)
                     {
-                        DisplayAll(LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
+                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
                             , LifterID[i].benchRack.ToString()
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
@@ -2200,7 +2267,7 @@ namespace Powermeet2
 
         }
 
-       
+
 
 
 
