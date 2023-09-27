@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -108,9 +108,14 @@
             tabPage2 = new TabPage();
             pictureBox1 = new PictureBox();
             panel12 = new Panel();
+            lbl_Infällt2 = new Label();
             lbl_GLPoints_control2 = new Label();
+            lbl_Avlyft2 = new Label();
             label37 = new Label();
+            label46 = new Label();
+            label47 = new Label();
             lbl_Grupp_control2 = new Label();
+            lbl_Placement2 = new Label();
             lbl_Lot_control2 = new Label();
             label40 = new Label();
             label41 = new Label();
@@ -194,6 +199,11 @@
             lbl_timerLapp = new Label();
             lbl_timerLyft = new Label();
             infopanel_Controlpanel = new Panel();
+            lbl_Infällt = new Label();
+            lbl_Avlyft = new Label();
+            label38 = new Label();
+            label36 = new Label();
+            lbl_Placement = new Label();
             lbl_GLPoints_control = new Label();
             label34 = new Label();
             lbl_Grupp_control = new Label();
@@ -207,7 +217,6 @@
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
-            lbl_Placement = new Label();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -446,38 +455,39 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns = false;
             dataGridViewWeighIn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = SystemColors.WindowFrame;
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewWeighIn.BackgroundColor = SystemColors.WindowText;
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.ControlDarkDark;
-            dataGridViewCellStyle8.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Silver;
+            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.DarkGray;
-            dataGridViewCellStyle9.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewWeighIn.GridColor = Color.Black;
-            dataGridViewWeighIn.Location = new Point(9, 164);
+            dataGridViewWeighIn.Location = new Point(6, 158);
             dataGridViewWeighIn.Name = "dataGridViewWeighIn";
             dataGridViewWeighIn.RowHeadersVisible = false;
             dataGridViewWeighIn.RowTemplate.Height = 25;
             dataGridViewWeighIn.ScrollBars = ScrollBars.Vertical;
-            dataGridViewWeighIn.Size = new Size(1333, 548);
+            dataGridViewWeighIn.Size = new Size(1333, 575);
             dataGridViewWeighIn.TabIndex = 8;
             dataGridViewWeighIn.CellEnter += dataGridViewWeighIn_CellEnter;
             dataGridViewWeighIn.CellLeave += dataGridViewWeighIn_CellLeave;
@@ -1095,9 +1105,14 @@
             // panel12
             // 
             panel12.BackColor = SystemColors.WindowFrame;
+            panel12.Controls.Add(lbl_Infällt2);
             panel12.Controls.Add(lbl_GLPoints_control2);
+            panel12.Controls.Add(lbl_Avlyft2);
             panel12.Controls.Add(label37);
+            panel12.Controls.Add(label46);
+            panel12.Controls.Add(label47);
             panel12.Controls.Add(lbl_Grupp_control2);
+            panel12.Controls.Add(lbl_Placement2);
             panel12.Controls.Add(lbl_Lot_control2);
             panel12.Controls.Add(label40);
             panel12.Controls.Add(label41);
@@ -1109,45 +1124,100 @@
             panel12.TabIndex = 12;
             panel12.Paint += infopanel_Controlpanel_Paint2;
             // 
+            // lbl_Infällt2
+            // 
+            lbl_Infällt2.AutoSize = true;
+            lbl_Infällt2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Infällt2.ForeColor = SystemColors.Window;
+            lbl_Infällt2.Location = new Point(352, 3);
+            lbl_Infällt2.Name = "lbl_Infällt2";
+            lbl_Infällt2.Size = new Size(61, 30);
+            lbl_Infällt2.TabIndex = 21;
+            lbl_Infällt2.Text = "\"Nej\"";
+            // 
             // lbl_GLPoints_control2
             // 
             lbl_GLPoints_control2.AutoSize = true;
             lbl_GLPoints_control2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_GLPoints_control2.ForeColor = SystemColors.Window;
-            lbl_GLPoints_control2.Location = new Point(366, 108);
+            lbl_GLPoints_control2.Location = new Point(352, 109);
             lbl_GLPoints_control2.Name = "lbl_GLPoints_control2";
             lbl_GLPoints_control2.Size = new Size(40, 30);
             lbl_GLPoints_control2.TabIndex = 11;
             lbl_GLPoints_control2.Text = "\"0\"";
+            // 
+            // lbl_Avlyft2
+            // 
+            lbl_Avlyft2.AutoSize = true;
+            lbl_Avlyft2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Avlyft2.ForeColor = SystemColors.Window;
+            lbl_Avlyft2.Location = new Point(352, 31);
+            lbl_Avlyft2.Name = "lbl_Avlyft2";
+            lbl_Avlyft2.Size = new Size(61, 30);
+            lbl_Avlyft2.TabIndex = 20;
+            lbl_Avlyft2.Text = "\"Nej\"";
             // 
             // label37
             // 
             label37.AutoSize = true;
             label37.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label37.ForeColor = SystemColors.Window;
-            label37.Location = new Point(264, 108);
+            label37.Location = new Point(250, 109);
             label37.Name = "label37";
             label37.Size = new Size(116, 30);
             label37.TabIndex = 10;
             label37.Text = "GL Points : ";
+            // 
+            // label46
+            // 
+            label46.AutoSize = true;
+            label46.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label46.ForeColor = SystemColors.Window;
+            label46.Location = new Point(283, 1);
+            label46.Name = "label46";
+            label46.Size = new Size(83, 30);
+            label46.TabIndex = 19;
+            label46.Text = "Infällt : ";
+            // 
+            // label47
+            // 
+            label47.AutoSize = true;
+            label47.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label47.ForeColor = SystemColors.Window;
+            label47.Location = new Point(283, 27);
+            label47.Name = "label47";
+            label47.Size = new Size(83, 30);
+            label47.TabIndex = 18;
+            label47.Text = "Avlyft : ";
             // 
             // lbl_Grupp_control2
             // 
             lbl_Grupp_control2.AutoSize = true;
             lbl_Grupp_control2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Grupp_control2.ForeColor = SystemColors.Window;
-            lbl_Grupp_control2.Location = new Point(366, 53);
+            lbl_Grupp_control2.Location = new Point(352, 54);
             lbl_Grupp_control2.Name = "lbl_Grupp_control2";
             lbl_Grupp_control2.Size = new Size(40, 30);
             lbl_Grupp_control2.TabIndex = 9;
             lbl_Grupp_control2.Text = "\"0\"";
+            // 
+            // lbl_Placement2
+            // 
+            lbl_Placement2.AutoSize = true;
+            lbl_Placement2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Placement2.ForeColor = SystemColors.Window;
+            lbl_Placement2.Location = new Point(188, 3);
+            lbl_Placement2.Name = "lbl_Placement2";
+            lbl_Placement2.Size = new Size(78, 30);
+            lbl_Placement2.TabIndex = 17;
+            lbl_Placement2.Text = "\"Place\"";
             // 
             // lbl_Lot_control2
             // 
             lbl_Lot_control2.AutoSize = true;
             lbl_Lot_control2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Lot_control2.ForeColor = SystemColors.Window;
-            lbl_Lot_control2.Location = new Point(366, 82);
+            lbl_Lot_control2.Location = new Point(352, 83);
             lbl_Lot_control2.Name = "lbl_Lot_control2";
             lbl_Lot_control2.Size = new Size(40, 30);
             lbl_Lot_control2.TabIndex = 8;
@@ -1158,7 +1228,7 @@
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label40.ForeColor = SystemColors.Window;
-            label40.Location = new Point(321, 81);
+            label40.Location = new Point(307, 82);
             label40.Name = "label40";
             label40.Size = new Size(59, 30);
             label40.TabIndex = 7;
@@ -1169,7 +1239,7 @@
             label41.AutoSize = true;
             label41.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label41.ForeColor = SystemColors.Window;
-            label41.Location = new Point(293, 52);
+            label41.Location = new Point(279, 53);
             label41.Name = "label41";
             label41.Size = new Size(87, 30);
             label41.TabIndex = 6;
@@ -2117,6 +2187,10 @@
             // infopanel_Controlpanel
             // 
             infopanel_Controlpanel.BackColor = SystemColors.WindowFrame;
+            infopanel_Controlpanel.Controls.Add(lbl_Infällt);
+            infopanel_Controlpanel.Controls.Add(lbl_Avlyft);
+            infopanel_Controlpanel.Controls.Add(label38);
+            infopanel_Controlpanel.Controls.Add(label36);
             infopanel_Controlpanel.Controls.Add(lbl_Placement);
             infopanel_Controlpanel.Controls.Add(lbl_GLPoints_control);
             infopanel_Controlpanel.Controls.Add(label34);
@@ -2132,12 +2206,67 @@
             infopanel_Controlpanel.TabIndex = 0;
             infopanel_Controlpanel.Paint += infopanel_Controlpanel_Paint;
             // 
+            // lbl_Infällt
+            // 
+            lbl_Infällt.AutoSize = true;
+            lbl_Infällt.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Infällt.ForeColor = SystemColors.Window;
+            lbl_Infällt.Location = new Point(352, 3);
+            lbl_Infällt.Name = "lbl_Infällt";
+            lbl_Infällt.Size = new Size(61, 30);
+            lbl_Infällt.TabIndex = 16;
+            lbl_Infällt.Text = "\"Nej\"";
+            // 
+            // lbl_Avlyft
+            // 
+            lbl_Avlyft.AutoSize = true;
+            lbl_Avlyft.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Avlyft.ForeColor = SystemColors.Window;
+            lbl_Avlyft.Location = new Point(352, 31);
+            lbl_Avlyft.Name = "lbl_Avlyft";
+            lbl_Avlyft.Size = new Size(61, 30);
+            lbl_Avlyft.TabIndex = 15;
+            lbl_Avlyft.Text = "\"Nej\"";
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label38.ForeColor = SystemColors.Window;
+            label38.Location = new Point(283, 1);
+            label38.Name = "label38";
+            label38.Size = new Size(83, 30);
+            label38.TabIndex = 14;
+            label38.Text = "Infällt : ";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label36.ForeColor = SystemColors.Window;
+            label36.Location = new Point(283, 27);
+            label36.Name = "label36";
+            label36.Size = new Size(83, 30);
+            label36.TabIndex = 13;
+            label36.Text = "Avlyft : ";
+            // 
+            // lbl_Placement
+            // 
+            lbl_Placement.AutoSize = true;
+            lbl_Placement.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Placement.ForeColor = SystemColors.Window;
+            lbl_Placement.Location = new Point(177, 3);
+            lbl_Placement.Name = "lbl_Placement";
+            lbl_Placement.Size = new Size(78, 30);
+            lbl_Placement.TabIndex = 12;
+            lbl_Placement.Text = "\"Place\"";
+            // 
             // lbl_GLPoints_control
             // 
             lbl_GLPoints_control.AutoSize = true;
             lbl_GLPoints_control.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_GLPoints_control.ForeColor = SystemColors.Window;
-            lbl_GLPoints_control.Location = new Point(355, 108);
+            lbl_GLPoints_control.Location = new Point(352, 110);
             lbl_GLPoints_control.Name = "lbl_GLPoints_control";
             lbl_GLPoints_control.Size = new Size(40, 30);
             lbl_GLPoints_control.TabIndex = 11;
@@ -2148,7 +2277,7 @@
             label34.AutoSize = true;
             label34.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label34.ForeColor = SystemColors.Window;
-            label34.Location = new Point(253, 108);
+            label34.Location = new Point(250, 110);
             label34.Name = "label34";
             label34.Size = new Size(116, 30);
             label34.TabIndex = 10;
@@ -2159,7 +2288,7 @@
             lbl_Grupp_control.AutoSize = true;
             lbl_Grupp_control.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Grupp_control.ForeColor = SystemColors.Window;
-            lbl_Grupp_control.Location = new Point(355, 53);
+            lbl_Grupp_control.Location = new Point(352, 55);
             lbl_Grupp_control.Name = "lbl_Grupp_control";
             lbl_Grupp_control.Size = new Size(40, 30);
             lbl_Grupp_control.TabIndex = 9;
@@ -2170,7 +2299,7 @@
             lbl_Lot_control.AutoSize = true;
             lbl_Lot_control.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Lot_control.ForeColor = SystemColors.Window;
-            lbl_Lot_control.Location = new Point(355, 82);
+            lbl_Lot_control.Location = new Point(352, 84);
             lbl_Lot_control.Name = "lbl_Lot_control";
             lbl_Lot_control.Size = new Size(40, 30);
             lbl_Lot_control.TabIndex = 8;
@@ -2181,7 +2310,7 @@
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label22.ForeColor = SystemColors.Window;
-            label22.Location = new Point(310, 81);
+            label22.Location = new Point(307, 83);
             label22.Name = "label22";
             label22.Size = new Size(59, 30);
             label22.TabIndex = 7;
@@ -2192,7 +2321,7 @@
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label23.ForeColor = SystemColors.Window;
-            label23.Location = new Point(282, 52);
+            label23.Location = new Point(279, 54);
             label23.Name = "label23";
             label23.Size = new Size(87, 30);
             label23.TabIndex = 6;
@@ -2227,8 +2356,8 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.Gainsboro;
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = Color.Gainsboro;
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewControlPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -2236,23 +2365,23 @@
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.Silver;
-            dataGridViewCellStyle11.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Silver;
+            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle12.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewControlPanel.GridColor = SystemColors.WindowText;
             dataGridViewControlPanel.ImeMode = ImeMode.NoControl;
             dataGridViewControlPanel.Location = new Point(7, 209);
@@ -2292,17 +2421,6 @@
             // 
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
-            // 
-            // lbl_Placement
-            // 
-            lbl_Placement.AutoSize = true;
-            lbl_Placement.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Placement.ForeColor = SystemColors.Window;
-            lbl_Placement.Location = new Point(245, 10);
-            lbl_Placement.Name = "lbl_Placement";
-            lbl_Placement.Size = new Size(78, 30);
-            lbl_Placement.TabIndex = 12;
-            lbl_Placement.Text = "\"Place\"";
             // 
             // SMKontrollpanel
             // 
@@ -2526,5 +2644,14 @@
         private Label label44;
         private PictureBox pictureBox1;
         private Label lbl_Placement;
+        private Label label38;
+        private Label label36;
+        private Label lbl_Infällt2;
+        private Label lbl_Avlyft2;
+        private Label label46;
+        private Label label47;
+        private Label lbl_Placement2;
+        private Label lbl_Infällt;
+        private Label lbl_Avlyft;
     }
 }

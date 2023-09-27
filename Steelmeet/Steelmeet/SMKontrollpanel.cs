@@ -5,6 +5,7 @@ using SteelMeet;
 using DataTable = System.Data.DataTable;
 using SpreadsheetLight;
 using System.Globalization;
+using DocumentFormat.OpenXml.EMMA;
 
 namespace Powermeet2
 {
@@ -83,6 +84,7 @@ namespace Powermeet2
                 string accossiation,
                 string bodyWeight,
                 string squatHeight,
+                string tilted,
                 string s1,
                 string benchHeight,
                 string benchRack,
@@ -99,6 +101,7 @@ namespace Powermeet2
                 this.accossiation = accossiation;
                 this.bodyWeight = float.Parse(bodyWeight);
                 this.squatHeight = Int16.Parse(squatHeight);
+                this.tilted = tilted;
                 this.s1 = float.Parse(s1);
                 this.benchHeight = Int16.Parse(benchHeight);
                 this.benchRack = Int16.Parse(benchRack);
@@ -136,6 +139,7 @@ namespace Powermeet2
 
             public float bodyWeight { get; set; }
             public int squatHeight { get; set; }
+            public string tilted { get; set; }
             public float s1 { get; set; }
             public float s2 { get; set; }
             public float s3 { get; set; }
@@ -390,7 +394,7 @@ namespace Powermeet2
             else
             {
 
-                for (int i = 1; i < realRowCount - 1; i++)
+                for (int i = 1; i < realRowCount; i++)
                 {
                     if (sl.GetCellValueAsString(i, 1) != "Grupp")
                     {
@@ -409,11 +413,16 @@ namespace Powermeet2
                             sl.GetCellValueAsString(i, 12),
                             sl.GetCellValueAsString(i, 13),
                             sl.GetCellValueAsString(i, 14),
-                            sl.GetCellValueAsString(i, 15));
+                            sl.GetCellValueAsString(i, 15),
+                            sl.GetCellValueAsString(i, 16));
                     }
                 }
 
                 WeighInInfoUpdate();
+            }
+            for (int i = 0; i < dataGridViewWeighIn.ColumnCount; i++)
+            {
+                dataGridViewWeighIn.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
             //excelApp.Quit();
 
@@ -462,6 +471,7 @@ namespace Powermeet2
             string Förening,
             string Kroppsvikt,
             string HöjdBöj,
+            string Infällt,
             string IngångBöj,
             string HöjdBänk,
             string RackBänk,
@@ -471,21 +481,22 @@ namespace Powermeet2
         {
             if (a)
             {
-                dt.Columns.Add("Grupp");                //0
-                dt.Columns.Add("Namn");                 //1
-                dt.Columns.Add("Lot");                  //2
-                dt.Columns.Add("Klass");            //3
-                dt.Columns.Add("Kategori");             //4
-                dt.Columns.Add("Licens\nnr");         //5
-                dt.Columns.Add("Förening");             //6
-                dt.Columns.Add("Kv");           //7
+                dt.Columns.Add("Grupp");                 //0
+                dt.Columns.Add("Namn");                  //1
+                dt.Columns.Add("Lot");                   //2
+                dt.Columns.Add("Klass");                 //3
+                dt.Columns.Add("Kategori");              //4
+                dt.Columns.Add("Licensnr.");             //5
+                dt.Columns.Add("Förening");              //6
+                dt.Columns.Add("Kropps\nvikt");          //7
                 dt.Columns.Add("Höjd\nBöj");             //8
-                dt.Columns.Add("Böj");           //9
-                dt.Columns.Add("Höjd\nBänk");            //10
-                dt.Columns.Add("Rack\nBänk");            //11
-                dt.Columns.Add("Avlyft");            //11
-                dt.Columns.Add("Bänk");          //12
-                dt.Columns.Add("Mark");          //13
+                dt.Columns.Add("Infällt");               //9
+                dt.Columns.Add("Böj");                   //10
+                dt.Columns.Add("Höjd\nBänk");            //11
+                dt.Columns.Add("Rack\nBänk");            //12
+                dt.Columns.Add("Avlyft");                //13
+                dt.Columns.Add("Bänk");                  //14
+                dt.Columns.Add("Mark");                  //15
 
                 a = false;
             }
@@ -500,19 +511,18 @@ namespace Powermeet2
             dr[6] = Förening;
             dr[7] = Kroppsvikt;
             dr[8] = HöjdBöj;
-            dr[9] = IngångBöj;
-            dr[10] = HöjdBänk;
-            dr[11] = RackBänk;
-            dr[12] = Avlyft;
-            dr[13] = IngångBänk;
-            dr[14] = IngångMark;
+            dr[9] = Infällt;
+            dr[10] = IngångBöj;
+            dr[11] = HöjdBänk;
+            dr[12] = RackBänk;
+            dr[13] = Avlyft;
+            dr[14] = IngångBänk;
+            dr[15] = IngångMark;
 
             dt.Rows.Add(dr);
             dataGridViewWeighIn.DataSource = dt;
 
         }
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -673,7 +683,7 @@ namespace Powermeet2
                 dataGridViewWeighIn.Rows[o].Cells[3].Value = list[3];
 
                 //Lägger till lyftare adderar lyftare ny lyftare
-                LifterID.Add(o, new Lifter(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13], list[14]));
+                LifterID.Add(o, new Lifter(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13], list[14], list[15]));
 
                 SetCategoryEnum(list[4]);
 
@@ -711,7 +721,7 @@ namespace Powermeet2
             }
             else
             {
-                Equipped = true;
+                Equipped = false;
             }
             if (wholeThing[3].ToLower() == "bänk")
             {
@@ -719,7 +729,7 @@ namespace Powermeet2
             }
             else
             {
-                BenchOnly = true;
+                BenchOnly = false;
             }
 
             if (sex == "herr")
@@ -728,7 +738,7 @@ namespace Powermeet2
                 {
                     if (Equipped == true)
                     {
-                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.MenEquipped;
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.MenEquippedBench;
                     }
                     else
                     {
@@ -753,7 +763,7 @@ namespace Powermeet2
                 {
                     if (Equipped == true)
                     {
-                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.WomenEquipped;
+                        LifterID[LifterID.Count - 1].CategoryEnum = Lifter.eCategory.WomenEquippedBench;
                     }
                     else
                     {
@@ -962,10 +972,12 @@ namespace Powermeet2
                     //Visar Info om nuvarande lyftare i informationsrutan
                     lbl_Name.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
                     PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()), plateInfo);
-                    lbl_GLPoints_control.Text = GLPointsCalculator(LifterID[SelectedRowIndex + groupRowFixer]).ToString();
+                    lbl_Placement.Text = LifterID[SelectedRowIndex + groupRowFixer].place.ToString();
+                    lbl_Infällt.Text = LifterID[SelectedRowIndex + groupRowFixer].tilted.ToString();
+                    lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
                     lbl_Grupp_control.Text = LifterID[SelectedRowIndex + groupRowFixer].groupNumber.ToString();
                     lbl_Lot_control.Text = LifterID[SelectedRowIndex + groupRowFixer].lotNumber.ToString();
-                    lbl_Placement.Text = LifterID[SelectedRowIndex + groupRowFixer].place.ToString();
+                    lbl_GLPoints_control.Text = GLPointsCalculator(LifterID[SelectedRowIndex + groupRowFixer]).ToString();
 
                 }
             }
@@ -1087,8 +1099,6 @@ namespace Powermeet2
         {
             //Updaterar lyftar ordning
             LiftOrderUpdate();
-            //Uppdaterar placering
-            RankUpdate();
             //Tar bort rätt lyftare
             if (!(LiftingOrderListNew.Count <= 0))
             {
@@ -1116,6 +1126,8 @@ namespace Powermeet2
 
             //BestS,b,d sätts BestSBDUpdate(); för att den ska uppdatera när man ångrar lyft också
             BestSBDUpdate();
+            //Uppdaterar placering
+            RankUpdate();
             //Totalen sätts i comboboxgruppselecteditem switch satsen och här eftersom den måste uppdateras hela tiden
             LifterID[SelectedRowIndex + groupRowFixer].total = LifterID[SelectedRowIndex + groupRowFixer].bestS +
             LifterID[SelectedRowIndex + groupRowFixer].bestB + LifterID[SelectedRowIndex + groupRowFixer].bestD;
@@ -1435,51 +1447,6 @@ namespace Powermeet2
             List<string> sbdlist = new List<string>();
             sbdlist.AddRange(new string[] { s1, s2, s3, b1, b2, b3, d1, d2, d3 });
 
-            //if (group == "1")
-            //{
-            //    for (int i = 0; i < group1Count; i++) //Loopa så många lyft som har genomförts inte mer
-            //    {
-            //        if (LifterID[i].LiftRecord.Count == 9)
-            //        {
-            //            for (int o = 0; o < LifterID[i].LiftRecord.Count; o++)
-            //            {
-            //                dr2[o + firstLftdatagridviewColumn] = sbdlist[o];
-            //            }
-            //        }
-            //        else
-            //        {
-            //            for (int o = 0; o < LifterID[i].LiftRecord.Count; o++)
-            //            {
-            //                MessageBox.Show(o.ToString());
-            //                dr2[o + firstLftdatagridviewColumn] = sbdlist[o];
-            //            }
-
-            //        }
-
-            //    }
-            //}
-            //else if (group == "2")
-            //{
-            //    for (int i = group1Count; i < group1Count + group2Count; i++) //Loopa så många lyft som har genomförts inte mer
-            //    {
-            //        for (int o = 0; o < LifterID[i].LiftRecord.Count; o++)
-            //        {
-            //            dr2[o + firstLftdatagridviewColumn] = sbdlist[o];
-            //        }
-            //    }
-            //}
-            //else if (group == "3")
-            //{
-            //    for (int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++) //Loopa så många lyft som har genomförts inte mer
-            //    {
-            //        for (int o = 0; o < LifterID[i].LiftRecord.Count; o++)
-            //        {
-            //            dr2[o + firstLftdatagridviewColumn] = sbdlist[o];
-            //        }
-            //    }
-            //}
-
-
             //Debug
             //MessageBox.Show("Namn : " + Namn +
             //              "\n Squat 1 : " + s1 +
@@ -1768,57 +1735,62 @@ namespace Powermeet2
         }
         public void RankUpdate()
         {
-            var groupedLifters = LifterID.Values.GroupBy(l => l.weightClass);
+            var groupedLifters = LifterID.Values.GroupBy(l => new { l.weightClass, l.CategoryEnum });
 
             // Iterate through each group
             foreach (var group in groupedLifters)
             {
+                // Sort the lifters within the group based on their total in descending order
+                var sortedLifters = group.OrderByDescending(l => l.total).ThenBy(l => l.bodyWeight).ToList();
 
-                // Sort the lifters within the filtered group based on their total in descending order
-                var sortedLifters = group.OrderByDescending(l => l.total).ToList();
-
-                // Assign places within the group
                 for (int i = 0; i < sortedLifters.Count; i++)
                 {
-                    sortedLifters[i].place = i + 1;
+                    var lifterToUpdate = LifterID.Values.FirstOrDefault(l => l.weightClass == group.Key.weightClass && l.CategoryEnum == group.Key.CategoryEnum && l.name == sortedLifters[i].name);
 
-                    // Update the place in the LifterID dictionary
-                    foreach (var lifter in LifterID.Values.Where(l => l.weightClass == group.Key && (l.CategoryEnum == Lifter.eCategory.MenClassic || l.CategoryEnum == Lifter.eCategory.WomenClassic)))
+                    if (lifterToUpdate != null)
                     {
-                        lifter.place = sortedLifters[i].place;
-
+                        lifterToUpdate.place = i + 1;
                     }
                 }
             }
 
-            switch (groupIndexCurrent)
+            // Update the DataGridView
+            for (int i = 0; i < dataGridViewControlPanel.Rows.Count; i++)
             {
-
-                case 0:
-                    {
-                        for (int i = 0; i < group1Count - 1; i++)
-                        {
-                            dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
-                        }
-                    } break;
-                case 1:
-                    {
-                        for (int i = 0; i < group1Count + group2Count - 1; i++)
-                        {
-                            dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
-                        }
-                    }
-                    break;
-                case 2:
-                    {
-                        for (int i = 0; i < group1Count + group2Count + group3Count - 1; i++)
-                        {
-                            dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
-                        }
-                    }
-                    break;
+                dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
             }
-    }
+        }
+
+        //CODE BELOW WORKS GOOD BUT DOES NOT CONSIDER BODYWEIGHT
+        //public void RankUpdate()
+        //{
+        //    var groupedLifters = LifterID.Values.GroupBy(l => new { l.weightClass, l.CategoryEnum });
+
+        //    // Iterate through each group
+        //    foreach (var group in groupedLifters)
+        //    {
+        //        // Sort the lifters within the group based on their total in descending order
+        //        var sortedLifters = group.OrderByDescending(l => l.total).ToList();
+
+        //        for (int i = 0; i < sortedLifters.Count; i++)
+        //        {
+        //            var lifterToUpdate = LifterID.Values.FirstOrDefault(l => l.weightClass == group.Key.weightClass && l.CategoryEnum == group.Key.CategoryEnum && l.name == sortedLifters[i].name);
+
+        //            if (lifterToUpdate != null)
+        //            {
+        //                lifterToUpdate.place = i + 1;
+        //            }
+        //        }
+        //    }
+
+        //    // Update the DataGridView
+        //    for (int i = 0; i < dataGridViewControlPanel.Rows.Count; i++)
+        //    {
+        //        dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
+        //    }
+        //}
+
+
 
         private void TimerTickRekordAnimering(object sender, EventArgs e)
         {
@@ -2266,12 +2238,6 @@ namespace Powermeet2
         {
 
         }
-
-
-
-
-
-
 
 
         //Tävling
