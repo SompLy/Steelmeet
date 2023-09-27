@@ -1643,8 +1643,14 @@ namespace Powermeet2
                     restartLiftingOrderList = false;
                 }
             }
-            if (LiftingOrderListNew.Count == 0)       //Om andra listan är tom så fylls den tills den första listan är tom.
+            if (LiftingOrderListNew.Count == 1)       //Om andra listan är tom så fylls den tills den första listan är tom.
             {
+                //fyll lista två med all lyftares currentlift
+                for (int i = 0; i < group1Count; i++)
+                {
+                    LiftingOrderList2New.Add(LifterID[i]);
+                }
+
                 for (int i = 0; i < LiftingOrderList2New.Count; i++)
                 {
                     LiftingOrderListNew.Add(LiftingOrderList2New[i]);
@@ -1902,7 +1908,7 @@ namespace Powermeet2
                         }
                     }
 
-                    for (int i = 0; i < group1Count - 1; i++)
+                    for (int i = 0; i < group1Count; i++)
                     {
                         DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
@@ -1970,7 +1976,7 @@ namespace Powermeet2
                         }
                     }
 
-                    for (int i = group1Count; i < group1Count + group2Count - 1; i++)
+                    for (int i = group1Count; i < group1Count + group2Count; i++)
                     {
 
                         DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber

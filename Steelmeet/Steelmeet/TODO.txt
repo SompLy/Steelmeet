@@ -2,9 +2,8 @@ Powermeet TODO
 
 PRIO NR 1 !!!?! : 
 LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
-ranking för de olika enum kategorierna och viktklasser
-1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
 Exportering av invägning trasig
+✅✅ranking för de olika enum kategorierna och viktklasser
 ✅avlyft & infällt
 
 
@@ -39,6 +38,7 @@ Invägning :
 
 Tävlingsfönster :
 
+1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
 Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
 ✅För varje gång man skriver in en bokstav och det blir en varning så tar det bort från någon lista så att man inte kan få all lyft godkända utan att programmet krashar
