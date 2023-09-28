@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -106,7 +106,11 @@
             btn25 = new Button();
             txtb25 = new TextBox();
             tabPage2 = new TabPage();
+            pictureBox6 = new PictureBox();
             pictureBox1 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            pictureBox7 = new PictureBox();
             panel12 = new Panel();
             lbl_Infällt2 = new Label();
             lbl_GLPoints_control2 = new Label();
@@ -120,12 +124,11 @@
             label40 = new Label();
             label41 = new Label();
             lbl_currentWeight2 = new Label();
-            lblName2 = new Label();
+            lbl_Name2 = new Label();
             panel11 = new Panel();
             lbl_groupLiftOrder_control_20 = new Label();
             label33 = new Label();
             lbl_groupLiftOrder_control_19 = new Label();
-            label32 = new Label();
             lbl_groupLiftOrder_control_18 = new Label();
             lbl_groupLiftOrder_control_5 = new Label();
             lbl_groupLiftOrder_control_17 = new Label();
@@ -144,6 +147,7 @@
             lbl_groupLiftOrder_control_8 = new Label();
             lbl_groupLiftOrder_control_10 = new Label();
             lbl_groupLiftOrder_control_9 = new Label();
+            label32 = new Label();
             panel10 = new Panel();
             lbl_liftOrder_control_20 = new Label();
             lbl_liftOrder_control_19 = new Label();
@@ -229,7 +233,11 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             panel12.SuspendLayout();
             panel11.SuspendLayout();
             panel10.SuspendLayout();
@@ -455,32 +463,32 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns = false;
             dataGridViewWeighIn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewWeighIn.BackgroundColor = SystemColors.WindowText;
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Silver;
-            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.Silver;
+            dataGridViewCellStyle8.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle9.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewWeighIn.GridColor = Color.Black;
             dataGridViewWeighIn.Location = new Point(6, 158);
             dataGridViewWeighIn.Name = "dataGridViewWeighIn";
@@ -1075,7 +1083,11 @@
             // tabPage2
             // 
             tabPage2.BackColor = SystemColors.WindowText;
+            tabPage2.Controls.Add(pictureBox6);
             tabPage2.Controls.Add(pictureBox1);
+            tabPage2.Controls.Add(pictureBox4);
+            tabPage2.Controls.Add(pictureBox5);
+            tabPage2.Controls.Add(pictureBox7);
             tabPage2.Controls.Add(panel12);
             tabPage2.Controls.Add(panel11);
             tabPage2.Controls.Add(panel10);
@@ -1092,15 +1104,55 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Tävling";
             // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(895, 602);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(227, 145);
+            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox6.TabIndex = 53;
+            pictureBox6.TabStop = false;
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(450, 550);
+            pictureBox1.Location = new Point(675, 602);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(240, 147);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox1.TabIndex = 43;
+            pictureBox1.Size = new Size(227, 145);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 54;
             pictureBox1.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(453, 602);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(227, 145);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 55;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(229, 602);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(227, 145);
+            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox5.TabIndex = 56;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new Point(7, 602);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(227, 145);
+            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox7.TabIndex = 57;
+            pictureBox7.TabStop = false;
             // 
             // panel12
             // 
@@ -1117,7 +1169,7 @@
             panel12.Controls.Add(label40);
             panel12.Controls.Add(label41);
             panel12.Controls.Add(lbl_currentWeight2);
-            panel12.Controls.Add(lblName2);
+            panel12.Controls.Add(lbl_Name2);
             panel12.Location = new Point(421, 7);
             panel12.Name = "panel12";
             panel12.Size = new Size(408, 147);
@@ -1206,11 +1258,12 @@
             lbl_Placement2.AutoSize = true;
             lbl_Placement2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Placement2.ForeColor = SystemColors.Window;
-            lbl_Placement2.Location = new Point(188, 3);
+            lbl_Placement2.Location = new Point(236, 3);
             lbl_Placement2.Name = "lbl_Placement2";
-            lbl_Placement2.Size = new Size(78, 30);
+            lbl_Placement2.Size = new Size(41, 30);
             lbl_Placement2.TabIndex = 17;
-            lbl_Placement2.Text = "\"Place\"";
+            lbl_Placement2.Text = "\"#\"";
+            lbl_Placement2.Click += lbl_Placement2_Click;
             // 
             // lbl_Lot_control2
             // 
@@ -1256,16 +1309,16 @@
             lbl_currentWeight2.TabIndex = 4;
             lbl_currentWeight2.Text = "\"Vikt\"";
             // 
-            // lblName2
+            // lbl_Name2
             // 
-            lblName2.AutoSize = true;
-            lblName2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblName2.ForeColor = SystemColors.Window;
-            lblName2.Location = new Point(11, 3);
-            lblName2.Name = "lblName2";
-            lblName2.Size = new Size(150, 30);
-            lblName2.TabIndex = 3;
-            lblName2.Text = "\"Lyftare namn\"";
+            lbl_Name2.AutoSize = true;
+            lbl_Name2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Name2.ForeColor = SystemColors.Window;
+            lbl_Name2.Location = new Point(11, 3);
+            lbl_Name2.Name = "lbl_Name2";
+            lbl_Name2.Size = new Size(150, 30);
+            lbl_Name2.TabIndex = 3;
+            lbl_Name2.Text = "\"Lyftare namn\"";
             // 
             // panel11
             // 
@@ -1273,7 +1326,6 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_20);
             panel11.Controls.Add(label33);
             panel11.Controls.Add(lbl_groupLiftOrder_control_19);
-            panel11.Controls.Add(label32);
             panel11.Controls.Add(lbl_groupLiftOrder_control_18);
             panel11.Controls.Add(lbl_groupLiftOrder_control_5);
             panel11.Controls.Add(lbl_groupLiftOrder_control_17);
@@ -1292,19 +1344,20 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_8);
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
-            panel11.Location = new Point(1357, 209);
+            panel11.Controls.Add(label32);
+            panel11.Location = new Point(1126, 550);
             panel11.Name = "panel11";
-            panel11.Size = new Size(266, 784);
+            panel11.Size = new Size(224, 784);
             panel11.TabIndex = 11;
             // 
             // lbl_groupLiftOrder_control_20
             // 
             lbl_groupLiftOrder_control_20.AutoSize = true;
-            lbl_groupLiftOrder_control_20.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_20.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_20.Location = new Point(6, 608);
+            lbl_groupLiftOrder_control_20.Location = new Point(6, 438);
             lbl_groupLiftOrder_control_20.Name = "lbl_groupLiftOrder_control_20";
-            lbl_groupLiftOrder_control_20.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_20.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_20.TabIndex = 53;
             lbl_groupLiftOrder_control_20.Text = "Lyftare + vikt";
             // 
@@ -1321,222 +1374,222 @@
             // lbl_groupLiftOrder_control_19
             // 
             lbl_groupLiftOrder_control_19.AutoSize = true;
-            lbl_groupLiftOrder_control_19.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_19.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_19.Location = new Point(6, 578);
+            lbl_groupLiftOrder_control_19.Location = new Point(6, 417);
             lbl_groupLiftOrder_control_19.Name = "lbl_groupLiftOrder_control_19";
-            lbl_groupLiftOrder_control_19.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_19.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_19.TabIndex = 52;
             lbl_groupLiftOrder_control_19.Text = "Lyftare + vikt";
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.ForeColor = SystemColors.Window;
-            label32.Location = new Point(43, 4);
-            label32.Name = "label32";
-            label32.Size = new Size(176, 30);
-            label32.TabIndex = 10;
-            label32.Text = "Grupp    ingångar";
             // 
             // lbl_groupLiftOrder_control_18
             // 
             lbl_groupLiftOrder_control_18.AutoSize = true;
-            lbl_groupLiftOrder_control_18.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_18.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_18.Location = new Point(6, 548);
+            lbl_groupLiftOrder_control_18.Location = new Point(6, 396);
             lbl_groupLiftOrder_control_18.Name = "lbl_groupLiftOrder_control_18";
-            lbl_groupLiftOrder_control_18.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_18.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_18.TabIndex = 51;
             lbl_groupLiftOrder_control_18.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_5
             // 
             lbl_groupLiftOrder_control_5.AutoSize = true;
-            lbl_groupLiftOrder_control_5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_5.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_5.Location = new Point(6, 159);
+            lbl_groupLiftOrder_control_5.Location = new Point(6, 123);
             lbl_groupLiftOrder_control_5.Name = "lbl_groupLiftOrder_control_5";
-            lbl_groupLiftOrder_control_5.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_5.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_5.TabIndex = 38;
             lbl_groupLiftOrder_control_5.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_17
             // 
             lbl_groupLiftOrder_control_17.AutoSize = true;
-            lbl_groupLiftOrder_control_17.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_17.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_17.Location = new Point(6, 518);
+            lbl_groupLiftOrder_control_17.Location = new Point(6, 375);
             lbl_groupLiftOrder_control_17.Name = "lbl_groupLiftOrder_control_17";
-            lbl_groupLiftOrder_control_17.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_17.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_17.TabIndex = 50;
             lbl_groupLiftOrder_control_17.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_1
             // 
             lbl_groupLiftOrder_control_1.AutoSize = true;
-            lbl_groupLiftOrder_control_1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_1.ForeColor = SystemColors.Window;
             lbl_groupLiftOrder_control_1.Location = new Point(6, 39);
             lbl_groupLiftOrder_control_1.Name = "lbl_groupLiftOrder_control_1";
-            lbl_groupLiftOrder_control_1.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_1.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_1.TabIndex = 34;
             lbl_groupLiftOrder_control_1.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_16
             // 
             lbl_groupLiftOrder_control_16.AutoSize = true;
-            lbl_groupLiftOrder_control_16.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_16.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_16.Location = new Point(6, 488);
+            lbl_groupLiftOrder_control_16.Location = new Point(6, 354);
             lbl_groupLiftOrder_control_16.Name = "lbl_groupLiftOrder_control_16";
-            lbl_groupLiftOrder_control_16.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_16.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_16.TabIndex = 49;
             lbl_groupLiftOrder_control_16.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_2
             // 
             lbl_groupLiftOrder_control_2.AutoSize = true;
-            lbl_groupLiftOrder_control_2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_2.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_2.Location = new Point(6, 69);
+            lbl_groupLiftOrder_control_2.Location = new Point(6, 60);
             lbl_groupLiftOrder_control_2.Name = "lbl_groupLiftOrder_control_2";
-            lbl_groupLiftOrder_control_2.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_2.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_2.TabIndex = 35;
             lbl_groupLiftOrder_control_2.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_15
             // 
             lbl_groupLiftOrder_control_15.AutoSize = true;
-            lbl_groupLiftOrder_control_15.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_15.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_15.Location = new Point(6, 458);
+            lbl_groupLiftOrder_control_15.Location = new Point(6, 333);
             lbl_groupLiftOrder_control_15.Name = "lbl_groupLiftOrder_control_15";
-            lbl_groupLiftOrder_control_15.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_15.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_15.TabIndex = 48;
             lbl_groupLiftOrder_control_15.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_3
             // 
             lbl_groupLiftOrder_control_3.AutoSize = true;
-            lbl_groupLiftOrder_control_3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_3.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_3.Location = new Point(6, 99);
+            lbl_groupLiftOrder_control_3.Location = new Point(6, 81);
             lbl_groupLiftOrder_control_3.Name = "lbl_groupLiftOrder_control_3";
-            lbl_groupLiftOrder_control_3.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_3.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_3.TabIndex = 36;
             lbl_groupLiftOrder_control_3.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_14
             // 
             lbl_groupLiftOrder_control_14.AutoSize = true;
-            lbl_groupLiftOrder_control_14.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_14.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_14.Location = new Point(6, 428);
+            lbl_groupLiftOrder_control_14.Location = new Point(6, 312);
             lbl_groupLiftOrder_control_14.Name = "lbl_groupLiftOrder_control_14";
-            lbl_groupLiftOrder_control_14.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_14.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_14.TabIndex = 47;
             lbl_groupLiftOrder_control_14.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_4
             // 
             lbl_groupLiftOrder_control_4.AutoSize = true;
-            lbl_groupLiftOrder_control_4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_4.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_4.Location = new Point(6, 129);
+            lbl_groupLiftOrder_control_4.Location = new Point(6, 102);
             lbl_groupLiftOrder_control_4.Name = "lbl_groupLiftOrder_control_4";
-            lbl_groupLiftOrder_control_4.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_4.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_4.TabIndex = 37;
             lbl_groupLiftOrder_control_4.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_13
             // 
             lbl_groupLiftOrder_control_13.AutoSize = true;
-            lbl_groupLiftOrder_control_13.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_13.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_13.Location = new Point(6, 398);
+            lbl_groupLiftOrder_control_13.Location = new Point(6, 291);
             lbl_groupLiftOrder_control_13.Name = "lbl_groupLiftOrder_control_13";
-            lbl_groupLiftOrder_control_13.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_13.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_13.TabIndex = 46;
             lbl_groupLiftOrder_control_13.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_6
             // 
             lbl_groupLiftOrder_control_6.AutoSize = true;
-            lbl_groupLiftOrder_control_6.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_6.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_6.Location = new Point(6, 189);
+            lbl_groupLiftOrder_control_6.Location = new Point(6, 144);
             lbl_groupLiftOrder_control_6.Name = "lbl_groupLiftOrder_control_6";
-            lbl_groupLiftOrder_control_6.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_6.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_6.TabIndex = 39;
             lbl_groupLiftOrder_control_6.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_12
             // 
             lbl_groupLiftOrder_control_12.AutoSize = true;
-            lbl_groupLiftOrder_control_12.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_12.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_12.Location = new Point(6, 368);
+            lbl_groupLiftOrder_control_12.Location = new Point(6, 270);
             lbl_groupLiftOrder_control_12.Name = "lbl_groupLiftOrder_control_12";
-            lbl_groupLiftOrder_control_12.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_12.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_12.TabIndex = 45;
             lbl_groupLiftOrder_control_12.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_7
             // 
             lbl_groupLiftOrder_control_7.AutoSize = true;
-            lbl_groupLiftOrder_control_7.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_7.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_7.Location = new Point(6, 219);
+            lbl_groupLiftOrder_control_7.Location = new Point(6, 165);
             lbl_groupLiftOrder_control_7.Name = "lbl_groupLiftOrder_control_7";
-            lbl_groupLiftOrder_control_7.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_7.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_7.TabIndex = 40;
             lbl_groupLiftOrder_control_7.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_11
             // 
             lbl_groupLiftOrder_control_11.AutoSize = true;
-            lbl_groupLiftOrder_control_11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_11.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_11.Location = new Point(6, 338);
+            lbl_groupLiftOrder_control_11.Location = new Point(6, 249);
             lbl_groupLiftOrder_control_11.Name = "lbl_groupLiftOrder_control_11";
-            lbl_groupLiftOrder_control_11.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_11.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_11.TabIndex = 44;
             lbl_groupLiftOrder_control_11.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_8
             // 
             lbl_groupLiftOrder_control_8.AutoSize = true;
-            lbl_groupLiftOrder_control_8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_8.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_8.Location = new Point(6, 249);
+            lbl_groupLiftOrder_control_8.Location = new Point(6, 186);
             lbl_groupLiftOrder_control_8.Name = "lbl_groupLiftOrder_control_8";
-            lbl_groupLiftOrder_control_8.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_8.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_8.TabIndex = 41;
             lbl_groupLiftOrder_control_8.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_10
             // 
             lbl_groupLiftOrder_control_10.AutoSize = true;
-            lbl_groupLiftOrder_control_10.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_10.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_10.Location = new Point(6, 309);
+            lbl_groupLiftOrder_control_10.Location = new Point(6, 228);
             lbl_groupLiftOrder_control_10.Name = "lbl_groupLiftOrder_control_10";
-            lbl_groupLiftOrder_control_10.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_10.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_10.TabIndex = 43;
             lbl_groupLiftOrder_control_10.Text = "Lyftare + vikt";
             // 
             // lbl_groupLiftOrder_control_9
             // 
             lbl_groupLiftOrder_control_9.AutoSize = true;
-            lbl_groupLiftOrder_control_9.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_groupLiftOrder_control_9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_9.ForeColor = SystemColors.Window;
-            lbl_groupLiftOrder_control_9.Location = new Point(6, 279);
+            lbl_groupLiftOrder_control_9.Location = new Point(6, 207);
             lbl_groupLiftOrder_control_9.Name = "lbl_groupLiftOrder_control_9";
-            lbl_groupLiftOrder_control_9.Size = new Size(133, 30);
+            lbl_groupLiftOrder_control_9.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_9.TabIndex = 42;
             lbl_groupLiftOrder_control_9.Text = "Lyftare + vikt";
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label32.ForeColor = SystemColors.Window;
+            label32.Location = new Point(27, 4);
+            label32.Name = "label32";
+            label32.Size = new Size(176, 30);
+            label32.TabIndex = 10;
+            label32.Text = "Grupp    ingångar";
             // 
             // panel10
             // 
@@ -1562,9 +1615,9 @@
             panel10.Controls.Add(lbl_liftOrder_control_2);
             panel10.Controls.Add(lbl_liftOrder_control_1);
             panel10.Controls.Add(label30);
-            panel10.Location = new Point(1127, 209);
+            panel10.Location = new Point(1126, 209);
             panel10.Name = "panel10";
-            panel10.Size = new Size(224, 784);
+            panel10.Size = new Size(224, 535);
             panel10.TabIndex = 7;
             // 
             // lbl_liftOrder_control_20
@@ -2255,11 +2308,11 @@
             lbl_Placement.AutoSize = true;
             lbl_Placement.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Placement.ForeColor = SystemColors.Window;
-            lbl_Placement.Location = new Point(177, 3);
+            lbl_Placement.Location = new Point(236, 3);
             lbl_Placement.Name = "lbl_Placement";
-            lbl_Placement.Size = new Size(78, 30);
+            lbl_Placement.Size = new Size(41, 30);
             lbl_Placement.TabIndex = 12;
-            lbl_Placement.Text = "\"Place\"";
+            lbl_Placement.Text = "\"#\"";
             // 
             // lbl_GLPoints_control
             // 
@@ -2356,8 +2409,8 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.Gainsboro;
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.BackColor = Color.Gainsboro;
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewControlPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -2365,23 +2418,23 @@
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Silver;
-            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.Silver;
+            dataGridViewCellStyle11.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle12.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle12;
             dataGridViewControlPanel.GridColor = SystemColors.WindowText;
             dataGridViewControlPanel.ImeMode = ImeMode.NoControl;
             dataGridViewControlPanel.Location = new Point(7, 209);
@@ -2389,7 +2442,7 @@
             dataGridViewControlPanel.RowHeadersVisible = false;
             dataGridViewControlPanel.RowTemplate.Height = 25;
             dataGridViewControlPanel.ScrollBars = ScrollBars.Vertical;
-            dataGridViewControlPanel.Size = new Size(1114, 502);
+            dataGridViewControlPanel.Size = new Size(1114, 525);
             dataGridViewControlPanel.TabIndex = 2;
             dataGridViewControlPanel.CellEndEdit += dataGridViewControlPanel_CellEndEdit;
             dataGridViewControlPanel.CellEnter += dataGridViewControlPanel_CellEnter;
@@ -2450,8 +2503,11 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
             panel11.ResumeLayout(false);
@@ -2632,7 +2688,7 @@
         private Label label40;
         private Label label41;
         private Label lbl_currentWeight2;
-        private Label lblName2;
+        private Label lbl_Name2;
         private RadioButton rb_national;
         private RadioButton rb_district;
         private CheckBox cb_squat;
@@ -2642,7 +2698,6 @@
         private RadioButton rb_club;
         private Button btn_Gåom;
         private Label label44;
-        private PictureBox pictureBox1;
         private Label lbl_Placement;
         private Label label38;
         private Label label36;
@@ -2653,5 +2708,10 @@
         private Label lbl_Placement2;
         private Label lbl_Infällt;
         private Label lbl_Avlyft;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox7;
     }
 }

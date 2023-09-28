@@ -1,11 +1,14 @@
 Powermeet TODO
 
 PRIO NR 1 !!!?! : 
-LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
+✅LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
+man kan inte få alla lyft consistent
+när man byter grupp så ska alla listor med lifting odrer o de rensas ock allokera nya
+Visa höjder på lyftare infopanel
+infopanelen ska vara baserad på liftingorder
 Exportering av invägning trasig
 ✅✅ranking för de olika enum kategorierna och viktklasser
 ✅avlyft & infällt
-
 
 Projector :
 1920x1080
@@ -18,8 +21,6 @@ WXGA (1280x800 pixels, 16:10 aspect ratio)
 WUXGA (1920x1200 pixels, 16:10 aspect ratio)
 720p (1280x720 pixels, 16:9 aspect ratio)
 1080p (1920x1080 pixels, 16:9 aspect ratio)
-
-
 
 Timer :
 ✅1 Min lyfar timer
@@ -37,7 +38,6 @@ Invägning :
 ✅Automatisk klass string korrigering
 
 Tävlingsfönster :
-
 1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
 Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
@@ -72,8 +72,4 @@ gör så att om man skiver in mer vikt än man har så blir det max vikten man m
 Resultat :
 Visa bästa lyftare på poäng på projektor
 Gör en resulat lista som man kan exportera till .xlsx i ett trevligt format som också memorerar om det var ett godkänd rekord försök
-
-
-
-✅2023-06-01 rad 633
-✅
+g
