@@ -1,12 +1,12 @@
 Powermeet TODO
 
 PRIO NR 1 !!!?! : 
-✅LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
 man kan inte få alla lyft consistent
 när man byter grupp så ska alla listor med lifting odrer o de rensas ock allokera nya
 Visa höjder på lyftare infopanel
-infopanelen ska vara baserad på liftingorder
 Exportering av invägning trasig
+✅LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
+✅infopanelen ska vara baserad på liftingorder
 ✅✅ranking för de olika enum kategorierna och viktklasser
 ✅avlyft & infällt
 
@@ -37,10 +37,11 @@ Invägning :
 ✅Gruppnummer
 ✅Automatisk klass string korrigering
 
-Tävlingsfönster :
+Kontrollpanel / Tävlingsfönster :
+Byta färg på tabcontrol1 "Changetabcolor"
 1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
-Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
+✅Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
 ✅För varje gång man skriver in en bokstav och det blir en varning så tar det bort från någon lista så att man inte kan få all lyft godkända utan att programmet krashar
 ✅om man ångrar ett lyft så ändras inte totalen tillbaka
 ✅om en lyftare behöver gå om i slutet av rundan så ska den hamn längst ner i lyftar ordningen 

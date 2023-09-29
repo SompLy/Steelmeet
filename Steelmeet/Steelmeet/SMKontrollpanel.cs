@@ -17,6 +17,41 @@ namespace Powermeet2
             InitializeComponent();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            tabControl1.TabPages[0].ForeColor = Color.FromArgb(187, 225, 250);
+        }
+
+        private void ChangeTabColor(object sender, DrawItemEventArgs e)
+        {
+            Font TabFont;
+            Brush BackBrush = new SolidBrush(Color.Green); //Set background color
+            Brush ForeBrush = new SolidBrush(Color.Yellow);//Set foreground color
+            if (e.Index == this.tabControl1.SelectedIndex)
+            {
+                TabFont = new Font(e.Font, FontStyle.Regular);
+            }
+            else
+            {
+                TabFont = e.Font;
+            }
+            string TabName = this.tabControl1.TabPages[e.Index].Text;
+            StringFormat sf = new StringFormat();
+            sf.Alignment = StringAlignment.Center;
+            e.Graphics.FillRectangle(BackBrush, e.Bounds);
+            Rectangle r = e.Bounds;
+            r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
+            e.Graphics.DrawString(TabName, TabFont, ForeBrush, r, sf);
+            //Dispose objects
+            sf.Dispose();
+            if (e.Index == this.tabControl1.SelectedIndex)
+            {
+                TabFont.Dispose();
+                BackBrush.Dispose();
+            }
+            else
+            {
+                BackBrush.Dispose();
+                ForeBrush.Dispose();
+            }
         }
 
         System.Data.DataTable dt = new();
@@ -35,7 +70,6 @@ namespace Powermeet2
 
         public int SelectedRowIndex;
         public int SelectedColumnIndex;
-        int drawOptions = 0;
         int platesCount = 0;
         int secondsLapp;
         int minutesLapp;
@@ -980,8 +1014,9 @@ namespace Powermeet2
                     //lbl_GLPoints_control.Text = GLPointsCalculator(LifterID[SelectedRowIndex + groupRowFixer]).ToString();
                     if (LiftingOrderListNew.Count > 0)
                     {
+                        //PlateCalculator(LiftingOrderListNew[0].sbdList[LiftingOrderListNew[0].CurrentLift + firstLftdatagridviewColumn], plateInfo);
+
                         lbl_Name.Text = LiftingOrderListNew[0].name;
-                        PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LiftingOrderListNew[0].CurrentLift].Value.ToString()), plateInfo);
                         lbl_Placement.Text = LiftingOrderListNew[0].place.ToString();
                         lbl_Infällt.Text = LiftingOrderListNew[0].tilted.ToString();
                         lbl_Avlyft.Text = LiftingOrderListNew[0].liftoff.ToString();
@@ -1008,6 +1043,9 @@ namespace Powermeet2
         }
         private void dataGridViewControlPanel_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
+            //resetta plateshit
+
+
             dataGridViewControlPanel.EndEdit();
             RankUpdate();
             if (dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value)
@@ -1023,7 +1061,7 @@ namespace Powermeet2
                     s = (Math.Round(float.Parse(s.Replace(",", ".")) / .5f) * .5f).ToString();
                     dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = s;
 
-                    if (SelectedColumnIndex < 18)
+                    if (SelectedColumnIndex < 20)
                     {
                         LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count] =
                             float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()); // Sätter vikten till sbdlist
@@ -1184,7 +1222,8 @@ namespace Powermeet2
             if (SelectedColumnIndex < 20)
             {
                 LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(true); //Registrerar ett godkänt lyft för lyftaren
-                LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] = float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
+                LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] = 
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
 
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
             }
@@ -1497,6 +1536,11 @@ namespace Powermeet2
         }
         public void PlateCalculator(float targetWeight, PlateInfo plateInfo)
         {
+            //targetWeight = 0;
+            //weightSum = 0;
+            //usedPlatesList.Clear();
+            
+
             targetWeight = (targetWeight / 2);
             float weightSum = 12.5f; //Stång (20kg) + lås (5kg) delas på två eftersom target weight också är delat på två
 
@@ -1514,7 +1558,6 @@ namespace Powermeet2
                     weightSum += weightsList[i];
                     usedPlatesList[i]++;
                     platesCount++;
-                    drawOptions = i;
                     infopanel_Controlpanel.Invalidate();
                 }
                 else { i++; }
@@ -2281,6 +2324,8 @@ namespace Powermeet2
         {
 
         }
+
+
 
 
         //Tävling

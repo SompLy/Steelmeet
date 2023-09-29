@@ -4,9 +4,6 @@
     <_LastSelectedProfileId>C:\Users\ninja\source\repos\Powermeet2\Powermeet2\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="SMKontrollpanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="WilksForm.cs">
       <SubType>Form</SubType>
     </Compile>
