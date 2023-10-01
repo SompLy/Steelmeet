@@ -20,6 +20,7 @@ namespace Powermeet2
             tabControl1.TabPages[0].ForeColor = Color.FromArgb(187, 225, 250);
         }
 
+        //För att byta färg på tabcontorl men funkar inte så bra
         private void ChangeTabColor(object sender, DrawItemEventArgs e)
         {
             Font TabFont;
@@ -567,13 +568,20 @@ namespace Powermeet2
                 ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 ofd.Title = "Steelmeet Impoertera fil :)";
                 ofd.Filter = "Excel file |*.xlsx";
-                ofd.FileName = "Steelmeet_lyftare_\"Start_XX:XX\"";
+                ofd.FileName = "Steelmeet_lyftare_Start_XX.XX";
                 DialogResult result = ofd.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
-                    DataTable dt = MoreExcel.DataGridView_To_Datatable(dataGridViewWeighIn);
-                    dt.exportToExcel(ofd.FileName);
+                    SLDocument sl = new SLDocument();
+                    for (int i = 0; i < dataGridViewWeighIn.RowCount - 1; i++)
+                    {
+                        for (int o = 0; o < dataGridViewWeighIn.ColumnCount; o++)
+                        {
+                            sl.SetCellValue(i + 1, o + 1, dataGridViewWeighIn.Rows[i].Cells[o].Value.ToString());
+                        }
+                    }
+                    sl.SaveAs(ofd.FileName);
 
                     MessageBox.Show("Excel fil sparad! :)");
                 }
@@ -1014,7 +1022,8 @@ namespace Powermeet2
                     //lbl_GLPoints_control.Text = GLPointsCalculator(LifterID[SelectedRowIndex + groupRowFixer]).ToString();
                     if (LiftingOrderListNew.Count > 0)
                     {
-                        //PlateCalculator(LiftingOrderListNew[0].sbdList[LiftingOrderListNew[0].CurrentLift + firstLftdatagridviewColumn], plateInfo);
+                        PlateCalculator(LiftingOrderListNew[0].sbdList[LiftingOrderListNew[0].CurrentLift - firstLftdatagridviewColumn], plateInfo);
+                        //totalen sätts i goodlift
 
                         lbl_Name.Text = LiftingOrderListNew[0].name;
                         lbl_Placement.Text = LiftingOrderListNew[0].place.ToString();
@@ -1027,7 +1036,7 @@ namespace Powermeet2
                         if (LiftingOrderListNew.Count > 1)
                         {
                             lbl_Name2.Text = LiftingOrderListNew[1].name;
-                            PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LiftingOrderListNew[1].CurrentLift].Value.ToString()), plateInfo);
+                            //PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LiftingOrderListNew[1].CurrentLift].Value.ToString()), plateInfo);
                             lbl_Placement2.Text = LiftingOrderListNew[1].place.ToString();
                             lbl_Infällt2.Text = LiftingOrderListNew[1].tilted.ToString();
                             lbl_Avlyft2.Text = LiftingOrderListNew[1].liftoff.ToString();
@@ -1051,7 +1060,7 @@ namespace Powermeet2
             if (dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value)
             {
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LifterID[SelectedRowIndex + groupRowFixer].total;
+
                 string s = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString();
                 //string s = (Math.Round(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString().Replace(".", ",2,5")) / .5f) * .5f).ToString();
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = s; //Ändrar punkt till komman
@@ -1073,7 +1082,8 @@ namespace Powermeet2
                     if (float.Parse(s) <= float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString()) &&
                         SelectedColumnIndex < 14)
                     {
-                        MessageBox.Show("Föregående lyft \"" + dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString() + "\" Är Högre än \"" + s + "\"", "⚠Varning!⚠");
+                        
+                        //MessageBox.Show("Föregående lyft \"" + dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString() + "\" Är Högre än \"" + s + "\"", "⚠Varning!⚠");
                     }
                     float f = 0; //gör bara så att tryparse några rader under har något o lägga en variabel i lol
 
@@ -1096,7 +1106,7 @@ namespace Powermeet2
 
                     MessageBox.Show(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString() + " Är inte ett nummer", "⚠Varning!⚠");
                     dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 25;
-                    if (SelectedColumnIndex < 14)
+                    if (SelectedColumnIndex < 14 && SelectedColumnIndex > 11)
                     {
                         LiftingOrderListNew.Add(LifterID[SelectedRowIndex + groupRowFixer]);
                         dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
@@ -1186,6 +1196,13 @@ namespace Powermeet2
 
                 }
             }
+            
+
+            //BestS,b,d sätts BestSBDUpdate(); för att den ska uppdatera när man ångrar lyft också
+            BestSBDUpdate();
+            //totalen sätts
+            LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
             //Updaterar lyftar ordning
             LiftOrderUpdate();
 
@@ -1194,14 +1211,8 @@ namespace Powermeet2
 
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Green;
 
-            //BestS,b,d sätts BestSBDUpdate(); för att den ska uppdatera när man ångrar lyft också
-            BestSBDUpdate();
             //Uppdaterar placering
             RankUpdate();
-            //Totalen sätts i comboboxgruppselecteditem switch satsen och här eftersom den måste uppdateras hela tiden
-            LifterID[SelectedRowIndex + groupRowFixer].total = LifterID[SelectedRowIndex + groupRowFixer].bestS +
-            LifterID[SelectedRowIndex + groupRowFixer].bestB + LifterID[SelectedRowIndex + groupRowFixer].bestD;
-
 
             if (SelectedColumnIndex < 19)
             {
@@ -1222,7 +1233,7 @@ namespace Powermeet2
             if (SelectedColumnIndex < 20)
             {
                 LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(true); //Registrerar ett godkänt lyft för lyftaren
-                LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] = 
+                LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
                     float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
 
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
@@ -1243,8 +1254,8 @@ namespace Powermeet2
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Red;
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
 
-            LifterID[SelectedRowIndex + groupRowFixer].total = LifterID[SelectedRowIndex + groupRowFixer].bestS +
-            LifterID[SelectedRowIndex + groupRowFixer].bestB + LifterID[SelectedRowIndex + groupRowFixer].bestD;
+            LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
 
             if (SelectedColumnIndex < 19)
             {
@@ -1283,10 +1294,7 @@ namespace Powermeet2
 
                 BestSBDUpdate(); //Updaterar bästa lyften sedan sätter totalen
                 RankUpdate();
-                LifterID[SelectedRowIndex + groupRowFixer].total = LifterID[SelectedRowIndex + groupRowFixer].bestS +
-                LifterID[SelectedRowIndex + groupRowFixer].bestB + LifterID[SelectedRowIndex + groupRowFixer].bestD;
-                //Visuellt sätter totalen
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LifterID[SelectedRowIndex + groupRowFixer].total;
+                
             }
         }
 
@@ -1536,13 +1544,13 @@ namespace Powermeet2
         }
         public void PlateCalculator(float targetWeight, PlateInfo plateInfo)
         {
-            //targetWeight = 0;
-            //weightSum = 0;
-            //usedPlatesList.Clear();
-            
+
+
 
             targetWeight = (targetWeight / 2);
             float weightSum = 12.5f; //Stång (20kg) + lås (5kg) delas på två eftersom target weight också är delat på två
+            //usedPlatesList.Clear();
+            //weightSum = 0;
 
             usedPlatesList.AddRange(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
 
@@ -1550,6 +1558,10 @@ namespace Powermeet2
             plateInfo.plate25small, plateInfo.plate125, plateInfo.plate05, plateInfo.plate025,});
 
             weightsList.AddRange(new float[] { 50, 25, 20, 15, 10, 5, 2.5f, 1.25f, 0.5f, 0.25f });
+            if (targetWeight == 0)
+            {
+                return;
+            }
 
             for (int i = 0; weightSum != targetWeight;)
             {
@@ -1961,6 +1973,7 @@ namespace Powermeet2
         private void combo_Aktivgrupp_SelectedIndexChanged(object sender, EventArgs e)
         {
             groupIndexCurrent = combo_Aktivgrupp.SelectedIndex;
+            
             RankUpdate();
             switch (combo_Aktivgrupp.SelectedIndex)
             {
@@ -1996,10 +2009,7 @@ namespace Powermeet2
 
                     for (int i = 0; i < dataGridViewControlPanel.RowCount; i++)
                     {
-                        //Totalen sätts
-                        LifterID[i + groupRowFixer].total = LifterID[i + groupRowFixer].bestS + LifterID[i + groupRowFixer].bestB + LifterID[i + groupRowFixer].bestD; // Sätter totalen
-                        dataGridViewControlPanel.Rows[i].Cells[20].Value = LifterID[i + groupRowFixer].total;
-
+                        
                         //firstLftdatagridviewColumn är första lyftets kolumn
                         for (int o = firstLftdatagridviewColumn; o < LifterID[i].CurrentLift; o++) //Fyller i lyft historik tills currentlift
                         {
@@ -2065,10 +2075,7 @@ namespace Powermeet2
 
                     for (int i = 0; i < dataGridViewControlPanel.RowCount; i++)
                     {
-                        //Totalen sätts
-                        LifterID[i + groupRowFixer].total = LifterID[i + groupRowFixer].bestS + LifterID[i + groupRowFixer].bestB + LifterID[i + groupRowFixer].bestD; // Sätter totalen
-                        dataGridViewControlPanel.Rows[i].Cells[20].Value = LifterID[i + groupRowFixer].total;
-
+                        
                         //firstLftdatagridviewColumn är första lyftets kolumn
                         for (int o = firstLftdatagridviewColumn; o < LifterID[i + group1Count].CurrentLift; o++) //Fyller i lyft historik tills currentlift
                         {
@@ -2129,10 +2136,7 @@ namespace Powermeet2
 
                     for (int i = 0; i < dataGridViewControlPanel.RowCount; i++)
                     {
-                        //Totalen sätts
-                        LifterID[i + groupRowFixer].total = LifterID[i + groupRowFixer].bestS + LifterID[i + groupRowFixer].bestB + LifterID[i + groupRowFixer].bestD; // Sätter totalen
-                        dataGridViewControlPanel.Rows[i].Cells[20].Value = LifterID[i + groupRowFixer].total;
-
+                        
                         //firstLftdatagridviewColumn är första lyftets kolumn
                         for (int o = firstLftdatagridviewColumn; o < LifterID[i + group1Count + group2Count].CurrentLift; o++) //Fyller i lyft historik tills currentlift
                         {

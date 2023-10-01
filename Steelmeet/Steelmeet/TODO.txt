@@ -3,8 +3,8 @@ Powermeet TODO
 PRIO NR 1 !!!?! : 
 man kan inte få alla lyft consistent
 när man byter grupp så ska alla listor med lifting odrer o de rensas ock allokera nya
-Visa höjder på lyftare infopanel
-Exportering av invägning trasig
+niVisa höjder på lyftare infopanel
+✅Exportering av invägning trasig
 ✅LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
 ✅infopanelen ska vara baserad på liftingorder
 ✅✅ranking för de olika enum kategorierna och viktklasser
