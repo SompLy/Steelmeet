@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -106,6 +106,7 @@
             btn25 = new Button();
             txtb25 = new TextBox();
             tabPage2 = new TabPage();
+            pictureBox1 = new PictureBox();
             panel11 = new Panel();
             lbl_groupLiftOrder_control_20 = new Label();
             label33 = new Label();
@@ -132,10 +133,9 @@
             panel13 = new Panel();
             pictureBox4 = new PictureBox();
             panel12 = new Panel();
-            label43 = new Label();
+            lbl_Height2 = new Label();
             label45 = new Label();
             lbl_Infällt2 = new Label();
-            label48 = new Label();
             lbl_GLPoints_control2 = new Label();
             lbl_Avlyft2 = new Label();
             label37 = new Label();
@@ -203,9 +203,8 @@
             lbl_timerLapp = new Label();
             lbl_timerLyft = new Label();
             infopanel_Controlpanel = new Panel();
-            lbl_Höjd = new Label();
+            lbl_Height = new Label();
             label42 = new Label();
-            label39 = new Label();
             lbl_Infällt = new Label();
             lbl_Avlyft = new Label();
             label38 = new Label();
@@ -236,6 +235,7 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel11.SuspendLayout();
             panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -467,32 +467,32 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns = false;
             dataGridViewWeighIn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle10.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewWeighIn.BackgroundColor = Color.FromArgb(27, 38, 44);
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle11.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle12.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewWeighIn.EnableHeadersVisualStyles = false;
             dataGridViewWeighIn.GridColor = Color.Black;
             dataGridViewWeighIn.Location = new Point(6, 156);
@@ -1105,6 +1105,16 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Tävling";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(162, 179);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 56;
+            pictureBox1.TabStop = false;
+            // 
             // panel11
             // 
             panel11.BackColor = Color.FromArgb(27, 38, 44);
@@ -1130,7 +1140,7 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
             panel11.Controls.Add(label32);
-            panel11.Location = new Point(1126, 543);
+            panel11.Location = new Point(588, 589);
             panel11.Name = "panel11";
             panel11.Size = new Size(224, 474);
             panel11.TabIndex = 11;
@@ -1379,17 +1389,18 @@
             // panel13
             // 
             panel13.BackColor = Color.FromArgb(27, 38, 44);
+            panel13.Controls.Add(pictureBox1);
             panel13.Controls.Add(pictureBox4);
             panel13.ForeColor = SystemColors.WindowText;
             panel13.Location = new Point(8, 589);
             panel13.Name = "panel13";
-            panel13.Size = new Size(1113, 168);
+            panel13.Size = new Size(574, 168);
             panel13.TabIndex = 29;
             // 
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(449, 6);
+            pictureBox4.Location = new Point(168, 6);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(227, 145);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1399,10 +1410,9 @@
             // panel12
             // 
             panel12.BackColor = Color.FromArgb(27, 38, 44);
-            panel12.Controls.Add(label43);
+            panel12.Controls.Add(lbl_Height2);
             panel12.Controls.Add(label45);
             panel12.Controls.Add(lbl_Infällt2);
-            panel12.Controls.Add(label48);
             panel12.Controls.Add(lbl_GLPoints_control2);
             panel12.Controls.Add(lbl_Avlyft2);
             panel12.Controls.Add(label37);
@@ -1421,17 +1431,17 @@
             panel12.TabIndex = 12;
             panel12.Paint += infopanel_Controlpanel_Paint2;
             // 
-            // label43
+            // lbl_Height2
             // 
-            label43.AutoSize = true;
-            label43.BackColor = Color.FromArgb(15, 76, 117);
-            label43.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label43.ForeColor = Color.FromArgb(187, 225, 250);
-            label43.Location = new Point(196, 108);
-            label43.Name = "label43";
-            label43.Size = new Size(73, 30);
-            label43.TabIndex = 22;
-            label43.Text = "\"Höjd\"";
+            lbl_Height2.AutoSize = true;
+            lbl_Height2.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_Height2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Height2.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_Height2.Location = new Point(137, 109);
+            lbl_Height2.Name = "lbl_Height2";
+            lbl_Height2.Size = new Size(73, 30);
+            lbl_Height2.TabIndex = 22;
+            lbl_Height2.Text = "\"Höjd\"";
             // 
             // label45
             // 
@@ -1454,18 +1464,6 @@
             lbl_Infällt2.Size = new Size(61, 30);
             lbl_Infällt2.TabIndex = 21;
             lbl_Infällt2.Text = "\"Nej\"";
-            // 
-            // label48
-            // 
-            label48.AutoSize = true;
-            label48.BackColor = Color.FromArgb(15, 76, 117);
-            label48.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label48.ForeColor = Color.FromArgb(187, 225, 250);
-            label48.Location = new Point(137, 108);
-            label48.Name = "label48";
-            label48.Size = new Size(68, 30);
-            label48.TabIndex = 20;
-            label48.Text = "Höjd :";
             // 
             // lbl_GLPoints_control2
             // 
@@ -2267,9 +2265,8 @@
             // infopanel_Controlpanel
             // 
             infopanel_Controlpanel.BackColor = Color.FromArgb(27, 38, 44);
-            infopanel_Controlpanel.Controls.Add(lbl_Höjd);
+            infopanel_Controlpanel.Controls.Add(lbl_Height);
             infopanel_Controlpanel.Controls.Add(label42);
-            infopanel_Controlpanel.Controls.Add(label39);
             infopanel_Controlpanel.Controls.Add(lbl_Infällt);
             infopanel_Controlpanel.Controls.Add(lbl_Avlyft);
             infopanel_Controlpanel.Controls.Add(label38);
@@ -2289,17 +2286,17 @@
             infopanel_Controlpanel.TabIndex = 0;
             infopanel_Controlpanel.Paint += infopanel_Controlpanel_Paint;
             // 
-            // lbl_Höjd
+            // lbl_Height
             // 
-            lbl_Höjd.AutoSize = true;
-            lbl_Höjd.BackColor = Color.FromArgb(15, 76, 117);
-            lbl_Höjd.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Höjd.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_Höjd.Location = new Point(196, 108);
-            lbl_Höjd.Name = "lbl_Höjd";
-            lbl_Höjd.Size = new Size(73, 30);
-            lbl_Höjd.TabIndex = 19;
-            lbl_Höjd.Text = "\"Höjd\"";
+            lbl_Height.AutoSize = true;
+            lbl_Height.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_Height.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Height.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_Height.Location = new Point(142, 108);
+            lbl_Height.Name = "lbl_Height";
+            lbl_Height.Size = new Size(73, 30);
+            lbl_Height.TabIndex = 19;
+            lbl_Height.Text = "\"Höjd\"";
             // 
             // label42
             // 
@@ -2311,18 +2308,6 @@
             label42.Size = new Size(25, 30);
             label42.TabIndex = 18;
             label42.Text = "#";
-            // 
-            // label39
-            // 
-            label39.AutoSize = true;
-            label39.BackColor = Color.FromArgb(15, 76, 117);
-            label39.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label39.ForeColor = Color.FromArgb(187, 225, 250);
-            label39.Location = new Point(137, 108);
-            label39.Name = "label39";
-            label39.Size = new Size(68, 30);
-            label39.TabIndex = 17;
-            label39.Text = "Höjd :";
             // 
             // lbl_Infällt
             // 
@@ -2476,9 +2461,9 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle7.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewControlPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -2486,23 +2471,23 @@
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle8.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle9.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewControlPanel.EnableHeadersVisualStyles = false;
             dataGridViewControlPanel.GridColor = SystemColors.WindowText;
             dataGridViewControlPanel.ImeMode = ImeMode.NoControl;
@@ -2572,6 +2557,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             panel13.ResumeLayout(false);
@@ -2775,12 +2761,11 @@
         private Label lbl_Infällt;
         private Label lbl_Avlyft;
         private PictureBox pictureBox4;
-        private Label lbl_Höjd;
+        private Label lbl_Height;
         private Label label42;
-        private Label label39;
-        private Label label43;
+        private Label lbl_Height2;
         private Label label45;
-        private Label label48;
         private Panel panel13;
+        private PictureBox pictureBox1;
     }
 }

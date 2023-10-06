@@ -1,14 +1,18 @@
 Powermeet TODO
 
 PRIO NR 1 !!!?! : 
+totalen är fucked up mannen, den uppdaterar knas och den stämmer knappt, visa GL poöngen i datagridviewn
 man kan inte få alla lyft consistent
-när man byter grupp så ska alla listor med lifting odrer o de rensas ock allokera nya
 niVisa höjder på lyftare infopanel
+Om man är i en koefficient klass så ska man rankas efter poäng och inte efter total
+groupliftingorder, visa nästa grupps ingångar 
+✅när man byter grupp så ska alla listor med lifting odrer o de rensas ock allokera nya
 ✅Exportering av invägning trasig
 ✅LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
 ✅infopanelen ska vara baserad på liftingorder
 ✅✅ranking för de olika enum kategorierna och viktklasser
 ✅avlyft & infällt
+✅problem med liftingorder återbördat
 
 Projector :
 1920x1080
@@ -41,6 +45,7 @@ Kontrollpanel / Tävlingsfönster :
 Byta färg på tabcontrol1 "Changetabcolor"
 1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
+visa GL poöngen
 ✅Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
 ✅För varje gång man skriver in en bokstav och det blir en varning så tar det bort från någon lista så att man inte kan få all lyft godkända utan att programmet krashar
 ✅om man ångrar ett lyft så ändras inte totalen tillbaka
