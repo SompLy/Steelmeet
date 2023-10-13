@@ -91,14 +91,11 @@ namespace Powermeet2
         List<float> weightsList = new List<float>();    //Vikter
 
         List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
-        List<float> LiftingOrderList = new List<float>(); //För att sortera viktera
-        List<float> LiftingOrderList2 = new List<float>(); //För att sortera viktera
 
         List<Lifter> LiftingOrderListNew = new List<Lifter>(); //För att sortera
-        List<Lifter> LiftingOrderList2New = new List<Lifter>(); //För att sortera
 
         List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
-        List<float> GroupLiftingOrderList = new List<float>(); //För att sortera viktera
+        List<Lifter> GroupLiftingOrderList = new List<Lifter>(); //För att sortera viktera
 
         MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
 
@@ -1238,7 +1235,7 @@ namespace Powermeet2
             //Sätter den gröna färgen
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Green;
 
-            if (SelectedColumnIndex < 19)
+            if (SelectedColumnIndex < 18)
             {
 
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Style.BackColor = Color.FromArgb(255, 127, 80);
@@ -1823,7 +1820,7 @@ namespace Powermeet2
             {
                 LiftingOrderListLabels[i].Text = "";
             }
-            LiftingOrderList.Sort();
+
             // Create an instance of the custom comparer.
             var comparer = new LifterComparer();
 
@@ -1839,6 +1836,7 @@ namespace Powermeet2
         }
         public void GroupLiftOrderUpdate() //Updaterar nästa grupps ingångar
         {
+            // Group updater Group updater Group updater
             group1Count = 0;
             group2Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
             group3Count = 0;
@@ -1863,6 +1861,7 @@ namespace Powermeet2
                     group3Count += 1;
                 }
             }
+            // Group updater Group updater Group updater 
 
             GroupLiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
                                                         lbl_groupLiftOrder_control_5, lbl_groupLiftOrder_control_6, lbl_groupLiftOrder_control_7, lbl_groupLiftOrder_control_8,
@@ -1873,20 +1872,27 @@ namespace Powermeet2
             {
                 GroupLiftingOrderListLabels[i].Text = "";
             }
-            if (groupIndexCurrent == 0)     //Fyller listan, om den aktiva gruppen är grupp 1
+            //Fyller listan, om den aktiva gruppen är grupp 1
+            if (groupIndexCurrent == 0)
             {
                 GroupLiftingOrderList.Clear();
-                //for (int i = group1Count; i < group2Count + group1Count; i++)
-                //{
-                //    GroupLiftingOrderList.Add(LifterID[i].sbdList[LifterID[i].CurrentLift - 11]);
-                //}
+                for (int i = group1Count; i < group2Count + group1Count; i++)
+                {
+                    GroupLiftingOrderList.Add(LifterID[i]);
+                }
             }
-            GroupLiftingOrderList.Sort();
             for (int i = 0; i < GroupLiftingOrderList.Count; i++)
             {
-                GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].ToString();
+                GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].sbdList[GroupLiftingOrderList[i].CurrentLift - 11] + " " + GroupLiftingOrderList[i].name;
             }
-        }
+
+            // Create an instance of the custom comparer.
+            var comparer = new LifterComparer();
+
+            // Use the custom comparer to sort LiftingOrderListNew.
+            GroupLiftingOrderList = GroupLiftingOrderList.OrderBy(item => item, comparer).ToList();
+
+        } //GroupLiftingOrder
         public void BestSBDUpdate()
         {
 #pragma warning disable CA1305

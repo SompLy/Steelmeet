@@ -106,10 +106,8 @@
             btn25 = new Button();
             txtb25 = new TextBox();
             tabPage2 = new TabPage();
-            pictureBox1 = new PictureBox();
             panel11 = new Panel();
             lbl_groupLiftOrder_control_20 = new Label();
-            label33 = new Label();
             lbl_groupLiftOrder_control_19 = new Label();
             lbl_groupLiftOrder_control_18 = new Label();
             lbl_groupLiftOrder_control_5 = new Label();
@@ -131,6 +129,7 @@
             lbl_groupLiftOrder_control_9 = new Label();
             label32 = new Label();
             panel13 = new Panel();
+            pictureBox1 = new PictureBox();
             pictureBox4 = new PictureBox();
             panel12 = new Panel();
             lbl_Height2 = new Label();
@@ -235,9 +234,9 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel11.SuspendLayout();
             panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel12.SuspendLayout();
             panel10.SuspendLayout();
@@ -1105,21 +1104,10 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Tävling";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(162, 179);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 56;
-            pictureBox1.TabStop = false;
-            // 
             // panel11
             // 
             panel11.BackColor = Color.FromArgb(27, 38, 44);
             panel11.Controls.Add(lbl_groupLiftOrder_control_20);
-            panel11.Controls.Add(label33);
             panel11.Controls.Add(lbl_groupLiftOrder_control_19);
             panel11.Controls.Add(lbl_groupLiftOrder_control_18);
             panel11.Controls.Add(lbl_groupLiftOrder_control_5);
@@ -1140,9 +1128,9 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
             panel11.Controls.Add(label32);
-            panel11.Location = new Point(588, 589);
+            panel11.Location = new Point(588, 566);
             panel11.Name = "panel11";
-            panel11.Size = new Size(224, 474);
+            panel11.Size = new Size(532, 477);
             panel11.TabIndex = 11;
             // 
             // lbl_groupLiftOrder_control_20
@@ -1150,28 +1138,18 @@
             lbl_groupLiftOrder_control_20.AutoSize = true;
             lbl_groupLiftOrder_control_20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_20.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_20.Location = new Point(6, 403);
+            lbl_groupLiftOrder_control_20.Location = new Point(361, 130);
             lbl_groupLiftOrder_control_20.Name = "lbl_groupLiftOrder_control_20";
             lbl_groupLiftOrder_control_20.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_20.TabIndex = 53;
             lbl_groupLiftOrder_control_20.Text = "Lyftare + vikt";
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label33.ForeColor = Color.FromArgb(187, 225, 250);
-            label33.Location = new Point(121, 4);
-            label33.Name = "label33";
-            label33.Size = new Size(0, 30);
-            label33.TabIndex = 10;
             // 
             // lbl_groupLiftOrder_control_19
             // 
             lbl_groupLiftOrder_control_19.AutoSize = true;
             lbl_groupLiftOrder_control_19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_19.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_19.Location = new Point(6, 382);
+            lbl_groupLiftOrder_control_19.Location = new Point(361, 109);
             lbl_groupLiftOrder_control_19.Name = "lbl_groupLiftOrder_control_19";
             lbl_groupLiftOrder_control_19.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_19.TabIndex = 52;
@@ -1182,7 +1160,7 @@
             lbl_groupLiftOrder_control_18.AutoSize = true;
             lbl_groupLiftOrder_control_18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_18.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_18.Location = new Point(6, 361);
+            lbl_groupLiftOrder_control_18.Location = new Point(361, 88);
             lbl_groupLiftOrder_control_18.Name = "lbl_groupLiftOrder_control_18";
             lbl_groupLiftOrder_control_18.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_18.TabIndex = 51;
@@ -1193,7 +1171,7 @@
             lbl_groupLiftOrder_control_5.AutoSize = true;
             lbl_groupLiftOrder_control_5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_5.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_5.Location = new Point(6, 88);
+            lbl_groupLiftOrder_control_5.Location = new Point(6, 108);
             lbl_groupLiftOrder_control_5.Name = "lbl_groupLiftOrder_control_5";
             lbl_groupLiftOrder_control_5.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_5.TabIndex = 38;
@@ -1204,7 +1182,7 @@
             lbl_groupLiftOrder_control_17.AutoSize = true;
             lbl_groupLiftOrder_control_17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_17.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_17.Location = new Point(6, 340);
+            lbl_groupLiftOrder_control_17.Location = new Point(361, 67);
             lbl_groupLiftOrder_control_17.Name = "lbl_groupLiftOrder_control_17";
             lbl_groupLiftOrder_control_17.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_17.TabIndex = 50;
@@ -1215,7 +1193,7 @@
             lbl_groupLiftOrder_control_1.AutoSize = true;
             lbl_groupLiftOrder_control_1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_1.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_1.Location = new Point(6, 4);
+            lbl_groupLiftOrder_control_1.Location = new Point(6, 24);
             lbl_groupLiftOrder_control_1.Name = "lbl_groupLiftOrder_control_1";
             lbl_groupLiftOrder_control_1.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_1.TabIndex = 34;
@@ -1226,7 +1204,7 @@
             lbl_groupLiftOrder_control_16.AutoSize = true;
             lbl_groupLiftOrder_control_16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_16.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_16.Location = new Point(6, 319);
+            lbl_groupLiftOrder_control_16.Location = new Point(361, 46);
             lbl_groupLiftOrder_control_16.Name = "lbl_groupLiftOrder_control_16";
             lbl_groupLiftOrder_control_16.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_16.TabIndex = 49;
@@ -1237,7 +1215,7 @@
             lbl_groupLiftOrder_control_2.AutoSize = true;
             lbl_groupLiftOrder_control_2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_2.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_2.Location = new Point(6, 25);
+            lbl_groupLiftOrder_control_2.Location = new Point(6, 45);
             lbl_groupLiftOrder_control_2.Name = "lbl_groupLiftOrder_control_2";
             lbl_groupLiftOrder_control_2.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_2.TabIndex = 35;
@@ -1248,7 +1226,7 @@
             lbl_groupLiftOrder_control_15.AutoSize = true;
             lbl_groupLiftOrder_control_15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_15.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_15.Location = new Point(6, 298);
+            lbl_groupLiftOrder_control_15.Location = new Point(361, 25);
             lbl_groupLiftOrder_control_15.Name = "lbl_groupLiftOrder_control_15";
             lbl_groupLiftOrder_control_15.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_15.TabIndex = 48;
@@ -1259,7 +1237,7 @@
             lbl_groupLiftOrder_control_3.AutoSize = true;
             lbl_groupLiftOrder_control_3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_3.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_3.Location = new Point(6, 46);
+            lbl_groupLiftOrder_control_3.Location = new Point(6, 66);
             lbl_groupLiftOrder_control_3.Name = "lbl_groupLiftOrder_control_3";
             lbl_groupLiftOrder_control_3.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_3.TabIndex = 36;
@@ -1270,7 +1248,7 @@
             lbl_groupLiftOrder_control_14.AutoSize = true;
             lbl_groupLiftOrder_control_14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_14.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_14.Location = new Point(6, 277);
+            lbl_groupLiftOrder_control_14.Location = new Point(361, 4);
             lbl_groupLiftOrder_control_14.Name = "lbl_groupLiftOrder_control_14";
             lbl_groupLiftOrder_control_14.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_14.TabIndex = 47;
@@ -1281,7 +1259,7 @@
             lbl_groupLiftOrder_control_4.AutoSize = true;
             lbl_groupLiftOrder_control_4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_4.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_4.Location = new Point(6, 67);
+            lbl_groupLiftOrder_control_4.Location = new Point(6, 87);
             lbl_groupLiftOrder_control_4.Name = "lbl_groupLiftOrder_control_4";
             lbl_groupLiftOrder_control_4.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_4.TabIndex = 37;
@@ -1292,7 +1270,7 @@
             lbl_groupLiftOrder_control_13.AutoSize = true;
             lbl_groupLiftOrder_control_13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_13.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_13.Location = new Point(6, 256);
+            lbl_groupLiftOrder_control_13.Location = new Point(182, 129);
             lbl_groupLiftOrder_control_13.Name = "lbl_groupLiftOrder_control_13";
             lbl_groupLiftOrder_control_13.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_13.TabIndex = 46;
@@ -1303,7 +1281,7 @@
             lbl_groupLiftOrder_control_6.AutoSize = true;
             lbl_groupLiftOrder_control_6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_6.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_6.Location = new Point(6, 109);
+            lbl_groupLiftOrder_control_6.Location = new Point(6, 129);
             lbl_groupLiftOrder_control_6.Name = "lbl_groupLiftOrder_control_6";
             lbl_groupLiftOrder_control_6.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_6.TabIndex = 39;
@@ -1314,7 +1292,7 @@
             lbl_groupLiftOrder_control_12.AutoSize = true;
             lbl_groupLiftOrder_control_12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_12.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_12.Location = new Point(6, 235);
+            lbl_groupLiftOrder_control_12.Location = new Point(182, 108);
             lbl_groupLiftOrder_control_12.Name = "lbl_groupLiftOrder_control_12";
             lbl_groupLiftOrder_control_12.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_12.TabIndex = 45;
@@ -1325,7 +1303,7 @@
             lbl_groupLiftOrder_control_7.AutoSize = true;
             lbl_groupLiftOrder_control_7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_7.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_7.Location = new Point(6, 130);
+            lbl_groupLiftOrder_control_7.Location = new Point(182, 4);
             lbl_groupLiftOrder_control_7.Name = "lbl_groupLiftOrder_control_7";
             lbl_groupLiftOrder_control_7.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_7.TabIndex = 40;
@@ -1336,7 +1314,7 @@
             lbl_groupLiftOrder_control_11.AutoSize = true;
             lbl_groupLiftOrder_control_11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_11.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_11.Location = new Point(6, 214);
+            lbl_groupLiftOrder_control_11.Location = new Point(182, 87);
             lbl_groupLiftOrder_control_11.Name = "lbl_groupLiftOrder_control_11";
             lbl_groupLiftOrder_control_11.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_11.TabIndex = 44;
@@ -1347,7 +1325,7 @@
             lbl_groupLiftOrder_control_8.AutoSize = true;
             lbl_groupLiftOrder_control_8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_8.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_8.Location = new Point(6, 151);
+            lbl_groupLiftOrder_control_8.Location = new Point(182, 24);
             lbl_groupLiftOrder_control_8.Name = "lbl_groupLiftOrder_control_8";
             lbl_groupLiftOrder_control_8.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_8.TabIndex = 41;
@@ -1358,7 +1336,7 @@
             lbl_groupLiftOrder_control_10.AutoSize = true;
             lbl_groupLiftOrder_control_10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_10.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_10.Location = new Point(6, 193);
+            lbl_groupLiftOrder_control_10.Location = new Point(182, 66);
             lbl_groupLiftOrder_control_10.Name = "lbl_groupLiftOrder_control_10";
             lbl_groupLiftOrder_control_10.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_10.TabIndex = 43;
@@ -1369,7 +1347,7 @@
             lbl_groupLiftOrder_control_9.AutoSize = true;
             lbl_groupLiftOrder_control_9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_groupLiftOrder_control_9.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_groupLiftOrder_control_9.Location = new Point(6, 172);
+            lbl_groupLiftOrder_control_9.Location = new Point(182, 45);
             lbl_groupLiftOrder_control_9.Name = "lbl_groupLiftOrder_control_9";
             lbl_groupLiftOrder_control_9.Size = new Size(101, 21);
             lbl_groupLiftOrder_control_9.TabIndex = 42;
@@ -1380,7 +1358,7 @@
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label32.ForeColor = Color.FromArgb(187, 225, 250);
-            label32.Location = new Point(112, -1);
+            label32.Location = new Point(5, -5);
             label32.Name = "label32";
             label32.Size = new Size(96, 30);
             label32.TabIndex = 10;
@@ -1396,6 +1374,16 @@
             panel13.Name = "panel13";
             panel13.Size = new Size(574, 168);
             panel13.TabIndex = 29;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(162, 179);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 56;
+            pictureBox1.TabStop = false;
             // 
             // pictureBox4
             // 
@@ -2557,10 +2545,10 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             panel13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
@@ -2681,7 +2669,6 @@
         private Panel panel9;
         private System.Windows.Forms.Timer timerRekordAnimering;
         private Panel panel11;
-        private Label label33;
         private Label label32;
         private Label label31;
         private Button btn_rekord;

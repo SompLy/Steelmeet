@@ -3,9 +3,9 @@ Powermeet TODO
 PRIO NR 1 !!!?! : 
 totalen är fucked up mannen, den uppdaterar knas och den stämmer knappt, visa GL poöngen i datagridviewn
 man kan inte få alla lyft consistent
-niVisa höjder på lyftare infopanel
 Om man är i en koefficient klass så ska man rankas efter poäng och inte efter total
 groupliftingorder, visa nästa grupps ingångar 
+✅niVisa höjder på lyftare infopanel
 ✅när man byter grupp så ska alla listor med lifting odrer o de rensas ock allokera nya
 ✅Exportering av invägning trasig
 ✅LiftingOderList2New.add vart ska den hamna??? när lista 1 är tom så ta nästa runda liksom
