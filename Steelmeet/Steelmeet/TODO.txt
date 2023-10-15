@@ -1,10 +1,13 @@
 Powermeet TODO
 
 PRIO NR 1 !!!?! : 
-totalen är fucked up mannen, den uppdaterar knas och den stämmer knappt, visa GL poöngen i datagridviewn
+visa GL poöngen i datagridviewn
+totalen är fucked up mannen, den uppdaterar knas och den stämmer knappt
 man kan inte få alla lyft consistent
 Om man är i en koefficient klass så ska man rankas efter poäng och inte efter total
 groupliftingorder, visa nästa grupps ingångar 
+Rekord blinka saken
+✅Markera den lyftaren som när nästa i ordningen så man inte behäver klicka runt hela tiden
 ✅niVisa höjder på lyftare infopanel
 ✅när man byter grupp så ska alla listor med lifting odrer o de rensas ock allokera nya
 ✅Exportering av invägning trasig
@@ -78,4 +81,3 @@ visa GL poöngen
 Resultat :
 Visa bästa lyftare på poäng på projektor
 Gör en resulat lista som man kan exportera till .xlsx i ett trevligt format som också memorerar om det var ett godkänd rekord försök
-g

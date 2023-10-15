@@ -96,6 +96,20 @@ namespace Powermeet2
 
         List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
         List<Lifter> GroupLiftingOrderList = new List<Lifter>(); //För att sortera viktera
+        enum eGroupLiftingOrderState
+        {
+            group1Squat = 0,
+            group1Bench = 1,
+            group1Deadlift = 2,
+
+            group2Squat = 3,
+            group2Bench = 4,
+            group2Deadlift = 5,
+
+            group3Squat = 6,
+            group3Bench = 7,
+            group3Deadlift = 8
+        }
 
         MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
 
@@ -142,7 +156,6 @@ namespace Powermeet2
                 this.d1 = float.Parse(d1);
                 CurrentLift = 11;       //Väljer vilken column som första böjen börjar på
                                         //Du måsta ändra en sak i tabcontrol långt ner
-                string emptystring = " ";
                 LiftRecord = new List<bool>();
                 sbdList = new List<float>() { this.s1, s2, s3, this.b1, b2, b3, this.d1, d2, d3 };
             }
@@ -194,6 +207,7 @@ namespace Powermeet2
             public float bestD { get; set; }
             public List<bool> LiftRecord { get; set; } //en lista med true eller false beroende på om lyftaren fick godkänt eller inte
             public List<float> sbdList { get; set; }
+            public int index { get; set; }
 
         }
         public class LifterComparer : IComparer<Lifter>
@@ -723,7 +737,7 @@ namespace Powermeet2
 
                 //Lägger till lyftare adderar lyftare ny lyftare
                 LifterID.Add(o, new Lifter(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13], list[14], list[15]));
-
+                LifterID[LifterID.Count - 1].index = LifterID.Count - 1;
                 SetCategoryEnum(list[4]);
 
                 list.Clear();
@@ -1022,9 +1036,8 @@ namespace Powermeet2
                     //Informationsruta 1
                     if (LiftingOrderListNew.Count > 0)
                     {
-                        PlateCalculator(LiftingOrderListNew[0].sbdList[LiftingOrderListNew[0].CurrentLift - firstLftdatagridviewColumn], plateInfo);
                         //totalen sätts i goodlift
-
+                        PlateCalculator(LiftingOrderListNew[0].sbdList[LiftingOrderListNew[0].CurrentLift - 11], plateInfo);
                         lbl_Name.Text = LiftingOrderListNew[0].name;
                         lbl_Placement.Text = LiftingOrderListNew[0].place.ToString();
                         lbl_Infällt.Text = LiftingOrderListNew[0].tilted.ToString();
@@ -1048,8 +1061,8 @@ namespace Powermeet2
                         //Informationsruta 2
                         if (LiftingOrderListNew.Count > 1)
                         {
+                            //PlateCalculator(LiftingOrderListNew[1].sbdList[LiftingOrderListNew[1].CurrentLift - 11], plateInfo);
                             lbl_Name2.Text = LiftingOrderListNew[1].name;
-                            //PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LiftingOrderListNew[1].CurrentLift].Value.ToString()), plateInfo);
                             lbl_Placement2.Text = LiftingOrderListNew[1].place.ToString();
                             lbl_Infällt2.Text = LiftingOrderListNew[1].tilted.ToString();
                             lbl_Avlyft2.Text = LiftingOrderListNew[1].liftoff.ToString();
@@ -1101,7 +1114,6 @@ namespace Powermeet2
 
                     }
                     LiftOrderUpdate();//Updaterar lyftar ordning
-                    GroupLiftOrderUpdate();//Updaterar nästa grupps lyftar ordning
 
                     if (float.Parse(s) <= float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString()) &&
                         SelectedColumnIndex < 14)
@@ -1280,7 +1292,7 @@ namespace Powermeet2
             LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
 
-            if (SelectedColumnIndex < 19)
+            if (SelectedColumnIndex < 18)
             {
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Style.BackColor = Color.FromArgb(255, 127, 80);
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1];
@@ -1295,8 +1307,9 @@ namespace Powermeet2
 
             if (SelectedColumnIndex < 20)
             {
-                LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(false); //Registrerar ett godkänt lyft för lyftaren
-                LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] = float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
+                LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(false); //Registrerar ett underkänt lyft för lyftaren
+                LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
 
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
             }
@@ -1568,19 +1581,19 @@ namespace Powermeet2
         public void PlateCalculator(float targetWeight, PlateInfo plateInfo)
         {
 
-
-
             targetWeight = (targetWeight / 2);
-            float weightSum = 12.5f; //Stång (20kg) + lås (5kg) delas på två eftersom target weight också är delat på två
-            //usedPlatesList.Clear();
-            //weightSum = 0;
+            float weightSum = 0; 
+            usedPlatesList.Clear();
+            weightSum = 12.5f;  //Stång (20kg) + lås (5kg) delas på två eftersom target weight också är delat på två
 
             usedPlatesList.AddRange(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
 
             totalPlatesList.AddRange(new int[] { plateInfo.plate50, plateInfo.plate25, plateInfo.plate20, plateInfo.plate15, plateInfo.plate10, plateInfo.plate5,
             plateInfo.plate25small, plateInfo.plate125, plateInfo.plate05, plateInfo.plate025,});
-
-            weightsList.AddRange(new float[] { 50, 25, 20, 15, 10, 5, 2.5f, 1.25f, 0.5f, 0.25f });
+            if (weightsList.Count == 0)
+            {
+                weightsList.AddRange(new float[] { 50, 25, 20, 15, 10, 5, 2.5f, 1.25f, 0.5f, 0.25f });
+            }
             if (targetWeight == 0)
             {
                 return;
@@ -1834,9 +1847,8 @@ namespace Powermeet2
 
             }
         }
-        public void GroupLiftOrderUpdate() //Updaterar nästa grupps ingångar
+        public void GroupCountUpdater() 
         {
-            // Group updater Group updater Group updater
             group1Count = 0;
             group2Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
             group3Count = 0;
@@ -1861,8 +1873,10 @@ namespace Powermeet2
                     group3Count += 1;
                 }
             }
-            // Group updater Group updater Group updater 
-
+        }
+        public void GroupLiftOrderUpdate() //Updaterar nästa grupps ingångar
+        {
+            
             GroupLiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
                                                         lbl_groupLiftOrder_control_5, lbl_groupLiftOrder_control_6, lbl_groupLiftOrder_control_7, lbl_groupLiftOrder_control_8,
                                                         lbl_groupLiftOrder_control_9, lbl_groupLiftOrder_control_10, lbl_groupLiftOrder_control_11, lbl_groupLiftOrder_control_12,
@@ -1872,18 +1886,99 @@ namespace Powermeet2
             {
                 GroupLiftingOrderListLabels[i].Text = "";
             }
+            // Group updater Group updater Group updater 
+
             //Fyller listan, om den aktiva gruppen är grupp 1
-            if (groupIndexCurrent == 0)
+            eGroupLiftingOrderState groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
+
+            if (groupIndexCount == 2) // Om det finns två grupper
             {
-                GroupLiftingOrderList.Clear();
-                for (int i = group1Count; i < group2Count + group1Count; i++)
+                if (groupIndexCurrent == 0) //Om den aktiva gruppen är grupp 1
                 {
-                    GroupLiftingOrderList.Add(LifterID[i]);
+                    if (LifterID[0].CurrentLift - 11 > 3)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
+                    }
+                    else if (LifterID[0].CurrentLift - 11 > 6)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group2Bench;
+                    }
+                    else if (LifterID[0].CurrentLift - 11 > 9)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group2Deadlift;
+                    }
+                }
+                else if (groupIndexCurrent == 1) //Om den aktiva gruppen är grupp 2
+                {
+                    if (LifterID[0].CurrentLift - 11 > 3)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group1Squat; //Kommer aldrig att hända
+                    }
+                    else if (LifterID[0].CurrentLift - 11 > 6)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
+                    }
+                    else if (LifterID[0].CurrentLift - 11 > 9)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group1Deadlift;
+                    }
                 }
             }
-            for (int i = 0; i < GroupLiftingOrderList.Count; i++)
+            else if (groupIndexCount == 3)// Om det finns tre grupper
             {
-                GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].sbdList[GroupLiftingOrderList[i].CurrentLift - 11] + " " + GroupLiftingOrderList[i].name;
+                //Inte nödvändigt att implementera för DM
+            }
+
+            int loopLeft = 0;
+            int loopMiddle = 0;
+            int textCurrentLift = 0;
+
+            switch (groupLiftingOrderState)
+            {
+                case eGroupLiftingOrderState.group1Squat:
+                    loopLeft = 0;
+                    loopMiddle = group1Count;
+                    textCurrentLift = 0;
+                    break;
+                case eGroupLiftingOrderState.group1Bench:
+                    loopLeft = 0;
+                    loopMiddle = group1Count;
+                    textCurrentLift = 4;
+                    break;
+                case eGroupLiftingOrderState.group1Deadlift:
+                    loopLeft = 0;
+                    loopMiddle = group1Count;
+                    textCurrentLift = 7;
+                    break;
+                case eGroupLiftingOrderState.group2Squat:
+                    loopLeft = group1Count;
+                    loopMiddle = group1Count + group2Count;
+                    textCurrentLift = 0;
+                    break;
+                case eGroupLiftingOrderState.group2Bench:
+                    loopLeft = group1Count;
+                    loopMiddle = group1Count + group2Count;
+                    textCurrentLift = 4;
+                    break;
+                case eGroupLiftingOrderState.group2Deadlift:
+                    loopLeft = group1Count;
+                    loopMiddle = group1Count + group2Count;
+                    textCurrentLift = 7;
+                    break;
+                case eGroupLiftingOrderState.group3Squat:
+                    break;
+                case eGroupLiftingOrderState.group3Bench:
+                    break;
+                case eGroupLiftingOrderState.group3Deadlift:
+                    break;
+                default:
+                    break;
+            }
+
+            GroupLiftingOrderList.Clear();
+            for (int i = loopLeft; i < loopMiddle; i++)
+            {
+                GroupLiftingOrderList.Add(LifterID[i]);
             }
 
             // Create an instance of the custom comparer.
@@ -1891,6 +1986,11 @@ namespace Powermeet2
 
             // Use the custom comparer to sort LiftingOrderListNew.
             GroupLiftingOrderList = GroupLiftingOrderList.OrderBy(item => item, comparer).ToList();
+
+            for (int i = 0; i < GroupLiftingOrderList.Count; i++)
+            {
+                GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].sbdList[textCurrentLift] + " " + GroupLiftingOrderList[i].name;
+            }
 
         } //GroupLiftingOrder
         public void BestSBDUpdate()
@@ -1947,37 +2047,6 @@ namespace Powermeet2
             }
         }
 
-        //CODE BELOW WORKS GOOD BUT DOES NOT CONSIDER BODYWEIGHT
-        //public void RankUpdate()
-        //{
-        //    var groupedLifters = LifterID.Values.GroupBy(l => new { l.weightClass, l.CategoryEnum });
-
-        //    // Iterate through each group
-        //    foreach (var group in groupedLifters)
-        //    {
-        //        // Sort the lifters within the group based on their total in descending order
-        //        var sortedLifters = group.OrderByDescending(l => l.total).ToList();
-
-        //        for (int i = 0; i < sortedLifters.Count; i++)
-        //        {
-        //            var lifterToUpdate = LifterID.Values.FirstOrDefault(l => l.weightClass == group.Key.weightClass && l.CategoryEnum == group.Key.CategoryEnum && l.name == sortedLifters[i].name);
-
-        //            if (lifterToUpdate != null)
-        //            {
-        //                lifterToUpdate.place = i + 1;
-        //            }
-        //        }
-        //    }
-
-        //    // Update the DataGridView
-        //    for (int i = 0; i < dataGridViewControlPanel.Rows.Count; i++)
-        //    {
-        //        dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
-        //    }
-        //}
-
-
-
         private void TimerTickRekordAnimering(object sender, EventArgs e)
         {
             if (IsRecord)
@@ -2030,8 +2099,9 @@ namespace Powermeet2
         private void btn_klovad_Click(object sender, EventArgs e)
         {
             TimerController(0);
+                        
+            dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[1];
         }
-
         private void btn_godkänt_Click(object sender, EventArgs e)
         {
             goodLift();
@@ -2067,10 +2137,12 @@ namespace Powermeet2
         {
             groupIndexCurrent = combo_Aktivgrupp.SelectedIndex;
 
+            GroupCountUpdater();
             RankUpdate();
             LiftingOrderListNew.Clear();
             LiftOrderUpdate();//Updaterar lyftar ordning
             GroupLiftOrderUpdate();//Updaterar nästa grupps lyftar ordning
+
             switch (combo_Aktivgrupp.SelectedIndex)
             {
                 case 0:
@@ -2135,7 +2207,7 @@ namespace Powermeet2
                     {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
-
+                    dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index].Cells[1];
 
                     break;
                 case 1:
@@ -2262,6 +2334,8 @@ namespace Powermeet2
                     {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
+
+
                     break;
                 default:
                     break;
