@@ -222,6 +222,7 @@
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
+            button2 = new Button();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -311,7 +312,6 @@
             label27.Size = new Size(314, 27);
             label27.TabIndex = 13;
             label27.Text = "Information - Invägningfönster";
-            label27.Click += label27_Click;
             // 
             // label28
             // 
@@ -1128,7 +1128,7 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
             panel11.Controls.Add(label32);
-            panel11.Location = new Point(453, 566);
+            panel11.Location = new Point(453, 584);
             panel11.Name = "panel11";
             panel11.Size = new Size(667, 477);
             panel11.TabIndex = 11;
@@ -1415,7 +1415,7 @@
             panel12.Controls.Add(lbl_Name2);
             panel12.Location = new Point(453, 6);
             panel12.Name = "panel12";
-            panel12.Size = new Size(436, 147);
+            panel12.Size = new Size(436, 148);
             panel12.TabIndex = 12;
             panel12.Paint += infopanel_Controlpanel_Paint2;
             // 
@@ -1524,12 +1524,11 @@
             lbl_Placement2.AutoSize = true;
             lbl_Placement2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Placement2.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_Placement2.Location = new Point(270, 3);
+            lbl_Placement2.Location = new Point(272, 3);
             lbl_Placement2.Name = "lbl_Placement2";
             lbl_Placement2.Size = new Size(41, 30);
             lbl_Placement2.TabIndex = 17;
             lbl_Placement2.Text = "\"#\"";
-            lbl_Placement2.Click += lbl_Placement2_Click;
             // 
             // lbl_Lot_control2
             // 
@@ -2008,6 +2007,7 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(27, 38, 44);
+            panel6.Controls.Add(button2);
             panel6.Controls.Add(btn_Gåom);
             panel6.Controls.Add(btn_ångralyft);
             panel6.Controls.Add(btn_godkänt);
@@ -2059,9 +2059,9 @@
             btn_klovad.BackColor = Color.FromArgb(15, 76, 117);
             btn_klovad.FlatStyle = FlatStyle.Popup;
             btn_klovad.ForeColor = Color.FromArgb(187, 225, 250);
-            btn_klovad.Location = new Point(10, 3);
+            btn_klovad.Location = new Point(10, 2);
             btn_klovad.Name = "btn_klovad";
-            btn_klovad.Size = new Size(126, 37);
+            btn_klovad.Size = new Size(126, 20);
             btn_klovad.TabIndex = 21;
             btn_klovad.Text = "Stången är klovad";
             btn_klovad.UseVisualStyleBackColor = false;
@@ -2095,9 +2095,9 @@
             panel5.Controls.Add(lbl_timerLapp);
             panel5.Controls.Add(lbl_timerLyft);
             panel5.ForeColor = SystemColors.WindowText;
-            panel5.Location = new Point(895, 7);
+            panel5.Location = new Point(895, 6);
             panel5.Name = "panel5";
-            panel5.Size = new Size(456, 147);
+            panel5.Size = new Size(456, 148);
             panel5.TabIndex = 3;
             // 
             // btn_60min
@@ -2237,6 +2237,7 @@
             lbl_timerLapp.Size = new Size(110, 50);
             lbl_timerLapp.TabIndex = 1;
             lbl_timerLapp.Text = "00:00";
+            lbl_timerLapp.Click += lbl_timerLapp_Click;
             // 
             // lbl_timerLyft
             // 
@@ -2249,6 +2250,7 @@
             lbl_timerLyft.Size = new Size(191, 86);
             lbl_timerLyft.TabIndex = 0;
             lbl_timerLyft.Text = "00:00";
+            lbl_timerLyft.Click += lbl_timerLyft_Click;
             // 
             // infopanel_Controlpanel
             // 
@@ -2346,7 +2348,7 @@
             lbl_Placement.AutoSize = true;
             lbl_Placement.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Placement.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_Placement.Location = new Point(269, 3);
+            lbl_Placement.Location = new Point(270, 3);
             lbl_Placement.Name = "lbl_Placement";
             lbl_Placement.Size = new Size(41, 30);
             lbl_Placement.TabIndex = 12;
@@ -2516,6 +2518,18 @@
             // 
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(15, 76, 117);
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.ForeColor = Color.FromArgb(187, 225, 250);
+            button2.Location = new Point(10, 23);
+            button2.Name = "button2";
+            button2.Size = new Size(126, 20);
+            button2.TabIndex = 42;
+            button2.Text = "Stången är klovad";
+            button2.UseVisualStyleBackColor = false;
             // 
             // SMKontrollpanel
             // 
@@ -2754,5 +2768,6 @@
         private Label label45;
         private Panel panel13;
         private PictureBox pictureBox1;
+        private Button button2;
     }
 }
