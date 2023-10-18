@@ -1,13 +1,16 @@
 Powermeet TODO
 
 PRIO NR 1 !!!?! : 
+
+!!!!om det sista lyftets bedömmning ska ändra så blir det errro rad 1072
+
+
 inspektrea så att ångra lyft fungerar som förväntat
 inspektrea så att gå om fungerar som förväntat
-visa GL poöngen i datagridviewn
-totalen är fucked up mannen, den uppdaterar knas och den stämmer knappt (utkommenterad)
 Om man är i en koefficient klass så ska man rankas efter poäng och inte efter total
 Rekord blinka saken
-Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 
+✅totalen är fucked up mannen, den uppdaterar knas och den stämmer knappt (utkommenterad)
+✅visa GL poöngen i datagridviewn
 ✅groupliftingorder, visa nästa grupps ingångar 
 ✅man kan inte få alla lyft consistent
 ✅Markera den lyftaren som när nästa i ordningen så man inte behäver klicka runt hela tiden
@@ -48,6 +51,8 @@ Invägning :
 ✅Automatisk klass string korrigering
 
 Kontrollpanel / Tävlingsfönster :
+Det finns inga poäng i djulen men det finns på DM
+Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 
 Byta färg på tabcontrol1 "Changetabcolor"
 1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
