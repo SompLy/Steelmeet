@@ -3,6 +3,7 @@ using SpreadsheetLight;
 using SteelMeet;
 using System.Data;
 using System.Globalization;
+using System.Web;
 
 namespace Powermeet2
 {
@@ -68,7 +69,6 @@ namespace Powermeet2
 
         public int SelectedRowIndex;
         public int SelectedColumnIndex;
-        int platesCount = 0;
         int secondsLapp;
         int minutesLapp;
         int secondsLyft;
@@ -86,6 +86,9 @@ namespace Powermeet2
         public List<int> usedPlatesList = new List<int>();     //Hur många plates calculatorn har använt.
         List<int> totalPlatesList = new List<int>();    //Antalet paltes som användaren anvivit
         List<float> weightsList = new List<float>();    //Vikter
+        public List<int> usedPlatesList2 = new List<int>();     //Hur många plates calculatorn har använt.
+        List<int> totalPlatesList2 = new List<int>();    //Antalet paltes som användaren anvivit
+        List<float> weightsList2 = new List<float>();    //Vikter
 
         List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
 
@@ -928,20 +931,11 @@ namespace Powermeet2
         //Tävling
         //Tävling
         //Tävling
-        public void infopanel_Controlpanel_Paint(object sender, PaintEventArgs e)
+        private void DrawPlates(Graphics g, List<int> usedPlatesList, List<Color> plateColorList, List<int> paintedPlatesList)
         {
-
             int x1 = 10, y1 = 40, x2 = 10, y2 = 100;
             Pen p = new Pen(Color.Red, 10);
             int offset = 12;
-            Graphics g = e.Graphics;
-
-            List<Color> plateColorList = new List<Color>();
-            plateColorList.AddRange(new Color[] {plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
-            plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025});
-
-            List<int> paintedPlatesList = new List<int>();
-            paintedPlatesList.AddRange(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
 
             for (int i = 0; i < 10;)
             {
@@ -955,37 +949,39 @@ namespace Powermeet2
                 }
                 else { i++; }
             }
+
             p.Color = Color.DarkGray;
             g.DrawLine(p, x1 + offset, 60, x2 + offset, 80);
         }
-        private void infopanel_Controlpanel_Paint2(object sender, PaintEventArgs e)
+
+        public void infopanel_Controlpanel_Paint(object sender, PaintEventArgs e)
         {
-            int x1 = 10, y1 = 40, x2 = 10, y2 = 100;
-            Pen p = new Pen(Color.Red, 10);
-            int offset = 12;
             Graphics g = e.Graphics;
 
-            List<Color> plateColorList = new List<Color>();
-            plateColorList.AddRange(new Color[] {plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
-            plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025});
+            List<Color> plateColorList = new List<Color>
+    {
+        plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
+        plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025
+    };
 
-            List<int> paintedPlatesList = new List<int>();
-            paintedPlatesList.AddRange(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+            List<int> paintedPlatesList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-            for (int i = 0; i < 10;)
-            {
-                if (Enumerable.Any(usedPlatesList) && usedPlatesList[i] > paintedPlatesList[i])
-                {
-                    p.Color = plateColorList[i];
-                    g.DrawLine(p, x1 + offset, y1, x2 + offset, y2);
-                    offset += 12;
+            DrawPlates(g, usedPlatesList, plateColorList, paintedPlatesList);
+        }
 
-                    paintedPlatesList[i]++;
-                }
-                else { i++; }
-            }
-            p.Color = Color.DarkGray;
-            g.DrawLine(p, x1 + offset, 60, x2 + offset, 80);
+        private void infopanel_Controlpanel_Paint2(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            List<Color> plateColorList = new List<Color>
+    {
+        plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
+        plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025
+    };
+
+            List<int> paintedPlatesList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            DrawPlates(g, usedPlatesList2, plateColorList, paintedPlatesList);
         }
 
 
@@ -1041,7 +1037,7 @@ namespace Powermeet2
                         lbl_Avlyft.Text = LiftingOrderListNew[0].liftoff.ToString();
                         lbl_Grupp_control.Text = LiftingOrderListNew[0].groupNumber.ToString();
                         lbl_Lot_control.Text = LiftingOrderListNew[0].lotNumber.ToString();
-                        lbl_GLPoints_control.Text = GLPointsCalculator(LiftingOrderListNew[0]).ToString();
+                        lbl_GLPoints_control.Text = GLPointsCalculator(LiftingOrderListNew[0]).ToString("0.00");
 
                         if (LiftingOrderListNew[0].CurrentLift < 14)
                         {
@@ -1055,17 +1051,19 @@ namespace Powermeet2
                         {
                             lbl_Height.Text = " Total : " + LiftingOrderListNew[0].total.ToString();
                         }
+                        SuggestionBtnUpdate();
+
                         //Informationsruta 2
                         if (LiftingOrderListNew.Count > 1)
                         {
-                            //PlateCalculator(LiftingOrderListNew[1].sbdList[LiftingOrderListNew[1].CurrentLift - 11], plateInfo);
+                            PlateCalculator2(LiftingOrderListNew[1].sbdList[LiftingOrderListNew[1].CurrentLift - 11], plateInfo);
                             lbl_Name2.Text = LiftingOrderListNew[1].name;
                             lbl_Placement2.Text = LiftingOrderListNew[1].place.ToString();
                             lbl_Infällt2.Text = LiftingOrderListNew[1].tilted.ToString();
                             lbl_Avlyft2.Text = LiftingOrderListNew[1].liftoff.ToString();
                             lbl_Grupp_control2.Text = LiftingOrderListNew[1].groupNumber.ToString();
                             lbl_Lot_control2.Text = LiftingOrderListNew[1].lotNumber.ToString();
-                            lbl_GLPoints_control2.Text = GLPointsCalculator(LiftingOrderListNew[1]).ToString();
+                            lbl_GLPoints_control2.Text = GLPointsCalculator(LiftingOrderListNew[1]).ToString("0.00");
 
                             if (LiftingOrderListNew[1].CurrentLift < 14)
                             {
@@ -1201,29 +1199,31 @@ namespace Powermeet2
         }
         public void goodLift()
         {
-            //Updaterar lyftar ordning
-            LiftOrderUpdate();
+            if (LiftingOrderListNew.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
+            {
+                //Updaterar lyftar ordning
+                LiftOrderUpdate();
 
-            BestSBDUpdate();
-            //Sätter total och GL points
-            LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
-            LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderListNew[0].pointsGL.ToString("0.00");
-            //BestS,b,d sätts BestSBDUpdate(); för att den ska uppdatera när man ångrar lyft också
+                BestSBDUpdate();
+                //Sätter total och GL points
+                LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
+                LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderListNew[0].pointsGL.ToString("0.00");
 
-            TimerController(8); //Startar lapp timern på 1 minut
-            TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
+                TimerController(8); //Startar lapp timern på 1 minut
+                TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
 
-            //Uppdaterar placering
-            RankUpdate();
+                //Uppdaterar placering
+                RankUpdate();
+            }
             //Tar bort rätt lyftare
             if (LiftingOrderListNew.Count >= 0)
             {
                 // Medelande om lyftaren redan lyft funkar inte ?!?!?!?!?
                 if (!LiftingOrderListNew.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
                 {
-                    MessageBox.Show("Denna lyftare har redan lyft denna omgång");
+                    MessageBox.Show("Denna lyftare har redan lyft denna omgång", "SteelMeet varning", MessageBoxButtons.OK, MessageBoxIcon.None);
                     return;
                 }
                 for (int i = 0; i < LiftingOrderListNew.Count; i++)
@@ -1258,7 +1258,7 @@ namespace Powermeet2
                 LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
                     float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
 
-                    LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
+                LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
             }
         }
         public void badLift()
@@ -1267,6 +1267,13 @@ namespace Powermeet2
 
             //Updaterar lyftar ordning
             LiftOrderUpdate();
+
+            BestSBDUpdate();
+            //Sätter total och GL points
+            LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
+            LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderListNew[0].pointsGL.ToString("0.00");
 
             TimerController(8); //Startar lapp timern på 1 minut
             TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1313,7 +1320,7 @@ namespace Powermeet2
                 LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
                     float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
 
-                    LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
+                LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
             }
         }
         public void undoLift()
@@ -1351,7 +1358,6 @@ namespace Powermeet2
         {
             undoLift();
             LiftOrderUpdate();//Updaterar lyftar ordning
-            LiftingOrderListNew.Add(LifterID[SelectedRowIndex + groupRowFixer]);
         }
 
 
@@ -1621,7 +1627,6 @@ namespace Powermeet2
                 {
                     weightSum += weightsList[i];
                     usedPlatesList[i]++;
-                    platesCount++;
                     infopanel_Controlpanel.Invalidate();
                 }
                 else { i++; }
@@ -1650,6 +1655,45 @@ namespace Powermeet2
                 //     + "\n 5 : " + usedPlatesList[5] + "| 2,5 : " + usedPlatesList[6] + "| 125 : " + usedPlatesList[7]
                 //     + "| 0,5 : " + usedPlatesList[8] + "| 0,25 : " + usedPlatesList[9];
 
+            }
+            else { MessageBox.Show("Något blev fel med viktuträkning"); }
+
+        }
+        public void PlateCalculator2(float targetWeight, PlateInfo plateInfo)
+        {
+
+            targetWeight = (targetWeight / 2);
+            float weightSum = 0;
+            usedPlatesList2.Clear();
+            weightSum = 12.5f;  //Stång (20kg) + lås (5kg) delas på två eftersom target weight också är delat på två
+
+            usedPlatesList2.AddRange(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+
+            totalPlatesList2.AddRange(new int[] { plateInfo.plate50, plateInfo.plate25, plateInfo.plate20, plateInfo.plate15, plateInfo.plate10, plateInfo.plate5,
+            plateInfo.plate25small, plateInfo.plate125, plateInfo.plate05, plateInfo.plate025,});
+            if (weightsList2.Count == 0)
+            {
+                weightsList2.AddRange(new float[] { 50, 25, 20, 15, 10, 5, 2.5f, 1.25f, 0.5f, 0.25f });
+            }
+            if (targetWeight == 0)
+            {
+                return;
+            }
+
+            for (int i = 0; weightSum != targetWeight;)
+            {
+                if (weightSum + weightsList2[i] <= targetWeight && totalPlatesList2[i] > usedPlatesList2[i])
+                {
+                    weightSum += weightsList2[i];
+                    usedPlatesList2[i]++;
+                    infopanel_Controlpanel2.Invalidate();
+                }
+                else { i++; }
+            }
+
+            if (weightSum == targetWeight) //Tar totala summan och kollar om det är samma som målsumman
+            {
+                lbl_currentWeight2.Text = (targetWeight * 2).ToString() + " KG";
             }
             else { MessageBox.Show("Något blev fel med viktuträkning"); }
 
@@ -1865,13 +1909,15 @@ namespace Powermeet2
             LiftingOrderListNew = LiftingOrderListNew.OrderBy(item => item, comparer).ToList();
 
             //Om första elementet i listan är klar med sista marken så ska inte man visa deras nästa lyft eftersom det inte finns något mer att lyffta lol
-            if (LiftingOrderListNew[0].CurrentLift < 20)
+
+            for (int i = 0; i < LiftingOrderListNew.Count; i++)
             {
-                for (int i = 0; i < LiftingOrderListNew.Count; i++)
+                if (LiftingOrderListNew[i].CurrentLift < 20)
                 {
                     LiftingOrderListLabels[i].Text = LiftingOrderListNew[i].sbdList[LiftingOrderListNew[i].CurrentLift - 11] + " " + LiftingOrderListNew[i].name;
                 }
             }
+
 
         }
         public void GroupCountUpdater()
@@ -1900,7 +1946,7 @@ namespace Powermeet2
                     group3Count += 1;
                 }
             }
-            
+
         }
         public void GroupLiftOrderUpdate() //Updaterar nästa grupps ingångar
         {
@@ -1960,6 +2006,7 @@ namespace Powermeet2
             int loopLeft = 0;
             int loopMiddle = 0;
             int textCurrentLift = 0;
+            string lblText = "";
 
             switch (groupLiftingOrderState)
             {
@@ -1967,31 +2014,37 @@ namespace Powermeet2
                     loopLeft = 0;
                     loopMiddle = group1Count;
                     textCurrentLift = 0;
+                    lblText = "Ingångar Grupp 1 Böj";
                     break;
                 case eGroupLiftingOrderState.group1Bench:
                     loopLeft = 0;
                     loopMiddle = group1Count;
                     textCurrentLift = 3;
+                    lblText = "Ingångar Grupp 1 Bänk";
                     break;
                 case eGroupLiftingOrderState.group1Deadlift:
                     loopLeft = 0;
                     loopMiddle = group1Count;
                     textCurrentLift = 6;
+                    lblText = "Ingångar Grupp 1 Mark";
                     break;
                 case eGroupLiftingOrderState.group2Squat:
                     loopLeft = group1Count;
                     loopMiddle = group1Count + group2Count;
                     textCurrentLift = 0;
+                    lblText = "Ingångar Grupp 2 Böj";
                     break;
                 case eGroupLiftingOrderState.group2Bench:
                     loopLeft = group1Count;
                     loopMiddle = group1Count + group2Count;
                     textCurrentLift = 3;
+                    lblText = "Ingångar Grupp 2 Bänk";
                     break;
                 case eGroupLiftingOrderState.group2Deadlift:
                     loopLeft = group1Count;
                     loopMiddle = group1Count + group2Count;
                     textCurrentLift = 6;
+                    lblText = "Ingångar Grupp 2 Mark";
                     break;
                 case eGroupLiftingOrderState.group3Squat:
                     break;
@@ -2015,6 +2068,8 @@ namespace Powermeet2
             // Use the custom comparer to sort LiftingOrderListNew.
             GroupLiftingOrderList = GroupLiftingOrderList.OrderBy(item => item, comparer).ToList();
 
+            //Skriv ut alla lyftare och enum för vad det är som visas
+            lbl_OpeningLift.Text = lblText;
             for (int i = 0; i < GroupLiftingOrderList.Count; i++)
             {
                 GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].sbdList[textCurrentLift] + " " + GroupLiftingOrderList[i].name;
@@ -2043,12 +2098,12 @@ namespace Powermeet2
                         float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[18].Value.ToString()),
                         float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[19].Value.ToString()));
                 }
-                else 
+                else
                 {
                     LifterID[SelectedRowIndex + groupRowFixer].bestD = 0;
                 }
             }
-            else 
+            else
             {
                 LifterID[SelectedRowIndex + groupRowFixer].bestB = 0;
             }
@@ -2056,12 +2111,21 @@ namespace Powermeet2
         public void RankUpdate()
         {
             var groupedLifters = LifterID.Values.GroupBy(l => new { l.weightClass, l.CategoryEnum });
+            List<Lifter> sortedLifters;
+            string[] koeffWeightClasses = { "koeffdk", "koeffdu", "koeffhk", "koeffhu" };
 
             // Iterate through each group
             foreach (var group in groupedLifters)
             {
-                // Sort the lifters within the group based on their total in descending order
-                var sortedLifters = group.OrderByDescending(l => l.total).ThenBy(l => l.bodyWeight).ToList();
+                // Sort the lifters within the group based on their total then by bodyweight in descending order
+                if (koeffWeightClasses.Contains(group.Key.weightClass))
+                {
+                    sortedLifters = group.OrderByDescending(l => l.pointsGL).ToList(); //Tror jag har fixat för koeff klasserna nu bre
+                }
+                else
+                {
+                    sortedLifters = group.OrderByDescending(l => l.total).ThenBy(l => l.bodyWeight).ToList();
+                }
 
                 for (int i = 0; i < sortedLifters.Count; i++)
                 {
@@ -2078,6 +2142,23 @@ namespace Powermeet2
             for (int i = 0; i < dataGridViewControlPanel.Rows.Count; i++)
             {
                 dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
+            }
+        }
+        public void SuggestionBtnUpdate()
+        {
+            if (dataGridViewControlPanel.Rows.Count > 1)
+            {
+                //Suggestionruta 
+                lbl_suggestedWeight25.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 2.5f).ToString();
+                lbl_suggestedWeight5.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 5f).ToString();
+                lbl_suggestedWeight75.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 7.5f).ToString();
+                lbl_suggestedWeight10.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 10f).ToString();
+                lbl_suggestedWeight125.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 12.5f).ToString();
+                lbl_suggestedWeight15.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 15f).ToString();
+                lbl_suggestedWeight20.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 20f).ToString();
+                lbl_suggestedWeight25Minus.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 2.5f).ToString();
+                lbl_suggestedWeight5Minus.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 5f).ToString();
+                lbl_suggestedWeight75Minus.Text = (float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 7.5f).ToString();
             }
         }
 
@@ -2186,6 +2267,75 @@ namespace Powermeet2
                     break;
             }
         }
+        private void lbl_suggestedWeight25_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 2.5f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight5_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 5f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight75_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 7.5f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight10_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 10f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight125_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 12.5f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight15_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 15f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight20_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 20f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight25Minus_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 2.5f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight5Minus_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 5f;
+            SuggestionBtnUpdate();
+        }
+
+        private void lbl_suggestedWeight75Minus_Click(object sender, EventArgs e)
+        {
+            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
+                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 7.5f;
+            SuggestionBtnUpdate();
+        }
 
         private void combo_Aktivgrupp_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2261,7 +2411,10 @@ namespace Powermeet2
                     {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
-                    dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index].Cells[1];
+                    if (LiftingOrderListNew.Count > 0)
+                    {
+                        dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index].Cells[1];
+                    }
 
                     break;
                 case 1:
@@ -2542,6 +2695,8 @@ namespace Powermeet2
             }
 
         }
+
+
 
 
 

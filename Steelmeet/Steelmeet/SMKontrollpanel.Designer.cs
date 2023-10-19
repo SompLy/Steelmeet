@@ -106,6 +106,17 @@
             btn25 = new Button();
             txtb25 = new TextBox();
             tabPage2 = new TabPage();
+            panel12 = new Panel();
+            lbl_suggestedWeight75Minus = new Button();
+            lbl_suggestedWeight125 = new Button();
+            lbl_suggestedWeight5Minus = new Button();
+            lbl_suggestedWeight10 = new Button();
+            lbl_suggestedWeight25Minus = new Button();
+            lbl_suggestedWeight75 = new Button();
+            lbl_suggestedWeight20 = new Button();
+            lbl_suggestedWeight5 = new Button();
+            lbl_suggestedWeight15 = new Button();
+            lbl_suggestedWeight25 = new Button();
             panel11 = new Panel();
             lbl_groupLiftOrder_control_20 = new Label();
             lbl_groupLiftOrder_control_19 = new Label();
@@ -127,11 +138,10 @@
             lbl_groupLiftOrder_control_8 = new Label();
             lbl_groupLiftOrder_control_10 = new Label();
             lbl_groupLiftOrder_control_9 = new Label();
-            label32 = new Label();
+            lbl_OpeningLift = new Label();
             panel13 = new Panel();
-            pictureBox1 = new PictureBox();
             pictureBox4 = new PictureBox();
-            panel12 = new Panel();
+            infopanel_Controlpanel2 = new Panel();
             lbl_Height2 = new Label();
             label45 = new Label();
             lbl_Infällt2 = new Label();
@@ -183,6 +193,7 @@
             combo_Aktivgrupp = new ComboBox();
             label29 = new Label();
             panel6 = new Panel();
+            button2 = new Button();
             btn_Gåom = new Button();
             btn_ångralyft = new Button();
             btn_godkänt = new Button();
@@ -219,10 +230,10 @@
             lbl_Name = new Label();
             dataGridViewControlPanel = new DataGridView();
             tabPage3 = new TabPage();
+            label33 = new Label();
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
-            button2 = new Button();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -235,11 +246,11 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
+            panel12.SuspendLayout();
             panel11.SuspendLayout();
             panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel12.SuspendLayout();
+            infopanel_Controlpanel2.SuspendLayout();
             panel10.SuspendLayout();
             panel9.SuspendLayout();
             panel8.SuspendLayout();
@@ -247,6 +258,7 @@
             panel5.SuspendLayout();
             infopanel_Controlpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewControlPanel).BeginInit();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -1087,9 +1099,10 @@
             // tabPage2
             // 
             tabPage2.BackColor = SystemColors.WindowText;
+            tabPage2.Controls.Add(panel12);
             tabPage2.Controls.Add(panel11);
             tabPage2.Controls.Add(panel13);
-            tabPage2.Controls.Add(panel12);
+            tabPage2.Controls.Add(infopanel_Controlpanel2);
             tabPage2.Controls.Add(panel10);
             tabPage2.Controls.Add(panel9);
             tabPage2.Controls.Add(panel8);
@@ -1103,6 +1116,154 @@
             tabPage2.Size = new Size(1358, 740);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Tävling";
+            // 
+            // panel12
+            // 
+            panel12.BackColor = Color.FromArgb(27, 38, 44);
+            panel12.Controls.Add(lbl_suggestedWeight75Minus);
+            panel12.Controls.Add(lbl_suggestedWeight125);
+            panel12.Controls.Add(lbl_suggestedWeight5Minus);
+            panel12.Controls.Add(lbl_suggestedWeight10);
+            panel12.Controls.Add(lbl_suggestedWeight25Minus);
+            panel12.Controls.Add(lbl_suggestedWeight75);
+            panel12.Controls.Add(lbl_suggestedWeight20);
+            panel12.Controls.Add(lbl_suggestedWeight5);
+            panel12.Controls.Add(lbl_suggestedWeight15);
+            panel12.Controls.Add(lbl_suggestedWeight25);
+            panel12.Location = new Point(1127, 209);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(224, 43);
+            panel12.TabIndex = 43;
+            // 
+            // lbl_suggestedWeight75Minus
+            // 
+            lbl_suggestedWeight75Minus.BackColor = SystemColors.WindowFrame;
+            lbl_suggestedWeight75Minus.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight75Minus.ForeColor = Color.Black;
+            lbl_suggestedWeight75Minus.Location = new Point(164, 21);
+            lbl_suggestedWeight75Minus.Name = "lbl_suggestedWeight75Minus";
+            lbl_suggestedWeight75Minus.Size = new Size(42, 22);
+            lbl_suggestedWeight75Minus.TabIndex = 51;
+            lbl_suggestedWeight75Minus.Text = "500.5";
+            lbl_suggestedWeight75Minus.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight75Minus.Click += lbl_suggestedWeight75Minus_Click;
+            // 
+            // lbl_suggestedWeight125
+            // 
+            lbl_suggestedWeight125.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_suggestedWeight125.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight125.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_suggestedWeight125.Location = new Point(164, 0);
+            lbl_suggestedWeight125.Name = "lbl_suggestedWeight125";
+            lbl_suggestedWeight125.Size = new Size(42, 22);
+            lbl_suggestedWeight125.TabIndex = 50;
+            lbl_suggestedWeight125.Text = "500.5";
+            lbl_suggestedWeight125.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight125.Click += lbl_suggestedWeight125_Click;
+            // 
+            // lbl_suggestedWeight5Minus
+            // 
+            lbl_suggestedWeight5Minus.BackColor = SystemColors.WindowFrame;
+            lbl_suggestedWeight5Minus.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight5Minus.ForeColor = Color.Black;
+            lbl_suggestedWeight5Minus.Location = new Point(123, 21);
+            lbl_suggestedWeight5Minus.Name = "lbl_suggestedWeight5Minus";
+            lbl_suggestedWeight5Minus.Size = new Size(42, 22);
+            lbl_suggestedWeight5Minus.TabIndex = 49;
+            lbl_suggestedWeight5Minus.Text = "500.5";
+            lbl_suggestedWeight5Minus.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight5Minus.Click += lbl_suggestedWeight5Minus_Click;
+            // 
+            // lbl_suggestedWeight10
+            // 
+            lbl_suggestedWeight10.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_suggestedWeight10.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight10.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_suggestedWeight10.Location = new Point(123, 0);
+            lbl_suggestedWeight10.Name = "lbl_suggestedWeight10";
+            lbl_suggestedWeight10.Size = new Size(42, 22);
+            lbl_suggestedWeight10.TabIndex = 48;
+            lbl_suggestedWeight10.Text = "500.5";
+            lbl_suggestedWeight10.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight10.Click += lbl_suggestedWeight10_Click;
+            // 
+            // lbl_suggestedWeight25Minus
+            // 
+            lbl_suggestedWeight25Minus.BackColor = SystemColors.WindowFrame;
+            lbl_suggestedWeight25Minus.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight25Minus.ForeColor = Color.Black;
+            lbl_suggestedWeight25Minus.Location = new Point(82, 21);
+            lbl_suggestedWeight25Minus.Name = "lbl_suggestedWeight25Minus";
+            lbl_suggestedWeight25Minus.Size = new Size(42, 22);
+            lbl_suggestedWeight25Minus.TabIndex = 47;
+            lbl_suggestedWeight25Minus.Text = "500.5";
+            lbl_suggestedWeight25Minus.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight25Minus.Click += lbl_suggestedWeight25Minus_Click;
+            // 
+            // lbl_suggestedWeight75
+            // 
+            lbl_suggestedWeight75.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_suggestedWeight75.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight75.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_suggestedWeight75.Location = new Point(82, 0);
+            lbl_suggestedWeight75.Name = "lbl_suggestedWeight75";
+            lbl_suggestedWeight75.Size = new Size(42, 22);
+            lbl_suggestedWeight75.TabIndex = 46;
+            lbl_suggestedWeight75.Text = "500.5";
+            lbl_suggestedWeight75.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight75.Click += lbl_suggestedWeight75_Click;
+            // 
+            // lbl_suggestedWeight20
+            // 
+            lbl_suggestedWeight20.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_suggestedWeight20.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight20.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_suggestedWeight20.Location = new Point(41, 21);
+            lbl_suggestedWeight20.Name = "lbl_suggestedWeight20";
+            lbl_suggestedWeight20.Size = new Size(42, 22);
+            lbl_suggestedWeight20.TabIndex = 45;
+            lbl_suggestedWeight20.Text = "500.5";
+            lbl_suggestedWeight20.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight20.Click += lbl_suggestedWeight20_Click;
+            // 
+            // lbl_suggestedWeight5
+            // 
+            lbl_suggestedWeight5.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_suggestedWeight5.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight5.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_suggestedWeight5.Location = new Point(41, 0);
+            lbl_suggestedWeight5.Name = "lbl_suggestedWeight5";
+            lbl_suggestedWeight5.Size = new Size(42, 22);
+            lbl_suggestedWeight5.TabIndex = 44;
+            lbl_suggestedWeight5.Text = "500.5";
+            lbl_suggestedWeight5.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight5.Click += lbl_suggestedWeight5_Click;
+            // 
+            // lbl_suggestedWeight15
+            // 
+            lbl_suggestedWeight15.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_suggestedWeight15.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight15.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_suggestedWeight15.Location = new Point(0, 21);
+            lbl_suggestedWeight15.Name = "lbl_suggestedWeight15";
+            lbl_suggestedWeight15.Size = new Size(42, 22);
+            lbl_suggestedWeight15.TabIndex = 43;
+            lbl_suggestedWeight15.Text = "500.5";
+            lbl_suggestedWeight15.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight15.Click += lbl_suggestedWeight15_Click;
+            // 
+            // lbl_suggestedWeight25
+            // 
+            lbl_suggestedWeight25.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_suggestedWeight25.FlatStyle = FlatStyle.Popup;
+            lbl_suggestedWeight25.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_suggestedWeight25.Location = new Point(0, 0);
+            lbl_suggestedWeight25.Name = "lbl_suggestedWeight25";
+            lbl_suggestedWeight25.Size = new Size(42, 22);
+            lbl_suggestedWeight25.TabIndex = 42;
+            lbl_suggestedWeight25.Text = "500.5";
+            lbl_suggestedWeight25.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight25.Click += lbl_suggestedWeight25_Click;
             // 
             // panel11
             // 
@@ -1127,10 +1288,10 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_8);
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
-            panel11.Controls.Add(label32);
-            panel11.Location = new Point(453, 584);
+            panel11.Controls.Add(lbl_OpeningLift);
+            panel11.Location = new Point(432, 582);
             panel11.Name = "panel11";
-            panel11.Size = new Size(667, 477);
+            panel11.Size = new Size(667, 158);
             panel11.TabIndex = 11;
             // 
             // lbl_groupLiftOrder_control_20
@@ -1353,71 +1514,61 @@
             lbl_groupLiftOrder_control_9.TabIndex = 42;
             lbl_groupLiftOrder_control_9.Text = "Lyftare + vikt";
             // 
-            // label32
+            // lbl_OpeningLift
             // 
-            label32.AutoSize = true;
-            label32.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.ForeColor = Color.FromArgb(187, 225, 250);
-            label32.Location = new Point(5, -5);
-            label32.Name = "label32";
-            label32.Size = new Size(96, 30);
-            label32.TabIndex = 10;
-            label32.Text = "Ingångar";
+            lbl_OpeningLift.AutoSize = true;
+            lbl_OpeningLift.BackColor = Color.FromArgb(15, 76, 117);
+            lbl_OpeningLift.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_OpeningLift.ForeColor = Color.FromArgb(187, 225, 250);
+            lbl_OpeningLift.Location = new Point(5, -5);
+            lbl_OpeningLift.Name = "lbl_OpeningLift";
+            lbl_OpeningLift.Size = new Size(112, 30);
+            lbl_OpeningLift.TabIndex = 10;
+            lbl_OpeningLift.Text = "\"Ingångar\"";
             // 
             // panel13
             // 
             panel13.BackColor = Color.FromArgb(27, 38, 44);
-            panel13.Controls.Add(pictureBox1);
             panel13.Controls.Add(pictureBox4);
             panel13.ForeColor = SystemColors.WindowText;
-            panel13.Location = new Point(8, 589);
+            panel13.Location = new Point(8, 577);
             panel13.Name = "panel13";
-            panel13.Size = new Size(418, 168);
+            panel13.Size = new Size(418, 180);
             panel13.TabIndex = 29;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(162, 179);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 56;
-            pictureBox1.TabStop = false;
             // 
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(168, 6);
+            pictureBox4.Location = new Point(15, -17);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(227, 145);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.Size = new Size(387, 181);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 55;
             pictureBox4.TabStop = false;
             // 
-            // panel12
+            // infopanel_Controlpanel2
             // 
-            panel12.BackColor = Color.FromArgb(27, 38, 44);
-            panel12.Controls.Add(lbl_Height2);
-            panel12.Controls.Add(label45);
-            panel12.Controls.Add(lbl_Infällt2);
-            panel12.Controls.Add(lbl_GLPoints_control2);
-            panel12.Controls.Add(lbl_Avlyft2);
-            panel12.Controls.Add(label37);
-            panel12.Controls.Add(label46);
-            panel12.Controls.Add(label47);
-            panel12.Controls.Add(lbl_Grupp_control2);
-            panel12.Controls.Add(lbl_Placement2);
-            panel12.Controls.Add(lbl_Lot_control2);
-            panel12.Controls.Add(label40);
-            panel12.Controls.Add(label41);
-            panel12.Controls.Add(lbl_currentWeight2);
-            panel12.Controls.Add(lbl_Name2);
-            panel12.Location = new Point(453, 6);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(436, 148);
-            panel12.TabIndex = 12;
-            panel12.Paint += infopanel_Controlpanel_Paint2;
+            infopanel_Controlpanel2.BackColor = Color.FromArgb(27, 38, 44);
+            infopanel_Controlpanel2.Controls.Add(lbl_Height2);
+            infopanel_Controlpanel2.Controls.Add(label45);
+            infopanel_Controlpanel2.Controls.Add(lbl_Infällt2);
+            infopanel_Controlpanel2.Controls.Add(lbl_GLPoints_control2);
+            infopanel_Controlpanel2.Controls.Add(lbl_Avlyft2);
+            infopanel_Controlpanel2.Controls.Add(label37);
+            infopanel_Controlpanel2.Controls.Add(label46);
+            infopanel_Controlpanel2.Controls.Add(label47);
+            infopanel_Controlpanel2.Controls.Add(lbl_Grupp_control2);
+            infopanel_Controlpanel2.Controls.Add(lbl_Placement2);
+            infopanel_Controlpanel2.Controls.Add(lbl_Lot_control2);
+            infopanel_Controlpanel2.Controls.Add(label40);
+            infopanel_Controlpanel2.Controls.Add(label41);
+            infopanel_Controlpanel2.Controls.Add(lbl_currentWeight2);
+            infopanel_Controlpanel2.Controls.Add(lbl_Name2);
+            infopanel_Controlpanel2.Location = new Point(453, 6);
+            infopanel_Controlpanel2.Name = "infopanel_Controlpanel2";
+            infopanel_Controlpanel2.Size = new Size(436, 148);
+            infopanel_Controlpanel2.TabIndex = 12;
+            infopanel_Controlpanel2.Paint += infopanel_Controlpanel_Paint2;
             // 
             // lbl_Height2
             // 
@@ -1611,9 +1762,9 @@
             panel10.Controls.Add(lbl_liftOrder_control_2);
             panel10.Controls.Add(lbl_liftOrder_control_1);
             panel10.Controls.Add(label30);
-            panel10.Location = new Point(1126, 209);
+            panel10.Location = new Point(1126, 258);
             panel10.Name = "panel10";
-            panel10.Size = new Size(224, 535);
+            panel10.Size = new Size(224, 486);
             panel10.TabIndex = 7;
             // 
             // lbl_liftOrder_control_20
@@ -1839,6 +1990,7 @@
             // label30
             // 
             label30.AutoSize = true;
+            label30.BackColor = Color.FromArgb(15, 76, 117);
             label30.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label30.ForeColor = Color.FromArgb(187, 225, 250);
             label30.Location = new Point(50, 4);
@@ -2018,6 +2170,18 @@
             panel6.Size = new Size(603, 43);
             panel6.TabIndex = 4;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(15, 76, 117);
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.ForeColor = Color.FromArgb(187, 225, 250);
+            button2.Location = new Point(7, 1);
+            button2.Name = "button2";
+            button2.Size = new Size(87, 40);
+            button2.TabIndex = 42;
+            button2.Text = "Stången är klovad";
+            button2.UseVisualStyleBackColor = false;
+            // 
             // btn_Gåom
             // 
             btn_Gåom.BackColor = SystemColors.WindowFrame;
@@ -2046,9 +2210,9 @@
             // 
             btn_godkänt.BackColor = Color.ForestGreen;
             btn_godkänt.FlatStyle = FlatStyle.Popup;
-            btn_godkänt.Location = new Point(144, 3);
+            btn_godkänt.Location = new Point(192, 3);
             btn_godkänt.Name = "btn_godkänt";
-            btn_godkänt.Size = new Size(121, 37);
+            btn_godkänt.Size = new Size(100, 37);
             btn_godkänt.TabIndex = 22;
             btn_godkänt.Text = "Lyft Godkänt";
             btn_godkänt.UseVisualStyleBackColor = false;
@@ -2059,11 +2223,11 @@
             btn_klovad.BackColor = Color.FromArgb(15, 76, 117);
             btn_klovad.FlatStyle = FlatStyle.Popup;
             btn_klovad.ForeColor = Color.FromArgb(187, 225, 250);
-            btn_klovad.Location = new Point(10, 2);
+            btn_klovad.Location = new Point(100, 1);
             btn_klovad.Name = "btn_klovad";
-            btn_klovad.Size = new Size(126, 20);
+            btn_klovad.Size = new Size(86, 40);
             btn_klovad.TabIndex = 21;
-            btn_klovad.Text = "Stången är klovad";
+            btn_klovad.Text = "Markera nästa lyftare";
             btn_klovad.UseVisualStyleBackColor = false;
             btn_klovad.Click += btn_klovad_Click;
             // 
@@ -2071,9 +2235,9 @@
             // 
             btn_underkänt.BackColor = Color.Red;
             btn_underkänt.FlatStyle = FlatStyle.Popup;
-            btn_underkänt.Location = new Point(273, 3);
+            btn_underkänt.Location = new Point(298, 3);
             btn_underkänt.Name = "btn_underkänt";
-            btn_underkänt.Size = new Size(122, 37);
+            btn_underkänt.Size = new Size(97, 37);
             btn_underkänt.TabIndex = 23;
             btn_underkänt.Text = "Lyft Underkänt";
             btn_underkänt.UseVisualStyleBackColor = false;
@@ -2497,12 +2661,25 @@
             // tabPage3
             // 
             tabPage3.BackColor = SystemColors.WindowText;
+            tabPage3.Controls.Add(label33);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(1358, 740);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Resultat";
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Font = new Font("Segoe UI", 60F, FontStyle.Regular, GraphicsUnit.Point);
+            label33.ForeColor = SystemColors.ControlDark;
+            label33.Location = new Point(63, 213);
+            label33.Name = "label33";
+            label33.Size = new Size(1197, 212);
+            label33.TabIndex = 0;
+            label33.Text = "Det finns inga poäng i djungeln\r\nPå DM är det annorlunda Fredrik";
+            label33.TextAlign = ContentAlignment.TopCenter;
             // 
             // timerLyft
             // 
@@ -2518,18 +2695,6 @@
             // 
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(15, 76, 117);
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.ForeColor = Color.FromArgb(187, 225, 250);
-            button2.Location = new Point(10, 23);
-            button2.Name = "button2";
-            button2.Size = new Size(126, 20);
-            button2.TabIndex = 42;
-            button2.Text = "Stången är klovad";
-            button2.UseVisualStyleBackColor = false;
             // 
             // SMKontrollpanel
             // 
@@ -2559,13 +2724,13 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
+            panel12.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             panel13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel12.ResumeLayout(false);
-            panel12.PerformLayout();
+            infopanel_Controlpanel2.ResumeLayout(false);
+            infopanel_Controlpanel2.PerformLayout();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
             panel9.ResumeLayout(false);
@@ -2578,6 +2743,8 @@
             infopanel_Controlpanel.ResumeLayout(false);
             infopanel_Controlpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewControlPanel).EndInit();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -2683,7 +2850,7 @@
         private Panel panel9;
         private System.Windows.Forms.Timer timerRekordAnimering;
         private Panel panel11;
-        private Label label32;
+        private Label lbl_OpeningLift;
         private Label label31;
         private Button btn_rekord;
         private Label lbl_liftOrder_control_20;
@@ -2733,7 +2900,7 @@
         private Label label35;
         private Label lbl_GLPoints_control;
         private Label label34;
-        private Panel panel12;
+        private Panel infopanel_Controlpanel2;
         private Label lbl_GLPoints_control2;
         private Label label37;
         private Label lbl_Grupp_control2;
@@ -2767,7 +2934,18 @@
         private Label lbl_Height2;
         private Label label45;
         private Panel panel13;
-        private PictureBox pictureBox1;
         private Button button2;
+        private Label label33;
+        private Panel panel12;
+        private Button lbl_suggestedWeight75Minus;
+        private Button lbl_suggestedWeight125;
+        private Button lbl_suggestedWeight5Minus;
+        private Button lbl_suggestedWeight10;
+        private Button lbl_suggestedWeight25Minus;
+        private Button lbl_suggestedWeight75;
+        private Button lbl_suggestedWeight20;
+        private Button lbl_suggestedWeight5;
+        private Button lbl_suggestedWeight15;
+        private Button lbl_suggestedWeight25;
     }
 }

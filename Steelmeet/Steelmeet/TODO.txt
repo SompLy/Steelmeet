@@ -2,13 +2,14 @@ Powermeet TODO
 
 PRIO NR 1 !!!?! : 
 
-!!!!om det sista lyftets bedömmning ska ändra så blir det errro rad 1072
-
-
-inspektrea så att ångra lyft fungerar som förväntat
-inspektrea så att gå om fungerar som förväntat
-Om man är i en koefficient klass så ska man rankas efter poäng och inte efter total
+Markera nästa lyftare knapp
+Välja vikt knappar som har -2.5,-5,+2.5,+5,+7.5,+10,
 Rekord blinka saken
+✅!!!!om det sista lyftets bedömmning ska ändra så blir det errro rad 1072
+✅inspektrea så att gå om fungerar som förväntat
+✅Om man är i en koefficient klass så ska man rankas efter poäng och inte efter total
+✅Totalen ändras när man klickar godkänt även om lyftaren redan har lyft
+✅inspektrea så att ångra lyft fungerar som förväntat
 ✅totalen är fucked up mannen, den uppdaterar knas och den stämmer knappt (utkommenterad)
 ✅visa GL poöngen i datagridviewn
 ✅groupliftingorder, visa nästa grupps ingångar 
@@ -51,12 +52,13 @@ Invägning :
 ✅Automatisk klass string korrigering
 
 Kontrollpanel / Tävlingsfönster :
-Det finns inga poäng i djulen men det finns på DM
+Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
 Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 
 Byta färg på tabcontrol1 "Changetabcolor"
 1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
-visa GL poöngen
+✅Det finns inga poäng i djulen men det finns på DM
+✅visa GL poöngen
 ✅Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
 ✅För varje gång man skriver in en bokstav och det blir en varning så tar det bort från någon lista så att man inte kan få all lyft godkända utan att programmet krashar
 ✅om man ångrar ett lyft så ändras inte totalen tillbaka
