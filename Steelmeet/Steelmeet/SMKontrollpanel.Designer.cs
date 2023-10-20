@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -193,7 +193,7 @@
             combo_Aktivgrupp = new ComboBox();
             label29 = new Label();
             panel6 = new Panel();
-            button2 = new Button();
+            btn_SelectNextLifter = new Button();
             btn_Gåom = new Button();
             btn_ångralyft = new Button();
             btn_godkänt = new Button();
@@ -478,32 +478,32 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns = false;
             dataGridViewWeighIn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle16.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewWeighIn.BackgroundColor = Color.FromArgb(27, 38, 44);
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle17.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle17.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle18.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle18.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle18;
             dataGridViewWeighIn.EnableHeadersVisualStyles = false;
             dataGridViewWeighIn.GridColor = Color.Black;
             dataGridViewWeighIn.Location = new Point(6, 156);
@@ -2159,7 +2159,7 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(27, 38, 44);
-            panel6.Controls.Add(button2);
+            panel6.Controls.Add(btn_SelectNextLifter);
             panel6.Controls.Add(btn_Gåom);
             panel6.Controls.Add(btn_ångralyft);
             panel6.Controls.Add(btn_godkänt);
@@ -2170,17 +2170,18 @@
             panel6.Size = new Size(603, 43);
             panel6.TabIndex = 4;
             // 
-            // button2
+            // btn_SelectNextLifter
             // 
-            button2.BackColor = Color.FromArgb(15, 76, 117);
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.ForeColor = Color.FromArgb(187, 225, 250);
-            button2.Location = new Point(7, 1);
-            button2.Name = "button2";
-            button2.Size = new Size(87, 40);
-            button2.TabIndex = 42;
-            button2.Text = "Stången är klovad";
-            button2.UseVisualStyleBackColor = false;
+            btn_SelectNextLifter.BackColor = Color.FromArgb(15, 76, 117);
+            btn_SelectNextLifter.FlatStyle = FlatStyle.Popup;
+            btn_SelectNextLifter.ForeColor = Color.FromArgb(187, 225, 250);
+            btn_SelectNextLifter.Location = new Point(99, 1);
+            btn_SelectNextLifter.Name = "btn_SelectNextLifter";
+            btn_SelectNextLifter.Size = new Size(87, 40);
+            btn_SelectNextLifter.TabIndex = 42;
+            btn_SelectNextLifter.Text = "Markera nästa lyftare";
+            btn_SelectNextLifter.UseVisualStyleBackColor = false;
+            btn_SelectNextLifter.Click += btn_SelectNextLifter_Click;
             // 
             // btn_Gåom
             // 
@@ -2223,11 +2224,11 @@
             btn_klovad.BackColor = Color.FromArgb(15, 76, 117);
             btn_klovad.FlatStyle = FlatStyle.Popup;
             btn_klovad.ForeColor = Color.FromArgb(187, 225, 250);
-            btn_klovad.Location = new Point(100, 1);
+            btn_klovad.Location = new Point(7, 1);
             btn_klovad.Name = "btn_klovad";
             btn_klovad.Size = new Size(86, 40);
             btn_klovad.TabIndex = 21;
-            btn_klovad.Text = "Markera nästa lyftare";
+            btn_klovad.Text = "Stången är klovad";
             btn_klovad.UseVisualStyleBackColor = false;
             btn_klovad.Click += btn_klovad_Click;
             // 
@@ -2615,9 +2616,9 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle13.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             dataGridViewControlPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -2625,23 +2626,23 @@
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle14.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle15.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle15;
             dataGridViewControlPanel.EnableHeadersVisualStyles = false;
             dataGridViewControlPanel.GridColor = SystemColors.WindowText;
             dataGridViewControlPanel.ImeMode = ImeMode.NoControl;
@@ -2934,7 +2935,7 @@
         private Label lbl_Height2;
         private Label label45;
         private Panel panel13;
-        private Button button2;
+        private Button btn_SelectNextLifter;
         private Label label33;
         private Panel panel12;
         private Button lbl_suggestedWeight75Minus;

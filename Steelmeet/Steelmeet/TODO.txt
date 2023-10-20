@@ -2,6 +2,7 @@ Powermeet TODO
 
 PRIO NR 1 !!!?! : 
 
+När amn ändararr grupp får alla godkänt
 Rekord blinka saken
 ✅Välja vikt knappar som har -2.5,-5,+2.5,+5,+7.5,+10,
 ✅Markera nästa lyftare knapp
