@@ -2,9 +2,9 @@ Powermeet TODO
 
 PRIO NR 1 !!!?! : 
 
-Markera nästa lyftare knapp
-Välja vikt knappar som har -2.5,-5,+2.5,+5,+7.5,+10,
 Rekord blinka saken
+✅Välja vikt knappar som har -2.5,-5,+2.5,+5,+7.5,+10,
+✅Markera nästa lyftare knapp
 ✅!!!!om det sista lyftets bedömmning ska ändra så blir det errro rad 1072
 ✅inspektrea så att gå om fungerar som förväntat
 ✅Om man är i en koefficient klass så ska man rankas efter poäng och inte efter total
