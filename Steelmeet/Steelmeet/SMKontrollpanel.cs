@@ -108,7 +108,9 @@ namespace Powermeet2
 
             group3Squat = 6,
             group3Bench = 7,
-            group3Deadlift = 8
+            group3Deadlift = 8,
+
+            nothing = 9
         }
 
         MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
@@ -1204,7 +1206,12 @@ namespace Powermeet2
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
 
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
+                {
+                    LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(true); //Registrerar ett godkänt lyft för lyftaren
+                }
                 BestSBDUpdate();
+
                 //Sätter total och GL points
                 LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
                 LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
@@ -1254,7 +1261,6 @@ namespace Powermeet2
 
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
             {
-                LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(true); //Registrerar ett godkänt lyft för lyftaren
                 LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
                     float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
 
@@ -1268,7 +1274,6 @@ namespace Powermeet2
             //Updaterar lyftar ordning
             LiftOrderUpdate();
 
-            BestSBDUpdate();
             //Sätter total och GL points
             LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
             LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
@@ -1317,6 +1322,8 @@ namespace Powermeet2
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
             {
                 LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(false); //Registrerar ett underkänt lyft för lyftaren
+                BestSBDUpdate();
+
                 LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
                     float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
 
@@ -1994,19 +2001,64 @@ namespace Powermeet2
                     }
                     else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
                     {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group1Deadlift;
+                        groupLiftingOrderState = eGroupLiftingOrderState.nothing;
                     }
                 }
             }
             else if (groupIndexCount == 3)// Om det finns tre grupper
             {
-                //Inte nödvändigt att implementera för DM
+                if (groupIndexCurrent == 0) //Om den aktiva gruppen är grupp 1
+                {
+                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
+                    }
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group2Bench;
+                    }
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group2Deadlift;
+                    }
+                }
+                else if (groupIndexCurrent == 1) //Om den aktiva gruppen är grupp 2
+                {
+                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group3Squat; //Kommer aldrig att hända
+                    }
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group3Bench;
+                    }
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group3Deadlift;
+                    }
+                }
+                else if (groupIndexCurrent == 2) //Om den aktiva gruppen är grupp 2
+                {
+                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group1Squat; //Kommer aldrig att hända
+                    }
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
+                    }
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    {
+                        groupLiftingOrderState = eGroupLiftingOrderState.nothing;
+                    }
+                }
             }
 
             int loopLeft = 0;
             int loopMiddle = 0;
             int textCurrentLift = 0;
             string lblText = "";
+            bool ViewNothing = false;
 
             switch (groupLiftingOrderState)
             {
@@ -2047,10 +2099,25 @@ namespace Powermeet2
                     lblText = "Ingångar Grupp 2 Mark";
                     break;
                 case eGroupLiftingOrderState.group3Squat:
+                    loopLeft = group1Count + group2Count;
+                    loopMiddle = group1Count + group2Count + group3Count;
+                    textCurrentLift = 0;
+                    lblText = "Ingångar Grupp 3 Böj";
                     break;
                 case eGroupLiftingOrderState.group3Bench:
+                    loopLeft = group1Count + group2Count;
+                    loopMiddle = group1Count + group2Count + group3Count;
+                    textCurrentLift = 3;
+                    lblText = "Ingångar Grupp 3 Bänk";
                     break;
                 case eGroupLiftingOrderState.group3Deadlift:
+                    loopLeft = group1Count + group2Count;
+                    loopMiddle = group1Count + group2Count + group3Count;
+                    textCurrentLift = 6;
+                    lblText = "Ingångar Grupp 3 Bänk";
+                    break;
+                case eGroupLiftingOrderState.nothing:
+                    ViewNothing = true;
                     break;
                 default:
                     break;
@@ -2070,43 +2137,50 @@ namespace Powermeet2
 
             //Skriv ut alla lyftare och enum för vad det är som visas
             lbl_OpeningLift.Text = lblText;
-            for (int i = 0; i < GroupLiftingOrderList.Count; i++)
+            if (!ViewNothing)
             {
-                GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].sbdList[textCurrentLift] + " " + GroupLiftingOrderList[i].name;
+                for (int i = 0; i < GroupLiftingOrderList.Count; i++)
+                {
+                    GroupLiftingOrderListLabels[i].Text = GroupLiftingOrderList[i].sbdList[textCurrentLift] + " " + GroupLiftingOrderList[i].name;
+                }
+            }
+            else
+            {
+                //Om man inte vill visa några ingångar t.ex som i sista marken eller om man kör endast bänk tävling
+                for (int i = 0; i < GroupLiftingOrderList.Count; i++)
+                {
+                    GroupLiftingOrderListLabels[i].Text = "";
+                }
             }
 
         } //GroupLiftingOrder
         public void BestSBDUpdate()
         {
-            //Sets all the best lifts 
-            LifterID[SelectedRowIndex + groupRowFixer].bestS = MoreMath.Max(
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[11].Value.ToString()),
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[12].Value.ToString()),
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[13].Value.ToString()));
+            //gör en lista som har alla cellers value i sig 
+            //ta från recordslistan och om de är false sätt de till noll
+            //kör MoreMath.Max för att få ut de bästa lyften
+            List<float> cellValuesList = new List<float>();
 
-            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 11 >= 3)
+            float[] valuesToParse = new float[9];
+            for (int i = 11; i < 11 + LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count(); i++)
             {
-                LifterID[SelectedRowIndex + groupRowFixer].bestB = MoreMath.Max(
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[14].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[15].Value.ToString()),
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[16].Value.ToString()));
+                string cellValue = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[i].Value.ToString();
+                valuesToParse[i - 11] = float.Parse(cellValue);
+            }
+            //lägger till floats i lista
+            cellValuesList.AddRange(valuesToParse);
 
-                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 11 >= 6)
+            for (int i = 0; i < LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count(); i++)
+            {
+                if (!LifterID[SelectedRowIndex + groupRowFixer].LiftRecord[i])
                 {
-                    LifterID[SelectedRowIndex + groupRowFixer].bestD = MoreMath.Max(
-                        float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[17].Value.ToString()),
-                        float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[18].Value.ToString()),
-                        float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[19].Value.ToString()));
-                }
-                else
-                {
-                    LifterID[SelectedRowIndex + groupRowFixer].bestD = 0;
+                    cellValuesList[i] = 0.0f;
                 }
             }
-            else
-            {
-                LifterID[SelectedRowIndex + groupRowFixer].bestB = 0;
-            }
+            LifterID[SelectedRowIndex + groupRowFixer].bestS = MoreMath.Max(cellValuesList[0], cellValuesList[1], cellValuesList[2]);
+            LifterID[SelectedRowIndex + groupRowFixer].bestB = MoreMath.Max(cellValuesList[3], cellValuesList[4], cellValuesList[5]);
+            LifterID[SelectedRowIndex + groupRowFixer].bestD = MoreMath.Max(cellValuesList[6], cellValuesList[7], cellValuesList[8]);
+
         }
         public void RankUpdate()
         {
@@ -2280,74 +2354,29 @@ namespace Powermeet2
                     break;
             }
         }
-        private void lbl_suggestedWeight25_Click(object sender, EventArgs e)
+        private void UpdateCellValue(float increment)
         {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 2.5f;
-            SuggestionBtnUpdate();
+            int selectedRowIndex = SelectedRowIndex + groupRowFixer;
+            int currentLift = LifterID[selectedRowIndex].CurrentLift;
+            var cell = dataGridViewControlPanel.Rows[selectedRowIndex].Cells[currentLift];
+
+            if (cell.Value is string cellValue)
+            {
+                if (float.TryParse(cellValue, out float currentValue))
+                {
+                    cell.Value = (currentValue + increment).ToString();
+                    SuggestionBtnUpdate();
+                }
+            }
         }
 
-        private void lbl_suggestedWeight5_Click(object sender, EventArgs e)
+        private void lbl_suggestedWeight_Click(object sender, EventArgs e)
         {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 5f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight75_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 7.5f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight10_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 10f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight125_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 12.5f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight15_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 15f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight20_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) + 20f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight25Minus_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 2.5f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight5Minus_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 5f;
-            SuggestionBtnUpdate();
-        }
-
-        private void lbl_suggestedWeight75Minus_Click(object sender, EventArgs e)
-        {
-            dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value =
-                float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()) - 7.5f;
-            SuggestionBtnUpdate();
+            if (sender is Control control)
+            {
+                float increment = float.Parse(control.Tag.ToString());
+                UpdateCellValue(increment);
+            }
         }
 
         private void combo_Aktivgrupp_SelectedIndexChanged(object sender, EventArgs e)
@@ -2701,12 +2730,13 @@ namespace Powermeet2
             }
 
         }
-
-
-
-
-
-
+#if !DEBUG
+        private void SMKontrollpanel_Load(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+        }
+#endif
 
 
 

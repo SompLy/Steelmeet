@@ -2,7 +2,25 @@ Powermeet TODO
 
 PRIO NR 1 !!!?! : 
 
+Västenliga fixar från DM :
+✅Underkända lyft läggs till på totalen
+✅När man är på sista gruppens mark så behöver man intte visa ingångar
+✅suggested lift krashar programmet i grupp 2 och förmodligen grupp tre
+Gör så att bara de som inte har lyft i omgången läggs till i lyftarordningen så man kan byta grup när som helst
+Man ska kunna ändra infällt och avlyft under tävlingens gång 
+TEST VERSION UTFÄRDAD FÖR TESTNING AV STEELMEET FRAM TILL 2024-01-01
+
+
+Rekomendationer från DM : 
+Gör text större spciellt de viktiga sakerna som namn och vikt
+Ta bort onödiga saker från info panelerna (då finns de också mer plats)
+Visa bara väsentilg info på panelerna (t.ex inte avlyft i marken)
+Visa hur många 25kg kakor som ska användas t.ex 25KGx5 så klovare lätt kan se
+Markera förgående lyftare??
+Nummer bervid lyftare i lyftarordningen så man inte behöver räkna hur många lyftare som är föra en själv
+Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
 När amn ändararr grupp får alla godkänt
+
 Rekord blinka saken
 ✅Välja vikt knappar som har -2.5,-5,+2.5,+5,+7.5,+10,
 ✅Markera nästa lyftare knapp

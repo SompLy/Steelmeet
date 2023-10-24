@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -478,32 +478,32 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns = false;
             dataGridViewWeighIn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle16.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewWeighIn.BackgroundColor = Color.FromArgb(27, 38, 44);
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle17.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle18.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle18.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewWeighIn.EnableHeadersVisualStyles = false;
             dataGridViewWeighIn.GridColor = Color.Black;
             dataGridViewWeighIn.Location = new Point(6, 156);
@@ -1130,9 +1130,9 @@
             panel12.Controls.Add(lbl_suggestedWeight5);
             panel12.Controls.Add(lbl_suggestedWeight15);
             panel12.Controls.Add(lbl_suggestedWeight25);
-            panel12.Location = new Point(1127, 209);
+            panel12.Location = new Point(1125, 209);
             panel12.Name = "panel12";
-            panel12.Size = new Size(224, 43);
+            panel12.Size = new Size(227, 43);
             panel12.TabIndex = 43;
             // 
             // lbl_suggestedWeight75Minus
@@ -1144,9 +1144,10 @@
             lbl_suggestedWeight75Minus.Name = "lbl_suggestedWeight75Minus";
             lbl_suggestedWeight75Minus.Size = new Size(42, 22);
             lbl_suggestedWeight75Minus.TabIndex = 51;
-            lbl_suggestedWeight75Minus.Text = "500.5";
+            lbl_suggestedWeight75Minus.Tag = "-7.5";
+            lbl_suggestedWeight75Minus.Text = "-7.5";
             lbl_suggestedWeight75Minus.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight75Minus.Click += lbl_suggestedWeight75Minus_Click;
+            lbl_suggestedWeight75Minus.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight125
             // 
@@ -1157,9 +1158,10 @@
             lbl_suggestedWeight125.Name = "lbl_suggestedWeight125";
             lbl_suggestedWeight125.Size = new Size(42, 22);
             lbl_suggestedWeight125.TabIndex = 50;
-            lbl_suggestedWeight125.Text = "500.5";
+            lbl_suggestedWeight125.Tag = "12.5";
+            lbl_suggestedWeight125.Text = "12.5";
             lbl_suggestedWeight125.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight125.Click += lbl_suggestedWeight125_Click;
+            lbl_suggestedWeight125.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight5Minus
             // 
@@ -1170,9 +1172,10 @@
             lbl_suggestedWeight5Minus.Name = "lbl_suggestedWeight5Minus";
             lbl_suggestedWeight5Minus.Size = new Size(42, 22);
             lbl_suggestedWeight5Minus.TabIndex = 49;
-            lbl_suggestedWeight5Minus.Text = "500.5";
+            lbl_suggestedWeight5Minus.Tag = "-5";
+            lbl_suggestedWeight5Minus.Text = "-5";
             lbl_suggestedWeight5Minus.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight5Minus.Click += lbl_suggestedWeight5Minus_Click;
+            lbl_suggestedWeight5Minus.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight10
             // 
@@ -1183,9 +1186,10 @@
             lbl_suggestedWeight10.Name = "lbl_suggestedWeight10";
             lbl_suggestedWeight10.Size = new Size(42, 22);
             lbl_suggestedWeight10.TabIndex = 48;
-            lbl_suggestedWeight10.Text = "500.5";
+            lbl_suggestedWeight10.Tag = "10";
+            lbl_suggestedWeight10.Text = "10";
             lbl_suggestedWeight10.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight10.Click += lbl_suggestedWeight10_Click;
+            lbl_suggestedWeight10.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight25Minus
             // 
@@ -1196,9 +1200,10 @@
             lbl_suggestedWeight25Minus.Name = "lbl_suggestedWeight25Minus";
             lbl_suggestedWeight25Minus.Size = new Size(42, 22);
             lbl_suggestedWeight25Minus.TabIndex = 47;
-            lbl_suggestedWeight25Minus.Text = "500.5";
+            lbl_suggestedWeight25Minus.Tag = "-2.5";
+            lbl_suggestedWeight25Minus.Text = "-2.5";
             lbl_suggestedWeight25Minus.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight25Minus.Click += lbl_suggestedWeight25Minus_Click;
+            lbl_suggestedWeight25Minus.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight75
             // 
@@ -1209,9 +1214,10 @@
             lbl_suggestedWeight75.Name = "lbl_suggestedWeight75";
             lbl_suggestedWeight75.Size = new Size(42, 22);
             lbl_suggestedWeight75.TabIndex = 46;
-            lbl_suggestedWeight75.Text = "500.5";
+            lbl_suggestedWeight75.Tag = "7.5";
+            lbl_suggestedWeight75.Text = "7.5";
             lbl_suggestedWeight75.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight75.Click += lbl_suggestedWeight75_Click;
+            lbl_suggestedWeight75.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight20
             // 
@@ -1222,9 +1228,10 @@
             lbl_suggestedWeight20.Name = "lbl_suggestedWeight20";
             lbl_suggestedWeight20.Size = new Size(42, 22);
             lbl_suggestedWeight20.TabIndex = 45;
-            lbl_suggestedWeight20.Text = "500.5";
+            lbl_suggestedWeight20.Tag = "20";
+            lbl_suggestedWeight20.Text = "20";
             lbl_suggestedWeight20.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight20.Click += lbl_suggestedWeight20_Click;
+            lbl_suggestedWeight20.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight5
             // 
@@ -1235,9 +1242,10 @@
             lbl_suggestedWeight5.Name = "lbl_suggestedWeight5";
             lbl_suggestedWeight5.Size = new Size(42, 22);
             lbl_suggestedWeight5.TabIndex = 44;
-            lbl_suggestedWeight5.Text = "500.5";
+            lbl_suggestedWeight5.Tag = "5";
+            lbl_suggestedWeight5.Text = "5";
             lbl_suggestedWeight5.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight5.Click += lbl_suggestedWeight5_Click;
+            lbl_suggestedWeight5.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight15
             // 
@@ -1248,9 +1256,10 @@
             lbl_suggestedWeight15.Name = "lbl_suggestedWeight15";
             lbl_suggestedWeight15.Size = new Size(42, 22);
             lbl_suggestedWeight15.TabIndex = 43;
-            lbl_suggestedWeight15.Text = "500.5";
+            lbl_suggestedWeight15.Tag = "15";
+            lbl_suggestedWeight15.Text = "15";
             lbl_suggestedWeight15.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight15.Click += lbl_suggestedWeight15_Click;
+            lbl_suggestedWeight15.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight25
             // 
@@ -1261,9 +1270,10 @@
             lbl_suggestedWeight25.Name = "lbl_suggestedWeight25";
             lbl_suggestedWeight25.Size = new Size(42, 22);
             lbl_suggestedWeight25.TabIndex = 42;
-            lbl_suggestedWeight25.Text = "500.5";
+            lbl_suggestedWeight25.Tag = "2.5";
+            lbl_suggestedWeight25.Text = "2.5";
             lbl_suggestedWeight25.UseVisualStyleBackColor = false;
-            lbl_suggestedWeight25.Click += lbl_suggestedWeight25_Click;
+            lbl_suggestedWeight25.Click += lbl_suggestedWeight_Click;
             // 
             // panel11
             // 
@@ -1764,7 +1774,7 @@
             panel10.Controls.Add(label30);
             panel10.Location = new Point(1126, 258);
             panel10.Name = "panel10";
-            panel10.Size = new Size(224, 486);
+            panel10.Size = new Size(226, 486);
             panel10.TabIndex = 7;
             // 
             // lbl_liftOrder_control_20
@@ -2616,9 +2626,9 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle13.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewControlPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -2626,23 +2636,23 @@
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle14.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle15.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewControlPanel.EnableHeadersVisualStyles = false;
             dataGridViewControlPanel.GridColor = SystemColors.WindowText;
             dataGridViewControlPanel.ImeMode = ImeMode.NoControl;
