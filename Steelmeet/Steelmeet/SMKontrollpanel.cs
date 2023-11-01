@@ -5,7 +5,7 @@ using System.Data;
 using System.Globalization;
 using System.Web;
 
-namespace Powermeet2
+namespace SteelMeet
 {
 
     public partial class SMKontrollpanel : Form
@@ -21,36 +21,36 @@ namespace Powermeet2
         //För att byta färg på tabcontorl men funkar inte så bra
         private void ChangeTabColor(object sender, DrawItemEventArgs e)
         {
-            Font TabFont;
-            Brush BackBrush = new SolidBrush(Color.Green); //Set background color
-            Brush ForeBrush = new SolidBrush(Color.Yellow);//Set foreground color
-            if (e.Index == this.tabControl1.SelectedIndex)
-            {
-                TabFont = new Font(e.Font, FontStyle.Regular);
-            }
-            else
-            {
-                TabFont = e.Font;
-            }
-            string TabName = this.tabControl1.TabPages[e.Index].Text;
-            StringFormat sf = new StringFormat();
-            sf.Alignment = StringAlignment.Center;
-            e.Graphics.FillRectangle(BackBrush, e.Bounds);
-            Rectangle r = e.Bounds;
-            r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
-            e.Graphics.DrawString(TabName, TabFont, ForeBrush, r, sf);
-            //Dispose objects
-            sf.Dispose();
-            if (e.Index == this.tabControl1.SelectedIndex)
-            {
-                TabFont.Dispose();
-                BackBrush.Dispose();
-            }
-            else
-            {
-                BackBrush.Dispose();
-                ForeBrush.Dispose();
-            }
+            //    Font TabFont;
+            //    Brush BackBrush = new SolidBrush(Color.Green); //Set background color
+            //    Brush ForeBrush = new SolidBrush(Color.Yellow);//Set foreground color
+            //    if (e.Index == this.tabControl1.SelectedIndex)
+            //    {
+            //        TabFont = new Font(e.Font, FontStyle.Regular);
+            //    }
+            //    else
+            //    {
+            //        TabFont = e.Font;
+            //    }
+            //    string TabName = this.tabControl1.TabPages[e.Index].Text;
+            //    StringFormat sf = new StringFormat();
+            //    sf.Alignment = StringAlignment.Center;
+            //    e.Graphics.FillRectangle(BackBrush, e.Bounds);
+            //    Rectangle r = e.Bounds;
+            //    r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
+            //    e.Graphics.DrawString(TabName, TabFont, ForeBrush, r, sf);
+            //    //Dispose objects
+            //    sf.Dispose();
+            //    if (e.Index == this.tabControl1.SelectedIndex)
+            //    {
+            //        TabFont.Dispose();
+            //        BackBrush.Dispose();
+            //    }
+            //    else
+            //    {
+            //        BackBrush.Dispose();
+            //        ForeBrush.Dispose();
+            //    }
         }
 
         System.Data.DataTable dt = new();
@@ -61,7 +61,7 @@ namespace Powermeet2
         public bool IsExcelFile;
         bool DebugModeExcelImport = true;
         bool IsRecord = false;
-        bool restartLiftingOrderList = true;     //LiftingOderList
+        bool restartLiftingOrderList = true; //LiftingOderList
 
         public string BrowsedFilePath;
         public string BrowsedFile;
@@ -74,28 +74,27 @@ namespace Powermeet2
         int secondsLyft;
         int minutesLyft;
         int groupIndexCurrent;
-        int groupIndexCount = 1;    //Antal grupper
-        int group1Count;            //Antal lyftare i grupp
-        int group2Count;            //Antal lyftare i grupp
-        int group3Count;            //Antal lyftare i grupp
-        int groupRowFixer;          //Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
+        int groupIndexCount = 1;//Antal grupper
+        int group1Count;                    //Antal lyftare i grupp
+        int group2Count;                    //Antal lyftare i grupp
+        int group3Count;                    //Antal lyftare i grupp
+        int groupRowFixer;                  //Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
         int firstLftdatagridviewColumn = 11;
 
         public Dictionary<int, Lifter> LifterID = new();
 
-        public List<int> usedPlatesList = new List<int>();     //Hur många plates calculatorn har använt.
-        List<int> totalPlatesList = new List<int>();    //Antalet paltes som användaren anvivit
-        List<float> weightsList = new List<float>();    //Vikter
-        public List<int> usedPlatesList2 = new List<int>();     //Hur många plates calculatorn har använt.
-        List<int> totalPlatesList2 = new List<int>();    //Antalet paltes som användaren anvivit
-        List<float> weightsList2 = new List<float>();    //Vikter
+        public List<int> usedPlatesList = new List<int>();   //Hur många plates calculatorn har använt.
+        List<int> totalPlatesList = new List<int>();   //Antalet paltes som användaren anvivit
+        List<float> weightsList = new List<float>(); //Vikter
+        public List<int> usedPlatesList2 = new List<int>();   //Hur många plates calculatorn har använt.
+        List<int> totalPlatesList2 = new List<int>();   //Antalet paltes som användaren anvivit
+        List<float> weightsList2 = new List<float>(); //Vikter
 
         List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
-
-        List<Lifter> LiftingOrderListNew = new List<Lifter>(); //För att sortera
+        List<Lifter> LiftingOrderList = new List<Lifter>();                     //För att sortera
 
         List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
-        List<Lifter> GroupLiftingOrderList = new List<Lifter>(); //För att sortera viktera
+        List<Lifter> GroupLiftingOrderList = new List<Lifter>();                     //För att sortera viktera
         enum eGroupLiftingOrderState
         {
             group1Squat = 0,
@@ -156,8 +155,8 @@ namespace Powermeet2
                 this.liftoff = liftoff;
                 this.b1 = float.Parse(b1);
                 this.d1 = float.Parse(d1);
-                CurrentLift = 11;       //Väljer vilken column som första böjen börjar på
-                                        //Du måsta ändra en sak i tabcontrol långt ner
+                CurrentLift = 11;//Väljer vilken column som första böjen börjar på
+                                 //Du måsta ändra en sak i tabcontrol långt ner
                 LiftRecord = new List<bool>();
                 sbdList = new List<float>() { this.s1, s2, s3, this.b1, b2, b3, this.d1, d2, d3 };
             }
@@ -312,10 +311,10 @@ namespace Powermeet2
         private void btn_Import_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = "C:\\Users\\ninja\\source\\repos\\Powermeet2\\Powermeet2\\";
-            openFileDialog1.Title = "Powermeet Impoertera fil :)";
+            openFileDialog1.InitialDirectory = Application.StartupPath;
+            openFileDialog1.Title = "Steelmeet Importera fil :)";
             openFileDialog1.Filter =
-                "Excel and txt files|*.txt; *.xlsx; *.xls|" +                                                                                   //Filformat som man kan välja
+                "Excel och txt files|*.txt; *.xlsx; *.xls|" +                                                                                   //Filformat som man kan välja
                 "All files (*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();                                                                                  //Öppnar dialog
             if (result == DialogResult.OK)                                                                                                       //Testar om man klckat på ok i dialog
@@ -328,7 +327,7 @@ namespace Powermeet2
                     {
                         FileInfo finfo = new FileInfo(BrowsedFile);
                         BrowsedFilePath = finfo.DirectoryName + "\\" + finfo.Name;
-                        lbl_ImportedfilePath.Text = "dir: " + BrowsedFilePath;                                                             //Ändrar grafisk text
+                        lbl_ImportedfilePath.Text = "Filsökväg: " + BrowsedFilePath;                                                             //Ändrar grafisk text
 
                         dt.Rows.Clear();
                         string text = File.ReadAllText(BrowsedFile);
@@ -935,9 +934,9 @@ namespace Powermeet2
         //Tävling
         private void DrawPlates(Graphics g, List<int> usedPlatesList, List<Color> plateColorList, List<int> paintedPlatesList)
         {
-            int x1 = 10, y1 = 40, x2 = 10, y2 = 100;
-            Pen p = new Pen(Color.Red, 10);
-            int offset = 12;
+            int x1 = -5, y1 = 60, x2 = -5, y2 = 140;
+            Pen p = new Pen(Color.Red, 16);
+            int offset = 20;
 
             for (int i = 0; i < 10;)
             {
@@ -945,7 +944,7 @@ namespace Powermeet2
                 {
                     p.Color = plateColorList[i];
                     g.DrawLine(p, x1 + offset, y1, x2 + offset, y2);
-                    offset += 12;
+                    offset += 20;
 
                     paintedPlatesList[i]++;
                 }
@@ -953,7 +952,7 @@ namespace Powermeet2
             }
 
             p.Color = Color.DarkGray;
-            g.DrawLine(p, x1 + offset, 60, x2 + offset, 80);
+            g.DrawLine(p, x1 + offset, 90, x2 + offset, 110);
         }
 
         public void infopanel_Controlpanel_Paint(object sender, PaintEventArgs e)
@@ -1016,7 +1015,7 @@ namespace Powermeet2
                 SelectedRowIndex = e.RowIndex;
                 SelectedColumnIndex = e.ColumnIndex;
                 if (Enumerable.Any(LifterID) && dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
-                    LiftingOrderListNew[0].CurrentLift < 20) //Kollar om det finns något i LifterID listan annars blir det error
+                    LiftingOrderList[0].CurrentLift < 20) //Kollar om det finns något i LifterID listan annars blir det error
                 {
                     //Visar Info om den lyftare som är klickad på i informationsrutan
                     //lbl_Name.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
@@ -1024,60 +1023,69 @@ namespace Powermeet2
                     //lbl_Placement.Text = LifterID[SelectedRowIndex + groupRowFixer].place.ToString();
                     //lbl_Infällt.Text = LifterID[SelectedRowIndex + groupRowFixer].tilted.ToString();
                     //lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
-                    //lbl_Grupp_control.Text = LifterID[SelectedRowIndex + groupRowFixer].groupNumber.ToString();
-                    //lbl_Lot_control.Text = LifterID[SelectedRowIndex + groupRowFixer].lotNumber.ToString();
-                    //lbl_GLPoints_control.Text = GLPointsCalculator(LifterID[SelectedRowIndex + groupRowFixer]).ToString();
 
 
                     //Informationsruta 1
-                    if (LiftingOrderListNew.Count > 0)
+                    if (LiftingOrderList.Count > 0)
                     {
-                        PlateCalculator(LiftingOrderListNew[0].sbdList[LiftingOrderListNew[0].CurrentLift - 11], plateInfo);
-                        lbl_Name.Text = LiftingOrderListNew[0].name;
-                        lbl_Placement.Text = LiftingOrderListNew[0].place.ToString();
-                        lbl_Infällt.Text = LiftingOrderListNew[0].tilted.ToString();
-                        lbl_Avlyft.Text = LiftingOrderListNew[0].liftoff.ToString();
-                        lbl_Grupp_control.Text = LiftingOrderListNew[0].groupNumber.ToString();
-                        lbl_Lot_control.Text = LiftingOrderListNew[0].lotNumber.ToString();
-                        lbl_GLPoints_control.Text = GLPointsCalculator(LiftingOrderListNew[0]).ToString("0.00");
+                        PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - 11], plateInfo);
+                        lbl_Name.Text = LiftingOrderList[0].name;
+                        //Kollar om det finns 25kg plates och sedan visar hur många det finns
+                        if (usedPlatesList[1] > 0)
+                        {
+                            lbl_25x.Text = usedPlatesList[1].ToString();
+                        }
+                        else
+                        {
+                            lbl_25x.Text = "";
+                        }
 
-                        if (LiftingOrderListNew[0].CurrentLift < 14)
+                        if (LiftingOrderList[0].CurrentLift < 14)
                         {
-                            lbl_Height.Text = "Höjd : " + LiftingOrderListNew[0].squatHeight.ToString();
+                            lbl_Avlyft.Text = "Infällt: " + LiftingOrderList[0].tilted.ToString();
+                            lbl_Height.Text = "Höjd: " + LiftingOrderList[0].squatHeight.ToString();
                         }
-                        else if (LiftingOrderListNew[0].CurrentLift < 17)
+                        else if (LiftingOrderList[0].CurrentLift < 17)
                         {
-                            lbl_Height.Text = "Höjd : " + LiftingOrderListNew[0].benchHeight.ToString() + "/" + LiftingOrderListNew[0].benchRack.ToString();
+                            lbl_Avlyft.Text = "Avlyft: " + LiftingOrderList[0].tilted.ToString();
+                            lbl_Height.Text = "Höjd: " + LiftingOrderList[0].benchHeight.ToString() + "/" + LiftingOrderList[0].benchRack.ToString();
                         }
-                        else if (LiftingOrderListNew[0].CurrentLift < 20)
+                        else if (LiftingOrderList[0].CurrentLift < 20)
                         {
-                            lbl_Height.Text = " Total : " + LiftingOrderListNew[0].total.ToString();
+                            lbl_Avlyft.Text = "Placering :" + LiftingOrderList[0].place.ToString();
+                            lbl_Height.Text = " Total : " + LiftingOrderList[0].total.ToString();
                         }
                         SuggestionBtnUpdate();
 
                         //Informationsruta 2
-                        if (LiftingOrderListNew.Count > 1)
+                        if (LiftingOrderList.Count > 1)
                         {
-                            PlateCalculator2(LiftingOrderListNew[1].sbdList[LiftingOrderListNew[1].CurrentLift - 11], plateInfo);
-                            lbl_Name2.Text = LiftingOrderListNew[1].name;
-                            lbl_Placement2.Text = LiftingOrderListNew[1].place.ToString();
-                            lbl_Infällt2.Text = LiftingOrderListNew[1].tilted.ToString();
-                            lbl_Avlyft2.Text = LiftingOrderListNew[1].liftoff.ToString();
-                            lbl_Grupp_control2.Text = LiftingOrderListNew[1].groupNumber.ToString();
-                            lbl_Lot_control2.Text = LiftingOrderListNew[1].lotNumber.ToString();
-                            lbl_GLPoints_control2.Text = GLPointsCalculator(LiftingOrderListNew[1]).ToString("0.00");
+                            PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - 11], plateInfo);
+                            lbl_Name2.Text = LiftingOrderList[1].name;
+                            //Kollar om det finns 25kg plates och sedan visar hur många det finns
+                            if (usedPlatesList2[1] > 0)
+                            {
+                                lbl_25x2.Text = usedPlatesList2[1].ToString();
+                            }
+                            else
+                            {
+                                lbl_25x2.Text = "";
+                            }
 
-                            if (LiftingOrderListNew[1].CurrentLift < 14)
+                            if (LiftingOrderList[1].CurrentLift < 14)
                             {
-                                lbl_Height2.Text = "Höjd : " + LiftingOrderListNew[1].squatHeight.ToString();
+                                lbl_Avlyft2.Text = "Infällt: " + LiftingOrderList[1].tilted.ToString();
+                                lbl_Height2.Text = "Höjd: " + LiftingOrderList[1].squatHeight.ToString();
                             }
-                            else if (LiftingOrderListNew[0].CurrentLift < 17)
+                            else if (LiftingOrderList[0].CurrentLift < 17)
                             {
-                                lbl_Height2.Text = "Höjd : " + LiftingOrderListNew[1].benchHeight.ToString() + "/" + LiftingOrderListNew[1].benchRack.ToString();
+                                lbl_Avlyft2.Text = "Avlyft: " + LiftingOrderList[1].liftoff.ToString();
+                                lbl_Height2.Text = "Höjd: " + LiftingOrderList[1].benchHeight.ToString() + "/" + LiftingOrderList[1].benchRack.ToString();
                             }
-                            else if (LiftingOrderListNew[0].CurrentLift < 20)
+                            else if (LiftingOrderList[0].CurrentLift < 20)
                             {
-                                lbl_Height2.Text = " Total : " + LiftingOrderListNew[1].total.ToString();
+                                lbl_Avlyft2.Text = "Placering :" + LiftingOrderList[1].place.ToString();
+                                lbl_Height2.Text = " Total : " + LiftingOrderList[1].total.ToString();
                             }
                         }
                     }
@@ -1132,7 +1140,7 @@ namespace Powermeet2
                         dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 25;
                         if (SelectedColumnIndex < 14 && SelectedColumnIndex > 11)
                         {
-                            LiftingOrderListNew.Add(LifterID[SelectedRowIndex + groupRowFixer]);
+                            LiftingOrderList.Add(LifterID[SelectedRowIndex + groupRowFixer]);
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 0;
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(255, 127, 80);
@@ -1201,8 +1209,12 @@ namespace Powermeet2
         }
         public void goodLift()
         {
-            if (LiftingOrderListNew.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
+            if (LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
             {
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
+                {
+                    LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
+                }
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
 
@@ -1213,10 +1225,10 @@ namespace Powermeet2
                 BestSBDUpdate();
 
                 //Sätter total och GL points
-                LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
-                LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderListNew[0].pointsGL.ToString("0.00");
+                LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
+                LiftingOrderList[0].pointsGL = GLPointsCalculator(LiftingOrderList[0]);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].total;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
                 TimerController(8); //Startar lapp timern på 1 minut
                 TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1225,36 +1237,36 @@ namespace Powermeet2
                 RankUpdate();
             }
             //Tar bort rätt lyftare
-            if (LiftingOrderListNew.Count >= 0)
+            if (LiftingOrderList.Count >= 0)
             {
                 // Medelande om lyftaren redan lyft funkar inte ?!?!?!?!?
-                if (!LiftingOrderListNew.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
+                if (!LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
                 {
                     MessageBox.Show("Denna lyftare har redan lyft denna omgång", "SteelMeet varning", MessageBoxButtons.OK, MessageBoxIcon.None);
                     return;
                 }
-                for (int i = 0; i < LiftingOrderListNew.Count; i++)
+                for (int i = 0; i < LiftingOrderList.Count; i++)
                 {
-                    if (LifterID[SelectedRowIndex + groupRowFixer] == LiftingOrderListNew[i])
+                    if (LifterID[SelectedRowIndex + groupRowFixer] == LiftingOrderList[i])
                     {
-                        LiftingOrderListNew.RemoveAt(i);
+                        LiftingOrderList.RemoveAt(i);
                     }
                 }
             }
 
             //Sätter den gröna färgen
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.ForestGreen;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.ForestGreen;
 
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
             {
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Style.BackColor = Color.FromArgb(255, 127, 80);
-                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1];
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.FromArgb(255, 127, 80);
+                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift];
 
-                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 13 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 16)
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 14 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 17)
                 {
-                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Value = //Lägger till 2,5 automatiskt när man godkänner ett lyft
-                        2.5f + float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = //Lägger till 2,5 automatiskt när man godkänner ett lyft
+                        2.5f + float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString());
                 }
                 dataGridViewControlPanel.BeginEdit(true);
             }
@@ -1262,9 +1274,8 @@ namespace Powermeet2
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
             {
                 LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
-                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString());
+                    float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString());
 
-                LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
             }
         }
         public void badLift()
@@ -1275,10 +1286,10 @@ namespace Powermeet2
             LiftOrderUpdate();
 
             //Sätter total och GL points
-            LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
-            LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderListNew[0].pointsGL.ToString("0.00");
+            LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
+            LiftingOrderList[0].pointsGL = GLPointsCalculator(LiftingOrderList[0]);
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].total;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
             TimerController(8); //Startar lapp timern på 1 minut
             TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1286,19 +1297,19 @@ namespace Powermeet2
             //Uppdaterar placering
             RankUpdate();
             //Tar bort rätt lyftare
-            if (LiftingOrderListNew.Count >= 0)
+            if (LiftingOrderList.Count >= 0)
             {
                 // Medelande om lyftaren redan lyft funkar inte ?!?!?!?!?
-                if (!LiftingOrderListNew.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
+                if (!LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
                 {
                     MessageBox.Show("Denna lyftare har redan lyft denna omgång");
                     return;
                 }
-                for (int i = 0; i < LiftingOrderListNew.Count; i++)
+                for (int i = 0; i < LiftingOrderList.Count; i++)
                 {
-                    if (LifterID[SelectedRowIndex + groupRowFixer] == LiftingOrderListNew[i])
+                    if (LifterID[SelectedRowIndex + groupRowFixer] == LiftingOrderList[i])
                     {
-                        LiftingOrderListNew.RemoveAt(i);
+                        LiftingOrderList.RemoveAt(i);
                     }
                 }
             }
@@ -1334,7 +1345,7 @@ namespace Powermeet2
         {
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift > firstLftdatagridviewColumn)
             {
-                LiftingOrderListNew.Add(LifterID[SelectedRowIndex + groupRowFixer]);
+                LiftingOrderList.Add(LifterID[SelectedRowIndex + groupRowFixer]);
                 LiftOrderUpdate();//Updaterar lyftar ordning
 
                 //Ångarar ett lyft för lyftaren i LiftRecord
@@ -1353,10 +1364,10 @@ namespace Powermeet2
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
 
                 //Uppdaterar total och GLpoints
-                LiftingOrderListNew[0].total = LiftingOrderListNew[0].bestS + LiftingOrderListNew[0].bestB + LiftingOrderListNew[0].bestD;
-                LiftingOrderListNew[0].pointsGL = GLPointsCalculator(LiftingOrderListNew[0]);
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderListNew[0].total;
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderListNew[0].pointsGL.ToString("0.00");
+                LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
+                LiftingOrderList[0].pointsGL = GLPointsCalculator(LiftingOrderList[0]);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].total;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
             }
         }
@@ -1623,7 +1634,7 @@ namespace Powermeet2
             {
                 weightsList.AddRange(new float[] { 50, 25, 20, 15, 10, 5, 2.5f, 1.25f, 0.5f, 0.25f });
             }
-            if (targetWeight == 0)
+            if (targetWeight < 12.5)
             {
                 return;
             }
@@ -1682,7 +1693,7 @@ namespace Powermeet2
             {
                 weightsList2.AddRange(new float[] { 50, 25, 20, 15, 10, 5, 2.5f, 1.25f, 0.5f, 0.25f });
             }
-            if (targetWeight == 0)
+            if (targetWeight < 12.5f)
             {
                 return;
             }
@@ -1826,106 +1837,146 @@ namespace Powermeet2
         {                               //förta listan fylls och sen tas det bort lyftare allt eftersom och när den är tom så byts informationen från lista två ut mot informationen i lista 1 så det blir infinate loop,
                                         //man tar bara bort lyftare från lista 1 och lägger bara till i lista 2
 
+            if (LifterID.Count > 0)
+            {
 
-            LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
+                LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
                                                         lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
                                                         lbl_liftOrder_control_9, lbl_liftOrder_control_10, lbl_liftOrder_control_11, lbl_liftOrder_control_12,
                                                         lbl_liftOrder_control_13, lbl_liftOrder_control_14, lbl_liftOrder_control_15, lbl_liftOrder_control_16,
                                                         lbl_liftOrder_control_17, lbl_liftOrder_control_18, lbl_liftOrder_control_19, lbl_liftOrder_control_20});
-            if (groupIndexCurrent == 0)
-            {
-                //Fyller listan för första gången
-                if (restartLiftingOrderList == true)
+                if (groupIndexCurrent == 0)
                 {
-                    LiftingOrderListNew.Clear();
-                    for (int i = 0; i < group1Count; i++)
+                    //Fyller listan för första gången
+                    if (restartLiftingOrderList == true)
                     {
-                        LiftingOrderListNew.Add(LifterID[i]);
-                        restartLiftingOrderList = false;
+                        LiftingOrderList.Clear();
+                        for (int i = 0; i < group1Count; i++)
+                        {
+                            LiftingOrderList.Add(LifterID[i]);
+                            restartLiftingOrderList = false;
+                        }
+                    }
+                    if (LiftingOrderList.Count == 0)
+                    {
+                        //En lista som fylls med current lift och kollar vilken lyftare som har lägsta currentlift
+                        //Sedan lägger till alla lyftare i liftingorder som har samma current lift som det lägsta currentlift
+                        List<int> ints = new List<int>();
+                        for (int i = 0; i < group1Count; i++)
+                        {
+                            ints.Add(LifterID[i].CurrentLift);
+                        }
+                        int lowestCurrentLift = 0;
+                        lowestCurrentLift = ints.Min();
+
+                        //fyll lista två med alla lyftare som stämmer med den lägsta CurrentLift
+                        for (int i = 0; i < group1Count; i++)
+                        {
+                            if (LifterID[i].CurrentLift == lowestCurrentLift)
+                            {
+                                LiftingOrderList.Add(LifterID[i]);
+                            }
+                        }
                     }
                 }
-                if (LiftingOrderListNew.Count == 0)
+                //group 1
+                //group 1
+                //group 1
+                if (groupIndexCurrent == 1)
                 {
-                    //fyll lista två med all lyftares currentlift
-                    for (int i = 0; i < group1Count; i++)
+                    //Fyller listan för första gången
+                    if (restartLiftingOrderList == true)
                     {
-                        LiftingOrderListNew.Add(LifterID[i]);
+                        LiftingOrderList.Clear();
+                        for (int i = group1Count; i < group1Count + group2Count; i++)
+                        {
+                            LiftingOrderList.Add(LifterID[i]);
+                            restartLiftingOrderList = false;
+                        }
+                    }
+                    if (LiftingOrderList.Count == 0)
+                    {
+                        //En lista som fylls med current lift och kollar vilken lyftare som har lägsta currentlift
+                        //Sedan lägger till alla lyftare i liftingorder som har samma current lift som det lägsta currentlift
+                        List<int> ints = new List<int>();
+                        for (int i = group1Count; i < group1Count + group2Count; i++)
+                        {
+                            ints.Add(LifterID[i].CurrentLift);
+                        }
+                        int lowestCurrentLift = 0;
+                        lowestCurrentLift = ints.Min();
+
+                        //fyll lista två med all lyftares currentlift
+                        for (int i = group1Count; i < group1Count + group2Count; i++)
+                        {
+                            if (LifterID[i].CurrentLift == lowestCurrentLift)
+                            {
+                                LiftingOrderList.Add(LifterID[i]);
+                            }
+                        }
+                    }
+                }
+                //group 2
+                //group 2
+                //group 2
+                if (groupIndexCurrent == 1)
+                {
+                    //Fyller listan för första gången
+                    if (restartLiftingOrderList == true)
+                    {
+                        LiftingOrderList.Clear();
+                        for (int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++)
+                        {
+                            LiftingOrderList.Add(LifterID[i]);
+                            restartLiftingOrderList = false;
+                        }
+                    }
+                    if (LiftingOrderList.Count == 0)
+                    {
+                        //En lista som fylls med current lift och kollar vilken lyftare som har lägsta currentlift
+                        //Sedan lägger till alla lyftare i liftingorder som har samma current lift som det lägsta currentlift
+                        List<int> ints = new List<int>();
+                        for (int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++)
+                        {
+                            ints.Add(LifterID[i].CurrentLift);
+                        }
+                        int lowestCurrentLift = 0;
+                        lowestCurrentLift = ints.Min();
+
+                        //fyll lista två med all lyftares currentlift
+                        for (int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++)
+                        {
+                            if (LifterID[i].CurrentLift == lowestCurrentLift)
+                            {
+                                LiftingOrderList.Add(LifterID[i]);
+                            }
+                        }
+                    }
+                }
+                //group 3
+                //group 3
+                //group 3
+                for (int i = 0; i < LiftingOrderListLabels.Count; i++)
+                {
+                    LiftingOrderListLabels[i].Text = "";
+                }
+
+                // Create an instance of the custom comparer.
+                var comparer = new LifterComparer();
+
+                // Use the custom comparer to sort LiftingOrderListNew.
+                LiftingOrderList = LiftingOrderList.OrderBy(item => item, comparer).ToList();
+
+                //Om första elementet i listan är klar med sista marken så ska inte man visa deras nästa lyft eftersom det inte finns något mer att lyffta lol
+
+                for (int i = 0; i < LiftingOrderList.Count; i++)
+                {
+                    if (LiftingOrderList[i].CurrentLift < 20)
+                    {
+                        LiftingOrderListLabels[i].Text = LiftingOrderList[i].sbdList[LiftingOrderList[i].CurrentLift - 11] + " " + LiftingOrderList[i].name;
                     }
                 }
             }
-            //group 1
-            //group 1
-            //group 1
-            if (groupIndexCurrent == 1)
-            {
-                //Fyller listan för första gången
-                if (restartLiftingOrderList == true)
-                {
-                    LiftingOrderListNew.Clear();
-                    for (int i = group1Count; i < group1Count + group2Count; i++)
-                    {
-                        LiftingOrderListNew.Add(LifterID[i]);
-                        restartLiftingOrderList = false;
-                    }
-                }
-                if (LiftingOrderListNew.Count == 0)
-                {
-                    //fyll lista två med all lyftares currentlift
-                    for (int i = group1Count; i < group1Count + group2Count; i++)
-                    {
-                        LiftingOrderListNew.Add(LifterID[i]);
-                    }
-                }
-            }
-            //group 2
-            //group 2
-            //group 2
-            if (groupIndexCurrent == 2)
-            {
-                //Fyller listan för första gången
-                if (restartLiftingOrderList == true)
-                {
-                    LiftingOrderListNew.Clear();
-                    for (int i = group1Count + group2Count - 2; i < group1Count + group2Count + group3Count; i++)
-                    {
-                        LiftingOrderListNew.Add(LifterID[i]);
-                        restartLiftingOrderList = false;
-                    }
-                }
-                if (LiftingOrderListNew.Count == 0)
-                {
-                    //fyll lista två med all lyftares currentlift
-                    for (int i = group1Count + group2Count - 2; i < group1Count + group2Count + group3Count; i++)
-                    {
-                        LiftingOrderListNew.Add(LifterID[i]);
-                    }
-                }
-            }
-            //group 3
-            //group 3
-            //group 3
-            for (int i = 0; i < LiftingOrderListLabels.Count; i++)
-            {
-                LiftingOrderListLabels[i].Text = "";
-            }
-
-            // Create an instance of the custom comparer.
-            var comparer = new LifterComparer();
-
-            // Use the custom comparer to sort LiftingOrderListNew.
-            LiftingOrderListNew = LiftingOrderListNew.OrderBy(item => item, comparer).ToList();
-
-            //Om första elementet i listan är klar med sista marken så ska inte man visa deras nästa lyft eftersom det inte finns något mer att lyffta lol
-
-            for (int i = 0; i < LiftingOrderListNew.Count; i++)
-            {
-                if (LiftingOrderListNew[i].CurrentLift < 20)
-                {
-                    LiftingOrderListLabels[i].Text = LiftingOrderListNew[i].sbdList[LiftingOrderListNew[i].CurrentLift - 11] + " " + LiftingOrderListNew[i].name;
-                }
-            }
-
-
         }
         public void GroupCountUpdater()
         {
@@ -2288,26 +2339,40 @@ namespace Powermeet2
         private void btn_klovad_Click(object sender, EventArgs e)
         {
             TimerController(0);
-            if (LiftingOrderListNew.Count > 0)
+            if (LiftingOrderList.Count > 0)
             {
-                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[1];
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[2].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[3].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[4].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[5].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[6].Selected = true;
+                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[1];
+                //Markerar rad för den aktiva lyftaren
+                for (int columnIndex = 2; columnIndex <= 6; columnIndex++)
+                {
+                    dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[columnIndex].Selected = true;
+                }
+
+                //Uppdaterar platcalculatorn för den buggar ibland asså
+                PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - 11], plateInfo);
+                if (LiftingOrderList.Count > 1)
+                {
+                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - 11], plateInfo);
+                }
             }
         }
         private void btn_SelectNextLifter_Click(object sender, EventArgs e)
         {
-            if (LiftingOrderListNew.Count > 0)
+            if (LiftingOrderList.Count > 0)
             {
-                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[1];
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[2].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[3].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[4].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[5].Selected = true;
-                dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index - groupRowFixer].Cells[6].Selected = true;
+                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[1];
+                //Markerar rad för den aktiva lyftaren
+                for (int columnIndex = 2; columnIndex <= 6; columnIndex++)
+                {
+                    dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[columnIndex].Selected = true;
+                }
+
+                //Uppdaterar platcalculatorn för den buggar ibland asså
+                PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - 11], plateInfo);
+                if (LiftingOrderList.Count > 1)
+                {
+                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - 11], plateInfo);
+                }
             }
         }
         private void lbl_timerLyft_Click(object sender, EventArgs e)
@@ -2385,7 +2450,7 @@ namespace Powermeet2
 
             GroupCountUpdater();
             RankUpdate();
-            LiftingOrderListNew.Clear();
+            LiftingOrderList.Clear();
             LiftOrderUpdate();//Updaterar lyftar ordning
             GroupLiftOrderUpdate();//Updaterar nästa grupps lyftar ordning
 
@@ -2418,7 +2483,7 @@ namespace Powermeet2
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
                             , LifterID[i].sbdList[3].ToString(), LifterID[i].sbdList[4].ToString(), LifterID[i].sbdList[5].ToString()
                             , LifterID[i].sbdList[6].ToString(), LifterID[i].sbdList[7].ToString(), LifterID[i].sbdList[8].ToString()
-                            , LifterID[i].total.ToString(), LifterID[i].pointsGL.ToString());
+                            , LifterID[i].total.ToString(), LifterID[i].pointsGL.ToString("0.00"));
                     }
 
                     for (int i = 0; i < dataGridViewControlPanel.RowCount; i++)
@@ -2450,9 +2515,9 @@ namespace Powermeet2
                     {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
-                    if (LiftingOrderListNew.Count > 0)
+                    if (LiftingOrderList.Count > 0)
                     {
-                        dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderListNew[0].index].Cells[1];
+                        dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderList[0].index].Cells[1];
                     }
 
                     break;
@@ -2484,7 +2549,7 @@ namespace Powermeet2
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
                             , LifterID[i].sbdList[3].ToString(), LifterID[i].sbdList[4].ToString(), LifterID[i].sbdList[5].ToString()
                             , LifterID[i].sbdList[6].ToString(), LifterID[i].sbdList[7].ToString(), LifterID[i].sbdList[8].ToString()
-                            , LifterID[i].total.ToString(), LifterID[i].pointsGL.ToString());
+                            , LifterID[i].total.ToString(), LifterID[i].pointsGL.ToString("0.00"));
                     }
 
                     for (int i = 0; i < dataGridViewControlPanel.RowCount; i++)
@@ -2541,7 +2606,7 @@ namespace Powermeet2
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
                             , LifterID[i].sbdList[3].ToString(), LifterID[i].sbdList[4].ToString(), LifterID[i].sbdList[5].ToString()
                             , LifterID[i].sbdList[6].ToString(), LifterID[i].sbdList[7].ToString(), LifterID[i].sbdList[8].ToString()
-                            , LifterID[i].total.ToString(), LifterID[i].pointsGL.ToString());
+                            , LifterID[i].total.ToString(), LifterID[i].pointsGL.ToString("0.00"));
                     }
 
                     for (int i = 0; i < dataGridViewControlPanel.RowCount; i++)

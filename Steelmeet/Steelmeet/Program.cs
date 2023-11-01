@@ -1,4 +1,4 @@
-namespace Powermeet2
+namespace SteelMeet
 {
     internal static class Program
     {

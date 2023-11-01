@@ -1,25 +1,23 @@
-Powermeet TODO
-
-PRIO NR 1 !!!?! : 
+Steelmeet TODO
 
 Västenliga fixar från DM :
+Man ska kunna ändra infällt och avlyft under tävlingens gång 
+✅lbl_25x lägg til så den gör nåt
 ✅Underkända lyft läggs till på totalen
 ✅När man är på sista gruppens mark så behöver man intte visa ingångar
 ✅suggested lift krashar programmet i grupp 2 och förmodligen grupp tre
-Gör så att bara de som inte har lyft i omgången läggs till i lyftarordningen så man kan byta grup när som helst
-Man ska kunna ändra infällt och avlyft under tävlingens gång 
-TEST VERSION UTFÄRDAD FÖR TESTNING AV STEELMEET FRAM TILL 2024-01-01
-
+✅Gör så att bara de som inte har lyft i omgången läggs till i lyftarordningen så man kan byta grup när som helst
+✅STEELMEET TESTVERSION FÖR ANVÄNDNING T.O.M 2024-01-01
 
 Rekomendationer från DM : 
-Gör text större spciellt de viktiga sakerna som namn och vikt
-Ta bort onödiga saker från info panelerna (då finns de också mer plats)
-Visa bara väsentilg info på panelerna (t.ex inte avlyft i marken)
-Visa hur många 25kg kakor som ska användas t.ex 25KGx5 så klovare lätt kan se
 Markera förgående lyftare??
-Nummer bervid lyftare i lyftarordningen så man inte behöver räkna hur många lyftare som är föra en själv
+Snygga till lyftarordningen så den är lättare att läsa
 Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
-När amn ändararr grupp får alla godkänt
+✅Visa bara väsentilg info på panelerna (t.ex inte avlyft i marken)
+✅Visa hur många 25kg kakor som ska användas t.ex 25KGx5 så klovare lätt kan se
+✅Gör text större spciellt de viktiga sakerna som namn och vikt
+✅Ta bort onödiga saker från info panelerna (då finns de också mer plats)
+✅När amn ändararr grupp får alla godkänt
 
 Rekord blinka saken
 ✅Välja vikt knappar som har -2.5,-5,+2.5,+5,+7.5,+10,
@@ -71,11 +69,12 @@ Invägning :
 ✅Automatisk klass string korrigering
 
 Kontrollpanel / Tävlingsfönster :
-Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
-Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 
-Byta färg på tabcontrol1 "Changetabcolor"
 1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
+gör en timer som man kan sätta ett visst klockslag och sen utifrån system klockan så sätter den timern
+Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
+Byta färg på tabcontrol1 "Changetabcolor"
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
+✅Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 
 ✅Det finns inga poäng i djulen men det finns på DM
 ✅visa GL poöngen
 ✅Medelande om lyftaren redan lyft denna omgång sök på "Medelande om lyftaren redan lyft"
