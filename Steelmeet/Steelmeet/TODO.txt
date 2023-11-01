@@ -1,6 +1,7 @@
 Steelmeet TODO
 
 Västenliga fixar från DM :
+Alla bänkpressare ska börja med currentlift på första bänkpressen vilket är currentLift = 14
 Man ska kunna ändra infällt och avlyft under tävlingens gång 
 ✅lbl_25x lägg til så den gör nåt
 ✅Underkända lyft läggs till på totalen
