@@ -178,7 +178,6 @@
             rb_national = new RadioButton();
             rb_district = new RadioButton();
             rb_club = new RadioButton();
-            label31 = new Label();
             btn_rekord = new Button();
             panel8 = new Panel();
             combo_Aktivgrupp = new ComboBox();
@@ -218,6 +217,9 @@
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
+            panel14 = new Panel();
+            cb_Infällt = new CheckBox();
+            cb_Avlyft = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -243,6 +245,7 @@
             infopanel_Controlpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewControlPanel).BeginInit();
             tabPage3.SuspendLayout();
+            panel14.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -391,7 +394,7 @@
             lbl_Lyftare.Name = "lbl_Lyftare";
             lbl_Lyftare.Size = new Size(316, 49);
             lbl_Lyftare.TabIndex = 7;
-            lbl_Lyftare.Text = "Invägning 1.0.0v";
+            lbl_Lyftare.Text = "Invägning 1.0.1v";
             // 
             // btn_Comp
             // 
@@ -515,7 +518,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.WindowFrame;
+            panel3.BackColor = Color.FromArgb(27, 38, 44);
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(label21);
             panel3.Controls.Add(label18);
@@ -542,9 +545,9 @@
             label21.AutoSize = true;
             label21.Location = new Point(11, 449);
             label21.Name = "label21";
-            label21.Size = new Size(380, 45);
+            label21.Size = new Size(348, 60);
             label21.TabIndex = 44;
-            label21.Text = "Tack för att du använder Steelmeet\r\nMicrosoft.Office.Interop biblioteket används för hantering av excel filer\r\nProgrammerat i Win Forms C# av Edvin Öhrström";
+            label21.Text = "Tack för att du använder Steelmeet\r\nSpreadSheetLight biblioteket används för hantering av excel filer,\r\n se LICENCE.txt\r\nProgrammerat i Win Forms C# av Edvin Öhrström";
             label21.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label18
@@ -572,7 +575,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.WindowFrame;
+            panel2.BackColor = Color.FromArgb(27, 38, 44);
             panel2.Controls.Add(comboBox2);
             panel2.Controls.Add(comboBox1);
             panel2.Controls.Add(label20);
@@ -686,7 +689,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.WindowFrame;
+            panel1.BackColor = Color.FromArgb(27, 38, 44);
             panel1.Controls.Add(btn_Weightplates);
             panel1.Controls.Add(label17);
             panel1.Controls.Add(btn50);
@@ -1083,6 +1086,7 @@
             // tabPage2
             // 
             tabPage2.BackColor = SystemColors.WindowText;
+            tabPage2.Controls.Add(panel14);
             tabPage2.Controls.Add(infopanel_Controlpanel2);
             tabPage2.Controls.Add(panel13);
             tabPage2.Controls.Add(panel12);
@@ -1895,13 +1899,12 @@
             panel9.Controls.Add(cb_bench);
             panel9.Controls.Add(cb_squat);
             panel9.Controls.Add(rb_national);
+            panel9.Controls.Add(btn_rekord);
             panel9.Controls.Add(rb_district);
             panel9.Controls.Add(rb_club);
-            panel9.Controls.Add(label31);
-            panel9.Controls.Add(btn_rekord);
             panel9.Location = new Point(224, 159);
             panel9.Name = "panel9";
-            panel9.Size = new Size(518, 43);
+            panel9.Size = new Size(440, 43);
             panel9.TabIndex = 6;
             // 
             // cb_total
@@ -1909,7 +1912,7 @@
             cb_total.AutoSize = true;
             cb_total.BackColor = Color.Transparent;
             cb_total.ForeColor = Color.FromArgb(187, 225, 250);
-            cb_total.Location = new Point(154, 23);
+            cb_total.Location = new Point(63, 23);
             cb_total.Name = "cb_total";
             cb_total.Size = new Size(51, 19);
             cb_total.TabIndex = 40;
@@ -1921,7 +1924,7 @@
             cb_deadlift.AutoSize = true;
             cb_deadlift.BackColor = Color.Transparent;
             cb_deadlift.ForeColor = Color.FromArgb(187, 225, 250);
-            cb_deadlift.Location = new Point(154, 4);
+            cb_deadlift.Location = new Point(63, 4);
             cb_deadlift.Name = "cb_deadlift";
             cb_deadlift.Size = new Size(53, 19);
             cb_deadlift.TabIndex = 39;
@@ -1933,7 +1936,7 @@
             cb_bench.AutoSize = true;
             cb_bench.BackColor = Color.Transparent;
             cb_bench.ForeColor = Color.FromArgb(187, 225, 250);
-            cb_bench.Location = new Point(98, 23);
+            cb_bench.Location = new Point(7, 23);
             cb_bench.Name = "cb_bench";
             cb_bench.Size = new Size(52, 19);
             cb_bench.TabIndex = 38;
@@ -1945,7 +1948,7 @@
             cb_squat.AutoSize = true;
             cb_squat.BackColor = Color.Transparent;
             cb_squat.ForeColor = Color.FromArgb(187, 225, 250);
-            cb_squat.Location = new Point(98, 4);
+            cb_squat.Location = new Point(7, 4);
             cb_squat.Name = "cb_squat";
             cb_squat.Size = new Size(43, 19);
             cb_squat.TabIndex = 13;
@@ -1956,7 +1959,7 @@
             // 
             rb_national.AutoSize = true;
             rb_national.ForeColor = Color.FromArgb(187, 225, 250);
-            rb_national.Location = new Point(330, 12);
+            rb_national.Location = new Point(252, 12);
             rb_national.Name = "rb_national";
             rb_national.Size = new Size(65, 19);
             rb_national.TabIndex = 37;
@@ -1968,7 +1971,7 @@
             // 
             rb_district.AutoSize = true;
             rb_district.ForeColor = Color.FromArgb(187, 225, 250);
-            rb_district.Location = new Point(268, 12);
+            rb_district.Location = new Point(190, 12);
             rb_district.Name = "rb_district";
             rb_district.Size = new Size(62, 19);
             rb_district.TabIndex = 36;
@@ -1980,7 +1983,7 @@
             // 
             rb_club.AutoSize = true;
             rb_club.ForeColor = Color.FromArgb(187, 225, 250);
-            rb_club.Location = new Point(212, 13);
+            rb_club.Location = new Point(134, 12);
             rb_club.Name = "rb_club";
             rb_club.Size = new Size(56, 19);
             rb_club.TabIndex = 35;
@@ -1988,23 +1991,12 @@
             rb_club.Text = "Klubb";
             rb_club.UseVisualStyleBackColor = true;
             // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label31.ForeColor = Color.FromArgb(187, 225, 250);
-            label31.Location = new Point(7, 4);
-            label31.Name = "label31";
-            label31.Size = new Size(88, 30);
-            label31.TabIndex = 12;
-            label31.Text = "Rekord :";
-            // 
             // btn_rekord
             // 
             btn_rekord.BackColor = Color.FromArgb(15, 76, 117);
             btn_rekord.FlatStyle = FlatStyle.Popup;
             btn_rekord.ForeColor = Color.FromArgb(187, 225, 250);
-            btn_rekord.Location = new Point(411, 10);
+            btn_rekord.Location = new Point(333, 10);
             btn_rekord.Name = "btn_rekord";
             btn_rekord.Size = new Size(95, 23);
             btn_rekord.TabIndex = 30;
@@ -2505,6 +2497,40 @@
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
             // 
+            // panel14
+            // 
+            panel14.BackColor = Color.FromArgb(27, 38, 44);
+            panel14.Controls.Add(cb_Infällt);
+            panel14.Controls.Add(cb_Avlyft);
+            panel14.Location = new Point(670, 159);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(72, 43);
+            panel14.TabIndex = 41;
+            // 
+            // cb_Infällt
+            // 
+            cb_Infällt.AutoSize = true;
+            cb_Infällt.BackColor = Color.Transparent;
+            cb_Infällt.ForeColor = Color.FromArgb(187, 225, 250);
+            cb_Infällt.Location = new Point(7, 23);
+            cb_Infällt.Name = "cb_Infällt";
+            cb_Infällt.Size = new Size(56, 19);
+            cb_Infällt.TabIndex = 38;
+            cb_Infällt.Text = "Infällt";
+            cb_Infällt.UseVisualStyleBackColor = false;
+            // 
+            // cb_Avlyft
+            // 
+            cb_Avlyft.AutoSize = true;
+            cb_Avlyft.BackColor = Color.Transparent;
+            cb_Avlyft.ForeColor = Color.FromArgb(187, 225, 250);
+            cb_Avlyft.Location = new Point(7, 4);
+            cb_Avlyft.Name = "cb_Avlyft";
+            cb_Avlyft.Size = new Size(57, 19);
+            cb_Avlyft.TabIndex = 13;
+            cb_Avlyft.Text = "Avlyft";
+            cb_Avlyft.UseVisualStyleBackColor = false;
+            // 
             // SMKontrollpanel
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -2555,6 +2581,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewControlPanel).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            panel14.ResumeLayout(false);
+            panel14.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -2657,7 +2685,6 @@
         private System.Windows.Forms.Timer timerRekordAnimering;
         private Panel panel11;
         private Label lbl_OpeningLift;
-        private Label label31;
         private Button btn_rekord;
         private Label lbl_liftOrder_control_20;
         private Label lbl_liftOrder_control_19;
@@ -2741,5 +2768,8 @@
         private Label label22;
         private Label label34;
         private Label label23;
+        private Panel panel14;
+        private CheckBox cb_Infällt;
+        private CheckBox cb_Avlyft;
     }
 }

@@ -1,7 +1,12 @@
 Steelmeet TODO
 
+Idag : :)
+Man ska kunna ändra infällt och avlyft under tävlingens gång 
+Bänkpressare ska inte få köra marklyft
+✅excel arket som man lägger in ska ta bort första raden med de äckliga rubrikerna
+✅Alla bänkpressare ska börja med currentlift på första bänkpressen vilket är currentLift = 14
+
 Västenliga fixar från DM :
-Alla bänkpressare ska börja med currentlift på första bänkpressen vilket är currentLift = 14
 Man ska kunna ändra infällt och avlyft under tävlingens gång 
 ✅lbl_25x lägg til så den gör nåt
 ✅Underkända lyft läggs till på totalen
@@ -70,11 +75,11 @@ Invägning :
 ✅Automatisk klass string korrigering
 
 Kontrollpanel / Tävlingsfönster :
+Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
 1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld
 gör en timer som man kan sätta ett visst klockslag och sen utifrån system klockan så sätter den timern
-Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
-Byta färg på tabcontrol1 "Changetabcolor"
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
+Byta färg på tabcontrol1 "Changetabcolor"
 ✅Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 
 ✅Det finns inga poäng i djulen men det finns på DM
 ✅visa GL poöngen

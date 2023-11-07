@@ -59,7 +59,6 @@ namespace SteelMeet
         bool a = true;
         bool b = true;
         public bool IsExcelFile;
-        bool DebugModeExcelImport = true;
         bool IsRecord = false;
         bool restartLiftingOrderList = true; //LiftingOderList
 
@@ -79,7 +78,7 @@ namespace SteelMeet
         int group2Count;                    //Antal lyftare i grupp
         int group3Count;                    //Antal lyftare i grupp
         int groupRowFixer;                  //Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
-        int firstLftdatagridviewColumn = 11;
+        int firstLiftColumn = 10;           // 157 217 måste ändras också
 
         public Dictionary<int, Lifter> LifterID = new();
 
@@ -155,7 +154,7 @@ namespace SteelMeet
                 this.liftoff = liftoff;
                 this.b1 = float.Parse(b1);
                 this.d1 = float.Parse(d1);
-                CurrentLift = 11;//Väljer vilken column som första böjen börjar på
+                CurrentLift = 10;//Väljer vilken column som första böjen börjar på
                                  //Du måsta ändra en sak i tabcontrol långt ner
                 LiftRecord = new List<bool>();
                 sbdList = new List<float>() { this.s1, s2, s3, this.b1, b2, b3, this.d1, d2, d3 };
@@ -215,8 +214,8 @@ namespace SteelMeet
         {
             public int Compare(Lifter x, Lifter y)
             {
-                int indexX = x.CurrentLift - 11;
-                int indexY = y.CurrentLift - 11;
+                int indexX = x.CurrentLift - 10;
+                int indexY = y.CurrentLift - 10;
 
                 if (indexX >= 0 && indexX < x.sbdList.Count && indexY >= 0 && indexY < y.sbdList.Count)
                 {
@@ -311,13 +310,12 @@ namespace SteelMeet
         private void btn_Import_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Application.StartupPath;
+            openFileDialog1.InitialDirectory = "C:/Users/ninja/source/repos/Steelmeet!/Steelmeet/Steelmeet/Testxlsx";
             openFileDialog1.Title = "Steelmeet Importera fil :)";
             openFileDialog1.Filter =
-                "Excel och txt files|*.txt; *.xlsx; *.xls|" +                                                                                   //Filformat som man kan välja
-                "All files (*.*)|*.*";
-            DialogResult result = openFileDialog1.ShowDialog();                                                                                  //Öppnar dialog
-            if (result == DialogResult.OK)                                                                                                       //Testar om man klckat på ok i dialog
+                "Excel och txt files|*.txt; *.xlsx; *.xls|" + "All files (*.*)|*.*";                                                            //Filformat som man kan välja
+            DialogResult result = openFileDialog1.ShowDialog();                                                                                 //Öppnar dialog
+            if (result == DialogResult.OK)                                                                                                      //Testar om man klckat på ok i dialog
             {
                 if (".txt" == Path.GetExtension(openFileDialog1.FileName))                                                                      //Om man väljer text fil
                 {
@@ -327,7 +325,7 @@ namespace SteelMeet
                     {
                         FileInfo finfo = new FileInfo(BrowsedFile);
                         BrowsedFilePath = finfo.DirectoryName + "\\" + finfo.Name;
-                        lbl_ImportedfilePath.Text = "Filsökväg: " + BrowsedFilePath;                                                             //Ändrar grafisk text
+                        lbl_ImportedfilePath.Text = "Filsökväg: " + BrowsedFilePath;                                                            //Ändrar grafisk text
 
                         dt.Rows.Clear();
                         string text = File.ReadAllText(BrowsedFile);
@@ -346,7 +344,7 @@ namespace SteelMeet
                     {
                         System.IO.FileInfo finfo = new System.IO.FileInfo(BrowsedFile);
                         BrowsedFilePath = finfo.DirectoryName + "\\" + finfo.Name;
-                        lbl_ImportedfilePath.Text = "dir: " + BrowsedFilePath;
+                        lbl_ImportedfilePath.Text = "Filsökväg: " + BrowsedFilePath;
 
                         dt.Rows.Clear();
                         ExcelImportHandler();
@@ -397,9 +395,7 @@ namespace SteelMeet
 
         public void ExcelImportHandler()                                                                                               //Hanterar text impoteringen av excel
         {
-            //Excel.Workbook excelbook = excelApp.Workbooks.BrowsedFile);
-            //Excel._Worksheet excelsheet = excelbook.Sheets[1];
-            //Excel.Range excelRange = excelsheet.UsedRange;
+
             using SLDocument sl = new SLDocument(BrowsedFile);
             SLWorksheetStatistics stats = sl.GetWorksheetStatistics();
 
@@ -417,56 +413,32 @@ namespace SteelMeet
                 }
             }
 
-            if (!DebugModeExcelImport) //När man inte är i testarläge
+            for (int i = 1; i < realRowCount; i++)
             {
-                for (int i = 0; i < realRowCount - 1; i++)
+                if (sl.GetCellValueAsString(i, 1) != "Grupp")
                 {
-                    //if (excelRange.Cells[i + 1, 1].Value2?.ToString() != "Grupp")
-                    if (sl.GetCellValueAsString(i, 1) != "Grupp")
-                    {
-                        //Display(
-                        //    sl.GetCellValueAsString(i, 1),
-                        //    sl.GetCellValueAsString(i, 2),
-                        //    sl.GetCellValueAsString(i, 3),
-                        //    sl.GetCellValueAsString(i, 4),
-                        //    sl.GetCellValueAsString(i, 5));
-                        //excelRange.Cells[i + 1, 1].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 2].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 3].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 4].Value2.ToString(),
-                        //excelRange.Cells[i + 1, 5].Value2.ToString());
-                    }
+                    DisplayDebug(
+                        sl.GetCellValueAsString(i, 1),
+                        sl.GetCellValueAsString(i, 2),
+                        sl.GetCellValueAsString(i, 3),
+                        sl.GetCellValueAsString(i, 4),
+                        sl.GetCellValueAsString(i, 5),
+                        sl.GetCellValueAsString(i, 6),
+                        sl.GetCellValueAsString(i, 7),
+                        sl.GetCellValueAsString(i, 8),
+                        sl.GetCellValueAsString(i, 9),
+                        sl.GetCellValueAsString(i, 10),
+                        sl.GetCellValueAsString(i, 11),
+                        sl.GetCellValueAsString(i, 12),
+                        sl.GetCellValueAsString(i, 13),
+                        sl.GetCellValueAsString(i, 14),
+                        sl.GetCellValueAsString(i, 15),
+                        sl.GetCellValueAsString(i, 16));
                 }
             }
-            else
-            {
 
-                for (int i = 1; i < realRowCount; i++)
-                {
-                    if (sl.GetCellValueAsString(i, 1) != "Grupp")
-                    {
-                        DisplayDebug(
-                            sl.GetCellValueAsString(i, 1),
-                            sl.GetCellValueAsString(i, 2),
-                            sl.GetCellValueAsString(i, 3),
-                            sl.GetCellValueAsString(i, 4),
-                            sl.GetCellValueAsString(i, 5),
-                            sl.GetCellValueAsString(i, 6),
-                            sl.GetCellValueAsString(i, 7),
-                            sl.GetCellValueAsString(i, 8),
-                            sl.GetCellValueAsString(i, 9),
-                            sl.GetCellValueAsString(i, 10),
-                            sl.GetCellValueAsString(i, 11),
-                            sl.GetCellValueAsString(i, 12),
-                            sl.GetCellValueAsString(i, 13),
-                            sl.GetCellValueAsString(i, 14),
-                            sl.GetCellValueAsString(i, 15),
-                            sl.GetCellValueAsString(i, 16));
-                    }
-                }
+            WeighInInfoUpdate();
 
-                WeighInInfoUpdate();
-            }
             for (int i = 0; i < dataGridViewWeighIn.ColumnCount; i++)
             {
                 dataGridViewWeighIn.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -573,7 +545,6 @@ namespace SteelMeet
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             try
             {
                 SaveFileDialog ofd = new SaveFileDialog();
@@ -602,7 +573,6 @@ namespace SteelMeet
             {
                 MessageBox.Show(ex.Message);
             }
-
 
         }
         public void ExcelExport()
@@ -671,7 +641,7 @@ namespace SteelMeet
                     }
                     else
                     {
-                        MessageBox.Show("Ogiltig viktklass", "⚠Varning!⚠"); //Varning 
+                        MessageBox.Show("Ogiltig viktklass", "⚠SteelMeet varning!⚠"); //Varning 
                         list[3] = "Ange klass!!";
                     }
                 }
@@ -723,16 +693,15 @@ namespace SteelMeet
                     }
                     else
                     {
-                        MessageBox.Show("Ogiltig viktklass, \"⚠Varning!⚠\""); //Varning 
+                        MessageBox.Show("Ogiltig viktklass", "⚠SteelMeet varning!⚠"); //Varning 
                         list[3] = "Ange klass!!";
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Ogiltig viktklass, \"⚠Varning!⚠\""); //Varning 
+                    MessageBox.Show("Ogiltig viktklass", "⚠SteelMeet varning!⚠"); //Varning 
                     list[3] = "Ange klass!!";
                 }
-
 
                 dataGridViewWeighIn.Rows[o].Cells[3].Value = list[3];
 
@@ -741,10 +710,19 @@ namespace SteelMeet
                 LifterID[LifterID.Count - 1].index = LifterID.Count - 1;
                 SetCategoryEnum(list[4]);
 
+                if (LifterID[o].CategoryEnum == Lifter.eCategory.MenClassicBench ||
+                    LifterID[o].CategoryEnum == Lifter.eCategory.MenEquippedBench ||
+                    LifterID[o].CategoryEnum == Lifter.eCategory.WomenClassicBench ||
+                    LifterID[o].CategoryEnum == Lifter.eCategory.WomenEquippedBench)
+                {
+                    LifterID[o].CurrentLift = firstLiftColumn + 3;
+                }
+
                 list.Clear();
             }
 
-            for (int i = 0; i < dataGridViewControlPanel.ColumnCount; i++) //sorterar
+            // Stränger av sorting (gör header rutorna så feta också)
+            for (int i = 0; i < dataGridViewControlPanel.ColumnCount; i++)
             {
                 dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
@@ -777,7 +755,7 @@ namespace SteelMeet
             {
                 Equipped = false;
             }
-            if (wholeThing[3].ToLower() == "bänk")
+            if (wholeThing[3].ToLower() == "bänkpress")
             {
                 BenchOnly = true;
             }
@@ -1028,7 +1006,7 @@ namespace SteelMeet
                     //Informationsruta 1
                     if (LiftingOrderList.Count > 0)
                     {
-                        PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - 11], plateInfo);
+                        PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - firstLiftColumn], plateInfo);
                         lbl_Name.Text = LiftingOrderList[0].name;
                         //Kollar om det finns 25kg plates och sedan visar hur många det finns
                         if (usedPlatesList[1] > 0)
@@ -1060,7 +1038,7 @@ namespace SteelMeet
                         //Informationsruta 2
                         if (LiftingOrderList.Count > 1)
                         {
-                            PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - 11], plateInfo);
+                            PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - firstLiftColumn], plateInfo);
                             lbl_Name2.Text = LiftingOrderList[1].name;
                             //Kollar om det finns 25kg plates och sedan visar hur många det finns
                             if (usedPlatesList2[1] > 0)
@@ -1136,14 +1114,14 @@ namespace SteelMeet
                     else
                     {
 
-                        MessageBox.Show(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString() + " Är inte ett nummer", "⚠Varning!⚠");
+                        MessageBox.Show(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString() + " Är inte ett nummer", "⚠SteelMeet varning!⚠");
                         dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 25;
-                        if (SelectedColumnIndex < 14 && SelectedColumnIndex > 11)
+                        if (SelectedColumnIndex < 14 && SelectedColumnIndex > firstLiftColumn)
                         {
                             LiftingOrderList.Add(LifterID[SelectedRowIndex + groupRowFixer]);
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 0;
-                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(255, 127, 80);
+                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(108, 54, 0);
                             LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
                         }
 
@@ -1181,7 +1159,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[SelectedColumnIndex - 1].Selected = true;
             }
             if (tabControl1.SelectedIndex == 2 &&
-                keyData == Keys.G && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= 19 &&
+                keyData == Keys.G && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= firstLiftColumn + 8 &&
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
                 !dataGridViewControlPanel.IsCurrentCellInEditMode)            //Godkänt lyft
             {
@@ -1190,7 +1168,7 @@ namespace SteelMeet
                 return true;
             }
             if (tabControl1.SelectedIndex == 2 &&
-                keyData == Keys.U && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= 19 &&
+                keyData == Keys.U && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= firstLiftColumn + 8 &&
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
                 !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Underkänt lyft
             {
@@ -1198,7 +1176,7 @@ namespace SteelMeet
 
                 return true;
             }
-            if (tabControl1.SelectedIndex == 2 && keyData == Keys.R && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift >= 12 &&
+            if (tabControl1.SelectedIndex == 2 && keyData == Keys.R && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift >= firstLiftColumn + 1 &&
                 !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Ångra lyft
             {
                 undoLift();
@@ -1211,14 +1189,14 @@ namespace SteelMeet
         {
             if (LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
             {
-                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
                 {
                     LifterID[SelectedRowIndex + groupRowFixer].CurrentLift += 1;
                 }
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
 
-                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
                 {
                     LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(true); //Registrerar ett godkänt lyft för lyftaren
                 }
@@ -1227,8 +1205,8 @@ namespace SteelMeet
                 //Sätter total och GL points
                 LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
                 LiftingOrderList[0].pointsGL = GLPointsCalculator(LiftingOrderList[0]);
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].total;
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[19].Value = LiftingOrderList[0].total;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
                 TimerController(8); //Startar lapp timern på 1 minut
                 TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1242,7 +1220,7 @@ namespace SteelMeet
                 // Medelande om lyftaren redan lyft funkar inte ?!?!?!?!?
                 if (!LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
                 {
-                    MessageBox.Show("Denna lyftare har redan lyft denna omgång", "SteelMeet varning", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show("Denna lyftare har redan lyft denna omgång", "⚠SteelMeet varning!⚠", MessageBoxButtons.OK, MessageBoxIcon.None);
                     return;
                 }
                 for (int i = 0; i < LiftingOrderList.Count; i++)
@@ -1257,13 +1235,13 @@ namespace SteelMeet
             //Sätter den gröna färgen
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.ForestGreen;
 
-            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
+            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 18)
             {
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.FromArgb(255, 127, 80);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift];
 
-                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 14 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 17)
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 13 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 16)
                 {
                     dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = //Lägger till 2,5 automatiskt när man godkänner ett lyft
                         2.5f + float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString());
@@ -1271,7 +1249,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.BeginEdit(true);
             }
 
-            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
+            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
             {
                 LifterID[SelectedRowIndex + groupRowFixer].sbdList[LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count - 1] =
                     float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString());
@@ -1288,8 +1266,8 @@ namespace SteelMeet
             //Sätter total och GL points
             LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
             LiftingOrderList[0].pointsGL = GLPointsCalculator(LiftingOrderList[0]);
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].total;
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[19].Value = LiftingOrderList[0].total;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
             TimerController(8); //Startar lapp timern på 1 minut
             TimerController(9); //Stoppar lyft timern och sätter timern på 00:00
@@ -1317,9 +1295,9 @@ namespace SteelMeet
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Red;
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
 
-            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
+            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 18)
             {
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Style.BackColor = Color.FromArgb(255, 127, 80);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1].Style.BackColor = Color.FromArgb(108, 54, 0);
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift + 1];
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 13 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 16)
@@ -1330,7 +1308,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.BeginEdit(true);
             }
 
-            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
+            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
             {
                 LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(false); //Registrerar ett underkänt lyft för lyftaren
                 BestSBDUpdate();
@@ -1343,7 +1321,7 @@ namespace SteelMeet
         }
         public void undoLift()
         {
-            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift > firstLftdatagridviewColumn)
+            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift > firstLiftColumn)
             {
                 LiftingOrderList.Add(LifterID[SelectedRowIndex + groupRowFixer]);
                 LiftOrderUpdate();//Updaterar lyftar ordning
@@ -1359,15 +1337,15 @@ namespace SteelMeet
                 }
 
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(255, 127, 80);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(108, 54, 0);
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Regular);
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
 
                 //Uppdaterar total och GLpoints
                 LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
                 LiftingOrderList[0].pointsGL = GLPointsCalculator(LiftingOrderList[0]);
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].total;
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[21].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[19].Value = LiftingOrderList[0].total;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
             }
         }
@@ -1427,12 +1405,12 @@ namespace SteelMeet
                         }
                         for (int i = 0; i < dataGridViewControlPanel.RowCount; i++)
                         {
-                            dataGridViewControlPanel.Rows[i].Cells[firstLftdatagridviewColumn].Style.BackColor = Color.FromArgb(255, 127, 80); //Vilken column börjar första böjen på?
+                            dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn].Style.BackColor = Color.FromArgb(108, 54, 0); //Vilken column börjar första böjen på?
                             for (int o = 0; o < 8; o++)
                             {
                                 dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
-                                dataGridViewControlPanel.Columns[20].ReadOnly = true; //total
-                                dataGridViewControlPanel.Columns[21].ReadOnly = true; //poäng
+                                dataGridViewControlPanel.Columns[19].ReadOnly = true; //total
+                                dataGridViewControlPanel.Columns[20].ReadOnly = true; //poäng
                             }
                         }
                         break;
@@ -1529,7 +1507,6 @@ namespace SteelMeet
             string Lotnummer,
             string Viktklass,
             string Kategori,
-            string Licensnummer,
             string Förening,
             string Kroppsvikt,
             string HöjdBöj,
@@ -1551,26 +1528,25 @@ namespace SteelMeet
             {
                 dt2.Columns.Add("#");            //0
                 dt2.Columns.Add("Namn");         //1
-                dt2.Columns.Add("Lot");          //2 
+                dt2.Columns.Add("Lot.");          //2 
                 dt2.Columns.Add("Klass");        //3
                 dt2.Columns.Add("Kat.");         //4
-                dt2.Columns.Add("Lic.nr");       //5
-                dt2.Columns.Add("Förening");     //6
-                dt2.Columns.Add("Kv");           //7
-                dt2.Columns.Add("H\nBöj");       //8
-                dt2.Columns.Add("H\nBänk");      //9
-                dt2.Columns.Add("R\nBänk");      //10
-                dt2.Columns.Add("S1");           //11
-                dt2.Columns.Add("S2");           //12
-                dt2.Columns.Add("S3");           //13
-                dt2.Columns.Add("B1");           //14
-                dt2.Columns.Add("B2");           //15
-                dt2.Columns.Add("B3");           //16
-                dt2.Columns.Add("D1");           //17
-                dt2.Columns.Add("D2");           //18
-                dt2.Columns.Add("D3");           //19
-                dt2.Columns.Add("Total");        //20
-                dt2.Columns.Add("IPF GL\nPoäng");//21
+                dt2.Columns.Add("Förening");     //5
+                dt2.Columns.Add("Kv");           //6
+                dt2.Columns.Add("H\nBöj");       //7
+                dt2.Columns.Add("H\nBänk");      //8
+                dt2.Columns.Add("R\nBänk");      //9
+                dt2.Columns.Add("S1");           //10
+                dt2.Columns.Add("S2");           //11
+                dt2.Columns.Add("S3");           //12
+                dt2.Columns.Add("B1");           //13
+                dt2.Columns.Add("B2");           //14
+                dt2.Columns.Add("B3");           //15
+                dt2.Columns.Add("D1");           //16
+                dt2.Columns.Add("D2");           //17
+                dt2.Columns.Add("D3");           //18
+                dt2.Columns.Add("Total");        //19
+                dt2.Columns.Add("IPF GL\nPoäng");//20
 
                 b = false;
             }
@@ -1581,23 +1557,22 @@ namespace SteelMeet
             dr2[2] = Lotnummer;
             dr2[3] = Viktklass;
             dr2[4] = Kategori;
-            dr2[5] = Licensnummer;
-            dr2[6] = Förening;
-            dr2[7] = Kroppsvikt;
-            dr2[8] = HöjdBöj;
-            dr2[9] = HöjdBänk;
-            dr2[10] = RackBänk;
-            dr2[11] = s1;
-            dr2[12] = s2;
-            dr2[13] = s3;
-            dr2[14] = b1;
-            dr2[15] = b2;
-            dr2[16] = b3;
-            dr2[17] = d1;
-            dr2[18] = d2;
-            dr2[19] = d3;
-            dr2[20] = total;
-            dr2[21] = GLPoäng;
+            dr2[5] = Förening;
+            dr2[6] = Kroppsvikt;
+            dr2[7] = HöjdBöj;
+            dr2[8] = HöjdBänk;
+            dr2[9] = RackBänk;
+            dr2[10] = s1;
+            dr2[11] = s2;
+            dr2[12] = s3;
+            dr2[13] = b1;
+            dr2[14] = b2;
+            dr2[15] = b3;
+            dr2[16] = d1;
+            dr2[17] = d2;
+            dr2[18] = d3;
+            dr2[19] = total;
+            dr2[20] = GLPoäng;
 
             List<string> sbdlist = new List<string>();
             sbdlist.AddRange(new string[] { s1, s2, s3, b1, b2, b3, d1, d2, d3 });
@@ -1847,16 +1822,7 @@ namespace SteelMeet
                                                         lbl_liftOrder_control_17, lbl_liftOrder_control_18, lbl_liftOrder_control_19, lbl_liftOrder_control_20});
                 if (groupIndexCurrent == 0)
                 {
-                    //Fyller listan för första gången
-                    if (restartLiftingOrderList == true)
-                    {
-                        LiftingOrderList.Clear();
-                        for (int i = 0; i < group1Count; i++)
-                        {
-                            LiftingOrderList.Add(LifterID[i]);
-                            restartLiftingOrderList = false;
-                        }
-                    }
+
                     if (LiftingOrderList.Count == 0)
                     {
                         //En lista som fylls med current lift och kollar vilken lyftare som har lägsta currentlift
@@ -1971,9 +1937,9 @@ namespace SteelMeet
 
                 for (int i = 0; i < LiftingOrderList.Count; i++)
                 {
-                    if (LiftingOrderList[i].CurrentLift < 20)
+                    if (LiftingOrderList[i].CurrentLift < 19)
                     {
-                        LiftingOrderListLabels[i].Text = LiftingOrderList[i].sbdList[LiftingOrderList[i].CurrentLift - 11] + " " + LiftingOrderList[i].name;
+                        LiftingOrderListLabels[i].Text = LiftingOrderList[i].sbdList[LiftingOrderList[i].CurrentLift - firstLiftColumn] + " " + LiftingOrderList[i].name;
                     }
                 }
             }
@@ -2027,30 +1993,30 @@ namespace SteelMeet
             {
                 if (groupIndexCurrent == 0) //Om den aktiva gruppen är grupp 1
                 {
-                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 3)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 6)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Bench;
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 9)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Deadlift;
                     }
                 }
                 else if (groupIndexCurrent == 1) //Om den aktiva gruppen är grupp 2
                 {
-                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 3)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group1Squat; //Kommer aldrig att hända
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 6)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 9)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.nothing;
                     }
@@ -2060,45 +2026,45 @@ namespace SteelMeet
             {
                 if (groupIndexCurrent == 0) //Om den aktiva gruppen är grupp 1
                 {
-                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 3)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 6)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Bench;
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 9)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Deadlift;
                     }
                 }
                 else if (groupIndexCurrent == 1) //Om den aktiva gruppen är grupp 2
                 {
-                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 3)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group3Squat; //Kommer aldrig att hända
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 6)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group3Bench;
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 9)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group3Deadlift;
                     }
                 }
                 else if (groupIndexCurrent == 2) //Om den aktiva gruppen är grupp 2
                 {
-                    if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 3)
+                    if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 3)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group1Squat; //Kommer aldrig att hända
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 6)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 6)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
                     }
-                    else if (LifterID[0 + groupRowFixer].CurrentLift - 11 < 9)
+                    else if (LifterID[0 + groupRowFixer].CurrentLift - firstLiftColumn < 9)
                     {
                         groupLiftingOrderState = eGroupLiftingOrderState.nothing;
                     }
@@ -2213,10 +2179,10 @@ namespace SteelMeet
             List<float> cellValuesList = new List<float>();
 
             float[] valuesToParse = new float[9];
-            for (int i = 11; i < 11 + LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count(); i++)
+            for (int i = firstLiftColumn; i < firstLiftColumn + LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count(); i++)
             {
                 string cellValue = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[i].Value.ToString();
-                valuesToParse[i - 11] = float.Parse(cellValue);
+                valuesToParse[i - firstLiftColumn] = float.Parse(cellValue);
             }
             //lägger till floats i lista
             cellValuesList.AddRange(valuesToParse);
@@ -2244,30 +2210,22 @@ namespace SteelMeet
             {
                 // Sort the lifters within the group based on their total then by bodyweight in descending order
                 if (koeffWeightClasses.Contains(group.Key.weightClass))
-                {
                     sortedLifters = group.OrderByDescending(l => l.pointsGL).ToList(); //Tror jag har fixat för koeff klasserna nu bre
-                }
                 else
-                {
                     sortedLifters = group.OrderByDescending(l => l.total).ThenBy(l => l.bodyWeight).ToList();
-                }
 
                 for (int i = 0; i < sortedLifters.Count; i++)
                 {
                     var lifterToUpdate = LifterID.Values.FirstOrDefault(l => l.weightClass == group.Key.weightClass && l.CategoryEnum == group.Key.CategoryEnum && l.name == sortedLifters[i].name);
 
                     if (lifterToUpdate != null)
-                    {
                         lifterToUpdate.place = i + 1;
-                    }
                 }
             }
 
             // Update the DataGridView
             for (int i = 0; i < dataGridViewControlPanel.Rows.Count; i++)
-            {
                 dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
-            }
         }
         public void SuggestionBtnUpdate()
         {
@@ -2343,17 +2301,13 @@ namespace SteelMeet
             {
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[1];
                 //Markerar rad för den aktiva lyftaren
-                for (int columnIndex = 2; columnIndex <= 6; columnIndex++)
-                {
+                for (int columnIndex = 2; columnIndex <= 5; columnIndex++)
                     dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[columnIndex].Selected = true;
-                }
 
                 //Uppdaterar platcalculatorn för den buggar ibland asså
-                PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - 11], plateInfo);
+                PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - firstLiftColumn], plateInfo);
                 if (LiftingOrderList.Count > 1)
-                {
-                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - 11], plateInfo);
-                }
+                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - firstLiftColumn], plateInfo);
             }
         }
         private void btn_SelectNextLifter_Click(object sender, EventArgs e)
@@ -2362,17 +2316,13 @@ namespace SteelMeet
             {
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[1];
                 //Markerar rad för den aktiva lyftaren
-                for (int columnIndex = 2; columnIndex <= 6; columnIndex++)
-                {
+                for (int columnIndex = 2; columnIndex <= 5; columnIndex++)
                     dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[columnIndex].Selected = true;
-                }
 
                 //Uppdaterar platcalculatorn för den buggar ibland asså
-                PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - 11], plateInfo);
+                PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - firstLiftColumn], plateInfo);
                 if (LiftingOrderList.Count > 1)
-                {
-                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - 11], plateInfo);
-                }
+                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - firstLiftColumn], plateInfo);
             }
         }
         private void lbl_timerLyft_Click(object sender, EventArgs e)
@@ -2386,17 +2336,13 @@ namespace SteelMeet
         private void btn_godkänt_Click(object sender, EventArgs e)
         {
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
-            {
                 goodLift();
-            }
         }
 
         private void btn_underkänt_Click(object sender, EventArgs e)
         {
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
-            {
                 badLift();
-            }
         }
 
         private void btn_ångralyft_Click(object sender, EventArgs e)
@@ -2470,14 +2416,12 @@ namespace SteelMeet
                     for (int i = 0; i < LifterID.Count; i++) //Antal lyftare i grupp 1
                     {
                         if (LifterID[i].groupNumber == 1)
-                        {
                             group1Count += 1;
-                        }
                     }
 
                     for (int i = 0; i < group1Count; i++)
                     {
-                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
+                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior"
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
                             , LifterID[i].benchRack.ToString()
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
@@ -2491,34 +2435,26 @@ namespace SteelMeet
                         for (int o = 0; o < LifterID[i].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i].LiftRecord[o] == true)
-                            {
-                                dataGridViewControlPanel.Rows[i].Cells[11 + o].Style.BackColor = Color.ForestGreen;
-                            }
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
                             else if (LifterID[i].LiftRecord[o] == false)
                             {
-                                dataGridViewControlPanel.Rows[i].Cells[11 + o].Style.BackColor = Color.Red;
-                                dataGridViewControlPanel.Rows[i].Cells[11 + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
 
-                        if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
-                        {
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i].CurrentLift].Style.BackColor = Color.FromArgb(255, 127, 80);
-                        }
-                        for (int o = 0; o < 8; o++)
-                        {
+                        if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+
+                        for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
-                        }
                     }
 
                     for (int i = 0; i < dataGridViewControlPanel.ColumnCount; i++)
-                    {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    }
+
                     if (LiftingOrderList.Count > 0)
-                    {
                         dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderList[0].index].Cells[1];
-                    }
 
                     break;
                 case 1:
@@ -2535,15 +2471,13 @@ namespace SteelMeet
                     for (int i = 0; i < LifterID.Count; i++) //Antal lyftare i grupp 1
                     {
                         if (LifterID[i].groupNumber == 2)
-                        {
                             group2Count += 1;
-                        }
                     }
 
                     for (int i = group1Count; i < group1Count + group2Count; i++)
                     {
 
-                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
+                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior"
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
                             , LifterID[i].benchRack.ToString()
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
@@ -2557,28 +2491,22 @@ namespace SteelMeet
                         for (int o = 0; o < LifterID[i + group1Count].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i + group1Count].LiftRecord[o] == true)
-                            {
-                                dataGridViewControlPanel.Rows[i].Cells[11 + o].Style.BackColor = Color.ForestGreen;
-                            }
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
                             else if (LifterID[i + group1Count].LiftRecord[o] == false)
                             {
-                                dataGridViewControlPanel.Rows[i].Cells[11 + o].Style.BackColor = Color.Red;
-                                dataGridViewControlPanel.Rows[i].Cells[11 + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
-                        if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
-                        {
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count].CurrentLift].Style.BackColor = Color.FromArgb(255, 127, 80);
-                        }
-                        for (int o = 0; o < 8; o++)
-                        {
+                        if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+
+                        for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
-                        }
                     }
                     for (int i = 0; i < dataGridViewControlPanel.ColumnCount; i++)
-                    {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    }
+
                     break;
                 case 2:
                     //ladda tredje gruppen
@@ -2593,14 +2521,12 @@ namespace SteelMeet
                     for (int i = 0; i < LifterID.Count; i++) //Antal lyftare i grupp 1
                     {
                         if (LifterID[i].groupNumber == 3)
-                        {
                             group3Count += 1;
-                        }
                     }
 
                     for (int i = 0; i < group3Count - 1; i++)
                     {
-                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior", LifterID[i].licenceNumber
+                        DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, "Senior"
                             , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
                             , LifterID[i].benchRack.ToString()
                             , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
@@ -2613,34 +2539,27 @@ namespace SteelMeet
                     {
 
                         //firstLftdatagridviewColumn är första lyftets kolumn
-                        for (int o = firstLftdatagridviewColumn; o < LifterID[i + group1Count + group2Count].CurrentLift; o++) //Fyller i lyft historik tills currentlift
+                        for (int o = firstLiftColumn; o < LifterID[i + group1Count + group2Count].CurrentLift; o++) //Fyller i lyft historik tills currentlift
                         {
                             for (int p = 0; p < LifterID[i + group1Count + group2Count].LiftRecord.Count; p++) //p räknar hur många lyft som vad godkända eller underkända
                             {
                                 if (LifterID[i + group1Count + group2Count].LiftRecord[p] == true)
-                                {
                                     dataGridViewControlPanel.Rows[i].Cells[o].Style.BackColor = Color.ForestGreen;
-                                }
                                 else if (LifterID[i + group1Count + group2Count].LiftRecord[p] == false)
                                 {
                                     dataGridViewControlPanel.Rows[i].Cells[o].Style.BackColor = Color.Red;
                                 }
                             }
                         }
-                        if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
-                        {
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count + group2Count].CurrentLift].Style.BackColor = Color.FromArgb(255, 127, 80);
-                        }
-                        for (int o = 0; o < 8; o++)
-                        {
+                        if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count + group2Count].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+
+                        for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
-                        }
                     }
 
                     for (int i = 0; i < dataGridViewControlPanel.ColumnCount; i++)
-                    {
                         dataGridViewControlPanel.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    }
 
 
                     break;
