@@ -106,6 +106,9 @@
             btn25 = new Button();
             txtb25 = new TextBox();
             tabPage2 = new TabPage();
+            panel14 = new Panel();
+            cb_Infällt = new CheckBox();
+            cb_Avlyft = new CheckBox();
             infopanel_Controlpanel2 = new Panel();
             lbl_25x2 = new Label();
             lbl_Height2 = new Label();
@@ -176,9 +179,9 @@
             cb_bench = new CheckBox();
             cb_squat = new CheckBox();
             rb_national = new RadioButton();
+            btn_rekord = new Button();
             rb_district = new RadioButton();
             rb_club = new RadioButton();
-            btn_rekord = new Button();
             panel8 = new Panel();
             combo_Aktivgrupp = new ComboBox();
             label29 = new Label();
@@ -217,9 +220,6 @@
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
-            panel14 = new Panel();
-            cb_Infällt = new CheckBox();
-            cb_Avlyft = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -232,6 +232,7 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
+            panel14.SuspendLayout();
             infopanel_Controlpanel2.SuspendLayout();
             panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -245,7 +246,6 @@
             infopanel_Controlpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewControlPanel).BeginInit();
             tabPage3.SuspendLayout();
-            panel14.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -457,9 +457,9 @@
             lbl_ImportedfilePath.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_ImportedfilePath.Location = new Point(10, 120);
             lbl_ImportedfilePath.Name = "lbl_ImportedfilePath";
-            lbl_ImportedfilePath.Size = new Size(30, 18);
+            lbl_ImportedfilePath.Size = new Size(69, 18);
             lbl_ImportedfilePath.TabIndex = 11;
-            lbl_ImportedfilePath.Text = "dir:";
+            lbl_ImportedfilePath.Text = "Filsökväg:";
             // 
             // dataGridViewWeighIn
             // 
@@ -1105,6 +1105,40 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Tävling";
             // 
+            // panel14
+            // 
+            panel14.BackColor = Color.FromArgb(27, 38, 44);
+            panel14.Controls.Add(cb_Infällt);
+            panel14.Controls.Add(cb_Avlyft);
+            panel14.Location = new Point(670, 159);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(72, 43);
+            panel14.TabIndex = 41;
+            // 
+            // cb_Infällt
+            // 
+            cb_Infällt.AutoSize = true;
+            cb_Infällt.BackColor = Color.Transparent;
+            cb_Infällt.ForeColor = Color.FromArgb(187, 225, 250);
+            cb_Infällt.Location = new Point(7, 23);
+            cb_Infällt.Name = "cb_Infällt";
+            cb_Infällt.Size = new Size(56, 19);
+            cb_Infällt.TabIndex = 38;
+            cb_Infällt.Text = "Infällt";
+            cb_Infällt.UseVisualStyleBackColor = false;
+            // 
+            // cb_Avlyft
+            // 
+            cb_Avlyft.AutoSize = true;
+            cb_Avlyft.BackColor = Color.Transparent;
+            cb_Avlyft.ForeColor = Color.FromArgb(187, 225, 250);
+            cb_Avlyft.Location = new Point(7, 4);
+            cb_Avlyft.Name = "cb_Avlyft";
+            cb_Avlyft.Size = new Size(57, 19);
+            cb_Avlyft.TabIndex = 13;
+            cb_Avlyft.Text = "Avlyft";
+            cb_Avlyft.UseVisualStyleBackColor = false;
+            // 
             // infopanel_Controlpanel2
             // 
             infopanel_Controlpanel2.BackColor = Color.FromArgb(27, 38, 44);
@@ -1124,7 +1158,7 @@
             lbl_25x2.AutoSize = true;
             lbl_25x2.BackColor = Color.Transparent;
             lbl_25x2.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_25x2.ForeColor = Color.Black;
+            lbl_25x2.ForeColor = Color.White;
             lbl_25x2.Location = new Point(-2, 75);
             lbl_25x2.Name = "lbl_25x2";
             lbl_25x2.Size = new Size(112, 45);
@@ -1967,6 +2001,19 @@
             rb_national.Text = "Svenskt";
             rb_national.UseVisualStyleBackColor = true;
             // 
+            // btn_rekord
+            // 
+            btn_rekord.BackColor = Color.FromArgb(15, 76, 117);
+            btn_rekord.FlatStyle = FlatStyle.Popup;
+            btn_rekord.ForeColor = Color.FromArgb(187, 225, 250);
+            btn_rekord.Location = new Point(333, 10);
+            btn_rekord.Name = "btn_rekord";
+            btn_rekord.Size = new Size(95, 23);
+            btn_rekord.TabIndex = 30;
+            btn_rekord.Text = "Aktivera rekord";
+            btn_rekord.UseVisualStyleBackColor = false;
+            btn_rekord.Click += btn_rekord_Click;
+            // 
             // rb_district
             // 
             rb_district.AutoSize = true;
@@ -1990,19 +2037,6 @@
             rb_club.TabStop = true;
             rb_club.Text = "Klubb";
             rb_club.UseVisualStyleBackColor = true;
-            // 
-            // btn_rekord
-            // 
-            btn_rekord.BackColor = Color.FromArgb(15, 76, 117);
-            btn_rekord.FlatStyle = FlatStyle.Popup;
-            btn_rekord.ForeColor = Color.FromArgb(187, 225, 250);
-            btn_rekord.Location = new Point(333, 10);
-            btn_rekord.Name = "btn_rekord";
-            btn_rekord.Size = new Size(95, 23);
-            btn_rekord.TabIndex = 30;
-            btn_rekord.Text = "Aktivera rekord";
-            btn_rekord.UseVisualStyleBackColor = false;
-            btn_rekord.Click += btn_rekord_Click;
             // 
             // panel8
             // 
@@ -2497,40 +2531,6 @@
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
             // 
-            // panel14
-            // 
-            panel14.BackColor = Color.FromArgb(27, 38, 44);
-            panel14.Controls.Add(cb_Infällt);
-            panel14.Controls.Add(cb_Avlyft);
-            panel14.Location = new Point(670, 159);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(72, 43);
-            panel14.TabIndex = 41;
-            // 
-            // cb_Infällt
-            // 
-            cb_Infällt.AutoSize = true;
-            cb_Infällt.BackColor = Color.Transparent;
-            cb_Infällt.ForeColor = Color.FromArgb(187, 225, 250);
-            cb_Infällt.Location = new Point(7, 23);
-            cb_Infällt.Name = "cb_Infällt";
-            cb_Infällt.Size = new Size(56, 19);
-            cb_Infällt.TabIndex = 38;
-            cb_Infällt.Text = "Infällt";
-            cb_Infällt.UseVisualStyleBackColor = false;
-            // 
-            // cb_Avlyft
-            // 
-            cb_Avlyft.AutoSize = true;
-            cb_Avlyft.BackColor = Color.Transparent;
-            cb_Avlyft.ForeColor = Color.FromArgb(187, 225, 250);
-            cb_Avlyft.Location = new Point(7, 4);
-            cb_Avlyft.Name = "cb_Avlyft";
-            cb_Avlyft.Size = new Size(57, 19);
-            cb_Avlyft.TabIndex = 13;
-            cb_Avlyft.Text = "Avlyft";
-            cb_Avlyft.UseVisualStyleBackColor = false;
-            // 
             // SMKontrollpanel
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -2559,6 +2559,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
+            panel14.ResumeLayout(false);
+            panel14.PerformLayout();
             infopanel_Controlpanel2.ResumeLayout(false);
             infopanel_Controlpanel2.PerformLayout();
             panel13.ResumeLayout(false);
@@ -2581,8 +2583,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewControlPanel).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
-            panel14.ResumeLayout(false);
-            panel14.PerformLayout();
             ResumeLayout(false);
         }
 

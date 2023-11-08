@@ -1885,7 +1885,7 @@ namespace SteelMeet
                 //group 2
                 //group 2
                 //group 2
-                if (groupIndexCurrent == 1)
+                if (groupIndexCurrent == 2)
                 {
                     //Fyller listan för första gången
                     if (restartLiftingOrderList == true)
@@ -2516,7 +2516,7 @@ namespace SteelMeet
                     //333333333333333
                     //333333333333333
                     dt2.Rows.Clear();
-                    groupRowFixer = group1Count + group3Count;
+                    groupRowFixer = group1Count + group2Count;
                     group3Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
                     for (int i = 0; i < LifterID.Count; i++) //Antal lyftare i grupp 1
                     {

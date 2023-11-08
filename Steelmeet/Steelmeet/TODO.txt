@@ -1,6 +1,8 @@
 Steelmeet TODO
 
 Idag : :)
+Visar bara höjd inte safety på bänken
+man kan göra att om currentlifts ruta är value 0 så blir man inte tillagd i liftingorder
 Man ska kunna ändra infällt och avlyft under tävlingens gång 
 Bänkpressare ska inte få köra marklyft
 ✅excel arket som man lägger in ska ta bort första raden med de äckliga rubrikerna
