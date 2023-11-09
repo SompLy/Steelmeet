@@ -1220,7 +1220,7 @@
             panel13.ForeColor = SystemColors.WindowText;
             panel13.Location = new Point(8, 577);
             panel13.Name = "panel13";
-            panel13.Size = new Size(418, 180);
+            panel13.Size = new Size(292, 180);
             panel13.TabIndex = 29;
             // 
             // label32
@@ -1229,16 +1229,16 @@
             label32.BackColor = Color.Black;
             label32.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label32.ForeColor = Color.FromArgb(187, 225, 250);
-            label32.Location = new Point(23, 102);
+            label32.Location = new Point(0, 102);
             label32.Name = "label32";
-            label32.Size = new Size(374, 60);
+            label32.Size = new Size(286, 60);
             label32.TabIndex = 20;
-            label32.Text = "STEELMEET TESTVERSION\r\nFÖR ANVÄNDNING T.O.M. 2024-01-01";
+            label32.Text = "STEELMEET TESTVERSION\r\nFÖR BRUK T.O.M. 2024-01-01";
             // 
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(69, -2);
+            pictureBox4.Location = new Point(-43, 0);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(264, 107);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -1258,9 +1258,9 @@
             panel12.Controls.Add(lbl_suggestedWeight5);
             panel12.Controls.Add(lbl_suggestedWeight15);
             panel12.Controls.Add(lbl_suggestedWeight25);
-            panel12.Location = new Point(1125, 209);
+            panel12.Location = new Point(1082, 209);
             panel12.Name = "panel12";
-            panel12.Size = new Size(227, 43);
+            panel12.Size = new Size(271, 43);
             panel12.TabIndex = 43;
             // 
             // lbl_suggestedWeight75Minus
@@ -1268,9 +1268,9 @@
             lbl_suggestedWeight75Minus.BackColor = SystemColors.WindowFrame;
             lbl_suggestedWeight75Minus.FlatStyle = FlatStyle.Popup;
             lbl_suggestedWeight75Minus.ForeColor = Color.Black;
-            lbl_suggestedWeight75Minus.Location = new Point(180, 21);
+            lbl_suggestedWeight75Minus.Location = new Point(225, 21);
             lbl_suggestedWeight75Minus.Name = "lbl_suggestedWeight75Minus";
-            lbl_suggestedWeight75Minus.Size = new Size(48, 22);
+            lbl_suggestedWeight75Minus.Size = new Size(46, 22);
             lbl_suggestedWeight75Minus.TabIndex = 51;
             lbl_suggestedWeight75Minus.Tag = "-7.5";
             lbl_suggestedWeight75Minus.Text = "-7.5";
@@ -1284,7 +1284,7 @@
             lbl_suggestedWeight125.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_suggestedWeight125.Location = new Point(180, 0);
             lbl_suggestedWeight125.Name = "lbl_suggestedWeight125";
-            lbl_suggestedWeight125.Size = new Size(48, 22);
+            lbl_suggestedWeight125.Size = new Size(46, 22);
             lbl_suggestedWeight125.TabIndex = 50;
             lbl_suggestedWeight125.Tag = "12.5";
             lbl_suggestedWeight125.Text = "12.5";
@@ -1296,9 +1296,9 @@
             lbl_suggestedWeight5Minus.BackColor = SystemColors.WindowFrame;
             lbl_suggestedWeight5Minus.FlatStyle = FlatStyle.Popup;
             lbl_suggestedWeight5Minus.ForeColor = Color.Black;
-            lbl_suggestedWeight5Minus.Location = new Point(136, 21);
+            lbl_suggestedWeight5Minus.Location = new Point(180, 21);
             lbl_suggestedWeight5Minus.Name = "lbl_suggestedWeight5Minus";
-            lbl_suggestedWeight5Minus.Size = new Size(48, 22);
+            lbl_suggestedWeight5Minus.Size = new Size(46, 22);
             lbl_suggestedWeight5Minus.TabIndex = 49;
             lbl_suggestedWeight5Minus.Tag = "-5";
             lbl_suggestedWeight5Minus.Text = "-5";
@@ -1310,9 +1310,9 @@
             lbl_suggestedWeight10.BackColor = Color.FromArgb(15, 76, 117);
             lbl_suggestedWeight10.FlatStyle = FlatStyle.Popup;
             lbl_suggestedWeight10.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_suggestedWeight10.Location = new Point(136, 0);
+            lbl_suggestedWeight10.Location = new Point(135, 0);
             lbl_suggestedWeight10.Name = "lbl_suggestedWeight10";
-            lbl_suggestedWeight10.Size = new Size(48, 22);
+            lbl_suggestedWeight10.Size = new Size(46, 22);
             lbl_suggestedWeight10.TabIndex = 48;
             lbl_suggestedWeight10.Tag = "10";
             lbl_suggestedWeight10.Text = "10";
@@ -1324,9 +1324,9 @@
             lbl_suggestedWeight25Minus.BackColor = SystemColors.WindowFrame;
             lbl_suggestedWeight25Minus.FlatStyle = FlatStyle.Popup;
             lbl_suggestedWeight25Minus.ForeColor = Color.Black;
-            lbl_suggestedWeight25Minus.Location = new Point(89, 21);
+            lbl_suggestedWeight25Minus.Location = new Point(135, 21);
             lbl_suggestedWeight25Minus.Name = "lbl_suggestedWeight25Minus";
-            lbl_suggestedWeight25Minus.Size = new Size(48, 22);
+            lbl_suggestedWeight25Minus.Size = new Size(46, 22);
             lbl_suggestedWeight25Minus.TabIndex = 47;
             lbl_suggestedWeight25Minus.Tag = "-2.5";
             lbl_suggestedWeight25Minus.Text = "-2.5";
@@ -1338,9 +1338,9 @@
             lbl_suggestedWeight75.BackColor = Color.FromArgb(15, 76, 117);
             lbl_suggestedWeight75.FlatStyle = FlatStyle.Popup;
             lbl_suggestedWeight75.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_suggestedWeight75.Location = new Point(89, 0);
+            lbl_suggestedWeight75.Location = new Point(90, 0);
             lbl_suggestedWeight75.Name = "lbl_suggestedWeight75";
-            lbl_suggestedWeight75.Size = new Size(48, 22);
+            lbl_suggestedWeight75.Size = new Size(46, 22);
             lbl_suggestedWeight75.TabIndex = 46;
             lbl_suggestedWeight75.Tag = "7.5";
             lbl_suggestedWeight75.Text = "7.5";
@@ -1354,7 +1354,7 @@
             lbl_suggestedWeight20.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_suggestedWeight20.Location = new Point(45, 21);
             lbl_suggestedWeight20.Name = "lbl_suggestedWeight20";
-            lbl_suggestedWeight20.Size = new Size(48, 22);
+            lbl_suggestedWeight20.Size = new Size(46, 22);
             lbl_suggestedWeight20.TabIndex = 45;
             lbl_suggestedWeight20.Tag = "20";
             lbl_suggestedWeight20.Text = "20";
@@ -1368,7 +1368,7 @@
             lbl_suggestedWeight5.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_suggestedWeight5.Location = new Point(45, 0);
             lbl_suggestedWeight5.Name = "lbl_suggestedWeight5";
-            lbl_suggestedWeight5.Size = new Size(48, 22);
+            lbl_suggestedWeight5.Size = new Size(46, 22);
             lbl_suggestedWeight5.TabIndex = 44;
             lbl_suggestedWeight5.Tag = "5";
             lbl_suggestedWeight5.Text = "5";
@@ -1380,9 +1380,9 @@
             lbl_suggestedWeight15.BackColor = Color.FromArgb(15, 76, 117);
             lbl_suggestedWeight15.FlatStyle = FlatStyle.Popup;
             lbl_suggestedWeight15.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_suggestedWeight15.Location = new Point(0, 21);
+            lbl_suggestedWeight15.Location = new Point(225, 0);
             lbl_suggestedWeight15.Name = "lbl_suggestedWeight15";
-            lbl_suggestedWeight15.Size = new Size(48, 22);
+            lbl_suggestedWeight15.Size = new Size(46, 22);
             lbl_suggestedWeight15.TabIndex = 43;
             lbl_suggestedWeight15.Tag = "15";
             lbl_suggestedWeight15.Text = "15";
@@ -1396,7 +1396,7 @@
             lbl_suggestedWeight25.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_suggestedWeight25.Location = new Point(0, 0);
             lbl_suggestedWeight25.Name = "lbl_suggestedWeight25";
-            lbl_suggestedWeight25.Size = new Size(48, 22);
+            lbl_suggestedWeight25.Size = new Size(46, 22);
             lbl_suggestedWeight25.TabIndex = 42;
             lbl_suggestedWeight25.Tag = "2.5";
             lbl_suggestedWeight25.Text = "2.5";
@@ -1427,9 +1427,9 @@
             panel11.Controls.Add(lbl_groupLiftOrder_control_10);
             panel11.Controls.Add(lbl_groupLiftOrder_control_9);
             panel11.Controls.Add(lbl_OpeningLift);
-            panel11.Location = new Point(425, 582);
+            panel11.Location = new Point(300, 582);
             panel11.Name = "panel11";
-            panel11.Size = new Size(695, 158);
+            panel11.Size = new Size(776, 158);
             panel11.TabIndex = 11;
             // 
             // lbl_groupLiftOrder_control_20
@@ -1658,7 +1658,7 @@
             lbl_OpeningLift.BackColor = Color.FromArgb(15, 76, 117);
             lbl_OpeningLift.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_OpeningLift.ForeColor = Color.FromArgb(187, 225, 250);
-            lbl_OpeningLift.Location = new Point(5, -6);
+            lbl_OpeningLift.Location = new Point(-4, -6);
             lbl_OpeningLift.Name = "lbl_OpeningLift";
             lbl_OpeningLift.Size = new Size(126, 32);
             lbl_OpeningLift.TabIndex = 10;
@@ -1688,9 +1688,9 @@
             panel10.Controls.Add(lbl_liftOrder_control_2);
             panel10.Controls.Add(lbl_liftOrder_control_1);
             panel10.Controls.Add(label30);
-            panel10.Location = new Point(1126, 258);
+            panel10.Location = new Point(1082, 258);
             panel10.Name = "panel10";
-            panel10.Size = new Size(226, 486);
+            panel10.Size = new Size(270, 486);
             panel10.TabIndex = 7;
             // 
             // lbl_liftOrder_control_20
@@ -1919,7 +1919,7 @@
             label30.BackColor = Color.FromArgb(15, 76, 117);
             label30.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             label30.ForeColor = Color.FromArgb(187, 225, 250);
-            label30.Location = new Point(22, 0);
+            label30.Location = new Point(43, 0);
             label30.Name = "label30";
             label30.Size = new Size(183, 37);
             label30.TabIndex = 13;
@@ -2350,7 +2350,7 @@
             lbl_25x.AutoSize = true;
             lbl_25x.BackColor = Color.Transparent;
             lbl_25x.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_25x.ForeColor = Color.Black;
+            lbl_25x.ForeColor = Color.White;
             lbl_25x.Location = new Point(-2, 75);
             lbl_25x.Name = "lbl_25x";
             lbl_25x.Size = new Size(112, 45);
@@ -2446,7 +2446,7 @@
             dataGridViewControlPanel.RowHeadersVisible = false;
             dataGridViewControlPanel.RowTemplate.Height = 25;
             dataGridViewControlPanel.ScrollBars = ScrollBars.Vertical;
-            dataGridViewControlPanel.Size = new Size(1114, 525);
+            dataGridViewControlPanel.Size = new Size(1069, 525);
             dataGridViewControlPanel.TabIndex = 2;
             dataGridViewControlPanel.CellEndEdit += dataGridViewControlPanel_CellEndEdit;
             dataGridViewControlPanel.CellEnter += dataGridViewControlPanel_CellEnter;

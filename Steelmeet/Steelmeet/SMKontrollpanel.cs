@@ -2225,7 +2225,19 @@ namespace SteelMeet
 
             // Update the DataGridView
             for (int i = 0; i < dataGridViewControlPanel.Rows.Count; i++)
+            {
                 dataGridViewControlPanel.Rows[i].Cells[0].Value = LifterID[i + groupRowFixer].place;
+
+                if (LifterID[i + groupRowFixer].place == 1)
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(175, 149, 0);
+                else if (LifterID[i + groupRowFixer].place == 2)
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(132, 132, 130);
+                else if (LifterID[i + groupRowFixer].place == 3)
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(169, 106, 64);
+                else
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(27, 38, 44);
+
+            }
         }
         public void SuggestionBtnUpdate()
         {
