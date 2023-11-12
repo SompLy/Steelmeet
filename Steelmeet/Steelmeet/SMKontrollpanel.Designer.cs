@@ -1125,6 +1125,7 @@
             cb_Infällt.TabIndex = 38;
             cb_Infällt.Text = "Infällt";
             cb_Infällt.UseVisualStyleBackColor = false;
+            cb_Infällt.CheckedChanged += cb_Infällt_CheckedChanged;
             // 
             // cb_Avlyft
             // 
@@ -1137,6 +1138,7 @@
             cb_Avlyft.TabIndex = 13;
             cb_Avlyft.Text = "Avlyft";
             cb_Avlyft.UseVisualStyleBackColor = false;
+            cb_Avlyft.CheckedChanged += cb_Avlyft_CheckedChanged;
             // 
             // infopanel_Controlpanel2
             // 
@@ -1433,9 +1435,9 @@
             lbl_groupLiftOrder_control_20.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_20.Location = new Point(841, 86);
             lbl_groupLiftOrder_control_20.Name = "lbl_groupLiftOrder_control_20";
-            lbl_groupLiftOrder_control_20.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_20.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_20.TabIndex = 53;
-            lbl_groupLiftOrder_control_20.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_20.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_19
             // 
@@ -1444,9 +1446,9 @@
             lbl_groupLiftOrder_control_19.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_19.Location = new Point(841, 65);
             lbl_groupLiftOrder_control_19.Name = "lbl_groupLiftOrder_control_19";
-            lbl_groupLiftOrder_control_19.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_19.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_19.TabIndex = 52;
-            lbl_groupLiftOrder_control_19.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_19.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_18
             // 
@@ -1455,9 +1457,9 @@
             lbl_groupLiftOrder_control_18.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_18.Location = new Point(841, 44);
             lbl_groupLiftOrder_control_18.Name = "lbl_groupLiftOrder_control_18";
-            lbl_groupLiftOrder_control_18.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_18.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_18.TabIndex = 51;
-            lbl_groupLiftOrder_control_18.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_18.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_5
             // 
@@ -1466,9 +1468,9 @@
             lbl_groupLiftOrder_control_5.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_5.Location = new Point(134, 85);
             lbl_groupLiftOrder_control_5.Name = "lbl_groupLiftOrder_control_5";
-            lbl_groupLiftOrder_control_5.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_5.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_5.TabIndex = 38;
-            lbl_groupLiftOrder_control_5.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_5.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_17
             // 
@@ -1477,9 +1479,9 @@
             lbl_groupLiftOrder_control_17.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_17.Location = new Point(841, 23);
             lbl_groupLiftOrder_control_17.Name = "lbl_groupLiftOrder_control_17";
-            lbl_groupLiftOrder_control_17.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_17.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_17.TabIndex = 50;
-            lbl_groupLiftOrder_control_17.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_17.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_1
             // 
@@ -1488,9 +1490,9 @@
             lbl_groupLiftOrder_control_1.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_1.Location = new Point(134, 1);
             lbl_groupLiftOrder_control_1.Name = "lbl_groupLiftOrder_control_1";
-            lbl_groupLiftOrder_control_1.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_1.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_1.TabIndex = 34;
-            lbl_groupLiftOrder_control_1.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_1.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_16
             // 
@@ -1499,9 +1501,9 @@
             lbl_groupLiftOrder_control_16.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_16.Location = new Point(841, 2);
             lbl_groupLiftOrder_control_16.Name = "lbl_groupLiftOrder_control_16";
-            lbl_groupLiftOrder_control_16.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_16.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_16.TabIndex = 49;
-            lbl_groupLiftOrder_control_16.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_16.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_2
             // 
@@ -1510,9 +1512,9 @@
             lbl_groupLiftOrder_control_2.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_2.Location = new Point(134, 22);
             lbl_groupLiftOrder_control_2.Name = "lbl_groupLiftOrder_control_2";
-            lbl_groupLiftOrder_control_2.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_2.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_2.TabIndex = 35;
-            lbl_groupLiftOrder_control_2.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_2.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_15
             // 
@@ -1521,9 +1523,9 @@
             lbl_groupLiftOrder_control_15.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_15.Location = new Point(607, 87);
             lbl_groupLiftOrder_control_15.Name = "lbl_groupLiftOrder_control_15";
-            lbl_groupLiftOrder_control_15.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_15.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_15.TabIndex = 48;
-            lbl_groupLiftOrder_control_15.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_15.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_3
             // 
@@ -1532,9 +1534,9 @@
             lbl_groupLiftOrder_control_3.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_3.Location = new Point(134, 43);
             lbl_groupLiftOrder_control_3.Name = "lbl_groupLiftOrder_control_3";
-            lbl_groupLiftOrder_control_3.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_3.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_3.TabIndex = 36;
-            lbl_groupLiftOrder_control_3.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_3.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_14
             // 
@@ -1543,9 +1545,9 @@
             lbl_groupLiftOrder_control_14.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_14.Location = new Point(607, 66);
             lbl_groupLiftOrder_control_14.Name = "lbl_groupLiftOrder_control_14";
-            lbl_groupLiftOrder_control_14.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_14.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_14.TabIndex = 47;
-            lbl_groupLiftOrder_control_14.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_14.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_4
             // 
@@ -1554,9 +1556,9 @@
             lbl_groupLiftOrder_control_4.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_4.Location = new Point(134, 64);
             lbl_groupLiftOrder_control_4.Name = "lbl_groupLiftOrder_control_4";
-            lbl_groupLiftOrder_control_4.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_4.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_4.TabIndex = 37;
-            lbl_groupLiftOrder_control_4.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_4.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_13
             // 
@@ -1565,9 +1567,9 @@
             lbl_groupLiftOrder_control_13.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_13.Location = new Point(607, 44);
             lbl_groupLiftOrder_control_13.Name = "lbl_groupLiftOrder_control_13";
-            lbl_groupLiftOrder_control_13.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_13.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_13.TabIndex = 46;
-            lbl_groupLiftOrder_control_13.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_13.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_6
             // 
@@ -1576,9 +1578,9 @@
             lbl_groupLiftOrder_control_6.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_6.Location = new Point(380, 2);
             lbl_groupLiftOrder_control_6.Name = "lbl_groupLiftOrder_control_6";
-            lbl_groupLiftOrder_control_6.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_6.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_6.TabIndex = 39;
-            lbl_groupLiftOrder_control_6.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_6.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_12
             // 
@@ -1587,9 +1589,9 @@
             lbl_groupLiftOrder_control_12.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_12.Location = new Point(607, 23);
             lbl_groupLiftOrder_control_12.Name = "lbl_groupLiftOrder_control_12";
-            lbl_groupLiftOrder_control_12.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_12.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_12.TabIndex = 45;
-            lbl_groupLiftOrder_control_12.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_12.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_7
             // 
@@ -1598,9 +1600,9 @@
             lbl_groupLiftOrder_control_7.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_7.Location = new Point(380, 23);
             lbl_groupLiftOrder_control_7.Name = "lbl_groupLiftOrder_control_7";
-            lbl_groupLiftOrder_control_7.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_7.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_7.TabIndex = 40;
-            lbl_groupLiftOrder_control_7.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_7.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_11
             // 
@@ -1609,9 +1611,9 @@
             lbl_groupLiftOrder_control_11.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_11.Location = new Point(607, 2);
             lbl_groupLiftOrder_control_11.Name = "lbl_groupLiftOrder_control_11";
-            lbl_groupLiftOrder_control_11.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_11.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_11.TabIndex = 44;
-            lbl_groupLiftOrder_control_11.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_11.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_8
             // 
@@ -1620,9 +1622,9 @@
             lbl_groupLiftOrder_control_8.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_8.Location = new Point(380, 43);
             lbl_groupLiftOrder_control_8.Name = "lbl_groupLiftOrder_control_8";
-            lbl_groupLiftOrder_control_8.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_8.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_8.TabIndex = 41;
-            lbl_groupLiftOrder_control_8.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_8.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_10
             // 
@@ -1631,9 +1633,9 @@
             lbl_groupLiftOrder_control_10.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_10.Location = new Point(380, 85);
             lbl_groupLiftOrder_control_10.Name = "lbl_groupLiftOrder_control_10";
-            lbl_groupLiftOrder_control_10.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_10.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_10.TabIndex = 43;
-            lbl_groupLiftOrder_control_10.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_10.Text = "Vikt + Lyftare";
             // 
             // lbl_groupLiftOrder_control_9
             // 
@@ -1642,9 +1644,9 @@
             lbl_groupLiftOrder_control_9.ForeColor = Color.FromArgb(187, 225, 250);
             lbl_groupLiftOrder_control_9.Location = new Point(380, 64);
             lbl_groupLiftOrder_control_9.Name = "lbl_groupLiftOrder_control_9";
-            lbl_groupLiftOrder_control_9.Size = new Size(120, 25);
+            lbl_groupLiftOrder_control_9.Size = new Size(123, 25);
             lbl_groupLiftOrder_control_9.TabIndex = 42;
-            lbl_groupLiftOrder_control_9.Text = "Lyftare + vikt";
+            lbl_groupLiftOrder_control_9.Text = "Vikt + Lyftare";
             // 
             // lbl_OpeningLift
             // 
@@ -1656,7 +1658,7 @@
             lbl_OpeningLift.Name = "lbl_OpeningLift";
             lbl_OpeningLift.Size = new Size(126, 96);
             lbl_OpeningLift.TabIndex = 10;
-            lbl_OpeningLift.Text = "\"Ingångar\"\r\n\"Grupp1\"\r\n\"Bänk\"";
+            lbl_OpeningLift.Text = "\"Ingångar\"\r\n\"Grupp 1\"\r\n\"Bänk\"";
             // 
             // panel10
             // 
@@ -1913,7 +1915,7 @@
             label30.BackColor = Color.FromArgb(15, 76, 117);
             label30.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             label30.ForeColor = Color.FromArgb(187, 225, 250);
-            label30.Location = new Point(43, 0);
+            label30.Location = new Point(43, -2);
             label30.Name = "label30";
             label30.Size = new Size(183, 37);
             label30.TabIndex = 13;

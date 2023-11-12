@@ -1,17 +1,23 @@
 Steelmeet TODO
 
-	:)
+:)
+Man kan inte kryssa ner programmet lol
+grupp 1 visar 0 som ingångar och grupp 3 visar ingenting
+Gör de mindre vikterna mindre på den visuella delen
 en pognostotal brevid vanliga totalen.
+✅Bänkare ska räkna gl poäng annorlunda
+✅underkänt lyft funker inte lifa som godkänt för ud har inte gjort ändringar i underkänt helt enkelt
+✅grupp 3 funkar inte med avlyft och infällt
+✅Bänkpressare ska inte få köra marklyft
+✅Bänkpress mode
+✅Böj, Bänk höjder tas nu från datagridview
+✅Man ska kunna ändra infällt och avlyft under tävlingens gång 
 ✅Visar bara höjd inte safety på bänken
-man kan göra att om currentlifts ruta är value 0 så blir man inte tillagd i liftingorder
-Man ska kunna ändra infällt och avlyft under tävlingens gång 
-Bänkpressare ska inte få köra marklyft
-Bänkare ska räkna gl poäng annorlunda
 ✅excel arket som man lägger in ska ta bort första raden med de äckliga rubrikerna
 ✅Alla bänkpressare ska börja med currentlift på första bänkpressen vilket är currentLift = 14
 
 Västenliga fixar från DM :
-Man ska kunna ändra infällt och avlyft under tävlingens gång 
+✅Man ska kunna ändra infällt och avlyft under tävlingens gång 
 ✅lbl_25x lägg til så den gör nåt
 ✅Underkända lyft läggs till på totalen
 ✅När man är på sista gruppens mark så behöver man intte visa ingångar
@@ -21,7 +27,7 @@ Man ska kunna ändra infällt och avlyft under tävlingens gång
 
 Rekomendationer från DM : 
 Markera förgående lyftare??
-Snygga till lyftarordningen så den är lättare att läsa
+✅✅Snygga till lyftarordningen så den är lättare att läsa
 Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
 ✅Visa bara väsentilg info på panelerna (t.ex inte avlyft i marken)
 ✅Visa hur många 25kg kakor som ska användas t.ex 25KGx5 så klovare lätt kan se
