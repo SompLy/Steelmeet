@@ -186,12 +186,12 @@
             combo_Aktivgrupp = new ComboBox();
             label29 = new Label();
             panel6 = new Panel();
+            button4 = new Button();
+            button2 = new Button();
             btn_SelectNextLifter = new Button();
             btn_Gåom = new Button();
             btn_ångralyft = new Button();
-            btn_godkänt = new Button();
             btn_klovad = new Button();
-            btn_underkänt = new Button();
             panel5 = new Panel();
             btn_60min = new Button();
             btn_4min = new Button();
@@ -214,6 +214,7 @@
             lbl_Name = new Label();
             dataGridViewControlPanel = new DataGridView();
             tabPage3 = new TabPage();
+            btn_exportResult = new Button();
             label34 = new Label();
             label23 = new Label();
             label22 = new Label();
@@ -2082,23 +2083,49 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(27, 38, 44);
+            panel6.Controls.Add(button4);
+            panel6.Controls.Add(button2);
             panel6.Controls.Add(btn_SelectNextLifter);
             panel6.Controls.Add(btn_Gåom);
             panel6.Controls.Add(btn_ångralyft);
-            panel6.Controls.Add(btn_godkänt);
             panel6.Controls.Add(btn_klovad);
-            panel6.Controls.Add(btn_underkänt);
             panel6.Location = new Point(748, 159);
             panel6.Name = "panel6";
             panel6.Size = new Size(603, 43);
             panel6.TabIndex = 4;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.ForestGreen;
+            button4.FlatStyle = FlatStyle.Popup;
+            button4.ForeColor = SystemColors.ControlText;
+            button4.Location = new Point(198, 2);
+            button4.Name = "button4";
+            button4.Size = new Size(87, 38);
+            button4.TabIndex = 44;
+            button4.Text = "Godkänt";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += btn_godkäntMarkerad_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Red;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.ForeColor = SystemColors.ControlText;
+            button2.Location = new Point(291, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(87, 38);
+            button2.TabIndex = 43;
+            button2.Text = "Underkänt";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += btn_underkäntMarkerad_Click;
             // 
             // btn_SelectNextLifter
             // 
             btn_SelectNextLifter.BackColor = Color.FromArgb(15, 76, 117);
             btn_SelectNextLifter.FlatStyle = FlatStyle.Popup;
             btn_SelectNextLifter.ForeColor = Color.FromArgb(187, 225, 250);
-            btn_SelectNextLifter.Location = new Point(93, 2);
+            btn_SelectNextLifter.Location = new Point(92, 2);
             btn_SelectNextLifter.Name = "btn_SelectNextLifter";
             btn_SelectNextLifter.Size = new Size(87, 38);
             btn_SelectNextLifter.TabIndex = 42;
@@ -2110,9 +2137,9 @@
             // 
             btn_Gåom.BackColor = SystemColors.WindowFrame;
             btn_Gåom.FlatStyle = FlatStyle.Popup;
-            btn_Gåom.Location = new Point(511, 2);
+            btn_Gåom.Location = new Point(421, 2);
             btn_Gåom.Name = "btn_Gåom";
-            btn_Gåom.Size = new Size(89, 38);
+            btn_Gåom.Size = new Size(87, 38);
             btn_Gåom.TabIndex = 41;
             btn_Gåom.Text = "Gå om ";
             btn_Gåom.UseVisualStyleBackColor = false;
@@ -2122,25 +2149,13 @@
             // 
             btn_ångralyft.BackColor = SystemColors.WindowFrame;
             btn_ångralyft.FlatStyle = FlatStyle.Popup;
-            btn_ångralyft.Location = new Point(419, 2);
+            btn_ångralyft.Location = new Point(512, 2);
             btn_ångralyft.Name = "btn_ångralyft";
-            btn_ångralyft.Size = new Size(88, 38);
+            btn_ångralyft.Size = new Size(87, 38);
             btn_ångralyft.TabIndex = 24;
             btn_ångralyft.Text = "Ångra Lyft";
             btn_ångralyft.UseVisualStyleBackColor = false;
             btn_ångralyft.Click += btn_ångralyft_Click;
-            // 
-            // btn_godkänt
-            // 
-            btn_godkänt.BackColor = Color.ForestGreen;
-            btn_godkänt.FlatStyle = FlatStyle.Popup;
-            btn_godkänt.Location = new Point(185, 2);
-            btn_godkänt.Name = "btn_godkänt";
-            btn_godkänt.Size = new Size(100, 38);
-            btn_godkänt.TabIndex = 22;
-            btn_godkänt.Text = "Lyft Godkänt";
-            btn_godkänt.UseVisualStyleBackColor = false;
-            btn_godkänt.Click += btn_godkänt_Click;
             // 
             // btn_klovad
             // 
@@ -2154,18 +2169,6 @@
             btn_klovad.Text = "Stången är klovad";
             btn_klovad.UseVisualStyleBackColor = false;
             btn_klovad.Click += btn_klovad_Click;
-            // 
-            // btn_underkänt
-            // 
-            btn_underkänt.BackColor = Color.Red;
-            btn_underkänt.FlatStyle = FlatStyle.Popup;
-            btn_underkänt.Location = new Point(290, 2);
-            btn_underkänt.Name = "btn_underkänt";
-            btn_underkänt.Size = new Size(97, 38);
-            btn_underkänt.TabIndex = 23;
-            btn_underkänt.Text = "Lyft Underkänt";
-            btn_underkänt.UseVisualStyleBackColor = false;
-            btn_underkänt.Click += btn_underkänt_Click;
             // 
             // panel5
             // 
@@ -2477,6 +2480,7 @@
             // tabPage3
             // 
             tabPage3.BackColor = SystemColors.WindowText;
+            tabPage3.Controls.Add(btn_exportResult);
             tabPage3.Controls.Add(label34);
             tabPage3.Controls.Add(label23);
             tabPage3.Controls.Add(label22);
@@ -2487,6 +2491,19 @@
             tabPage3.Size = new Size(1358, 740);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Resultat";
+            // 
+            // btn_exportResult
+            // 
+            btn_exportResult.BackColor = SystemColors.WindowFrame;
+            btn_exportResult.FlatStyle = FlatStyle.Popup;
+            btn_exportResult.ForeColor = SystemColors.WindowText;
+            btn_exportResult.Location = new Point(8, 6);
+            btn_exportResult.Name = "btn_exportResult";
+            btn_exportResult.Size = new Size(167, 30);
+            btn_exportResult.TabIndex = 13;
+            btn_exportResult.Text = "Exportera resultat ... (.xlsx)";
+            btn_exportResult.UseVisualStyleBackColor = false;
+            btn_exportResult.Click += btn_exportResult_Click;
             // 
             // label34
             // 
@@ -2556,7 +2573,7 @@
             AutoScaleMode = AutoScaleMode.None;
             AutoSize = true;
             BackColor = Color.FromArgb(27, 38, 44);
-            ClientSize = new Size(1413, 813);
+            ClientSize = new Size(1412, 813);
             Controls.Add(tabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SMKontrollpanel";
@@ -2679,8 +2696,6 @@
         private System.Windows.Forms.Timer timerLapp;
         private Panel panel6;
         private Button btn_ångralyft;
-        private Button btn_underkänt;
-        private Button btn_godkänt;
         private Button btn_klovad;
         private Button btn_60min;
         private Button btn_4min;
@@ -2790,5 +2805,8 @@
         private CheckBox cb_Avlyft;
         private Button lbl_suggestedWeight175;
         private Button lbl_suggestedWeight250;
+        private Button btn_exportResult;
+        private Button button4;
+        private Button button2;
     }
 }

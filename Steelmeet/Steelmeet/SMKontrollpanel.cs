@@ -17,8 +17,17 @@ namespace SteelMeet
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             tabControl1.TabPages[0].ForeColor = Color.FromArgb(187, 225, 250);
+            licensCheck();
+
+#if !DEBUG
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+#endif
         }
 
+        private void SMKontrollpanel_Load(object sender, EventArgs e)
+        {
+        }
         //För att byta färg på tabcontorl men funkar inte så bra
         private void ChangeTabColor(object sender, DrawItemEventArgs e)
         {
@@ -221,14 +230,22 @@ namespace SteelMeet
 
                 if (indexX >= 0 && indexX < x.sbdList.Count && indexY >= 0 && indexY < y.sbdList.Count)
                 {
-                    float valueX = x.sbdList[indexX];
-                    float valueY = y.sbdList[indexY];
+                    float weightX = x.sbdList[indexX];
+                    float weightY = y.sbdList[indexY];
 
-                    // Compare the values and return the result.
-                    return valueX.CompareTo(valueY);
+                    // Jämnför vikter
+                    int weightComparison = weightX.CompareTo(weightY);
+
+                    if (weightComparison != 0)
+                    {
+                        // Om vikte rinte är lika
+                        return weightComparison;
+                    }
+
+                    // Om vikten är detsamma jämnför lotNummer
+                    return x.lotNumber.CompareTo(y.lotNumber);
                 }
 
-                // Handle cases where indices are out of bounds.
                 return 0; // Or any other appropriate value.
             }
         }
@@ -289,6 +306,13 @@ namespace SteelMeet
             public Color col_plate125 { get; set; }
             public Color col_plate025 { get; set; }
 
+        }
+
+        void licensCheck()
+        {
+            DateTime licenceEndDate = new DateTime(2024, 1, 1);
+            if (DateTime.Now > licenceEndDate)
+                MessageBox.Show("Din STEELMEET licens har utgått 2024-01-01");
         }
 
 
@@ -916,6 +940,11 @@ namespace SteelMeet
         //Tävling
         private void DrawPlates(Graphics g, List<int> usedPlatesList, List<Color> plateColorList, List<int> paintedPlatesList)
         {
+            // x1 = Börja rita här
+            // y1 = Börja rita här
+            // x2 = 
+            // y2 =
+
             int x1 = -5, y1 = 60, x2 = -5, y2 = 140;
             Pen p = new Pen(Color.Red, 16);
             int offset = 20;
@@ -925,6 +954,57 @@ namespace SteelMeet
                 if (Enumerable.Any(usedPlatesList) && usedPlatesList[i] > paintedPlatesList[i])
                 {
                     p.Color = plateColorList[i];
+                    //switch (i)
+                    //{
+                    //    case 3: // 15 KG
+                    //        y1 = 63;
+                    //        y2 = 137;
+                    //        p.Width = 14;
+                    //        offset -= 2;
+                    //        break;
+                    //    case 4: // 10 KG
+                    //        y1 = 66;
+                    //        y2 = 134;
+                    //        p.Width = 14;
+                    //        offset -= 2;
+                    //        break;
+                    //    case 5: // 5 KG
+                    //        y1 = 69;
+                    //        y2 = 131;
+                    //        p.Width = 12;
+                    //        offset -= 4;
+                    //        break;
+                    //    case 6: // 2.5 KG
+                    //        y1 = 72;
+                    //        y2 = 128;
+                    //        p.Width = 12;
+                    //        offset -= 4;
+                    //        break;
+                    //    case 7: // 1.25 KG
+                    //        y1 = 75 + 2;
+                    //        y2 = 125 - 2;
+                    //        p.Width = 10;
+                    //        offset -= 6;
+                    //        break;
+                    //    case 8: // 0.5 KG
+                    //        y1 = 77 + 2;
+                    //        y2 = 123 - 2;
+                    //        p.Width = 8;
+                    //        offset -= 8;
+                    //        break;
+                    //    case 9: // 0.25 KG
+                    //        y1 = 79 + 2;
+                    //        y2 = 121 - 2;
+                    //        p.Width = 8;
+                    //        offset -= 8;
+                    //        break;
+                    //    default:
+                    //        y1 = 60;
+                    //        y2 = 140;
+                    //        p.Width = 16;
+                    //        offset = 20;
+                    //        break;
+                    //}
                     g.DrawLine(p, x1 + offset, y1, x2 + offset, y2);
                     offset += 20;
 
@@ -978,6 +1058,7 @@ namespace SteelMeet
         }
         private void dataGridViewControlPanel_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
+            licensCheck();
             if (Enumerable.Range(0, dataGridViewControlPanel.RowCount).Contains(e.RowIndex))
             {
                 //dataGridViewControlPanel.MultiSelect = false;
@@ -1176,7 +1257,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
                 !dataGridViewControlPanel.IsCurrentCellInEditMode)            //Godkänt lyft
             {
-                goodLift();
+                goodLiftMarked();
 
                 return true;
             }
@@ -1185,7 +1266,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
                 !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Underkänt lyft
             {
-                badLift();
+                badLiftMarked();
 
                 return true;
             }
@@ -1198,7 +1279,87 @@ namespace SteelMeet
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-        public void goodLift()
+        //public void goodLift()
+        //{
+        //    Lifter currentLifter = LiftingOrderList[0];
+
+        //    if (LiftingOrderList.Contains(LiftingOrderList[0]))
+        //    {
+
+        //        if (currentLifter.CurrentLift < 19)
+        //        {
+        //            currentLifter.CurrentLift += 1;
+
+        //            if (currentLifter.isBenchOnly && currentLifter.CurrentLift == 17)
+        //            {
+        //                currentLifter.LiftRecord.AddRange(new bool[] { true, true, true });
+        //                currentLifter.CurrentLift = 19;
+        //            }
+        //        }
+        //        // Updaterar lyftar ordning
+        //        LiftOrderUpdate();
+
+        //        if (currentLifter.CurrentLift < 19)
+        //        {
+        //            currentLifter.LiftRecord.Add(true); // Registrerar ett godkänt lyft för lyftaren
+        //        }
+        //        BestSBDUpdate();
+
+        //        // Sätter total och GL points
+        //        currentLifter.total = currentLifter.bestS + currentLifter.bestB + currentLifter.bestD;
+        //        currentLifter.pointsGL = GLPointsCalculator(currentLifter);
+        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[19].Value = currentLifter.total;
+        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[20].Value = currentLifter.pointsGL.ToString("0.00");
+
+        //        TimerController(8); // Startar lapp timern på 1 minut
+        //        TimerController(9); // Stoppar lyft timern och sätter timern på 00:00
+
+        //        // Uppdaterar placering
+        //        RankUpdate();
+        //    }
+
+        //    // Sätter den gröna färgen
+        //    dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Style.BackColor = Color.ForestGreen;
+
+        //    if (currentLifter.CurrentLift < 19)
+        //    {
+        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+        //        dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift];
+
+        //        if (currentLifter.CurrentLift != 13 && currentLifter.CurrentLift != 16)
+        //        {
+        //            dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift].Value =
+        //                2.5f + float.Parse(dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Value.ToString());
+        //        }
+        //        dataGridViewControlPanel.BeginEdit(true);
+        //    }
+
+        //    if (currentLifter.CurrentLift < 19)
+        //    {
+        //        currentLifter.sbdList[currentLifter.LiftRecord.Count - 1] =
+        //            float.Parse(dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Value.ToString());
+        //    }
+
+        //    // Tar bort rätt lyftare
+        //    if (LiftingOrderList.Count >= 0)
+        //    {
+        //        // Meddelande om lyftaren redan lyft funkar inte ?!?!?!?!?
+        //        if (!LiftingOrderList.Contains(LiftingOrderList[0]))
+        //        {
+        //            MessageBox.Show("Denna lyftare har redan lyft denna omgång", "⚠SteelMeet varning!⚠", MessageBoxButtons.OK, MessageBoxIcon.None);
+        //            return;
+        //        }
+        //        for (int i = 0; i < LiftingOrderList.Count; i++)
+        //        {
+        //            if (currentLifter == LiftingOrderList[i])
+        //            {
+        //                LiftingOrderList.RemoveAt(i);
+        //            }
+        //        }
+        //    }
+        //        LiftOrderUpdate();
+        //}
+        public void goodLiftMarked()
         {
             if (LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
             {
@@ -1219,7 +1380,7 @@ namespace SteelMeet
                 {
                     LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(true); //Registrerar ett godkänt lyft för lyftaren
                 }
-                BestSBDUpdate();
+                BestSBDUpdateMarked();
 
                 //Sätter total och GL points
                 LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
@@ -1275,7 +1436,7 @@ namespace SteelMeet
 
             }
         }
-        public void badLift()
+        public void badLiftMarked()
         {
             if (LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
             {
@@ -1947,13 +2108,12 @@ namespace SteelMeet
                     LiftingOrderListLabels[i].Text = "";
                 }
 
-                // Create an instance of the custom comparer.
                 var comparer = new LifterComparer();
 
-                // Use the custom comparer to sort LiftingOrderListNew.
+                // Använd custom comparern för att sortera LiftingOrderList
                 LiftingOrderList = LiftingOrderList.OrderBy(item => item, comparer).ToList();
 
-                //Om första elementet i listan är klar med sista marken så ska inte man visa deras nästa lyft eftersom det inte finns något mer att lyffta lol
+                // Om första elementet i listan är klar med sista marken så ska inte man visa deras nästa lyft eftersom det inte finns något mer att lyffta lol
 
                 for (int i = 0; i < LiftingOrderList.Count; i++)
                 {
@@ -2213,6 +2373,33 @@ namespace SteelMeet
             List<float> cellValuesList = new List<float>();
 
             float[] valuesToParse = new float[9];
+            for (int i = firstLiftColumn; i < firstLiftColumn + LiftingOrderList[0].LiftRecord.Count(); i++)
+            {
+                string cellValue = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[i].Value.ToString();
+                valuesToParse[i - firstLiftColumn] = float.Parse(cellValue);
+            }
+            //lägger till floats i lista
+            cellValuesList.AddRange(valuesToParse);
+
+            for (int i = 0; i < LiftingOrderList[0].LiftRecord.Count(); i++)
+            {
+                if (!LiftingOrderList[0].LiftRecord[i])
+                {
+                    cellValuesList[i] = 0.0f;
+                }
+            }
+            LiftingOrderList[0].bestS = MoreMath.Max(cellValuesList[0], cellValuesList[1], cellValuesList[2]);
+            LiftingOrderList[0].bestB = MoreMath.Max(cellValuesList[3], cellValuesList[4], cellValuesList[5]);
+            LiftingOrderList[0].bestD = MoreMath.Max(cellValuesList[6], cellValuesList[7], cellValuesList[8]);
+        }
+        public void BestSBDUpdateMarked()
+        {
+            //gör en lista som har alla cellers value i sig 
+            //ta från recordslistan och om de är false sätt de till noll
+            //kör MoreMath.Max för att få ut de bästa lyften
+            List<float> cellValuesList = new List<float>();
+
+            float[] valuesToParse = new float[9];
             for (int i = firstLiftColumn; i < firstLiftColumn + LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count(); i++)
             {
                 string cellValue = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[i].Value.ToString();
@@ -2231,7 +2418,6 @@ namespace SteelMeet
             LifterID[SelectedRowIndex + groupRowFixer].bestS = MoreMath.Max(cellValuesList[0], cellValuesList[1], cellValuesList[2]);
             LifterID[SelectedRowIndex + groupRowFixer].bestB = MoreMath.Max(cellValuesList[3], cellValuesList[4], cellValuesList[5]);
             LifterID[SelectedRowIndex + groupRowFixer].bestD = MoreMath.Max(cellValuesList[6], cellValuesList[7], cellValuesList[8]);
-
         }
         public void RankUpdate()
         {
@@ -2401,14 +2587,25 @@ namespace SteelMeet
         }
         private void btn_godkänt_Click(object sender, EventArgs e)
         {
-            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
-                goodLift();
+            //if (LiftingOrderList[0].CurrentLift < 20)
+            //    goodLift();
         }
 
         private void btn_underkänt_Click(object sender, EventArgs e)
         {
+            //if (LiftingOrderList[0].CurrentLift < 20)
+            //badLift();
+        }
+        private void btn_godkäntMarkerad_Click(object sender, EventArgs e)
+        {
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
-                badLift();
+                goodLiftMarked();
+        }
+
+        private void btn_underkäntMarkerad_Click(object sender, EventArgs e)
+        {
+            if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
+                badLiftMarked();
         }
 
         private void btn_ångralyft_Click(object sender, EventArgs e)
@@ -2783,17 +2980,20 @@ namespace SteelMeet
         }
         private void LiftoffTiltedUpdate()
         {
-            if (LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToLower() == "ja")
-                cb_Avlyft.Checked = true;
-            else
-                cb_Avlyft.Checked = false;
+            if (LifterID.Count > 0)
+            {
+                if (LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToLower() == "ja")
+                    cb_Avlyft.Checked = true;
+                else
+                    cb_Avlyft.Checked = false;
 
-            if (LifterID[SelectedRowIndex + groupRowFixer].tilted.ToLower() == "ja" ||
-                LifterID[SelectedRowIndex + groupRowFixer].tilted.ToLower() == "vänster" ||
-                LifterID[SelectedRowIndex + groupRowFixer].tilted.ToLower() == "höger")
-                cb_Infällt.Checked = true;
-            else
-                cb_Infällt.Checked = false;
+                if (LifterID[SelectedRowIndex + groupRowFixer].tilted.ToLower() == "ja" ||
+                    LifterID[SelectedRowIndex + groupRowFixer].tilted.ToLower() == "vänster" ||
+                    LifterID[SelectedRowIndex + groupRowFixer].tilted.ToLower() == "höger")
+                    cb_Infällt.Checked = true;
+                else
+                    cb_Infällt.Checked = false;
+            }
         }
 
         private void cb_Avlyft_CheckedChanged(object sender, EventArgs e)
@@ -2818,30 +3018,70 @@ namespace SteelMeet
             }
             LiftoffTiltedUpdate();
         }
-#if !DEBUG
-        private void SMKontrollpanel_Load(object sender, EventArgs e)
+
+
+
+
+        //Tävling
+        //Tävling
+        //Tävling
+        //Tävling
+        //Tävling
+
+
+
+
+        //Resultat
+        //Resultat
+        //Resultat
+        //Resultat
+        //Resultat
+        private void btn_exportResult_Click(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            try
+            {
+                SaveFileDialog ofd = new SaveFileDialog();
+                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                ofd.Title = "STEELMEET Exportera fil :)";
+                ofd.Filter = "Excel file |*.xlsx";
+                ofd.FileName = "STEELMEET_Resultat_";
+                DialogResult result = ofd.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    SLDocument sl = new SLDocument();
+                    sl.SetCellValue(1, 1, "Namn");
+                    sl.SetCellValue(1, 2, "Kroppsvikt");
+                    sl.SetCellValue(1, 3, "Förening");
+                    sl.SetCellValue(1, 4, "Licensnummer");
+                    sl.SetCellValue(1, 5, "Bästa Böj");
+                    sl.SetCellValue(1, 6, "Bästa Bänk");
+                    sl.SetCellValue(1, 7, "Bästa Mark");
+                    sl.SetCellValue(1, 8, "Total");
+                    sl.SetCellValue(1, 9, "GL poäng");
+
+                    for (int i = 0; i < LifterID.Count(); i++)
+                    {
+                        sl.SetCellValue(i + 2, 1, LifterID[i].name);
+                        sl.SetCellValue(i + 2, 2, LifterID[i].bodyWeight);
+                        sl.SetCellValue(i + 2, 3, LifterID[i].accossiation);
+                        sl.SetCellValue(i + 2, 4, LifterID[i].licenceNumber);
+                        sl.SetCellValue(i + 2, 5, LifterID[i].bestS);
+                        sl.SetCellValue(i + 2, 6, LifterID[i].bestB);
+                        sl.SetCellValue(i + 2, 7, LifterID[i].bestD);
+                        sl.SetCellValue(i + 2, 8, LifterID[i].total);
+                        sl.SetCellValue(i + 2, 9, LifterID[i].pointsGL);
+                    }
+                    sl.SaveAs(ofd.FileName);
+
+                    MessageBox.Show("Excel fil sparad! :)");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-#endif
-
-
-
-        //Tävling
-        //Tävling
-        //Tävling
-        //Tävling
-        //Tävling
-
-
-
-
-        //Resultat
-        //Resultat
-        //Resultat
-        //Resultat
-        //Resultat
 
 
         //Resultat

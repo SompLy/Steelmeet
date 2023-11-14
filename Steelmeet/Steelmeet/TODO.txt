@@ -1,10 +1,17 @@
 Steelmeet TODO
 
 :)
-Man kan inte kryssa ner programmet lol
-grupp 1 visar 0 som ingångar och grupp 3 visar ingenting
-Gör de mindre vikterna mindre på den visuella delen
+Viktiga saker :
+Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
+om man lyfter samma vikt så ska den med lägst lot nummer lyfta först
+
+mindre viktiga saker :
 en pognostotal brevid vanliga totalen.
+Markera förgående lyftare??
+Gör de mindre vikterna mindre på den visuella delen
+grupp 1 visar 0 som ingångar och grupp 3 visar ingenting
+Man kan inte kryssa ner programmet lol
+
 ✅Bänkare ska räkna gl poäng annorlunda
 ✅underkänt lyft funker inte lifa som godkänt för ud har inte gjort ändringar i underkänt helt enkelt
 ✅grupp 3 funkar inte med avlyft och infällt
@@ -26,9 +33,7 @@ Västenliga fixar från DM :
 ✅STEELMEET TESTVERSION FÖR ANVÄNDNING T.O.M 2024-01-01
 
 Rekomendationer från DM : 
-Markera förgående lyftare??
 ✅✅Snygga till lyftarordningen så den är lättare att läsa
-Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
 ✅Visa bara väsentilg info på panelerna (t.ex inte avlyft i marken)
 ✅Visa hur många 25kg kakor som ska användas t.ex 25KGx5 så klovare lätt kan se
 ✅Gör text större spciellt de viktiga sakerna som namn och vikt
@@ -85,11 +90,11 @@ Invägning :
 ✅Automatisk klass string korrigering
 
 Kontrollpanel / Tävlingsfönster :
-Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
-1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld	(bronze 169, 106, 64 | silver 132, 132, 130 | guld 175, 149, 0)
 gör en timer som man kan sätta ett visst klockslag och sen utifrån system klockan så sätter den timern
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
 Byta färg på tabcontrol1 "Changetabcolor"
+✅Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
+✅1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld	(bronze 169, 106, 64 | silver 132, 132, 130 | guld 175, 149, 0)
 ✅Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 
 ✅Det finns inga poäng i djulen men det finns på DM
 ✅visa GL poöngen
