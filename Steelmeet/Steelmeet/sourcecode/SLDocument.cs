@@ -3187,7 +3187,11 @@ namespace SpreadsheetLight
         {
             if (xl.CoreFilePropertiesPart != null)
             {
-                XDocument xdoc = XDocument.Load(XmlReader.Create(xl.CoreFilePropertiesPart.GetStream()));
+                //XDocument xdoc = XDocument.Load(XmlReader.Create(xl.CoreFilePropertiesPart.GetStream()));
+
+                Stream stream = xl.CoreFilePropertiesPart.GetStream();
+                XDocument xdoc = XDocument.Load(XmlReader.Create(stream));
+
                 foreach (XElement xelem in xdoc.Descendants())
                 {
                     switch (xelem.Name.LocalName)
@@ -3239,6 +3243,7 @@ namespace SpreadsheetLight
                             break;
                     }
                 }
+                stream.Close();
             }
         }
 

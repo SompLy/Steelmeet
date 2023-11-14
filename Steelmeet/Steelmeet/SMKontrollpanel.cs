@@ -3036,13 +3036,13 @@ namespace SteelMeet
         //Resultat
         //Resultat
         //Resultat
-        private void btn_exportResult_Click(object sender, EventArgs e)
+        private void btn_fastExportResult_Click(object sender, EventArgs e)
         {
             try
             {
                 SaveFileDialog ofd = new SaveFileDialog();
                 ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                ofd.Title = "STEELMEET Exportera fil :)";
+                ofd.Title = "STEELMEET snabbexportera fil :)";
                 ofd.Filter = "Excel file |*.xlsx";
                 ofd.FileName = "STEELMEET_Resultat_";
                 DialogResult result = ofd.ShowDialog();
@@ -3083,11 +3083,66 @@ namespace SteelMeet
             }
         }
 
+        private void btn_DetailedexportResult_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                ofd.Title = "STEELMEET Välj SSF-protokoll som du vill skriva till :)";
+                ofd.Filter = "Excel file |*.xlsx";
 
-        //Resultat
-        //Resultat
-        //Resultat
-        //Resultat
-        //Resultat
+                DialogResult result = ofd.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    // Load existing workbook and specify the worksheet
+                    SLDocument sl = new SLDocument(ofd.FileName, "Blad1"); // Change "Sheet1" to your actual sheet name
+
+                    for (int i = 0; i < LifterID.Count(); i++)
+                    {
+                        sl.SetCellValue(i + 16, 2, LifterID[i].licenceNumber);
+                        sl.SetCellValue(i + 16, 3, LifterID[i].bodyWeight);
+                        sl.SetCellValue(i + 16, 4, LifterID[i].weightClass);
+                        sl.SetCellValue(i + 16, 5, LifterID[i].name.Split(" ")[0]);  // Förnamn
+                        sl.SetCellValue(i + 16, 6, LifterID[i].name.Split(" ")[1]);  // Efternamn
+                        sl.SetCellValue(i + 16, 7, LifterID[i].accossiation);
+                                            
+                        sl.SetCellValue(i + 16, 8, LifterID[i].s1);
+                        sl.SetCellValue(i + 16, 9, LifterID[i].s2);
+                        sl.SetCellValue(i + 16, 10, LifterID[i].s3);
+                        sl.SetCellValue(i + 16, 11, LifterID[i].bestS);
+                                            
+                        sl.SetCellValue(i + 16, 12, LifterID[i].b1);
+                        sl.SetCellValue(i + 16, 13, LifterID[i].b2);
+                        sl.SetCellValue(i + 16, 14, LifterID[i].b3);
+                        sl.SetCellValue(i + 16, 15, LifterID[i].bestB);
+                                            
+                        sl.SetCellValue(i + 16, 16, LifterID[i].d1);
+                        sl.SetCellValue(i + 16, 17, LifterID[i].d2);
+                        sl.SetCellValue(i + 16, 18, LifterID[i].d3);
+                        sl.SetCellValue(i + 16, 19, LifterID[i].bestD);
+                                            
+                        sl.SetCellValue(i + 16, 20, LifterID[i].total);
+                        sl.SetCellValue(i + 16, 21, LifterID[i].pointsGL);
+                        sl.SetCellValue(i + 16, 22, LifterID[i].place);
+                    }
+
+                    sl.Save();
+
+                    MessageBox.Show("Resultat sparade till protokollet! :)");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+            //Resultat
+            //Resultat
+            //Resultat
+            //Resultat
+            //Resultat
     }
 }
