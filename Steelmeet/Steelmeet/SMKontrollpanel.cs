@@ -1,5 +1,7 @@
 ﻿
 using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using SpreadsheetLight;
 using SteelMeet;
 using System.Data;
@@ -16,7 +18,7 @@ namespace SteelMeet
             InitializeComponent();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-            tabControl1.TabPages[0].ForeColor = Color.FromArgb(187, 225, 250);
+            tabControl1.TabPages[0].ForeColor = System.Drawing.Color.FromArgb(187, 225, 250);
             licensCheck();
         }
         void ToggleFullscreen()
@@ -40,8 +42,8 @@ namespace SteelMeet
         private void ChangeTabColor(object sender, DrawItemEventArgs e)
         {
             //    Font TabFont;
-            //    Brush BackBrush = new SolidBrush(Color.Green); //Set background color
-            //    Brush ForeBrush = new SolidBrush(Color.Yellow);//Set foreground color
+            //    Brush BackBrush = new SolidBrush(System.Drawing.Color.Green); //Set background color
+            //    Brush ForeBrush = new SolidBrush(System.Drawing.Color.Yellow);//Set foreground color
             //    if (e.Index == this.tabControl1.SelectedIndex)
             //    {
             //        TabFont = new Font(e.Font, FontStyle.Regular);
@@ -130,10 +132,10 @@ namespace SteelMeet
             nothing = 9
         }
 
-        MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
+        MouseEventArgs mouseEvent = new MouseEventArgs(System.Windows.Forms.Control.MouseButtons, 0, 0, 0, 0);
 
         //Default Plate setup 16x25kg
-        public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2, Color.ForestGreen, Color.Red, Color.Blue, Color.Yellow, Color.LimeGreen, Color.WhiteSmoke, Color.Black, Color.Silver, Color.Gainsboro, Color.Gainsboro);
+        public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2, System.Drawing.Color.ForestGreen, System.Drawing.Color.Red, System.Drawing.Color.Blue, System.Drawing.Color.Yellow, System.Drawing.Color.LimeGreen, System.Drawing.Color.WhiteSmoke, System.Drawing.Color.Black, System.Drawing.Color.Silver, System.Drawing.Color.Gainsboro, System.Drawing.Color.Gainsboro);
 
         public CultureInfo customCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -269,7 +271,8 @@ namespace SteelMeet
         public class PlateInfo
         {
             public PlateInfo(int plate50, int plate25, int plate20, int plate15, int plate10, int plate5, int plate25small, int plate05, int plate125, int plate025
-            , Color col_plate50, Color col_plate25, Color col_plate20, Color col_plate15, Color col_plate10, Color col_plate5, Color col_plate25small, Color col_plate05, Color col_plate125, Color col_plate025)
+            , System.Drawing.Color col_plate50, System.Drawing.Color col_plate25, System.Drawing.Color col_plate20, System.Drawing.Color col_plate15, System.Drawing.Color col_plate10,
+                System.Drawing.Color col_plate5, System.Drawing.Color col_plate25small, System.Drawing.Color col_plate05, System.Drawing.Color col_plate125, System.Drawing.Color col_plate025)
             {
                 this.plate50 = plate50 / 2;
                 this.plate25 = plate25 / 2;
@@ -304,16 +307,16 @@ namespace SteelMeet
             public int plate125 { get; set; }
             public int plate025 { get; set; }
             //Colors
-            public Color col_plate50 { get; set; }
-            public Color col_plate25 { get; set; }
-            public Color col_plate20 { get; set; }
-            public Color col_plate15 { get; set; }
-            public Color col_plate10 { get; set; }
-            public Color col_plate5 { get; set; }
-            public Color col_plate25small { get; set; }
-            public Color col_plate05 { get; set; }
-            public Color col_plate125 { get; set; }
-            public Color col_plate025 { get; set; }
+            public System.Drawing.Color col_plate50 { get; set; }
+            public System.Drawing.Color col_plate25 { get; set; }
+            public System.Drawing.Color col_plate20 { get; set; }
+            public System.Drawing.Color col_plate15 { get; set; }
+            public System.Drawing.Color col_plate10 { get; set; }
+            public System.Drawing.Color col_plate5 { get; set; }
+            public System.Drawing.Color col_plate25small { get; set; }
+            public System.Drawing.Color col_plate05 { get; set; }
+            public System.Drawing.Color col_plate125 { get; set; }
+            public System.Drawing.Color col_plate025 { get; set; }
 
         }
 
@@ -947,7 +950,7 @@ namespace SteelMeet
         //Tävling
         //Tävling
         //Tävling
-        private void DrawPlates(Graphics g, List<int> usedPlatesList, List<Color> plateColorList, List<int> paintedPlatesList)
+        private void DrawPlates(Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList)
         {
             // x1 = Börja rita här
             // y1 = Börja rita här
@@ -955,7 +958,7 @@ namespace SteelMeet
             // y2 =
 
             int x1 = -5, y1 = 60, x2 = -5, y2 = 140;
-            Pen p = new Pen(Color.Red, 16);
+            Pen p = new Pen(System.Drawing.Color.Red, 16);
             int offset = 20;
 
             for (int i = 0; i < 10;)
@@ -1022,7 +1025,7 @@ namespace SteelMeet
                 else { i++; }
             }
 
-            p.Color = Color.DarkGray;
+            p.Color = System.Drawing.Color.DarkGray;
             g.DrawLine(p, x1 + offset, 90, x2 + offset, 110);
         }
 
@@ -1030,7 +1033,7 @@ namespace SteelMeet
         {
             Graphics g = e.Graphics;
 
-            List<Color> plateColorList = new List<Color>
+            List<System.Drawing.Color> plateColorList = new List<System.Drawing.Color>
     {
         plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
         plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025
@@ -1045,7 +1048,7 @@ namespace SteelMeet
         {
             Graphics g = e.Graphics;
 
-            List<Color> plateColorList = new List<Color>
+            List<System.Drawing.Color> plateColorList = new List<System.Drawing.Color>
     {
         plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
         plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025
@@ -1222,9 +1225,9 @@ namespace SteelMeet
                         if (SelectedColumnIndex < 14 && SelectedColumnIndex > firstLiftColumn)
                         {
                             LiftingOrderList.Add(LifterID[SelectedRowIndex + groupRowFixer]);
-                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
+                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = System.Drawing.Color.Empty;
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 0;
-                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(108, 54, 0);
+                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
                             LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
                         }
 
@@ -1335,11 +1338,11 @@ namespace SteelMeet
         //    }
 
         //    // Sätter den gröna färgen
-        //    dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Style.BackColor = Color.ForestGreen;
+        //    dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Style.BackColor = System.Drawing.Color.ForestGreen;
 
         //    if (currentLifter.CurrentLift < 19)
         //    {
-        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
         //        dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift];
 
         //        if (currentLifter.CurrentLift != 13 && currentLifter.CurrentLift != 16)
@@ -1429,12 +1432,12 @@ namespace SteelMeet
             }
 
             //Sätter den gröna färgen
-            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.ForestGreen;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = System.Drawing.Color.ForestGreen;
 
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
             {
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift];
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 13 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 16)
@@ -1500,12 +1503,12 @@ namespace SteelMeet
                     }
                 }
                 //Sätter den röda färgen och gör en "strikeout" markering över texten
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.Red;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = System.Drawing.Color.Red;
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
                 {
-                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
                     dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift];
 
                     if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 13 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 16)
@@ -1543,8 +1546,8 @@ namespace SteelMeet
 
                 }
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(108, 54, 0);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = System.Drawing.Color.Empty;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Regular);
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
 
@@ -2470,23 +2473,23 @@ namespace SteelMeet
 
                 if (LifterID[i + groupRowFixer].place == 1)
                 {
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(175, 149, 0);
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = Color.Black;
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = System.Drawing.Color.FromArgb(175, 149, 0);
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = System.Drawing.Color.Black;
                 }
                 else if (LifterID[i + groupRowFixer].place == 2)
                 {
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(132, 132, 130);
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = Color.Black;
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = System.Drawing.Color.FromArgb(132, 132, 130);
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = System.Drawing.Color.Black;
                 }
                 else if (LifterID[i + groupRowFixer].place == 3)
                 {
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(169, 106, 64);
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = Color.Black;
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = System.Drawing.Color.FromArgb(169, 106, 64);
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = System.Drawing.Color.Black;
                 }
                 else
                 {
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(27, 38, 44);
-                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = Color.FromArgb(187, 225, 250);
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.BackColor = System.Drawing.Color.FromArgb(27, 38, 44);
+                    dataGridViewControlPanel.Rows[i].Cells[0].Style.ForeColor = System.Drawing.Color.FromArgb(187, 225, 250);
                 }
 
             }
@@ -2664,7 +2667,7 @@ namespace SteelMeet
 
         private void lbl_suggestedWeight_Click(object sender, EventArgs e)
         {
-            if (sender is Control control)
+            if (sender is System.Windows.Forms.Control control)
             {
                 float increment = float.Parse(control.Tag.ToString());
                 UpdateCellValue(increment);
@@ -2719,16 +2722,16 @@ namespace SteelMeet
                         for (int o = LifterID[i].isBenchOnly ? 3 : 0; o < LifterID[i].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i].LiftRecord[o] == true)
-                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = System.Drawing.Color.ForestGreen;
                             else if (LifterID[i].LiftRecord[o] == false)
                             {
-                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = System.Drawing.Color.Red;
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
 
                         if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i].CurrentLift].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
 
                         for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
@@ -2776,15 +2779,15 @@ namespace SteelMeet
                         for (int o = LifterID[i].isBenchOnly ? 3 : 0; o < LifterID[i + group1Count].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i + group1Count].LiftRecord[o] == true)
-                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = System.Drawing.Color.ForestGreen;
                             else if (LifterID[i + group1Count].LiftRecord[o] == false)
                             {
-                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = System.Drawing.Color.Red;
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
                         if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count].CurrentLift].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
 
                         for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
@@ -2828,15 +2831,15 @@ namespace SteelMeet
                         for (int o = LifterID[i].isBenchOnly ? 3 : 0; o < LifterID[i + group1Count + group2Count].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i + group1Count + group2Count].LiftRecord[o] == true)
-                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = System.Drawing.Color.ForestGreen;
                             else if (LifterID[i + group1Count + group2Count].LiftRecord[o] == false)
                             {
-                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = System.Drawing.Color.Red;
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
                         if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count + group2Count].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count + group2Count].CurrentLift].Style.BackColor = System.Drawing.Color.FromArgb(108, 54, 0);
 
                         for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
@@ -3143,6 +3146,25 @@ namespace SteelMeet
                         sl.SetCellValue(i + 16, 20, LifterID[i].total);
                         sl.SetCellValue(i + 16, 21, LifterID[i].pointsGL);
                         sl.SetCellValue(i + 16, 22, LifterID[i].place);
+
+                        List<string> sbdStringListColumn = new List<string>{"H", "I", "J", "K", "L", "M", "N", "O", "P", };
+
+                        SLStyle goodStyle = sl.CreateStyle();
+                        goodStyle.Fill.SetPatternType(PatternValues.Solid);
+                        goodStyle.Fill.SetPatternForegroundColor(System.Drawing.Color.ForestGreen);
+                        SLStyle badStyle = sl.CreateStyle();
+                        badStyle.Fill.SetPatternType(PatternValues.Solid);
+                        badStyle.Fill.SetPatternForegroundColor(System.Drawing.Color.Red);
+                        badStyle.Font.Strike = true;
+
+                        for (int o = 0; o < LifterID[i].LiftRecord.Count; o++)
+                        {
+                            if (LifterID[i].LiftRecord[o])
+                                sl.SetCellStyle(sbdStringListColumn[o] + (i + 16), goodStyle);
+                            else
+                                sl.SetCellStyle(sbdStringListColumn[o] + (i + 16), badStyle);
+                        }
+
                     }
 
                     sl.Save();
