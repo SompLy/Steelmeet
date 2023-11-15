@@ -2,6 +2,7 @@ Steelmeet TODO
 
 :)
 Viktiga saker :
+Ifall ingen har kört sitt lyft än och man kommer emot ångra lyft. Så då hoppar den till böjen och går inte att få tillbaka till bänken.
 ✅Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
 ✅om man lyfter samma vikt så ska den med lägst lot nummer lyfta först
 

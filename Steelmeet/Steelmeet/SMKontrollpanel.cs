@@ -18,13 +18,21 @@ namespace SteelMeet
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             tabControl1.TabPages[0].ForeColor = Color.FromArgb(187, 225, 250);
             licensCheck();
-
-#if !DEBUG
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
-#endif
         }
-
+        void ToggleFullscreen()
+        {
+            isFullscreen = !isFullscreen;
+            if (isFullscreen)
+            {
+                this.FormBorderStyle = FormBorderStyle.Fixed3D;
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
         private void SMKontrollpanel_Load(object sender, EventArgs e)
         {
         }
@@ -66,6 +74,7 @@ namespace SteelMeet
         System.Data.DataTable dt = new();
         System.Data.DataTable dt2 = new();
 
+        bool isFullscreen = false;
         bool a = true;
         bool b = true;
         public bool IsExcelFile;
@@ -1277,6 +1286,13 @@ namespace SteelMeet
 
                 return true;
             }
+            if (tabControl1.SelectedIndex == 2 && keyData == Keys.F && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift >= firstLiftColumn + 1 &&
+                !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Ångra lyft
+            {
+                ToggleFullscreen();
+
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
         //public void goodLift()
@@ -1509,6 +1525,9 @@ namespace SteelMeet
         }
         public void undoLift()
         {
+            if (LifterID[SelectedRowIndex + groupRowFixer].isBenchOnly && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift == 13)
+                return;
+
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift > firstLiftColumn)
             {
                 LiftingOrderList.Add(LifterID[SelectedRowIndex + groupRowFixer]);
@@ -1536,6 +1555,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
             }
+
         }
 
         public void redoLift()
@@ -3104,22 +3124,22 @@ namespace SteelMeet
                         sl.SetCellValue(i + 16, 5, LifterID[i].name.Split(" ")[0]);  // Förnamn
                         sl.SetCellValue(i + 16, 6, LifterID[i].name.Split(" ")[1]);  // Efternamn
                         sl.SetCellValue(i + 16, 7, LifterID[i].accossiation);
-                                            
+
                         sl.SetCellValue(i + 16, 8, LifterID[i].s1);
                         sl.SetCellValue(i + 16, 9, LifterID[i].s2);
                         sl.SetCellValue(i + 16, 10, LifterID[i].s3);
                         sl.SetCellValue(i + 16, 11, LifterID[i].bestS);
-                                            
+
                         sl.SetCellValue(i + 16, 12, LifterID[i].b1);
                         sl.SetCellValue(i + 16, 13, LifterID[i].b2);
                         sl.SetCellValue(i + 16, 14, LifterID[i].b3);
                         sl.SetCellValue(i + 16, 15, LifterID[i].bestB);
-                                            
+
                         sl.SetCellValue(i + 16, 16, LifterID[i].d1);
                         sl.SetCellValue(i + 16, 17, LifterID[i].d2);
                         sl.SetCellValue(i + 16, 18, LifterID[i].d3);
                         sl.SetCellValue(i + 16, 19, LifterID[i].bestD);
-                                            
+
                         sl.SetCellValue(i + 16, 20, LifterID[i].total);
                         sl.SetCellValue(i + 16, 21, LifterID[i].pointsGL);
                         sl.SetCellValue(i + 16, 22, LifterID[i].place);
@@ -3136,10 +3156,10 @@ namespace SteelMeet
             }
         }
 
-            //Resultat
-            //Resultat
-            //Resultat
-            //Resultat
-            //Resultat
+        //Resultat
+        //Resultat
+        //Resultat
+        //Resultat
+        //Resultat
     }
 }
