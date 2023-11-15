@@ -2,8 +2,8 @@ Steelmeet TODO
 
 :)
 Viktiga saker :
-Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
-om man lyfter samma vikt så ska den med lägst lot nummer lyfta först
+✅Gör det möjligt att exportera resulatt samt visa resulaten i resulatat fliken
+✅om man lyfter samma vikt så ska den med lägst lot nummer lyfta först
 
 mindre viktiga saker :
 en pognostotal brevid vanliga totalen.

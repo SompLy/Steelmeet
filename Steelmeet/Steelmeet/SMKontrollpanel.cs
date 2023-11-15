@@ -2630,9 +2630,7 @@ namespace SteelMeet
         }
         private void UpdateCellValue(float increment)
         {
-            int selectedRowIndex = SelectedRowIndex + groupRowFixer;
-            int currentLift = LifterID[selectedRowIndex].CurrentLift;
-            var cell = dataGridViewControlPanel.Rows[selectedRowIndex].Cells[currentLift];
+            var cell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift];
 
             if (cell.Value is string cellValue)
             {
@@ -3096,8 +3094,7 @@ namespace SteelMeet
 
                 if (result == DialogResult.OK)
                 {
-                    // Load existing workbook and specify the worksheet
-                    SLDocument sl = new SLDocument(ofd.FileName, "Blad1"); // Change "Sheet1" to your actual sheet name
+                    SLDocument sl = new SLDocument(ofd.FileName);
 
                     for (int i = 0; i < LifterID.Count(); i++)
                     {
