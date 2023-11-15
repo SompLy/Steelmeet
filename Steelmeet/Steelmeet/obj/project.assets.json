@@ -151,19 +151,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\edviohrs\\.nuget\\packages\\": {}
+    "C:\\Users\\ninja\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edviohrs\\source\\repos\\Steelmeet\\Steelmeet\\Steelmeet\\SteelMeet.csproj",
+      "projectUniqueName": "C:\\Users\\ninja\\source\\repos\\Steelmeet!\\Steelmeet\\Steelmeet\\SteelMeet.csproj",
       "projectName": "SteelMeet",
-      "projectPath": "C:\\Users\\edviohrs\\source\\repos\\Steelmeet\\Steelmeet\\Steelmeet\\SteelMeet.csproj",
-      "packagesPath": "C:\\Users\\edviohrs\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\edviohrs\\source\\repos\\Steelmeet\\Steelmeet\\Steelmeet\\obj\\",
+      "projectPath": "C:\\Users\\ninja\\source\\repos\\Steelmeet!\\Steelmeet\\Steelmeet\\SteelMeet.csproj",
+      "packagesPath": "C:\\Users\\ninja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ninja\\source\\repos\\Steelmeet!\\Steelmeet\\Steelmeet\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\edviohrs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ninja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -221,7 +226,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

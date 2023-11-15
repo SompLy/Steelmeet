@@ -4,6 +4,7 @@ using SpreadsheetLight;
 using SteelMeet;
 using System.Data;
 using System.Globalization;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace SteelMeet
@@ -79,7 +80,6 @@ namespace SteelMeet
         bool b = true;
         public bool IsExcelFile;
         bool IsRecord = false;
-        bool restartLiftingOrderList = true; //LiftingOderList
 
         public string BrowsedFilePath;
         public string BrowsedFile;
@@ -199,6 +199,7 @@ namespace SteelMeet
             }
             public eCategory CategoryEnum { get; set; }
             public bool isBenchOnly { get; set; }
+            public bool isRetrying { get; set; }
             public string licenceNumber { get; set; }
             public string accossiation { get; set; }
 
@@ -234,6 +235,15 @@ namespace SteelMeet
         {
             public int Compare(Lifter x, Lifter y)
             {
+                if (x.isRetrying && !y.isRetrying)
+                {
+                    return 1; // x should come after y
+                }
+                else if (!x.isRetrying && y.isRetrying)
+                {
+                    return -1; // x should come before y
+                }
+
                 int indexX = x.CurrentLift - 10;
                 int indexY = y.CurrentLift - 10;
 
@@ -242,27 +252,24 @@ namespace SteelMeet
                     float weightX = x.sbdList[indexX];
                     float weightY = y.sbdList[indexY];
 
-                    // Jämnför vikter
                     int weightComparison = weightX.CompareTo(weightY);
 
                     if (weightComparison != 0)
                     {
-                        // Om vikte rinte är lika
                         return weightComparison;
                     }
 
-                    // Om vikten är detsamma jämnför lotNummer
                     return x.lotNumber.CompareTo(y.lotNumber);
                 }
 
-                return 0; // Or any other appropriate value.
+                return 0;
             }
         }
         public class LifterComparerTotal : IComparer<Lifter>
         {
             public int Compare(Lifter x, Lifter y)
             {
-                // Compare lifters based on their total
+                // baserad på total
                 return x.total.CompareTo(y.total);
             }
         }
@@ -324,6 +331,17 @@ namespace SteelMeet
                 MessageBox.Show("Din STEELMEET licens har utgått 2024-01-01");
         }
 
+        private void ForceCloseApplication()
+        {
+            // Optionally, you can raise the FormClosing event for each open form
+            foreach (Form form in Application.OpenForms)
+            {
+                form.Close();
+            }
+
+            // Forcefully exit the application
+            Application.Exit();
+        }
 
         //Invägning
         //Invägning
@@ -471,8 +489,15 @@ namespace SteelMeet
                         sl.GetCellValueAsString(i, 16));
                 }
             }
-
-            WeighInInfoUpdate();
+            try
+            {
+                //Om man laddar en ogitig fil
+                WeighInInfoUpdate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             for (int i = 0; i < dataGridViewWeighIn.ColumnCount; i++)
             {
@@ -1097,8 +1122,10 @@ namespace SteelMeet
                         //lbl_Placement.Text = LifterID[SelectedRowIndex + groupRowFixer].place.ToString();
                         //lbl_Infällt.Text = LifterID[SelectedRowIndex + groupRowFixer].tilted.ToString();
                         //lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
+
                         LiftoffTiltedUpdate();
-                        //Informationsruta 1
+
+                        //Informationsruta 1 :
                         PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - firstLiftColumn], plateInfo);
                         lbl_Name.Text = LiftingOrderList[0].name;
                         //Kollar om det finns 25kg plates och sedan visar hur många det finns
@@ -1254,127 +1281,64 @@ namespace SteelMeet
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //Hanterar all input från tagentbord
         {
-            if (tabControl1.SelectedIndex == 2 &&
-                keyData == Keys.Enter
-                //om man är på sista raden 
-                )
+            try
             {
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[SelectedColumnIndex - 1].Selected = true;
-            }
-            if (tabControl1.SelectedIndex == 2 &&
-                keyData == Keys.G && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= firstLiftColumn + 8 &&
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
-                !dataGridViewControlPanel.IsCurrentCellInEditMode)            //Godkänt lyft
-            {
-                goodLiftMarked();
+                if (tabControl1.SelectedIndex == 2 &&
+                    keyData == Keys.Enter
+                    //om man är på sista raden 
+                    )
+                {
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[SelectedColumnIndex - 1].Selected = true;
+                }
+                if (tabControl1.SelectedIndex == 2 &&
+                    keyData == Keys.G && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= firstLiftColumn + 8 &&
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
+                    !dataGridViewControlPanel.IsCurrentCellInEditMode)            //Godkänt lyft
+                {
+                    goodLiftMarked();
 
-                return true;
-            }
-            if (tabControl1.SelectedIndex == 2 &&
-                keyData == Keys.U && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= firstLiftColumn + 8 &&
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
-                !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Underkänt lyft
-            {
-                badLiftMarked();
+                    return true;
+                }
+                if (tabControl1.SelectedIndex == 2 &&
+                    keyData == Keys.U && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift <= firstLiftColumn + 8 &&
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value != DBNull.Value &&
+                    !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Underkänt lyft
+                {
+                    badLiftMarked();
 
-                return true;
-            }
-            if (tabControl1.SelectedIndex == 2 && keyData == Keys.R && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift >= firstLiftColumn + 1 &&
-                !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Ångra lyft
-            {
-                undoLift();
+                    return true;
+                }
+                if (tabControl1.SelectedIndex == 2 && keyData == Keys.R && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift >= firstLiftColumn + 1 &&
+                    !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Ångra lyft
+                {
+                    undoLift();
 
-                return true;
-            }
-            if (tabControl1.SelectedIndex == 2 && keyData == Keys.F && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift >= firstLiftColumn + 1 &&
-                !dataGridViewControlPanel.IsCurrentCellInEditMode)       //Ångra lyft
-            {
-                ToggleFullscreen();
+                    return true;
+                }
+                if (keyData == Keys.F && !dataGridViewControlPanel.IsCurrentCellInEditMode && !dataGridViewWeighIn.IsCurrentCellInEditMode)
+                {
+                    ToggleFullscreen();
 
-                return true;
+                    return true;
+                }
+                if (keyData == Keys.Escape && !dataGridViewControlPanel.IsCurrentCellInEditMode && !dataGridViewWeighIn.IsCurrentCellInEditMode)
+                {
+                    var result = MessageBox.Show("Är du säker att du vill terminera STEELMEET?", "STEELMEET Terminering", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        ForceCloseApplication();
+                    }
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-        //public void goodLift()
-        //{
-        //    Lifter currentLifter = LiftingOrderList[0];
 
-        //    if (LiftingOrderList.Contains(LiftingOrderList[0]))
-        //    {
-
-        //        if (currentLifter.CurrentLift < 19)
-        //        {
-        //            currentLifter.CurrentLift += 1;
-
-        //            if (currentLifter.isBenchOnly && currentLifter.CurrentLift == 17)
-        //            {
-        //                currentLifter.LiftRecord.AddRange(new bool[] { true, true, true });
-        //                currentLifter.CurrentLift = 19;
-        //            }
-        //        }
-        //        // Updaterar lyftar ordning
-        //        LiftOrderUpdate();
-
-        //        if (currentLifter.CurrentLift < 19)
-        //        {
-        //            currentLifter.LiftRecord.Add(true); // Registrerar ett godkänt lyft för lyftaren
-        //        }
-        //        BestSBDUpdate();
-
-        //        // Sätter total och GL points
-        //        currentLifter.total = currentLifter.bestS + currentLifter.bestB + currentLifter.bestD;
-        //        currentLifter.pointsGL = GLPointsCalculator(currentLifter);
-        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[19].Value = currentLifter.total;
-        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[20].Value = currentLifter.pointsGL.ToString("0.00");
-
-        //        TimerController(8); // Startar lapp timern på 1 minut
-        //        TimerController(9); // Stoppar lyft timern och sätter timern på 00:00
-
-        //        // Uppdaterar placering
-        //        RankUpdate();
-        //    }
-
-        //    // Sätter den gröna färgen
-        //    dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Style.BackColor = Color.ForestGreen;
-
-        //    if (currentLifter.CurrentLift < 19)
-        //    {
-        //        dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
-        //        dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift];
-
-        //        if (currentLifter.CurrentLift != 13 && currentLifter.CurrentLift != 16)
-        //        {
-        //            dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift].Value =
-        //                2.5f + float.Parse(dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Value.ToString());
-        //        }
-        //        dataGridViewControlPanel.BeginEdit(true);
-        //    }
-
-        //    if (currentLifter.CurrentLift < 19)
-        //    {
-        //        currentLifter.sbdList[currentLifter.LiftRecord.Count - 1] =
-        //            float.Parse(dataGridViewControlPanel.Rows[currentLifter.index].Cells[currentLifter.CurrentLift - 1].Value.ToString());
-        //    }
-
-        //    // Tar bort rätt lyftare
-        //    if (LiftingOrderList.Count >= 0)
-        //    {
-        //        // Meddelande om lyftaren redan lyft funkar inte ?!?!?!?!?
-        //        if (!LiftingOrderList.Contains(LiftingOrderList[0]))
-        //        {
-        //            MessageBox.Show("Denna lyftare har redan lyft denna omgång", "⚠SteelMeet varning!⚠", MessageBoxButtons.OK, MessageBoxIcon.None);
-        //            return;
-        //        }
-        //        for (int i = 0; i < LiftingOrderList.Count; i++)
-        //        {
-        //            if (currentLifter == LiftingOrderList[i])
-        //            {
-        //                LiftingOrderList.RemoveAt(i);
-        //            }
-        //        }
-        //    }
-        //        LiftOrderUpdate();
-        //}
         public void goodLiftMarked()
         {
             if (LiftingOrderList.Contains(LifterID[SelectedRowIndex + groupRowFixer]))
@@ -1389,6 +1353,7 @@ namespace SteelMeet
                         LifterID[SelectedRowIndex + groupRowFixer].CurrentLift = 19;
                     }
                 }
+
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
 
@@ -1423,6 +1388,8 @@ namespace SteelMeet
                 {
                     if (LifterID[SelectedRowIndex + groupRowFixer] == LiftingOrderList[i])
                     {
+                        //If lifter was retrying reset varible
+                        LiftingOrderList[i].isRetrying = false;
                         LiftingOrderList.RemoveAt(i);
                     }
                 }
@@ -1560,10 +1527,10 @@ namespace SteelMeet
 
         public void redoLift()
         {
+            LifterID[SelectedRowIndex + groupRowFixer].isRetrying = true;
             undoLift();
             LiftOrderUpdate();//Updaterar lyftar ordning
         }
-
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2450,7 +2417,7 @@ namespace SteelMeet
             {
                 // Sort the lifters within the group based on their total then by bodyweight in descending order
                 if (koeffWeightClasses.Contains(group.Key.weightClass))
-                    sortedLifters = group.OrderByDescending(l => l.pointsGL).ToList(); //Tror jag har fixat för koeff klasserna nu bre
+                    sortedLifters = group.OrderByDescending(l => l.pointsGL).ToList(); //Tror jag har fixat för koeff klasserna nu bre svar : ja det har du
                 else
                     sortedLifters = group.OrderByDescending(l => l.total).ThenBy(l => l.bodyWeight).ToList();
 

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -216,13 +216,11 @@
             tabPage3 = new TabPage();
             btn_DetailedexportResult = new Button();
             btn_fastExportResult = new Button();
-            label34 = new Label();
-            label23 = new Label();
-            label22 = new Label();
-            label33 = new Label();
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
+            label31 = new Label();
+            label36 = new Label();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -467,32 +465,32 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns = false;
             dataGridViewWeighIn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewWeighIn.BackgroundColor = Color.FromArgb(27, 38, 44);
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle8.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle9.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewWeighIn.EnableHeadersVisualStyles = false;
             dataGridViewWeighIn.GridColor = Color.Black;
             dataGridViewWeighIn.Location = new Point(6, 156);
@@ -521,12 +519,14 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(27, 38, 44);
+            panel3.Controls.Add(label36);
+            panel3.Controls.Add(label31);
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(label21);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(label19);
             panel3.ForeColor = SystemColors.Window;
-            panel3.Location = new Point(728, 7);
+            panel3.Location = new Point(6, 7);
             panel3.Name = "panel3";
             panel3.Size = new Size(400, 514);
             panel3.TabIndex = 41;
@@ -534,7 +534,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(78, 296);
+            pictureBox3.Location = new Point(81, 288);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(240, 147);
             pictureBox3.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -545,11 +545,11 @@
             // 
             label21.Anchor = AnchorStyles.None;
             label21.AutoSize = true;
-            label21.Location = new Point(11, 449);
+            label21.Location = new Point(26, 436);
             label21.Name = "label21";
-            label21.Size = new Size(348, 60);
+            label21.Size = new Size(348, 75);
             label21.TabIndex = 44;
-            label21.Text = "Tack för att du använder Steelmeet\r\nSpreadSheetLight biblioteket används för hantering av excel filer,\r\n se LICENCE.txt\r\nProgrammerat i Win Forms C# av Edvin Öhrström";
+            label21.Text = resources.GetString("label21.Text");
             label21.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label18
@@ -568,11 +568,11 @@
             label19.Anchor = AnchorStyles.None;
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(97, 9);
+            label19.Location = new Point(92, 9);
             label19.Name = "label19";
-            label19.Size = new Size(198, 25);
+            label19.Size = new Size(212, 25);
             label19.TabIndex = 42;
-            label19.Text = "Steelmeet Information";
+            label19.Text = "STEELMEET Information";
             label19.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -588,10 +588,11 @@
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
             panel2.ForeColor = SystemColors.Window;
-            panel2.Location = new Point(7, 7);
+            panel2.Location = new Point(693, 7);
             panel2.Name = "panel2";
             panel2.Size = new Size(434, 514);
             panel2.TabIndex = 15;
+            panel2.Visible = false;
             // 
             // comboBox2
             // 
@@ -662,9 +663,9 @@
             label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(112, 9);
             label3.Name = "label3";
-            label3.Size = new Size(203, 25);
+            label3.Size = new Size(225, 25);
             label3.TabIndex = 11;
-            label3.Text = "Generella Inställningar";
+            label3.Text = "Generella Inställningar ( )";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -727,7 +728,7 @@
             panel1.Controls.Add(btn25);
             panel1.Controls.Add(txtb25);
             panel1.ForeColor = SystemColors.Window;
-            panel1.Location = new Point(447, 7);
+            panel1.Location = new Point(412, 7);
             panel1.Name = "panel1";
             panel1.Size = new Size(275, 514);
             panel1.TabIndex = 14;
@@ -1945,7 +1946,7 @@
             label32.AutoSize = true;
             label32.BackColor = Color.Black;
             label32.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.ForeColor = Color.FromArgb(187, 225, 250);
+            label32.ForeColor = Color.FromArgb(27, 38, 44);
             label32.Location = new Point(4, 4);
             label32.Name = "label32";
             label32.Size = new Size(497, 35);
@@ -2435,9 +2436,9 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle10.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewControlPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -2445,23 +2446,23 @@
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle11.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle12.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle12;
             dataGridViewControlPanel.EnableHeadersVisualStyles = false;
             dataGridViewControlPanel.GridColor = SystemColors.WindowText;
             dataGridViewControlPanel.ImeMode = ImeMode.NoControl;
@@ -2483,10 +2484,6 @@
             tabPage3.BackColor = SystemColors.WindowText;
             tabPage3.Controls.Add(btn_DetailedexportResult);
             tabPage3.Controls.Add(btn_fastExportResult);
-            tabPage3.Controls.Add(label34);
-            tabPage3.Controls.Add(label23);
-            tabPage3.Controls.Add(label22);
-            tabPage3.Controls.Add(label33);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -2520,54 +2517,6 @@
             btn_fastExportResult.UseVisualStyleBackColor = false;
             btn_fastExportResult.Click += btn_fastExportResult_Click;
             // 
-            // label34
-            // 
-            label34.AutoSize = true;
-            label34.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label34.ForeColor = SystemColors.ControlDark;
-            label34.Location = new Point(975, 71);
-            label34.Name = "label34";
-            label34.Size = new Size(99, 50);
-            label34.TabIndex = 3;
-            label34.Text = "Dam\r\n";
-            label34.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label23.ForeColor = SystemColors.ControlDark;
-            label23.Location = new Point(313, 71);
-            label23.Name = "label23";
-            label23.Size = new Size(93, 50);
-            label23.TabIndex = 2;
-            label23.Text = "Herr";
-            label23.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label22.ForeColor = SystemColors.ControlDark;
-            label22.Location = new Point(754, 145);
-            label22.Name = "label22";
-            label22.Size = new Size(135, 400);
-            label22.TabIndex = 1;
-            label22.Text = "47kg:\r\n52kg:\r\n57kg:\r\n63kg:\r\n69kg:\r\n76kg:\r\n84kg:\r\n+84kg:\r\n";
-            label22.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label33.ForeColor = SystemColors.ControlDark;
-            label33.Location = new Point(77, 145);
-            label33.Name = "label33";
-            label33.Size = new Size(155, 400);
-            label33.TabIndex = 0;
-            label33.Text = "59kg:\r\n66kg:\r\n74:kg\r\n83kg:\r\n93kg:\r\n105kg:\r\n120kg:\r\n+120kg:\r\n";
-            label33.TextAlign = ContentAlignment.TopCenter;
-            // 
             // timerLyft
             // 
             timerLyft.Interval = 1000;
@@ -2582,6 +2531,29 @@
             // 
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
+            // 
+            // label31
+            // 
+            label31.Anchor = AnchorStyles.None;
+            label31.AutoSize = true;
+            label31.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label31.Location = new Point(58, 108);
+            label31.Name = "label31";
+            label31.Size = new Size(288, 25);
+            label31.TabIndex = 45;
+            label31.Text = "STEELMEET Tagentbordgenvägar";
+            label31.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label36
+            // 
+            label36.Anchor = AnchorStyles.None;
+            label36.AutoSize = true;
+            label36.Location = new Point(110, 142);
+            label36.Name = "label36";
+            label36.Size = new Size(173, 75);
+            label36.TabIndex = 46;
+            label36.Text = "G - Godkänd markerad lyftare\r\nU - Underkänd markerad lyftare\r\nR - Ångra markerade lyftare\r\nF -  Växla helskärm\r\nEsc - Terminera applikation";
+            label36.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // SMKontrollpanel
             // 
@@ -2632,7 +2604,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewControlPanel).EndInit();
             tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -2792,7 +2763,6 @@
         private PictureBox pictureBox4;
         private Label lbl_Height;
         private Button btn_SelectNextLifter;
-        private Label label33;
         private Panel panel12;
         private Button lbl_suggestedWeight75Minus;
         private Button lbl_suggestedWeight125;
@@ -2812,9 +2782,6 @@
         private Label lbl_Name2;
         private Label lbl_25x2;
         private Label lbl_25x;
-        private Label label22;
-        private Label label34;
-        private Label label23;
         private Panel panel14;
         private CheckBox cb_Infällt;
         private CheckBox cb_Avlyft;
@@ -2824,5 +2791,7 @@
         private Button button4;
         private Button button2;
         private Button btn_DetailedexportResult;
+        private Label label36;
+        private Label label31;
     }
 }
