@@ -2,7 +2,13 @@ Steelmeet TODO
 
 :)
 Viktiga saker :
-Man kan inte stänga ner programmet
+om man anger en bokstav så fuckar det  säkert nå minus 1 någonstans eller nåt ez fix
+Uppdatera infopaneler automatiskt efter ett godänt lyft inte bara när man markerar ny lyftare
+Sista marken räknas inte med
+Ändra lisens texten så man kan se den bättre
+Kom på något sätt så man kan se viktskivorna bättre, annan bakrund??
+Gör så att man tar från ett tomt SSF protokoll och kopierar den 
+✅Man kan inte stänga ner programmet
 ✅hur man visar nummer på de röda kakorna
 ✅Fixa gå om knappen
 ✅Ifall ingen har kört sitt lyft än och man kommer emot ångra lyft. Så då hoppar den till böjen och går inte att få tillbaka till bänken.
@@ -14,7 +20,7 @@ en pognostotal brevid vanliga totalen.
 Markera förgående lyftare??
 Gör de mindre vikterna mindre på den visuella delen
 grupp 1 visar 0 som ingångar och grupp 3 visar ingenting
-Man kan inte kryssa ner programmet lol
+✅Man kan inte kryssa ner programmet lol
 
 ✅Bänkare ska räkna gl poäng annorlunda
 ✅underkänt lyft funker inte lifa som godkänt för ud har inte gjort ändringar i underkänt helt enkelt

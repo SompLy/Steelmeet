@@ -1,11 +1,15 @@
 ﻿
 using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using SpreadsheetLight;
 using SteelMeet;
 using System.Data;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Web;
+using Color = System.Drawing.Color;
+using OpenXmlColor = DocumentFormat.OpenXml.Spreadsheet.Color;
 
 namespace SteelMeet
 {
@@ -103,12 +107,12 @@ namespace SteelMeet
 
         public Dictionary<int, Lifter> LifterID = new();
 
-        public List<int> usedPlatesList = new List<int>();  // Hur många plates calculatorn har använt.
-        List<int> totalPlatesList = new List<int>();        // Antalet paltes som användaren anvivit
-        List<float> weightsList = new List<float>();        // Vikter
+        public List<int> usedPlatesList = new List<int> (); // Hur många plates calculatorn har använt.
+        List<int> totalPlatesList = new List<int>       (); // Antalet paltes som användaren anvivit
+        List<float> weightsList = new List<float>       (); // Vikter
         public List<int> usedPlatesList2 = new List<int>(); // Hur många plates calculatorn har använt.
-        List<int> totalPlatesList2 = new List<int>();       // Antalet paltes som användaren anvivit
-        List<float> weightsList2 = new List<float>();       // Vikter
+        List<int> totalPlatesList2 = new List<int>      (); // Antalet paltes som användaren anvivit
+        List<float> weightsList2 = new List<float>      (); // Vikter
 
         List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
         List<Lifter> LiftingOrderList = new List<Lifter>();                                                 // För att sortera
@@ -132,7 +136,7 @@ namespace SteelMeet
             nothing = 9
         }
 
-        MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
+        MouseEventArgs mouseEvent = new MouseEventArgs( System.Windows.Forms.Control.MouseButtons, 0, 0, 0, 0 );
 
         // Default Plate setup 16x25kg
         public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2, Color.ForestGreen, Color.Red, Color.Blue, Color.Yellow, Color.LimeGreen, Color.WhiteSmoke, Color.Black, Color.Silver, Color.Gainsboro, Color.Gainsboro);
@@ -1360,7 +1364,7 @@ namespace SteelMeet
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
 
-                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
                 {
                     LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(true); //Registrerar ett godkänt lyft för lyftaren
                 }
@@ -1439,10 +1443,11 @@ namespace SteelMeet
                 }
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
-                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
+                if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 20)
                 {
                     LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Add(false); //Registrerar ett underkänt lyft för lyftaren
                 }
+                BestSBDUpdateMarked();
                 //Sätter total och GL points
                 LiftingOrderList[0].total = LiftingOrderList[0].bestS + LiftingOrderList[0].bestB + LiftingOrderList[0].bestD;
                 LiftingOrderList[0].pointsGL = GLPointsCalculator(LiftingOrderList[0]);
@@ -2383,6 +2388,13 @@ namespace SteelMeet
                     cellValuesList[i] = 0.0f;
                 }
             }
+            LiftingOrderList[0].s2 = cellValuesList[1];
+            LiftingOrderList[0].s3 = cellValuesList[2];
+            LiftingOrderList[0].b2 = cellValuesList[4];
+            LiftingOrderList[0].b3 = cellValuesList[5];
+            LiftingOrderList[0].d2 = cellValuesList[7];
+            LiftingOrderList[0].d3 = cellValuesList[8];
+
             LiftingOrderList[0].bestS = MoreMath.Max(cellValuesList[0], cellValuesList[1], cellValuesList[2]);
             LiftingOrderList[0].bestB = MoreMath.Max(cellValuesList[3], cellValuesList[4], cellValuesList[5]);
             LiftingOrderList[0].bestD = MoreMath.Max(cellValuesList[6], cellValuesList[7], cellValuesList[8]);
@@ -2403,13 +2415,21 @@ namespace SteelMeet
             //lägger till floats i lista
             cellValuesList.AddRange(valuesToParse);
 
-            for (int i = 0; i < LifterID[SelectedRowIndex + groupRowFixer].LiftRecord.Count(); i++)
+            LiftingOrderList[0].s2 = cellValuesList[1];
+            LiftingOrderList[0].s3 = cellValuesList[2];
+            LiftingOrderList[0].b2 = cellValuesList[4];
+            LiftingOrderList[0].b3 = cellValuesList[5];
+            LiftingOrderList[0].d2 = cellValuesList[7];
+            LiftingOrderList[0].d3 = cellValuesList[8];
+            
+            for (int i = 0; i < LiftingOrderList[0].LiftRecord.Count(); i++)
             {
-                if (!LifterID[SelectedRowIndex + groupRowFixer].LiftRecord[i])
+                if (!LiftingOrderList[0].LiftRecord[i])
                 {
                     cellValuesList[i] = 0.0f;
                 }
             }
+
             LifterID[SelectedRowIndex + groupRowFixer].bestS = MoreMath.Max(cellValuesList[0], cellValuesList[1], cellValuesList[2]);
             LifterID[SelectedRowIndex + groupRowFixer].bestB = MoreMath.Max(cellValuesList[3], cellValuesList[4], cellValuesList[5]);
             LifterID[SelectedRowIndex + groupRowFixer].bestD = MoreMath.Max(cellValuesList[6], cellValuesList[7], cellValuesList[8]);
@@ -2639,7 +2659,7 @@ namespace SteelMeet
 
         private void lbl_suggestedWeight_Click(object sender, EventArgs e)
         {
-            if (sender is Control control)
+            if (sender is System.Windows.Forms.Control control)
             {
                 float increment = float.Parse(control.Tag.ToString());
                 UpdateCellValue(increment);
@@ -2733,7 +2753,7 @@ namespace SteelMeet
                     dt2.Rows.Clear();
                     groupRowFixer = group1Count;
                     weightsList.Clear();
-                    group2Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
+                    group2Count = 0;                         //Resettar så att den inte blir för mycket om man ändrar grupper
                     for (int i = 0; i < LifterID.Count; i++) //Antal lyftare i grupp 1
                     {
                         if (LifterID[i].groupNumber == 2)
@@ -3140,6 +3160,21 @@ namespace SteelMeet
                         sl.SetCellValue(i + 16, 20, LifterID[i].total);
                         sl.SetCellValue(i + 16, 21, LifterID[i].pointsGL);
                         sl.SetCellValue(i + 16, 22, LifterID[i].place);
+
+                        List<string> sbdStringListColumn = new List<string> { "H", "I", "J", "L", "M", "N", "P", "Q", "R"};
+
+                        SLStyle goodStyle = sl.CreateStyle();
+                        goodStyle.Font.Strike = false;
+                        SLStyle badStyle = sl.CreateStyle();
+                        badStyle.Font.Strike = true;
+
+                        for (int o = 0; o < LifterID[i].LiftRecord.Count; o++)
+                        {
+                            if (LifterID[i].LiftRecord[o])
+                                sl.SetCellStyle(sbdStringListColumn[o] + (i + 16), goodStyle);
+                            else
+                                sl.SetCellStyle(sbdStringListColumn[o] + (i + 16), badStyle);
+                        }
                     }
 
                     sl.Save();
