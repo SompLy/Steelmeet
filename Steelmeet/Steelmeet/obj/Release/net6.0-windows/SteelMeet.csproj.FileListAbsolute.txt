@@ -30,7 +30,6 @@ C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\bin\Release\net6.0-win
 C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.csproj.AssemblyReference.cache
 C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.MenuForm.resources
 C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.Properties.Resources.resources
-C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\Powermeet2.SMKontrollpanel.resources
 C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\Powermeet2.WilksForm.resources
 C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.csproj.GenerateResource.cache
 C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.GeneratedMSBuildEditorConfig.editorconfig
@@ -67,3 +66,4 @@ C:\Users\ninja\source\repos\Steelmeet!\Steelmeet\Steelmeet\obj\Release\net6.0-wi
 C:\Users\ninja\source\repos\Steelmeet!\Steelmeet\Steelmeet\obj\Release\net6.0-windows\ref\SteelMeet.dll
 C:\Users\ninja\source\repos\Steelmeet!\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.SMKontrollpanel.resources
 C:\Users\edviohrs\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.SMKontrollpanel.resources
+C:\Users\saras\source\repos\Steelmeet\Steelmeet\Steelmeet\obj\Release\net6.0-windows\SteelMeet.SMKontrollpanel.resources

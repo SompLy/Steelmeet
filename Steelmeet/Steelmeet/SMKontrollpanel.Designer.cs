@@ -1271,6 +1271,7 @@
             lbl_suggestedWeight175.Tag = "17.5";
             lbl_suggestedWeight175.Text = "17.5";
             lbl_suggestedWeight175.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight175.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight250
             // 
@@ -1284,6 +1285,7 @@
             lbl_suggestedWeight250.Tag = "25";
             lbl_suggestedWeight250.Text = "25";
             lbl_suggestedWeight250.UseVisualStyleBackColor = false;
+            lbl_suggestedWeight250.Click += lbl_suggestedWeight_Click;
             // 
             // lbl_suggestedWeight75Minus
             // 

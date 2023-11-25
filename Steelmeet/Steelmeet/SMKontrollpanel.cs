@@ -83,7 +83,9 @@ namespace SteelMeet
 
         public string BrowsedFilePath;
         public string BrowsedFile;
-        public string recordType; //Klubb, Distrikt, Svenskt rekord, Europa rekord, World record!!!
+        public string recordType;               //Klubb, Distrikt, Svenskt rekord, Europa rekord, World record!!!
+
+        Color currentLiftColor = Color.White;   // Color of current lift on the datagridview
 
         public int SelectedRowIndex;
         public int SelectedColumnIndex;
@@ -92,27 +94,27 @@ namespace SteelMeet
         int secondsLyft;
         int minutesLyft;
         int groupIndexCurrent;
-        int groupIndexCount = 1;//Antal grupper
-        int group1Count;                    //Antal lyftare i grupp
-        int group2Count;                    //Antal lyftare i grupp
-        int group3Count;                    //Antal lyftare i grupp
-        int groupRowFixer;                  //Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
+        int groupIndexCount = 1;            // Antal grupper
+        int group1Count;                    // Antal lyftare i grupp
+        int group2Count;                    // Antal lyftare i grupp
+        int group3Count;                    // Antal lyftare i grupp
+        int groupRowFixer;                  // Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
         int firstLiftColumn = 10;           // 157 217 måste ändras också
 
         public Dictionary<int, Lifter> LifterID = new();
 
-        public List<int> usedPlatesList = new List<int>();   //Hur många plates calculatorn har använt.
-        List<int> totalPlatesList = new List<int>();   //Antalet paltes som användaren anvivit
-        List<float> weightsList = new List<float>(); //Vikter
-        public List<int> usedPlatesList2 = new List<int>();   //Hur många plates calculatorn har använt.
-        List<int> totalPlatesList2 = new List<int>();   //Antalet paltes som användaren anvivit
-        List<float> weightsList2 = new List<float>(); //Vikter
+        public List<int> usedPlatesList = new List<int>();  // Hur många plates calculatorn har använt.
+        List<int> totalPlatesList = new List<int>();        // Antalet paltes som användaren anvivit
+        List<float> weightsList = new List<float>();        // Vikter
+        public List<int> usedPlatesList2 = new List<int>(); // Hur många plates calculatorn har använt.
+        List<int> totalPlatesList2 = new List<int>();       // Antalet paltes som användaren anvivit
+        List<float> weightsList2 = new List<float>();       // Vikter
 
-        List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
-        List<Lifter> LiftingOrderList = new List<Lifter>();                     //För att sortera
+        List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
+        List<Lifter> LiftingOrderList = new List<Lifter>();                                                 // För att sortera
 
-        List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>(); //Order med lyftare och vikt de ska ta i rätt ordning.
-        List<Lifter> GroupLiftingOrderList = new List<Lifter>();                     //För att sortera viktera
+        List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>();  // Order med lyftare och vikt de ska ta i rätt ordning.
+        List<Lifter> GroupLiftingOrderList = new List<Lifter>();                                                // För att sortera viktera
         enum eGroupLiftingOrderState
         {
             group1Squat = 0,
@@ -132,7 +134,7 @@ namespace SteelMeet
 
         MouseEventArgs mouseEvent = new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0);
 
-        //Default Plate setup 16x25kg
+        // Default Plate setup 16x25kg
         public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2, Color.ForestGreen, Color.Red, Color.Blue, Color.Yellow, Color.LimeGreen, Color.WhiteSmoke, Color.Black, Color.Silver, Color.Gainsboro, Color.Gainsboro);
 
         public CultureInfo customCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
@@ -1251,7 +1253,8 @@ namespace SteelMeet
                             LiftingOrderList.Add(LifterID[SelectedRowIndex + groupRowFixer]);
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
                             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = 0;
-                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(108, 54, 0);
+                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = currentLiftColor;
+                            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.ForeColor = Color.Black;
                             LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
                         }
 
@@ -1397,11 +1400,13 @@ namespace SteelMeet
 
             //Sätter den gröna färgen
             dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.ForestGreen;
+            dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.ForeColor = Color.FromArgb(187, 225, 250);
 
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
             {
 
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = currentLiftColor;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.ForeColor = Color.Black;
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift];
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 13 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 16)
@@ -1468,11 +1473,13 @@ namespace SteelMeet
                 }
                 //Sätter den röda färgen och gör en "strikeout" markering över texten
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.Red;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.ForeColor = Color.FromArgb(187, 225, 250);
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
                 {
-                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = currentLiftColor;
+                    dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.ForeColor = Color.Black;
                     dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift];
 
                     if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 13 && LifterID[SelectedRowIndex + groupRowFixer].CurrentLift != 16)
@@ -1511,7 +1518,8 @@ namespace SteelMeet
                 }
 
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Style.BackColor = Color.Empty;
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.FromArgb(108, 54, 0);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = currentLiftColor;
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.ForeColor = Color.Black;
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Regular);
                 LifterID[SelectedRowIndex + groupRowFixer].CurrentLift -= 1;
 
@@ -2686,16 +2694,23 @@ namespace SteelMeet
                         for (int o = LifterID[i].isBenchOnly ? 3 : 0; o < LifterID[i].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i].LiftRecord[o] == true)
+                            {
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.ForeColor = Color.FromArgb(187, 225, 250);
+                            }
                             else if (LifterID[i].LiftRecord[o] == false)
                             {
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.ForeColor = Color.FromArgb(187, 225, 250);
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
 
                         if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                        {
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i].CurrentLift].Style.BackColor = currentLiftColor;
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i].CurrentLift].Style.ForeColor = Color.Black;
+                        }
 
                         for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
@@ -2743,15 +2758,23 @@ namespace SteelMeet
                         for (int o = LifterID[i].isBenchOnly ? 3 : 0; o < LifterID[i + group1Count].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i + group1Count].LiftRecord[o] == true)
+                            {
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.ForeColor = Color.FromArgb(187, 225, 250);
+                            }
                             else if (LifterID[i + group1Count].LiftRecord[o] == false)
                             {
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.ForeColor = Color.FromArgb(187, 225, 250);
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
                         if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                        {
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count].CurrentLift].Style.BackColor = currentLiftColor;
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count].CurrentLift].Style.ForeColor = Color.Black;
+                        }
+
 
                         for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
@@ -2795,15 +2818,20 @@ namespace SteelMeet
                         for (int o = LifterID[i].isBenchOnly ? 3 : 0; o < LifterID[i + group1Count + group2Count].LiftRecord.Count; o++) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if (LifterID[i + group1Count + group2Count].LiftRecord[o] == true)
+                            {
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.ForestGreen;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.ForeColor = Color.FromArgb(187, 225, 250);
+                            }
                             else if (LifterID[i + group1Count + group2Count].LiftRecord[o] == false)
                             {
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.BackColor = Color.Red;
+                                dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.ForeColor = Color.FromArgb(187, 225, 250);
                                 dataGridViewControlPanel.Rows[i].Cells[firstLiftColumn + o].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
                             }
                         }
                         if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
-                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count + group2Count].CurrentLift].Style.BackColor = Color.FromArgb(108, 54, 0);
+                            dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count + group2Count].CurrentLift].Style.BackColor = currentLiftColor;
+                        dataGridViewControlPanel.Rows[i].Cells[LifterID[i + group1Count + group2Count].CurrentLift].Style.ForeColor = Color.Black;
 
                         for (int o = 0; o < 7; o++)
                             dataGridViewControlPanel.Rows[i].Cells[o].ReadOnly = true;
@@ -3044,6 +3072,7 @@ namespace SteelMeet
                     sl.SetCellValue(1, 7, "Bästa Mark");
                     sl.SetCellValue(1, 8, "Total");
                     sl.SetCellValue(1, 9, "GL poäng");
+                    sl.SetCellValue(1, 10, "Placering");
 
                     for (int i = 0; i < LifterID.Count(); i++)
                     {
@@ -3056,6 +3085,7 @@ namespace SteelMeet
                         sl.SetCellValue(i + 2, 7, LifterID[i].bestD);
                         sl.SetCellValue(i + 2, 8, LifterID[i].total);
                         sl.SetCellValue(i + 2, 9, LifterID[i].pointsGL);
+                        sl.SetCellValue(i + 2, 10, LifterID[i].place);
                     }
                     sl.SaveAs(ofd.FileName);
 
