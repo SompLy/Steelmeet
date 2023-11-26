@@ -1971,7 +1971,7 @@
             label32.AutoSize = true;
             label32.BackColor = Color.Black;
             label32.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.ForeColor = Color.FromArgb(27, 38, 44);
+            label32.ForeColor = Color.FromArgb(15, 76, 117);
             label32.Location = new Point(4, 4);
             label32.Name = "label32";
             label32.Size = new Size(497, 35);

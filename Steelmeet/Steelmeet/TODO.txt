@@ -2,12 +2,12 @@ Steelmeet TODO
 
 :)
 Viktiga saker :
-om man anger en bokstav så fuckar det  säkert nå minus 1 någonstans eller nåt ez fix
-Uppdatera infopaneler automatiskt efter ett godänt lyft inte bara när man markerar ny lyftare
-Sista marken räknas inte med
-Ändra lisens texten så man kan se den bättre
+✅Uppdatera infopaneler automatiskt efter ett godänt lyft inte bara när man markerar ny lyftare
 Kom på något sätt så man kan se viktskivorna bättre, annan bakrund??
 Gör så att man tar från ett tomt SSF protokoll och kopierar den 
+om man anger en bokstav så fuckar det  säkert nå minus 1 någonstans eller nåt ez fix ( sålänge man använder suggestedbtns så är det ju lungt)
+✅Sista marken räknas inte med
+✅Ändra lisens texten så man kan se den bättre
 ✅Man kan inte stänga ner programmet
 ✅hur man visar nummer på de röda kakorna
 ✅Fixa gå om knappen

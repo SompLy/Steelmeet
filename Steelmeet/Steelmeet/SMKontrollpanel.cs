@@ -107,12 +107,12 @@ namespace SteelMeet
 
         public Dictionary<int, Lifter> LifterID = new();
 
-        public List<int> usedPlatesList = new List<int> (); // Hur många plates calculatorn har använt.
-        List<int> totalPlatesList = new List<int>       (); // Antalet paltes som användaren anvivit
-        List<float> weightsList = new List<float>       (); // Vikter
+        public List<int> usedPlatesList = new List<int>(); // Hur många plates calculatorn har använt.
+        List<int> totalPlatesList = new List<int>(); // Antalet paltes som användaren anvivit
+        List<float> weightsList = new List<float>(); // Vikter
         public List<int> usedPlatesList2 = new List<int>(); // Hur många plates calculatorn har använt.
-        List<int> totalPlatesList2 = new List<int>      (); // Antalet paltes som användaren anvivit
-        List<float> weightsList2 = new List<float>      (); // Vikter
+        List<int> totalPlatesList2 = new List<int>(); // Antalet paltes som användaren anvivit
+        List<float> weightsList2 = new List<float>(); // Vikter
 
         List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
         List<Lifter> LiftingOrderList = new List<Lifter>();                                                 // För att sortera
@@ -136,7 +136,7 @@ namespace SteelMeet
             nothing = 9
         }
 
-        MouseEventArgs mouseEvent = new MouseEventArgs( System.Windows.Forms.Control.MouseButtons, 0, 0, 0, 0 );
+        MouseEventArgs mouseEvent = new MouseEventArgs(System.Windows.Forms.Control.MouseButtons, 0, 0, 0, 0);
 
         // Default Plate setup 16x25kg
         public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2, Color.ForestGreen, Color.Red, Color.Blue, Color.Yellow, Color.LimeGreen, Color.WhiteSmoke, Color.Black, Color.Silver, Color.Gainsboro, Color.Gainsboro);
@@ -1129,82 +1129,13 @@ namespace SteelMeet
                         //lbl_Infällt.Text = LifterID[SelectedRowIndex + groupRowFixer].tilted.ToString();
                         //lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
 
-                        LiftoffTiltedUpdate();
-
-                        //Informationsruta 1 :
-                        PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - firstLiftColumn], plateInfo);
-                        lbl_Name.Text = LiftingOrderList[0].name;
-                        //Kollar om det finns 25kg plates och sedan visar hur många det finns
-                        if (usedPlatesList[1] > 1)
-                        {
-                            lbl_25x.Text = usedPlatesList[1].ToString();
-                        }
-                        else
-                        {
-                            lbl_25x.Text = "";
-                        }
-                        if (dataGridViewControlPanel.RowCount > 1)
-                        {
-
-                            if (LiftingOrderList[0].CurrentLift < 13)
-                            {
-                                lbl_Avlyft.Text = "Infällt: " + LiftingOrderList[0].tilted.ToString();
-                                LiftingOrderList[0].squatHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[7].Value.ToString());
-                                lbl_Height.Text = "Höjd: " + LiftingOrderList[0].squatHeight.ToString();
-                            }
-                            else if (LiftingOrderList[0].CurrentLift < 16)
-                            {
-                                lbl_Avlyft.Text = "Avlyft: " + LiftingOrderList[0].liftoff.ToString();
-                                LiftingOrderList[0].benchHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[8].Value.ToString());
-                                LiftingOrderList[0].benchRack = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[9].Value.ToString());
-                                lbl_Height.Text = "Höjd: " + LiftingOrderList[0].benchHeight.ToString() + "/" + LiftingOrderList[0].benchRack.ToString();
-                            }
-                            else if (LiftingOrderList[0].CurrentLift < 19)
-                            {
-                                lbl_Avlyft.Text = "Placering : " + LiftingOrderList[0].place.ToString();
-                                lbl_Height.Text = "Total : " + LiftingOrderList[0].total.ToString();
-                            }
-                            SuggestionBtnUpdate();
-
-                            //Informationsruta 2
-                            if (LiftingOrderList.Count > 1)
-                            {
-                                PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - firstLiftColumn], plateInfo);
-                                lbl_Name2.Text = LiftingOrderList[1].name;
-                                //Kollar om det finns 25kg plates och sedan visar hur många det finns
-                                if (usedPlatesList2[1] > 0)
-                                {
-                                    lbl_25x2.Text = usedPlatesList2[1].ToString();
-                                }
-                                else
-                                {
-                                    lbl_25x2.Text = "";
-                                }
-
-                                if (LiftingOrderList[1].CurrentLift < 13)
-                                {
-                                    lbl_Avlyft2.Text = "Infällt: " + LiftingOrderList[1].tilted.ToString();
-                                    LiftingOrderList[1].squatHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[1].index - groupRowFixer].Cells[7].Value.ToString());
-                                    lbl_Height2.Text = "Höjd: " + LiftingOrderList[1].squatHeight.ToString();
-                                }
-                                else if (LiftingOrderList[0].CurrentLift < 16)
-                                {
-                                    lbl_Avlyft2.Text = "Avlyft: " + LiftingOrderList[1].liftoff.ToString();
-                                    LiftingOrderList[1].benchHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[1].index - groupRowFixer].Cells[8].Value.ToString());
-                                    LiftingOrderList[1].benchRack = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[1].index - groupRowFixer].Cells[9].Value.ToString());
-                                    lbl_Height2.Text = "Höjd: " + LiftingOrderList[1].benchHeight.ToString() + "/" + LiftingOrderList[1].benchRack.ToString();
-                                }
-                                else if (LiftingOrderList[0].CurrentLift < 19)
-                                {
-                                    lbl_Avlyft2.Text = "Placering : " + LiftingOrderList[1].place.ToString();
-                                    lbl_Height2.Text = "Total : " + LiftingOrderList[1].total.ToString();
-                                }
-                            }
-                        }
+                        InfopanelsUpdate();
+                        
                     }
                 }
             }
         }
+        
         private void dataGridViewControlPanel_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
@@ -1361,6 +1292,7 @@ namespace SteelMeet
                     }
                 }
 
+            InfopanelsUpdate();
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
 
@@ -1418,7 +1350,12 @@ namespace SteelMeet
                     dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = //Lägger till 2,5 automatiskt när man godkänner ett lyft
                         2.5f + float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString());
                 }
-                dataGridViewControlPanel.BeginEdit(true);
+                //dataGridViewControlPanel.BeginEdit(true);
+
+                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[1];
+                // Markerar rad för den aktiva lyftaren
+                for (int columnIndex = 2; columnIndex <= 5; columnIndex++)
+                    dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[columnIndex].Selected = true;
             }
 
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
@@ -1492,7 +1429,12 @@ namespace SteelMeet
                         dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value = //Upprepar samma lyft i nästa ruta för underkänt lyft
                         float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString());
                     }
-                    dataGridViewControlPanel.BeginEdit(true);
+                    //dataGridViewControlPanel.BeginEdit(true);
+
+                    dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[1];
+                    // Markerar rad för den aktiva lyftaren
+                    for (int columnIndex = 2; columnIndex <= 5; columnIndex++)
+                        dataGridViewControlPanel.Rows[SelectedRowIndex + groupRowFixer].Cells[columnIndex].Selected = true;
                 }
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
@@ -1501,6 +1443,7 @@ namespace SteelMeet
                         float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Value.ToString());
                 }
             }
+            InfopanelsUpdate();
         }
         public void undoLift()
         {
@@ -1535,7 +1478,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[20].Value = LiftingOrderList[0].pointsGL.ToString("0.00");
 
             }
-
+            InfopanelsUpdate();
         }
 
         public void redoLift()
@@ -2421,7 +2364,7 @@ namespace SteelMeet
             LiftingOrderList[0].b3 = cellValuesList[5];
             LiftingOrderList[0].d2 = cellValuesList[7];
             LiftingOrderList[0].d3 = cellValuesList[8];
-            
+
             for (int i = 0; i < LiftingOrderList[0].LiftRecord.Count(); i++)
             {
                 if (!LiftingOrderList[0].LiftRecord[i])
@@ -2508,6 +2451,81 @@ namespace SteelMeet
                 lbl_suggestedWeight25Minus.Text = (baseWeight - weightIncrements[0]).ToString();
                 lbl_suggestedWeight5Minus.Text = (baseWeight - weightIncrements[1]).ToString();
                 lbl_suggestedWeight75Minus.Text = (baseWeight - weightIncrements[2]).ToString();
+            }
+        }
+        public void InfopanelsUpdate()
+        {
+            LiftoffTiltedUpdate();
+
+            //Informationsruta 1 :
+            PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - firstLiftColumn], plateInfo);
+            lbl_Name.Text = LiftingOrderList[0].name;
+            //Kollar om det finns 25kg plates och sedan visar hur många det finns
+            if (usedPlatesList[1] > 1)
+            {
+                lbl_25x.Text = usedPlatesList[1].ToString();
+            }
+            else
+            {
+                lbl_25x.Text = "";
+            }
+            if (dataGridViewControlPanel.RowCount > 1)
+            {
+
+                if (LiftingOrderList[0].CurrentLift < 13)
+                {
+                    lbl_Avlyft.Text = "Infällt: " + LiftingOrderList[0].tilted.ToString();
+                    LiftingOrderList[0].squatHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[7].Value.ToString());
+                    lbl_Height.Text = "Höjd: " + LiftingOrderList[0].squatHeight.ToString();
+                }
+                else if (LiftingOrderList[0].CurrentLift < 16)
+                {
+                    lbl_Avlyft.Text = "Avlyft: " + LiftingOrderList[0].liftoff.ToString();
+                    LiftingOrderList[0].benchHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[8].Value.ToString());
+                    LiftingOrderList[0].benchRack = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[9].Value.ToString());
+                    lbl_Height.Text = "Höjd: " + LiftingOrderList[0].benchHeight.ToString() + "/" + LiftingOrderList[0].benchRack.ToString();
+                }
+                else if (LiftingOrderList[0].CurrentLift < 19)
+                {
+                    lbl_Avlyft.Text = "Placering : " + LiftingOrderList[0].place.ToString();
+                    lbl_Height.Text = "Total : " + LiftingOrderList[0].total.ToString();
+                }
+                SuggestionBtnUpdate();
+
+                //Informationsruta 2
+                if (LiftingOrderList.Count > 1)
+                {
+                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - firstLiftColumn], plateInfo);
+                    lbl_Name2.Text = LiftingOrderList[1].name;
+                    //Kollar om det finns 25kg plates och sedan visar hur många det finns
+                    if (usedPlatesList2[1] > 0)
+                    {
+                        lbl_25x2.Text = usedPlatesList2[1].ToString();
+                    }
+                    else
+                    {
+                        lbl_25x2.Text = "";
+                    }
+
+                    if (LiftingOrderList[1].CurrentLift < 13)
+                    {
+                        lbl_Avlyft2.Text = "Infällt: " + LiftingOrderList[1].tilted.ToString();
+                        LiftingOrderList[1].squatHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[1].index - groupRowFixer].Cells[7].Value.ToString());
+                        lbl_Height2.Text = "Höjd: " + LiftingOrderList[1].squatHeight.ToString();
+                    }
+                    else if (LiftingOrderList[0].CurrentLift < 16)
+                    {
+                        lbl_Avlyft2.Text = "Avlyft: " + LiftingOrderList[1].liftoff.ToString();
+                        LiftingOrderList[1].benchHeight = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[1].index - groupRowFixer].Cells[8].Value.ToString());
+                        LiftingOrderList[1].benchRack = int.Parse(dataGridViewControlPanel.Rows[LiftingOrderList[1].index - groupRowFixer].Cells[9].Value.ToString());
+                        lbl_Height2.Text = "Höjd: " + LiftingOrderList[1].benchHeight.ToString() + "/" + LiftingOrderList[1].benchRack.ToString();
+                    }
+                    else if (LiftingOrderList[0].CurrentLift < 19)
+                    {
+                        lbl_Avlyft2.Text = "Placering : " + LiftingOrderList[1].place.ToString();
+                        lbl_Height2.Text = "Total : " + LiftingOrderList[1].total.ToString();
+                    }
+                }
             }
         }
 
@@ -3161,7 +3179,7 @@ namespace SteelMeet
                         sl.SetCellValue(i + 16, 21, LifterID[i].pointsGL);
                         sl.SetCellValue(i + 16, 22, LifterID[i].place);
 
-                        List<string> sbdStringListColumn = new List<string> { "H", "I", "J", "L", "M", "N", "P", "Q", "R"};
+                        List<string> sbdStringListColumn = new List<string> { "H", "I", "J", "L", "M", "N", "P", "Q", "R" };
 
                         SLStyle goodStyle = sl.CreateStyle();
                         goodStyle.Font.Strike = false;
