@@ -396,3 +396,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# WinForms temp files
+*.vsidx
+*.dtbcache.v2
+*.suo
+*.nuget.cache
+*.nuget.dgspec.json
+*.vsidx

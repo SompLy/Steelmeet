@@ -1,6 +1,15 @@
 Steelmeet TODO
 
 :)
+Saker från Nora 2023-11-26 :
+autosave och loading av pågående tävlingar
+Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
+Sortera data gridview inom klasser på vem som leder
+Fönster för publiken med reducerad information
+Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
+en pognostotal brevid vanliga totalen.
+vikter visibility kanske ändra lite färger o sånt
+
 Viktiga saker :
 Förkorta namn och föreningsnamn 
 Autoscale på datagridview på höjden samt texten
@@ -18,7 +27,6 @@ om man anger en bokstav så fuckar det  säkert nå minus 1 någonstans eller n�
 ✅om man lyfter samma vikt så ska den med lägst lot nummer lyfta först
 
 mindre viktiga saker :
-en pognostotal brevid vanliga totalen.
 Markera förgående lyftare??
 Gör de mindre vikterna mindre på den visuella delen
 grupp 1 visar 0 som ingångar och grupp 3 visar ingenting
