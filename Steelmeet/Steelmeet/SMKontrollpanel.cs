@@ -23,6 +23,13 @@ namespace SteelMeet
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             tabControl1.TabPages[0].ForeColor = Color.FromArgb(187, 225, 250);
             licensCheck();
+            this.Resize += SMKontrollpanel_Resize;
+        }
+        private void SMKontrollpanel_Resize(object sender, EventArgs e)
+        {
+            // Call the scaling method when the form is resized
+            scalingFactor = GetScalingFactor();
+            ScaleFormAndContents();
         }
         void ToggleFullscreen()
         {
@@ -332,9 +339,9 @@ namespace SteelMeet
 
         void licensCheck()
         {
-            DateTime licenceEndDate = new DateTime(2024, 1, 1);
+            DateTime licenceEndDate = new DateTime(2025, 1, 1);
             if (DateTime.Now > licenceEndDate)
-                MessageBox.Show("Din STEELMEET licens har utgått 2024-01-01");
+                MessageBox.Show("Din STEELMEET licens har utgått 2025-01-01");
         }
 
         private void ForceCloseApplication()
@@ -347,6 +354,70 @@ namespace SteelMeet
 
             // Forcefully exit the application
             Application.Exit();
+        }
+
+        private float GetScalingFactor()
+        {
+            using (Graphics g = this.CreateGraphics())
+            {
+                float dpiX = g.DpiX;
+                float referenceDpi = 96f; // Standard DPI
+
+                return dpiX / referenceDpi;
+            }
+        }
+        private float scalingFactor = 1.0f; // Initial scaling factor
+        private void ScaleFormAndContents()
+        {
+            // Adjust the size of the form itself
+            this.Width = (int)(this.Width * scalingFactor);
+            this.Height = (int)(this.Height * scalingFactor);
+
+            // Iterate through all controls on the form
+            foreach (System.Windows.Forms.Control control in this.Controls)
+            {
+                // Adjust the size and position of each control
+                control.Width = (int)(control.Width * scalingFactor);
+                control.Height = (int)(control.Height * scalingFactor);
+                control.Left = (int)(control.Left * scalingFactor);
+                control.Top = (int)(control.Top * scalingFactor);
+
+                // If the control is a container (e.g., Panel), recursively scale its contents
+                if (control is Panel)
+                {
+                    ScalePanelAndContents((Panel)control);
+                }
+            }
+        }
+
+        private void ScalePanelAndContents(Panel panel)
+        {
+            // Adjust the size of the Panel itself
+            panel.Width = (int)(panel.Width * scalingFactor);
+            panel.Height = (int)(panel.Height * scalingFactor);
+
+            // Iterate through all controls inside the Panel
+            foreach (System.Windows.Forms.Control control in panel.Controls)
+            {
+                // Adjust the size and position of each control
+                control.Width = (int)(control.Width * scalingFactor);
+                control.Height = (int)(control.Height * scalingFactor);
+                control.Left = (int)(control.Left * scalingFactor);
+                control.Top = (int)(control.Top * scalingFactor);
+
+                // If the control is a container (e.g., another Panel), recursively scale its contents
+                if (control is Panel)
+                {
+                    ScalePanelAndContents((Panel)control);
+                }
+            }
+        }
+
+        // Example usage:
+        private void buttonScale_Click(object sender, EventArgs e)
+        {
+            scalingFactor = 1.5f; // Set your desired scaling factor
+            ScaleFormAndContents();
         }
 
         //Invägning
@@ -1130,12 +1201,12 @@ namespace SteelMeet
                         //lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
 
                         InfopanelsUpdate();
-                        
+
                     }
                 }
             }
         }
-        
+
         private void dataGridViewControlPanel_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
@@ -1292,7 +1363,7 @@ namespace SteelMeet
                     }
                 }
 
-            InfopanelsUpdate();
+                InfopanelsUpdate();
                 //Updaterar lyftar ordning
                 LiftOrderUpdate();
 

@@ -2,6 +2,8 @@ Steelmeet TODO
 
 :)
 Viktiga saker :
+Förkorta namn och föreningsnamn 
+Autoscale på datagridview på höjden samt texten
 ✅Uppdatera infopaneler automatiskt efter ett godänt lyft inte bara när man markerar ny lyftare
 Kom på något sätt så man kan se viktskivorna bättre, annan bakrund??
 Gör så att man tar från ett tomt SSF protokoll och kopierar den 
