@@ -11,6 +11,8 @@ using System.Web;
 using Color = System.Drawing.Color;
 using OpenXmlColor = DocumentFormat.OpenXml.Spreadsheet.Color;
 
+
+
 namespace SteelMeet
 {
 
@@ -24,62 +26,18 @@ namespace SteelMeet
             tabControl1.TabPages[ 0 ].ForeColor = Color.FromArgb( 187, 225, 250 );
             licensCheck();
         }
-        void ToggleFullscreen()
-        {
-            isFullscreen = !isFullscreen;
-            if ( isFullscreen )
-            {
-                this.FormBorderStyle = FormBorderStyle.Fixed3D;
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-            }
-        }
         private void SMKontrollpanel_Load( object sender, EventArgs e )
         {
-        }
-        //För att byta färg på tabcontorl men funkar inte så bra
-        private void ChangeTabColor( object sender, DrawItemEventArgs e )
-        {
-            //    Font TabFont;
-            //    Brush BackBrush = new SolidBrush(Color.Green); //Set background color
-            //    Brush ForeBrush = new SolidBrush(Color.Yellow);//Set foreground color
-            //    if (e.Index == this.tabControl1.SelectedIndex)
-            //    {
-            //        TabFont = new Font(e.Font, FontStyle.Regular);
-            //    }
-            //    else
-            //    {
-            //        TabFont = e.Font;
-            //    }
-            //    string TabName = this.tabControl1.TabPages[e.Index].Text;
-            //    StringFormat sf = new StringFormat();
-            //    sf.Alignment = StringAlignment.Center;
-            //    e.Graphics.FillRectangle(BackBrush, e.Bounds);
-            //    Rectangle r = e.Bounds;
-            //    r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
-            //    e.Graphics.DrawString(TabName, TabFont, ForeBrush, r, sf);
-            //    //Dispose objects
-            //    sf.Dispose();
-            //    if (e.Index == this.tabControl1.SelectedIndex)
-            //    {
-            //        TabFont.Dispose();
-            //        BackBrush.Dispose();
-            //    }
-            //    else
-            //    {
-            //        BackBrush.Dispose();
-            //        ForeBrush.Dispose();
-            //    }
+
         }
 
+        SMSpectatorPanel smsPanel;
         System.Data.DataTable dt = new();
         System.Data.DataTable dt2 = new();
 
+        Fullscreen fullscreen = new Fullscreen();
         bool isFullscreen = false;
+
         bool a = true;
         bool b = true;
         public bool IsExcelFile;
@@ -97,12 +55,12 @@ namespace SteelMeet
         int minutesLapp;
         int secondsLyft;
         int minutesLyft;
-        int groupIndexCurrent;
+        public int groupIndexCurrent;
         int groupIndexCount = 1;            // Antal grupper
         int group1Count;                    // Antal lyftare i grupp
         int group2Count;                    // Antal lyftare i grupp
         int group3Count;                    // Antal lyftare i grupp
-        int groupRowFixer;                  // Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
+        public int groupRowFixer;                  // Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
         int firstLiftColumn = 10;           // 157 217 måste ändras också
 
         public Dictionary<int, Lifter> LifterID = new();
@@ -114,14 +72,14 @@ namespace SteelMeet
         List<int> totalPlatesList2 = new List<int>(); // Antalet paltes som användaren anvivit
         List<float> weightsList2 = new List<float>(); // Vikter
 
-        List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
-        List<Lifter> LiftingOrderList = new List<Lifter>();                                                 // För att sortera
+        public List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
+        public List<Lifter> LiftingOrderList = new List<Lifter>();                                                 // För att sortera
 
         List<System.Windows.Forms.Label> LiftingOrderListLabelsSeamless = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning. För seamless
         List<Lifter> LiftingOrderListSeamless = new List<Lifter>();                                                 // För att sortera
         int LiftingOrderSeamlessMax = 10;
 
-        List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>();  // Order med lyftare och vikt de ska ta i rätt ordning.
+        public List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>();  // Order med lyftare och vikt de ska ta i rätt ordning.
         List<Lifter> GroupLiftingOrderList = new List<Lifter>();                                                // För att sortera viktera
         enum eGroupLiftingOrderState
         {
@@ -147,100 +105,6 @@ namespace SteelMeet
 
         public CultureInfo customCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        public class Lifter
-        {
-            public Lifter(
-                string groupNumber,
-                string name,
-                string lotNumber,
-                string weightClass,
-                string Kategory,
-                string licenceNumber,
-                string accossiation,
-                string bodyWeight,
-                string squatHeight,
-                string tilted,
-                string s1,
-                string benchHeight,
-                string benchRack,
-                string liftoff,
-                string b1,
-                string d1 )
-            {
-                this.groupNumber = Int16.Parse( groupNumber );
-                this.name = name;
-                this.lotNumber = float.Parse( lotNumber );
-                this.weightClass = weightClass;
-                this.Kategory = Kategory;
-                this.licenceNumber = licenceNumber;
-                this.accossiation = accossiation;
-                this.bodyWeight = float.Parse( bodyWeight );
-                this.squatHeight = Int16.Parse( squatHeight );
-                this.tilted = tilted;
-                this.s1 = float.Parse( s1 );
-                this.benchHeight = Int16.Parse( benchHeight );
-                this.benchRack = Int16.Parse( benchRack );
-                this.liftoff = liftoff;
-                this.b1 = float.Parse( b1 );
-                this.d1 = float.Parse( d1 );
-                CurrentLift = 10;//Väljer vilken column som första böjen börjar på
-                                 //Du måsta ändra en sak i tabcontrol långt ner
-                LiftRecord = new List<bool>();
-                sbdList = new List<float>() { this.s1, s2, s3, this.b1, b2, b3, this.d1, d2, d3 };
-            }
-
-            public int place { get; set; }
-            public int groupNumber { get; set; }
-            public string name { get; set; }
-            public float lotNumber { get; set; }
-            public string weightClass { get; set; }
-            public string Kategory { get; set; }
-            public enum eCategory
-            {
-                MenEquipped,
-                MenClassic,
-                MenEquippedBench,
-                MenClassicBench,
-                WomenEquipped,
-                WomenClassic,
-                WomenEquippedBench,
-                WomenClassicBench
-
-            }
-            public eCategory CategoryEnum { get; set; }
-            public bool isBenchOnly { get; set; }
-            public bool isRetrying { get; set; }
-            public string licenceNumber { get; set; }
-            public string accossiation { get; set; }
-
-            public float bodyWeight { get; set; }
-            public int squatHeight { get; set; }
-            public string tilted { get; set; }
-            public float s1 { get; set; }
-            public float s2 { get; set; }
-            public float s3 { get; set; }
-            public int benchHeight { get; set; }
-            public int benchRack { get; set; }
-            public string liftoff { get; set; }
-            public float b1 { get; set; }
-            public float b2 { get; set; }
-            public float b3 { get; set; }
-            public float d1 { get; set; }
-            public float d2 { get; set; }
-            public float d3 { get; set; }
-            public float total { get; set; }
-            public int pointsWilks { get; set; }
-            public double pointsGL { get; set; }
-
-            public int CurrentLift { get; set; }
-            public float bestS { get; set; }
-            public float bestB { get; set; }
-            public float bestD { get; set; }
-            public List<bool> LiftRecord { get; set; } //en lista med true eller false beroende på om lyftaren fick godkänt eller inte
-            public List<float> sbdList { get; set; }
-            public int index { get; set; }
-
-        }
         public class LifterComparer : IComparer<Lifter>
         {
             public int Compare( Lifter x, Lifter y )
@@ -282,56 +146,6 @@ namespace SteelMeet
                 // baserad på total
                 return x.total.CompareTo( y.total );
             }
-        }
-        public class PlateInfo
-        {
-            public PlateInfo( int plate50, int plate25, int plate20, int plate15, int plate10, int plate5, int plate25small, int plate05, int plate125, int plate025
-            , Color col_plate50, Color col_plate25, Color col_plate20, Color col_plate15, Color col_plate10, Color col_plate5, Color col_plate25small, Color col_plate05, Color col_plate125, Color col_plate025 )
-            {
-                this.plate50 = plate50 / 2;
-                this.plate25 = plate25 / 2;
-                this.plate20 = plate20 / 2;
-                this.plate15 = plate15 / 2;
-                this.plate10 = plate10 / 2;
-                this.plate5 = plate5 / 2;
-                this.plate25small = plate25small / 2;
-                this.plate125 = plate125 / 2;
-                this.plate05 = plate05 / 2;
-                this.plate025 = plate025 / 2;
-
-                this.col_plate50 = col_plate50;
-                this.col_plate25 = col_plate25;
-                this.col_plate20 = col_plate20;
-                this.col_plate15 = col_plate15;
-                this.col_plate10 = col_plate10;
-                this.col_plate5 = col_plate5;
-                this.col_plate25small = col_plate25small;
-                this.col_plate05 = col_plate05;
-                this.col_plate125 = col_plate125;
-                this.col_plate025 = col_plate025;
-            }
-            public int plate50 { get; set; }
-            public int plate25 { get; set; }
-            public int plate20 { get; set; }
-            public int plate15 { get; set; }
-            public int plate10 { get; set; }
-            public int plate5 { get; set; }
-            public int plate25small { get; set; }
-            public int plate05 { get; set; }
-            public int plate125 { get; set; }
-            public int plate025 { get; set; }
-            //Colors
-            public Color col_plate50 { get; set; }
-            public Color col_plate25 { get; set; }
-            public Color col_plate20 { get; set; }
-            public Color col_plate15 { get; set; }
-            public Color col_plate10 { get; set; }
-            public Color col_plate5 { get; set; }
-            public Color col_plate25small { get; set; }
-            public Color col_plate05 { get; set; }
-            public Color col_plate125 { get; set; }
-            public Color col_plate025 { get; set; }
-
         }
 
         void licensCheck()
@@ -1259,8 +1073,8 @@ namespace SteelMeet
                 }
                 if ( keyData == Keys.F && !dataGridViewControlPanel.IsCurrentCellInEditMode && !dataGridViewWeighIn.IsCurrentCellInEditMode )
                 {
-                    ToggleFullscreen();
-
+                    fullscreen.ToggleFullscreen( isFullscreen, this );
+                    isFullscreen = !isFullscreen;
                     return true;
                 }
                 if ( keyData == Keys.Escape && !dataGridViewControlPanel.IsCurrentCellInEditMode && !dataGridViewWeighIn.IsCurrentCellInEditMode )
@@ -1734,7 +1548,6 @@ namespace SteelMeet
         }
         public void PlateCalculator( float targetWeight, PlateInfo plateInfo )
         {
-
             targetWeight = ( targetWeight / 2 );
             float weightSum = 0;
             usedPlatesList.Clear();
@@ -1769,7 +1582,7 @@ namespace SteelMeet
             {
                 lbl_currentWeight.Text = ( targetWeight * 2 ).ToString() + " KG";
 
-                // Debuggi'n Antal hur många av varera viktskiva har använts
+                // Absolutly mental Debuggi'n strats !!!
                 //lbl_currentWeight.Text =
                 //    ((usedPlatesList[0] * weightsList[0] +
                 //    usedPlatesList[1] * weightsList[1] +
@@ -1793,7 +1606,6 @@ namespace SteelMeet
         }
         public void PlateCalculator2( float targetWeight, PlateInfo plateInfo )
         {
-
             targetWeight = ( targetWeight / 2 );
             float weightSum = 0;
             usedPlatesList2.Clear();
@@ -2040,21 +1852,23 @@ namespace SteelMeet
             for ( int i = startIndex + 1 ; i < LiftingOrderList.Count && i < startIndex + 1 + countToShow ; i++ )
             {
                 string spacing = " ";
+                string SpacingIndex = "";
                 float value = LiftingOrderList[ i ].sbdList[LiftingOrderList[ i ].CurrentLift - firstLiftColumn];
                 string text = value.ToString();
 
                 if ( value <= 100.0f )
-                {
                     spacing += "  ";
-                }
 
                 if ( !text.Contains( ".5" ) )
-                {
                     spacing += "   ";
-                }
+
+                if ( i >= 10 )
+                    SpacingIndex = "| ";
+                else
+                    SpacingIndex = "  | ";
 
                 // Update the corresponding label in LiftingOrderListLabels
-                LiftingOrderListLabels[ i - 1 ].Text = value + spacing + LiftingOrderList[ i ].name;
+                LiftingOrderListLabels[ i - 1 ].Text = SpacingIndex + value + spacing + LiftingOrderList[ i ].name;
             }
 
             // Clear the remaining labels
@@ -2250,7 +2064,7 @@ namespace SteelMeet
                     loopLeft = group1Count + group2Count;
                     loopMiddle = group1Count + group2Count + group3Count;
                     textCurrentLift = 6;
-                    lblText = "Ingångar\nGrupp 3\nBänk";
+                    lblText = "Ingångar\nGrupp 3\nMark";
                     break;
                 case eGroupLiftingOrderState.nothing:
                     ViewNothing = true;
@@ -2277,6 +2091,7 @@ namespace SteelMeet
                 for ( int i = 0 ; i < GroupLiftingOrderList.Count ; i++ )
                 {
                     string Spacing = " ";
+                    string SpacingIndex = " ";
                     float value = GroupLiftingOrderList[i].sbdList[textCurrentLift];
                     string text = GroupLiftingOrderList[i].sbdList[textCurrentLift].ToString();
 
@@ -2286,7 +2101,12 @@ namespace SteelMeet
                     if ( !text.Contains( ".5" ) )
                         Spacing += "   ";
 
-                    GroupLiftingOrderListLabels[ i ].Text = GroupLiftingOrderList[ i ].sbdList[ textCurrentLift ] + Spacing + GroupLiftingOrderList[ i ].name;
+                    if ( i >= 10 )
+                        SpacingIndex = "| ";
+                    else 
+                        SpacingIndex = "  | ";
+
+                    GroupLiftingOrderListLabels[ i ].Text = i + SpacingIndex + GroupLiftingOrderList[ i ].sbdList[ textCurrentLift ] + Spacing + GroupLiftingOrderList[ i ].name;
                 }
             else
                 //Om man inte vill visa några ingångar t.ex som i sista marken eller om man kör endast bänk tävling
@@ -2441,6 +2261,9 @@ namespace SteelMeet
         }
         public void InfopanelsUpdate()
         {
+            if ( smsPanel != null )
+                smsPanel.UpdateAll();
+
             LiftoffTiltedUpdate();
 
             //Informationsruta 1 :
@@ -2567,18 +2390,7 @@ namespace SteelMeet
         {
             TimerController( 0 );
             if ( LiftingOrderList.Count > 0 )
-            {
-                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ 1 ];
-                // Markerar rad för den aktiva lyftaren
-                for ( int columnIndex = 2 ; columnIndex <= 5 ; columnIndex++ )
-                    dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ columnIndex ].Selected = true;
-
-                // Uppdaterar platcalculatorn för den buggar ibland asså
-                PlateCalculator( LiftingOrderList[ 0 ].sbdList[ LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn ], plateInfo );
-                if ( LiftingOrderList.Count > 1 )
-                    PlateCalculator2( LiftingOrderList[ 1 ].sbdList[ LiftingOrderList[ 1 ].CurrentLift - firstLiftColumn ], plateInfo );
-
-            }
+                SelectNextLifter();
         }
         private void btn_SelectNextLifter_Click( object sender, EventArgs e )
         {
@@ -3061,8 +2873,21 @@ namespace SteelMeet
             }
             InfopanelsUpdate();
         }
+        private void button5_Click( object sender, EventArgs e )
+        {
+            smsPanel = new SMSpectatorPanel( this );
+            smsPanel.Show();
+        }
 
-
+        private void txt_box_SpecSize_TextChanged( object sender, EventArgs e )
+        {
+            float result = 0;
+            if ( smsPanel != null && float.TryParse( txt_box_SpecSize.Text.Trim(), out result ) )
+            {
+                smsPanel.dataGridViewSpectatorPanel.DefaultCellStyle.Font = new System.Drawing.Font( "Segoe UI", result );
+                smsPanel.dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font( "Segoe UI", result );
+            }
+        }
 
 
         //Tävling

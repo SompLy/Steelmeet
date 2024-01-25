@@ -1,23 +1,23 @@
 Steelmeet TODO
 
 :)
-Saker från Nora 2023-11-26 :
+Viktiga saker :
 Fönster för publiken med reducerad information
 Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
 Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
 en pognostotal brevid vanliga totalen.
-En keybind som kan toggle vilen sida lyftarordningen är på
-vikter visibility kanske ändra lite färger o sånt
-autosave och loading av pågående tävlingar
-
-Viktiga saker :
 Förkorta namn och föreningsnamn 
+En keybind som kan toggle vilen sida lyftarordningen är på
+
+Mindre viktiga saker :
+autosave och loading av pågående tävlingar
+vikter visibility kanske ändra lite färger o sånt
 Autoscale på datagridview på höjden samt texten
-✅Uppdatera infopaneler automatiskt efter ett godänt lyft inte bara när man markerar ny lyftare
 Kom på något sätt så man kan se viktskivorna bättre, annan bakrund??
 Gör så att man tar från ett tomt SSF protokoll och kopierar den 
 om man anger en bokstav så fuckar det  säkert nå minus 1 någonstans eller nåt ez fix ( sålänge man använder suggestedbtns så är det ju lungt)
+✅Uppdatera infopaneler automatiskt efter ett godänt lyft inte bara när man markerar ny lyftare
 ✅Sista marken räknas inte med
 ✅Ändra lisens texten så man kan se den bättre
 ✅Man kan inte stänga ner programmet
