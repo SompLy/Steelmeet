@@ -1243,7 +1243,7 @@ namespace SteelMeet
                 //Sätter den röda färgen och gör en "strikeout" markering över texten
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.Red;
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.ForeColor = Color.FromArgb(187, 225, 250);
-                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
+                //dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
                 {
