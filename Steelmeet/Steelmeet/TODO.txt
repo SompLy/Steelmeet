@@ -2,15 +2,18 @@ Steelmeet TODO
 
 :)
 Viktiga saker :
-Fönster för publiken med reducerad information
+krascahr när man är klar med bänken, förmodligen samma prblem som nedan
+spectator gör så att det kraschar på sista marken, man kan inte göra sista marken
+Underkända lyft scalar inte med nya scalen på spectator
 Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
 Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
-en pognostotal brevid vanliga totalen.
-Förkorta namn och föreningsnamn 
-En keybind som kan toggle vilen sida lyftarordningen är på
+✅Fönster för publiken med reducerad information
 
 Mindre viktiga saker :
+en pognostotal brevid vanliga totalen.
+Förkorta namn och föreningsnamn 
+En keybind som kan toggle vilen sida lyftarordningen är på ( då måste layouten vara typ 100% klar annars behöver man göra om det ) 
 autosave och loading av pågående tävlingar
 vikter visibility kanske ändra lite färger o sånt
 Autoscale på datagridview på höjden samt texten
