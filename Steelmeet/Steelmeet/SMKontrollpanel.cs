@@ -1243,7 +1243,7 @@ namespace SteelMeet
                 //Sätter den röda färgen och gör en "strikeout" markering över texten
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.BackColor = Color.Red;
                 dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.ForeColor = Color.FromArgb(187, 225, 250);
-                //dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Trebuchet MS", 10f, FontStyle.Strikeout);
+                dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift - 1].Style.Font = new System.Drawing.Font("Segoe UI", 10.0f, FontStyle.Strikeout);
 
                 if (LifterID[SelectedRowIndex + groupRowFixer].CurrentLift < 19)
                 {
@@ -1861,7 +1861,7 @@ namespace SteelMeet
                 return;
             }
 
-            if ( LiftingOrderList.Count < 10 )
+            if (LiftingOrderList.Count < 10)
             {
                 if (groupIndexCurrent >= 0 && groupIndexCurrent <= 2 && LiftingOrderList.Count == 0)
                 {
@@ -1882,7 +1882,7 @@ namespace SteelMeet
                             endIndex2 = group1Count + group2Count + group3Count;
                             break;
                     }
-                    
+
                     List<int> ints = new List<int>();
 
                     for (int i = startIndex2; i < endIndex2; i++)
@@ -1899,7 +1899,7 @@ namespace SteelMeet
                             if (LifterID[i].CurrentLift + 1 == lowestCurrentLift)
                             {
                                 if (i + 1 >= 0 && i + 1 < LifterID.Count)
-                                    ExtraLifters.Add( LifterID[ i + 1 ] );
+                                    ExtraLifters.Add(LifterID[i + 1]);
                             }
                         }
                     }
@@ -2952,8 +2952,7 @@ namespace SteelMeet
             foreach (var smsForm in smsList)
                 if (smsForm != null && float.TryParse(txt_box_SpecSize.Text.Trim(), out result))
                 {
-                    smsForm.dataGridViewSpectatorPanel.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", result);
-                    smsForm.dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", result);
+                    smsForm.UpdateDataGridviewFont( result );
                 }
         }
 

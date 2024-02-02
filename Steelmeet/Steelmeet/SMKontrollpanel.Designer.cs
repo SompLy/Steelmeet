@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMKontrollpanel));
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
             panel7 = new Panel();
@@ -108,6 +108,7 @@
             txtb25 = new TextBox();
             tabPage2 = new TabPage();
             panel13 = new Panel();
+            button6 = new Button();
             button5 = new Button();
             txt_box_SpecSize = new TextBox();
             label23 = new Label();
@@ -214,7 +215,6 @@
             timerLyft = new System.Windows.Forms.Timer(components);
             timerLapp = new System.Windows.Forms.Timer(components);
             timerRekordAnimering = new System.Windows.Forms.Timer(components);
-            button6 = new Button();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             panel7.SuspendLayout();
@@ -446,32 +446,32 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns = false;
             dataGridViewWeighIn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle10.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewWeighIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewWeighIn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewWeighIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewWeighIn.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewWeighIn.BackgroundColor = Color.FromArgb(27, 38, 44);
             dataGridViewWeighIn.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewWeighIn.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle11.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle2.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewWeighIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle12.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle3.Font = new Font("Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewWeighIn.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewWeighIn.EnableHeadersVisualStyles = false;
             dataGridViewWeighIn.GridColor = Color.Black;
             dataGridViewWeighIn.Location = new Point(6, 156);
@@ -1126,6 +1126,18 @@
             panel13.Size = new Size(188, 147);
             panel13.TabIndex = 12;
             // 
+            // button6
+            // 
+            button6.BackColor = Color.FromArgb(15, 76, 117);
+            button6.FlatStyle = FlatStyle.Popup;
+            button6.ForeColor = Color.FromArgb(187, 225, 250);
+            button6.Location = new Point(15, 118);
+            button6.Name = "button6";
+            button6.Size = new Size(158, 23);
+            button6.TabIndex = 30;
+            button6.Text = "Spectator panel 1280x720";
+            button6.UseVisualStyleBackColor = false;
+            // 
             // button5
             // 
             button5.BackColor = Color.FromArgb(15, 76, 117);
@@ -1183,9 +1195,9 @@
             dataGridViewControlPanel.AllowUserToDeleteRows = false;
             dataGridViewControlPanel.AllowUserToResizeColumns = false;
             dataGridViewControlPanel.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle7.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewControlPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewControlPanel.Anchor = AnchorStyles.Left;
             dataGridViewControlPanel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewControlPanel.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -1193,23 +1205,23 @@
             dataGridViewControlPanel.BorderStyle = BorderStyle.None;
             dataGridViewControlPanel.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(27, 38, 44);
-            dataGridViewCellStyle8.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(27, 38, 44);
+            dataGridViewCellStyle5.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewControlPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(15, 76, 117);
-            dataGridViewCellStyle9.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(187, 225, 250);
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(15, 76, 117);
+            dataGridViewCellStyle6.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(187, 225, 250);
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewControlPanel.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewControlPanel.EnableHeadersVisualStyles = false;
             dataGridViewControlPanel.GridColor = SystemColors.WindowText;
             dataGridViewControlPanel.ImeMode = ImeMode.NoControl;
@@ -1218,7 +1230,7 @@
             dataGridViewControlPanel.RowHeadersVisible = false;
             dataGridViewControlPanel.RowTemplate.Height = 25;
             dataGridViewControlPanel.ScrollBars = ScrollBars.None;
-            dataGridViewControlPanel.Size = new Size(1069, 558);
+            dataGridViewControlPanel.Size = new Size(1069, 586);
             dataGridViewControlPanel.TabIndex = 2;
             dataGridViewControlPanel.CellEndEdit += dataGridViewControlPanel_CellEndEdit;
             dataGridViewControlPanel.CellEnter += dataGridViewControlPanel_CellEnter;
@@ -2469,18 +2481,6 @@
             // 
             timerRekordAnimering.Interval = 500;
             timerRekordAnimering.Tick += TimerTickRekordAnimering;
-            // 
-            // button6
-            // 
-            button6.BackColor = Color.FromArgb(15, 76, 117);
-            button6.FlatStyle = FlatStyle.Popup;
-            button6.ForeColor = Color.FromArgb(187, 225, 250);
-            button6.Location = new Point(15, 118);
-            button6.Name = "button6";
-            button6.Size = new Size(158, 23);
-            button6.TabIndex = 30;
-            button6.Text = "Spectator panel 1280x720";
-            button6.UseVisualStyleBackColor = false;
             // 
             // SMKontrollpanel
             // 

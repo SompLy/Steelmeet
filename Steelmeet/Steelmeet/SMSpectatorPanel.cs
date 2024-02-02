@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Font = System.Drawing.Font;
 
 namespace SteelMeet
 {
@@ -113,11 +114,21 @@ namespace SteelMeet
             dataGridViewSpectatorPanel.Rows.Clear();
             for (int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++)
                 dataGridViewSpectatorPanel.Rows.Add(CloneRow(smk.dataGridViewControlPanel.Rows[i]));
+            // Uppdatera font size
+            foreach (DataGridViewColumn c in dataGridViewSpectatorPanel.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Segoe UI", dataGridViewSpectatorPanel.DefaultCellStyle.Font.Size );
+            }
             // Markera nuvarande lyftare
             dataGridViewSpectatorPanel.CurrentCell = null; // Annars markerar den alltid första cellen
             if (smk.dataGridViewControlPanel.RowCount > 1)
                 for (int columnIndex = 1; columnIndex <= 5; columnIndex++)
                     dataGridViewSpectatorPanel.Rows[smk.LiftingOrderList[0].index - smk.groupRowFixer].Cells[columnIndex].Selected = true;
+        }
+        public void UpdateDataGridviewFont( float _fontSize) 
+        {
+            dataGridViewSpectatorPanel.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", _fontSize);
+            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", _fontSize);
         }
         private void UpdateinfoPanel()
         {
