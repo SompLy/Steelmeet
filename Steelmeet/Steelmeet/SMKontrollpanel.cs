@@ -35,6 +35,7 @@ namespace SteelMeet
         System.Data.DataTable dt = new();
         System.Data.DataTable dt2 = new();
 
+        RoundPanel roundPanel = new RoundPanel();
         Fullscreen fullscreen = new Fullscreen();
         bool isFullscreen = false;
 
@@ -880,6 +881,7 @@ namespace SteelMeet
         public void infopanel_Controlpanel_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            RoundPanel.DrawRoundedRectangle( g, infopanel_Controlpanel.ClientRectangle, 20, Color.Red );
 
             List<Color> plateColorList = new List<Color>
     {
@@ -2944,10 +2946,7 @@ namespace SteelMeet
 
         private void txt_box_SpecSize_TextChanged(object sender, EventArgs e)
         {
-            foreach (var smsForm in smsList)
-            {
 
-            }
             float result = 0;
             foreach (var smsForm in smsList)
                 if (smsForm != null && float.TryParse(txt_box_SpecSize.Text.Trim(), out result))

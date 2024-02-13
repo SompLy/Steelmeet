@@ -114,11 +114,7 @@ namespace SteelMeet
             dataGridViewSpectatorPanel.Rows.Clear();
             for (int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++)
                 dataGridViewSpectatorPanel.Rows.Add(CloneRow(smk.dataGridViewControlPanel.Rows[i]));
-            // Uppdatera font size
-            foreach (DataGridViewColumn c in dataGridViewSpectatorPanel.Columns)
-            {
-                c.DefaultCellStyle.Font = new Font("Segoe UI", dataGridViewSpectatorPanel.DefaultCellStyle.Font.Size );
-            }
+            
             // Markera nuvarande lyftare
             dataGridViewSpectatorPanel.CurrentCell = null; // Annars markerar den alltid första cellen
             if (smk.dataGridViewControlPanel.RowCount > 1)
@@ -127,8 +123,14 @@ namespace SteelMeet
         }
         public void UpdateDataGridviewFont( float _fontSize) 
         {
-            dataGridViewSpectatorPanel.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", _fontSize);
-            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", _fontSize);
+            for ( int i = 0 ; i < smk.dataGridViewControlPanel.RowCount ; i++ )
+                for ( int o = 0 ; o < dataGridViewSpectatorPanel.Columns.Count ; o++ ) 
+                {
+                    if ( dataGridViewSpectatorPanel.Rows[ i ].Cells[ o ].Style.BackColor == System.Drawing.Color.Red )
+                        dataGridViewSpectatorPanel.Rows[ i ].Cells[ o ].Style.Font = new Font( "Segoe UI", _fontSize );
+                    //else 
+                    //    dataGridViewSpectatorPanel.Rows[ i ].Cells[ o ].Style.Font = new Font( "Segoe UI", _fontSize, FontStyle.Strikeout );
+                }
         }
         private void UpdateinfoPanel()
         {
