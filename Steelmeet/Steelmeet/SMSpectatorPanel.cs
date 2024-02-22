@@ -88,11 +88,14 @@ namespace SteelMeet
         {
             // DataGridView
             UpdateDataGriview();
+
             // Lables update
             UpdateinfoPanel();
             UpdateLiftingOrderLables();
+
             // UpdateTimer(); Uppdateras inte här för att den måste uppdateras samtidigt eftersom den går helatiden
             UpdateNextGroup();
+
             // Redraw plates
             infopanel_Spectatorpanel.Invalidate();
             infopanel_Spectatorpanel2.Invalidate();
@@ -200,13 +203,9 @@ namespace SteelMeet
             List<int> paintedPlatesList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
             if (smk.LiftingOrderList.Count > 1)
-            {
                 DrawPlates(g, smk.usedPlatesList2, plateColorList, paintedPlatesList);
-            }
             else
-            {
                 g.Clear( infopanel_Spectatorpanel2.BackColor );
-            }
         }
         private void DrawPlates(Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList)
         {

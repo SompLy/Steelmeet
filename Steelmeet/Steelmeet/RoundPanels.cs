@@ -15,12 +15,6 @@ namespace SteelMeet
             SetStyle( ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true );
         }
 
-        protected override void OnPaint( PaintEventArgs e )
-        {
-            base.OnPaint( e );
-            DrawRoundedRectangle( e.Graphics, ClientRectangle, CornerRadius, BackColor );
-        }
-
         public static void DrawRoundedRectangle( Graphics g, Rectangle rectangle, int cornerRadius, Color fillColor )
         {
             // Draw the rounded rectangle
@@ -34,8 +28,8 @@ namespace SteelMeet
         private static GraphicsPath CreateRoundRectanglePath( Rectangle rectangle, int cornerRadius )
         {
             int diameter = cornerRadius * 2;
-            Size size = new Size(diameter, diameter);
-            Rectangle arc = new Rectangle(rectangle.Location, size);
+            Size size = new Size( diameter, diameter );
+            Rectangle arc = new Rectangle( rectangle.Location, size );
 
             GraphicsPath path = new GraphicsPath();
 

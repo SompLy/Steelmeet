@@ -2232,7 +2232,7 @@
             // 
             // infopanel_Controlpanel
             // 
-            infopanel_Controlpanel.BackColor = Color.FromArgb(27, 38, 44);
+            infopanel_Controlpanel.BackColor = SystemColors.WindowText;
             infopanel_Controlpanel.Controls.Add(lbl_currentWeight);
             infopanel_Controlpanel.Controls.Add(lbl_Name);
             infopanel_Controlpanel.Controls.Add(lbl_25x);
