@@ -25,6 +25,7 @@ namespace SteelMeet
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             tabControl1.TabPages[ 0 ].ForeColor = Color.FromArgb( 187, 225, 250 );
             licensCheck();
+            blueToolTip.SetAllToolTips( btn_Import, btn_Export, btn_Refresh, btn_Comp );
         }
         private void SMKontrollpanel_Load( object sender, EventArgs e )
         {
@@ -35,6 +36,7 @@ namespace SteelMeet
         System.Data.DataTable dt = new();
         System.Data.DataTable dt2 = new();
 
+        BlueToolTip blueToolTip = new BlueToolTip();
         RoundPanel roundPanel = new RoundPanel();
         Fullscreen fullscreen = new Fullscreen();
         bool isFullscreen = false;
@@ -175,6 +177,12 @@ namespace SteelMeet
         //Invägning
         //Invägning
         //Invägning
+
+        private void infoPanel_WeighInPanel_Paint( object sender, PaintEventArgs e )
+        {
+            Graphics g = e.Graphics;
+            RoundPanel.DrawRoundedRectangle( g, infoPanel_WeighInPanel.ClientRectangle, 12, BackColor );
+        }
 
         private void dataGridViewWeighIn_CellEnter( object sender, DataGridViewCellEventArgs e )
         {
@@ -881,9 +889,9 @@ namespace SteelMeet
         public void infopanel_Controlpanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle( g, infopanel_Controlpanel.ClientRectangle, 20, BackColor );
+            RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel.ClientRectangle, 12, BackColor );
 
-            List< Color > plateColorList = new List< Color >
+            List<Color> plateColorList = new List<Color>
     {
         plateInfo.col_plate50, plateInfo.col_plate25, plateInfo.col_plate20, plateInfo.col_plate15, plateInfo.col_plate10,
         plateInfo.col_plate5, plateInfo.col_plate25small, plateInfo.col_plate125, plateInfo.col_plate05, plateInfo.col_plate025
@@ -897,6 +905,7 @@ namespace SteelMeet
         private void infopanel_Controlpanel_Paint2( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
+            RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel2.ClientRectangle, 12, BackColor );
 
             List<Color> plateColorList = new List<Color>
     {
@@ -912,7 +921,8 @@ namespace SteelMeet
             }
             else
             {
-                g.Clear( infopanel_Controlpanel2.BackColor );
+                g.Clear( infoPanel_Controlpanel2.BackColor );
+                RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel2.ClientRectangle, 10, BackColor );
             }
         }
 
@@ -1137,8 +1147,8 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 20 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
-                TimerController( 8 ); //Startar lapp timern på 1 minut
-                TimerController( 9 ); //Stoppar lyft timern och sätter timern på 00:00
+                TimerController( 2 ); //Startar lapp timern på 1 minut
+                TimerController( 3 ); //Stoppar lyft timern och sätter timern på 00:00
 
                 //Uppdaterar placering
                 RankUpdate();
@@ -1220,8 +1230,8 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 20 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
-                TimerController( 8 ); //Startar lapp timern på 1 minut
-                TimerController( 9 ); //Stoppar lyft timern och sätter timern på 00:00
+                TimerController( 2, 0 ); //Startar lapp timern på 1 minut
+                TimerController( 3, 0 ); //Stoppar lyft timern och sätter timern på 00:00
 
                 //Uppdaterar placering
                 RankUpdate();
@@ -1300,7 +1310,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Style.ForeColor = Color.FromArgb( 187, 225, 250 );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Style.BackColor = currentLiftColor;
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Style.ForeColor = Color.Black;
-                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Style.Font = new System.Drawing.Font( "Trebuchet MS", 10f, FontStyle.Regular );
+                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Style.Font = new System.Drawing.Font( "Segoe UI", 10f, FontStyle.Regular );
                 LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift -= 1;
 
                 //Uppdaterar total och GLpoints
@@ -1583,7 +1593,7 @@ namespace SteelMeet
                 {
                     weightSum += weightsList[ i ];
                     usedPlatesList[ i ]++;
-                    infopanel_Controlpanel.Invalidate();
+                    infoPanel_Controlpanel.Invalidate();
                 }
                 else { i++; }
 
@@ -1641,7 +1651,7 @@ namespace SteelMeet
                 {
                     weightSum += weightsList2[ i ];
                     usedPlatesList2[ i ]++;
-                    infopanel_Controlpanel2.Invalidate();
+                    infoPanel_Controlpanel2.Invalidate();
                 }
                 else { i++; }
             }
@@ -1654,81 +1664,39 @@ namespace SteelMeet
 
         }
 
-        public void TimerController( int option )
+        public void TimerController( int _option, int _customMinTime = 0 )
         {
-            switch ( option )
+            switch ( _option )
             {
-                case 0:         //Sätt klockan på 1 minut
+                case 0:         // Sätt klockan på 1 minut
                     {
                         minutesLyft = 1;
                         secondsLyft = 0;
                         timerLyft.Start();
                         break;
                     }
-                case 1:         //Sätt klockan på 2 minuter
+                case 1:         // Sätt klockan på custom timer
                     {
-                        minutesLyft = 2;
+                        minutesLyft = _customMinTime;
                         secondsLyft = 0;
                         timerLyft.Start();
                         break;
                     }
-                case 2:         //Sätt klockan på 3 minuter
-                    {
-                        minutesLyft = 3;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
-                case 3:         //Sätt klockan på 4 minuter
-                    {
-                        minutesLyft = 4;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
-                case 4:         //Sätt klockan på 10 minuter
-                    {
-                        minutesLyft = 10;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
-                case 5:         //Sätt klockan på 20 minuter
-                    {
-                        minutesLyft = 20;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
-                case 6:         //Sätt klockan på 30 minuter
-                    {
-                        minutesLyft = 30;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
-                case 7:         //Sätt klockan på 60 minuter
-                    {
-                        minutesLyft = 60;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
-                case 8:         //Starta lapp timern på 1 minut
+                case 2:         // Starta lapp timern på 1 minut
                     {
                         minutesLapp = 1;
                         secondsLapp = 0;
                         timerLapp.Start();
                         break;
                     }
-                case 9:         //Stoppar och resettar lyft timern
+                case 3:         // Stoppar och resettar lyft timern
                     {
                         minutesLyft = 0;
                         secondsLyft = 0;
                         timerLyft.Start();
                         break;
                     }
-                case 10:         //Stoppar och resettar lapp timern
+                case 4:         // Stoppar och resettar lapp timern
                     {
                         minutesLapp = 0;
                         secondsLapp = 0;
@@ -2322,7 +2290,7 @@ namespace SteelMeet
         public void InfopanelsUpdate()
         {
             foreach ( var smsForm in smsList )
-                if ( smsForm != null )
+                if ( smsForm != null && !smsForm.IsDisposed )
                     smsForm.UpdateAll();
 
             LiftoffTiltedUpdate();
@@ -2409,45 +2377,7 @@ namespace SteelMeet
             }
         }
 
-        private void btn_1min_Click( object sender, EventArgs e )
-        {
-            TimerController( 0 );
-        }
 
-        private void btn_2min_Click( object sender, EventArgs e )
-        {
-            TimerController( 1 );
-        }
-
-        private void btn_3min_Click( object sender, EventArgs e )
-        {
-            TimerController( 2 );
-        }
-
-        private void btn_4min_Click( object sender, EventArgs e )
-        {
-            TimerController( 3 );
-        }
-
-        private void btn_10min_Click( object sender, EventArgs e )
-        {
-            TimerController( 4 );
-        }
-
-        private void btn_20min_Click( object sender, EventArgs e )
-        {
-            TimerController( 5 );
-        }
-
-        private void btn_30min_Click( object sender, EventArgs e )
-        {
-            TimerController( 6 );
-        }
-
-        private void btn_60min_Click( object sender, EventArgs e )
-        {
-            TimerController( 7 );
-        }
         private void btn_klovad_Click( object sender, EventArgs e )
         {
             TimerController( 0 );
@@ -2477,11 +2407,11 @@ namespace SteelMeet
         }
         private void lbl_timerLyft_Click( object sender, EventArgs e )
         {
-            TimerController( 9 );
+            TimerController( 3 );
         }
         private void lbl_timerLapp_Click( object sender, EventArgs e )
         {
-            TimerController( 10 );
+            TimerController( 4 );
         }
         private void btn_godkänt_Click( object sender, EventArgs e )
         {
@@ -2516,7 +2446,7 @@ namespace SteelMeet
             redoLift();
         }
         private void dataGridViewControlPanel_KeyDown( object sender, KeyEventArgs e )    //Tar bort möjligheten att nagigera med höger och vänster piltagenter
-        {                                                                               //Det var möjligt att nagigera höger väntster utan att rutn blev blå
+        {                                                                                 //Det var möjligt att nagigera höger väntster utan att rutn blev blå
             switch ( e.KeyData & Keys.KeyCode )                                           //Men sen när man skrev så bled det i den rutan ändå även om den inte var blå
             {
                 case Keys.Right:
@@ -2546,7 +2476,7 @@ namespace SteelMeet
         {
             if ( sender is System.Windows.Forms.Control control )
             {
-                float increment = float.Parse(control.Tag.ToString());
+                float increment = float.Parse( control.Tag.ToString() );
                 UpdateCellValue( increment );
             }
         }
@@ -2595,7 +2525,6 @@ namespace SteelMeet
 
                     for ( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
                     {
-
                         for ( int o = LifterID[ i ].isBenchOnly ? 3 : 0; o < LifterID[ i ].LiftRecord.Count; o++ ) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if ( LifterID[ i ].LiftRecord[ o ] == true )
@@ -2607,7 +2536,7 @@ namespace SteelMeet
                             {
                                 dataGridViewControlPanel.Rows[ i ].Cells[ firstLiftColumn + o ].Style.BackColor = Color.Red;
                                 dataGridViewControlPanel.Rows[ i ].Cells[ firstLiftColumn + o ].Style.ForeColor = Color.FromArgb( 187, 225, 250 );
-                                dataGridViewControlPanel.Rows[ i ].Cells[ firstLiftColumn + o ].Style.Font = new System.Drawing.Font( "Trebuchet MS", 10f, FontStyle.Strikeout );
+                                dataGridViewControlPanel.Rows[ i ].Cells[ firstLiftColumn + o ].Style.Font = new System.Drawing.Font( "Segoe UI", 10f, FontStyle.Strikeout );
                             }
                         }
 
@@ -2946,7 +2875,6 @@ namespace SteelMeet
 
         private void txt_box_SpecSize_TextChanged( object sender, EventArgs e )
         {
-
             float result = 0;
             foreach ( var smsForm in smsList )
                 if ( smsForm != null && float.TryParse( txt_box_SpecSize.Text.Trim(), out result ) )
@@ -3088,6 +3016,7 @@ namespace SteelMeet
                 MessageBox.Show( ex.Message );
             }
         }
+
 
         //Resultat
         //Resultat
