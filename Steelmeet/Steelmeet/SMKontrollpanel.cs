@@ -2295,7 +2295,7 @@ namespace SteelMeet
 
             LiftoffTiltedUpdate();
 
-            if ( dataGridViewControlPanel.RowCount > 1 )
+            if ( dataGridViewControlPanel.RowCount > 1 && LiftingOrderList.Count > 0 ) // Om datagridview har lyftare och om listan har lkyftare
             {
                 //Informationsruta 1 :
                 PlateCalculator( LiftingOrderList[ 0 ].sbdList[ LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn ], plateInfo );
@@ -2869,8 +2869,15 @@ namespace SteelMeet
         }
         private void button5_Click( object sender, EventArgs e )
         {
-            smsList.Add( new SMSpectatorPanel( this ) );
-            smsList[ smsList.Count - 1 ].Show();
+           if ( dataGridViewWeighIn.RowCount != 0 ) // If you have not imported any data you should not be able to open this form
+           {
+               smsList.Add( new SMSpectatorPanel( this ) );
+               smsList[ smsList.Count - 1 ].Show();
+           }
+           else
+           {
+               MessageBox.Show( "Importera data innan du kan öppna detta fönster", "⚠SteelMeet varning!⚠" );
+           }
         }
 
         private void txt_box_SpecSize_TextChanged( object sender, EventArgs e )

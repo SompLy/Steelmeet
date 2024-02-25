@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace SteelMeet
             clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
 
             int indexOffset = 0;
-            for ( Int32 index = 0; index < _row.Cells.Count; index++ )
+            for ( Int32 index = 0 ; index < _row.Cells.Count ; index++ )
             {
                 if ( index != 7 && index != 8 && index != 9 ) // Klonar inte höjder
                 {
@@ -66,9 +67,16 @@ namespace SteelMeet
                 {
                     DataGridViewColumn clonedCloumn = ( DataGridViewColumn )column.Clone();
 
-                    Font font = new Font( clonedCloumn.DefaultCellStyle.Font.FontFamily, clonedCloumn.DefaultCellStyle.Font.Size );
-
-                    clonedCloumn.DefaultCellStyle.Font = font;
+                    if ( clonedCloumn.DefaultCellStyle.Font == null )
+                    {
+                        clonedCloumn.DefaultCellStyle.Font = new Font( "DefaultFontFamily", 10 ); // Set your default font
+                    }
+                    else
+                    {
+                        // Clone the font to avoid modifying the original column's font
+                        Font font = new Font(clonedCloumn.DefaultCellStyle.Font.FontFamily, clonedCloumn.DefaultCellStyle.Font.Size);
+                        clonedCloumn.DefaultCellStyle.Font = font;
+                    }
 
                     dataGridViewSpectatorPanel.Columns.Add( clonedCloumn );
                 }
@@ -116,7 +124,7 @@ namespace SteelMeet
                                                         lbl_groupLiftOrder_control_9, lbl_groupLiftOrder_control_10, lbl_groupLiftOrder_control_11, lbl_groupLiftOrder_control_12,
                                                         lbl_groupLiftOrder_control_13, lbl_groupLiftOrder_control_14, lbl_groupLiftOrder_control_15, lbl_groupLiftOrder_control_16,
                                                         lbl_groupLiftOrder_control_17, lbl_groupLiftOrder_control_18, lbl_groupLiftOrder_control_19, lbl_groupLiftOrder_control_20} );
-            for ( int i = 0; i < smk.GroupLiftingOrderListLabels.Count; i++ )
+            for ( int i = 0 ; i < smk.GroupLiftingOrderListLabels.Count ; i++ )
                 GroupLiftingOrderListLabels[ i ].Text = smk.GroupLiftingOrderListLabels[ i ].Text;
         }
         public void UpdateDataGriview()
@@ -125,14 +133,14 @@ namespace SteelMeet
             dataGridViewSpectatorPanel.Rows.Clear();
             if ( dataGridViewSpectatorPanel.ColumnCount > 0 ) // Det måste finnas columner för att kunna lägga till rader
             {
-                for ( int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++ )
+                for ( int i = 0 ; i < smk.dataGridViewControlPanel.RowCount ; i++ )
                     dataGridViewSpectatorPanel.Rows.Add( CloneRow( smk.dataGridViewControlPanel.Rows[ i ] ) );
 
                 // Markera nuvarande lyftare
                 dataGridViewSpectatorPanel.CurrentCell = null; // Annars markerar den alltid första cellen
                 if ( smk.dataGridViewControlPanel.RowCount > 1 )
-                    for ( int columnIndex = 1; columnIndex <= 5; columnIndex++ )
-                    dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
+                    for ( int columnIndex = 1 ; columnIndex <= 5 ; columnIndex++ )
+                        dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
             }
         }
         public void UpdateDataGridviewFont( float _fontSize )
@@ -142,14 +150,31 @@ namespace SteelMeet
                 Font newFont = new Font("Segoe UI", _fontSize);
                 Font strikeoutFont = new Font("Segoe UI", _fontSize, FontStyle.Strikeout);
 
-                for ( int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++ )
-                    for ( int o = 0; o < dataGridViewSpectatorPanel.Columns.Count; o++ )
+                // Set the default font for the entire DataGridView
+                dataGridViewSpectatorPanel.DefaultCellStyle.Font = newFont;
+
+                // Subscribe to the CellFormatting event
+                dataGridViewSpectatorPanel.CellFormatting += ( sender, e ) =>
+                {
+                    if ( e.RowIndex >= 0 && e.ColumnIndex >= 0 )
                     {
-                        if ( dataGridViewSpectatorPanel.Rows[ i ].Cells[ o ].Style.BackColor == System.Drawing.Color.Red )
-                            dataGridViewSpectatorPanel.Rows[ i ].Cells[ o ].Style.Font = strikeoutFont;
+                        DataGridViewCell cell = dataGridViewSpectatorPanel.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                        if ( cell.Style.BackColor == System.Drawing.Color.Red )
+                        {
+                            // If the cell has a red background, set the font to strikeoutFont
+                            e.CellStyle.Font = strikeoutFont;
+                        }
                         else
-                            dataGridViewSpectatorPanel.Rows[ i ].Cells[ o ].Style.Font = newFont;
+                        {
+                            // Otherwise, set the font to newFont
+                            e.CellStyle.Font = newFont;
+                        }
                     }
+                };
+
+                // Refresh the DataGridView to apply the changes
+                dataGridViewSpectatorPanel.Refresh();
             }
         }
         private void UpdateinfoPanel()
@@ -188,7 +213,7 @@ namespace SteelMeet
                     lbl_liftOrder_control_9, lbl_liftOrder_control_10
                     } );
 
-            for ( int i = 0; i < smk.LiftingOrderListLabels.Count; i++ )
+            for ( int i = 0 ; i < smk.LiftingOrderListLabels.Count ; i++ )
                 LiftingOrderListLabels[ i ].Text = smk.LiftingOrderListLabels[ i ].Text;
         }
 
@@ -235,7 +260,7 @@ namespace SteelMeet
             Pen p = new Pen(System.Drawing.Color.Red, 22);
             int offset = 28;
 
-            for ( int i = 0; i < 10; )
+            for ( int i = 0 ; i < 10 ; )
             {
                 if ( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
                 {
