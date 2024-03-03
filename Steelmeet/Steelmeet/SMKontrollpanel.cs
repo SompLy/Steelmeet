@@ -1790,7 +1790,7 @@ namespace SteelMeet
 
                 for( int i = startIndex; i < endIndex; i++ )
                 {
-                    if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
+                    if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 14 ) || !LifterID[ i ].isBenchOnly )
                     {
                         ints.Add( LifterID[ i ].CurrentLift );
                     }
@@ -2399,17 +2399,17 @@ namespace SteelMeet
         }
         private void SelectNextLifter()
         {
-            if (LiftingOrderList.Count > 0)
+            if( LiftingOrderList.Count > 0 )
             {
-                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[1];
+                dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ 1 ];
                 // Markerar rad för den aktiva lyftaren
-                for (int columnIndex = 2; columnIndex <= 5; columnIndex++)
-                    dataGridViewControlPanel.Rows[LiftingOrderList[0].index - groupRowFixer].Cells[columnIndex].Selected = true;
+                for( int columnIndex = 2; columnIndex <= 5; columnIndex++ )
+                    dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ columnIndex ].Selected = true;
 
                 // Uppdaterar platcalculatorn för den buggar ibland asså
-                PlateCalculator(LiftingOrderList[0].sbdList[LiftingOrderList[0].CurrentLift - firstLiftColumn], plateInfo);
-                if (LiftingOrderList.Count > 1)
-                    PlateCalculator2(LiftingOrderList[1].sbdList[LiftingOrderList[1].CurrentLift - firstLiftColumn], plateInfo);
+                PlateCalculator( LiftingOrderList[ 0 ].sbdList[ LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn ], plateInfo );
+                if( LiftingOrderList.Count > 1 )
+                    PlateCalculator2( LiftingOrderList[ 1 ].sbdList[ LiftingOrderList[ 1 ].CurrentLift - firstLiftColumn ], plateInfo );
 
             }
             InfopanelsUpdate();

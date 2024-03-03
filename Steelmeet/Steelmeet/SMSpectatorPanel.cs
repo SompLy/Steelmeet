@@ -16,14 +16,14 @@ namespace SteelMeet
 {
     public partial class SMSpectatorPanel : Form
     {
-        public SMSpectatorPanel(Form _form)
+        public SMSpectatorPanel( Form _form )
         {
-            smk = (SMKontrollpanel)_form;
+            smk = ( SMKontrollpanel )_form;
 
             InitializeComponent();
         }
 
-        private void SMSpectatorPanel_Load(object sender, EventArgs e)
+        private void SMSpectatorPanel_Load( object sender, EventArgs e )
         {
             SetupDataGridView();
         }
@@ -37,39 +37,39 @@ namespace SteelMeet
 
         void SetupDataGridView()
         {
-            CloneColumns(smk.dataGridViewControlPanel.Columns);
+            CloneColumns( smk.dataGridViewControlPanel.Columns );
         }
-        public DataGridViewRow CloneRow(DataGridViewRow _row)
+        public DataGridViewRow CloneRow( DataGridViewRow _row )
         {
             DataGridViewRow clonedRow = (DataGridViewRow)_row.Clone();
-            clonedRow.Cells.RemoveAt(clonedRow.Cells.Count - 1);
-            clonedRow.Cells.RemoveAt(clonedRow.Cells.Count - 1);
-            clonedRow.Cells.RemoveAt(clonedRow.Cells.Count - 1);
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
 
             int indexOffset = 0;
-            for (Int32 index = 0; index < _row.Cells.Count; index++)
+            for( Int32 index = 0; index < _row.Cells.Count; index++ )
             {
-                if (index != 7 && index != 8 && index != 9) // Klonar inte höjder
+                if( index != 7 && index != 8 && index != 9 ) // Klonar inte höjder
                 {
-                    clonedRow.Cells[index - indexOffset].Value = _row.Cells[index].Value;
-                    clonedRow.Cells[index - indexOffset].Style = _row.Cells[index].Style;
+                    clonedRow.Cells[ index - indexOffset ].Value = _row.Cells[ index ].Value;
+                    clonedRow.Cells[ index - indexOffset ].Style = _row.Cells[ index ].Style;
                 }
                 else
                     indexOffset++;
             }
             return clonedRow;
         }
-        private void CloneColumns(DataGridViewColumnCollection _columns)
+        private void CloneColumns( DataGridViewColumnCollection _columns )
         {
-            foreach (DataGridViewColumn column in _columns)
+            foreach( DataGridViewColumn column in _columns )
             {
-                if (column.Index != 7 && column.Index != 8 && column.Index != 9) // Klonar inte ställningshöjder
+                if( column.Index != 7 && column.Index != 8 && column.Index != 9 ) // Klonar inte ställningshöjder
                 {
                     DataGridViewColumn clonedCloumn = (DataGridViewColumn)column.Clone();
 
-                    if (clonedCloumn.DefaultCellStyle.Font == null)
+                    if( clonedCloumn.DefaultCellStyle.Font == null )
                     {
-                        clonedCloumn.DefaultCellStyle.Font = new Font("DefaultFontFamily", 10); // Set your default font
+                        clonedCloumn.DefaultCellStyle.Font = new Font( "DefaultFontFamily", 10 ); // Set your default font
                     }
                     else
                     {
@@ -78,26 +78,26 @@ namespace SteelMeet
                         clonedCloumn.DefaultCellStyle.Font = font;
                     }
 
-                    dataGridViewSpectatorPanel.Columns.Add(clonedCloumn);
+                    dataGridViewSpectatorPanel.Columns.Add( clonedCloumn );
                 }
             }
         }
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //Hanterar all input från tagentbord
+        protected override bool ProcessCmdKey( ref Message msg, Keys keyData ) //Hanterar all input från tagentbord
         {
             try
             {
-                if (keyData == Keys.F)
+                if( keyData == Keys.F )
                 {
-                    fullscreen.ToggleFullscreen(isFullscreen, this);
+                    fullscreen.ToggleFullscreen( isFullscreen, this );
                     isFullscreen = !isFullscreen;
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch( Exception ex )
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show( ex.Message );
             }
-            return base.ProcessCmdKey(ref msg, keyData);
+            return base.ProcessCmdKey( ref msg, keyData );
         }
 
         public void UpdateAll()
@@ -118,34 +118,34 @@ namespace SteelMeet
         }
         void UpdateNextGroup()
         {
-            if (GroupLiftingOrderListLabels.Count < 1)
-                GroupLiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
+            if( GroupLiftingOrderListLabels.Count < 1 )
+                GroupLiftingOrderListLabels.AddRange( new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
                                                         lbl_groupLiftOrder_control_5, lbl_groupLiftOrder_control_6, lbl_groupLiftOrder_control_7, lbl_groupLiftOrder_control_8,
                                                         lbl_groupLiftOrder_control_9, lbl_groupLiftOrder_control_10, lbl_groupLiftOrder_control_11, lbl_groupLiftOrder_control_12,
                                                         lbl_groupLiftOrder_control_13, lbl_groupLiftOrder_control_14, lbl_groupLiftOrder_control_15, lbl_groupLiftOrder_control_16,
-                                                        lbl_groupLiftOrder_control_17, lbl_groupLiftOrder_control_18, lbl_groupLiftOrder_control_19, lbl_groupLiftOrder_control_20});
-            for (int i = 0; i < smk.GroupLiftingOrderListLabels.Count; i++)
-                GroupLiftingOrderListLabels[i].Text = smk.GroupLiftingOrderListLabels[i].Text;
+                                                        lbl_groupLiftOrder_control_17, lbl_groupLiftOrder_control_18, lbl_groupLiftOrder_control_19, lbl_groupLiftOrder_control_20} );
+            for( int i = 0; i < smk.GroupLiftingOrderListLabels.Count; i++ )
+                GroupLiftingOrderListLabels[ i ].Text = smk.GroupLiftingOrderListLabels[ i ].Text;
         }
         public void UpdateDataGriview()
         {
             // Uppdatera values och färg
             dataGridViewSpectatorPanel.Rows.Clear();
-            if (dataGridViewSpectatorPanel.ColumnCount > 0) // Det måste finnas columner för att kunna lägga till rader
+            if( dataGridViewSpectatorPanel.ColumnCount > 0 ) // Det måste finnas columner för att kunna lägga till rader
             {
-                for (int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++)
-                    dataGridViewSpectatorPanel.Rows.Add(CloneRow(smk.dataGridViewControlPanel.Rows[i]));
+                for( int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++ )
+                    dataGridViewSpectatorPanel.Rows.Add( CloneRow( smk.dataGridViewControlPanel.Rows[ i ] ) );
 
                 // Markera nuvarande lyftare
                 dataGridViewSpectatorPanel.CurrentCell = null; // Annars markerar den alltid första cellen
-                if (smk.dataGridViewControlPanel.RowCount > 1)
-                    for (int columnIndex = 1; columnIndex <= 5; columnIndex++)
-                        dataGridViewSpectatorPanel.Rows[smk.LiftingOrderList[0].index - smk.groupRowFixer].Cells[columnIndex].Selected = true;
+                if( smk.dataGridViewControlPanel.RowCount > 1 && smk.LiftingOrderList.Count > 0 )
+                    for( int columnIndex = 1; columnIndex <= 5; columnIndex++ )
+                        dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
             }
         }
-        public void UpdateDataGridviewFont(float _fontSize)
+        public void UpdateDataGridviewFont( float _fontSize )
         {
-            if (_fontSize > 0)
+            if( _fontSize > 0 )
             {
                 Font newFont = new Font("Segoe UI", _fontSize);
                 Font strikeoutFont = new Font("Segoe UI", _fontSize, FontStyle.Strikeout);
@@ -154,13 +154,13 @@ namespace SteelMeet
                 dataGridViewSpectatorPanel.DefaultCellStyle.Font = newFont;
 
                 // Subscribe to the CellFormatting event
-                dataGridViewSpectatorPanel.CellFormatting += (sender, e) =>
+                dataGridViewSpectatorPanel.CellFormatting += ( sender, e ) =>
                 {
-                    if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                    if( e.RowIndex >= 0 && e.ColumnIndex >= 0 )
                     {
                         DataGridViewCell cell = dataGridViewSpectatorPanel.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
-                        if (cell.Style.BackColor == System.Drawing.Color.Red)
+                        if( cell.Style.BackColor == System.Drawing.Color.Red )
                         {
                             // If the cell has a red background, set the font to strikeoutFont
                             e.CellStyle.Font = strikeoutFont;
@@ -185,7 +185,7 @@ namespace SteelMeet
             lbl_Height.Text = smk.lbl_Height.Text;
             lbl_25x.Text = smk.lbl_25x.Text;
             lbl_OpeningLift.Text = smk.lbl_OpeningLift.Text;
-            if (smk.LiftingOrderList.Count > 1)
+            if( smk.LiftingOrderList.Count > 1 )
             {
                 lbl_Name2.Text = smk.lbl_Name2.Text;
                 lbl_currentWeight2.Text = smk.lbl_currentWeight2.Text;
@@ -205,22 +205,22 @@ namespace SteelMeet
         }
         private void UpdateLiftingOrderLables()
         {
-            if (LiftingOrderListLabels.Count < 1)
-                LiftingOrderListLabels.AddRange(new System.Windows.Forms.Label[]
+            if( LiftingOrderListLabels.Count < 1 )
+                LiftingOrderListLabels.AddRange( new System.Windows.Forms.Label[]
                     {
                     lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
                     lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
                     lbl_liftOrder_control_9, lbl_liftOrder_control_10
-                    });
+                    } );
 
-            for (int i = 0; i < smk.LiftingOrderListLabels.Count; i++)
-                LiftingOrderListLabels[i].Text = smk.LiftingOrderListLabels[i].Text;
+            for( int i = 0; i < smk.LiftingOrderListLabels.Count; i++ )
+                LiftingOrderListLabels[ i ].Text = smk.LiftingOrderListLabels[ i ].Text;
         }
 
-        public void infopanel_SpectatorPanel_Paint(object sender, PaintEventArgs e)
+        public void infopanel_SpectatorPanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle(g, infopanel_Spectatorpanel.ClientRectangle, 12, BackColor);
+            RoundPanel.DrawRoundedRectangle( g, infopanel_Spectatorpanel.ClientRectangle, 12, BackColor );
 
             List<System.Drawing.Color> plateColorList = new List<System.Drawing.Color>
     {
@@ -230,13 +230,13 @@ namespace SteelMeet
 
             List<int> paintedPlatesList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-            DrawPlates(g, smk.usedPlatesList, plateColorList, paintedPlatesList);
+            DrawPlates( g, smk.usedPlatesList, plateColorList, paintedPlatesList );
         }
 
-        private void infopanel_SpectatorPanel2_Paint(object sender, PaintEventArgs e)
+        private void infopanel_SpectatorPanel2_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle(g, infopanel_Spectatorpanel2.ClientRectangle, 12, BackColor);
+            RoundPanel.DrawRoundedRectangle( g, infopanel_Spectatorpanel2.ClientRectangle, 12, BackColor );
 
             List<System.Drawing.Color> plateColorList = new List<System.Drawing.Color>
     {
@@ -246,12 +246,12 @@ namespace SteelMeet
 
             List<int> paintedPlatesList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-            if (smk.LiftingOrderList.Count > 1)
-                DrawPlates(g, smk.usedPlatesList2, plateColorList, paintedPlatesList);
+            if( smk.LiftingOrderList.Count > 1 )
+                DrawPlates( g, smk.usedPlatesList2, plateColorList, paintedPlatesList );
             else
-                g.Clear(infopanel_Spectatorpanel2.BackColor);
+                g.Clear( infopanel_Spectatorpanel2.BackColor );
         }
-        private void DrawPlates(Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList)
+        private void DrawPlates( Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList )
         {
             // x1 = Börja rita här
             // y1 = Börja rita här
@@ -262,22 +262,22 @@ namespace SteelMeet
             Pen p = new Pen(System.Drawing.Color.Red, 22);
             int offset = 28;
 
-            for (int i = 0; i < 10;)
+            for( int i = 0; i < 10; )
             {
-                if (Enumerable.Any(usedPlatesList) && usedPlatesList[i] > paintedPlatesList[i])
+                if( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
                 {
-                    p.Color = plateColorList[i];
+                    p.Color = plateColorList[ i ];
 
-                    g.DrawLine(p, x1 + offset, y1, x2 + offset, y2);
+                    g.DrawLine( p, x1 + offset, y1, x2 + offset, y2 );
                     offset += 28;
 
-                    paintedPlatesList[i]++;
+                    paintedPlatesList[ i ]++;
                 }
                 else { i++; }
             }
 
             p.Color = System.Drawing.Color.DarkGray;
-            g.DrawLine(p, x1 + offset, 126, x2 + offset, 154);
+            g.DrawLine( p, x1 + offset, 126, x2 + offset, 154 );
         }
     }
 }
