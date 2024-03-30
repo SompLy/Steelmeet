@@ -30,7 +30,7 @@ namespace SteelMeet
             this.name = name;
             this.lotNumber = float.Parse( lotNumber );
             this.weightClass = weightClass;
-            this.Kategory = Kategory;
+            this.Category = Kategory;
             this.licenceNumber = licenceNumber;
             this.accossiation = accossiation;
             this.bodyWeight = float.Parse( bodyWeight );
@@ -53,7 +53,7 @@ namespace SteelMeet
         public string name { get; set; }
         public float lotNumber { get; set; }
         public string weightClass { get; set; }
-        public string Kategory { get; set; }
+        public string Category { get; set; }
         public enum eCategory
         {
             MenEquipped,
@@ -68,6 +68,7 @@ namespace SteelMeet
         }
         public eCategory CategoryEnum { get; set; }
         public bool isBenchOnly { get; set; }
+        public bool isEquipped { get; set; }
         public bool isRetrying { get; set; }
         public string licenceNumber { get; set; }
         public string accossiation { get; set; }
