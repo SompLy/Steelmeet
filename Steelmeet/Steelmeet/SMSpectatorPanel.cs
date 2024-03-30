@@ -220,7 +220,7 @@ namespace SteelMeet
         public void infopanel_SpectatorPanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle( g, infopanel_Spectatorpanel.ClientRectangle, 12, BackColor );
+            RoundPanel.DrawRoundedRectangle( g, infopanel_Spectatorpanel.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
 
             List<System.Drawing.Color> plateColorList = new List<System.Drawing.Color>
     {
@@ -236,7 +236,7 @@ namespace SteelMeet
         private void infopanel_SpectatorPanel2_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle( g, infopanel_Spectatorpanel2.ClientRectangle, 12, BackColor );
+            RoundPanel.DrawRoundedRectangle( g, infopanel_Spectatorpanel2.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
 
             List<System.Drawing.Color> plateColorList = new List<System.Drawing.Color>
     {
@@ -247,9 +247,15 @@ namespace SteelMeet
             List<int> paintedPlatesList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
             if( smk.LiftingOrderList.Count > 1 )
+            {
                 DrawPlates( g, smk.usedPlatesList2, plateColorList, paintedPlatesList );
+                infopanel_Spectatorpanel2.Visible = true;
+            }
             else
+            {
                 g.Clear( infopanel_Spectatorpanel2.BackColor );
+                infopanel_Spectatorpanel2.Visible = false;
+            }
         }
         private void DrawPlates( Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList )
         {

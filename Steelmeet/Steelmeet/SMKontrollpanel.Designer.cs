@@ -866,7 +866,7 @@
             // 
             // btn10
             // 
-            btn10.BackColor =  Color.LimeGreen ;
+            btn10.BackColor =  Color.ForestGreen ;
             btn10.FlatStyle =  FlatStyle.Popup ;
             btn10.Location =  new Point( 131, 178 ) ;
             btn10.Name =  "btn10" ;

@@ -65,8 +65,8 @@ namespace SteelMeet
         int group1Count;                    // Antal lyftare i grupp
         int group2Count;                    // Antal lyftare i grupp
         int group3Count;                    // Antal lyftare i grupp
-        public int groupRowFixer;                  // Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
-        int firstLiftColumn = 10;           // 157 217 måste ändras också
+        public int groupRowFixer;           // Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
+        int firstLiftColumn = 10;           // 157, 217 måste ändras också ????
 
         public Dictionary<int, Lifter> LifterID = new();
 
@@ -1140,6 +1140,7 @@ namespace SteelMeet
                 {
                     LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift += 1;
 
+                    // Bench only trolleri
                     if( LifterID[ SelectedRowIndex + groupRowFixer ].isBenchOnly && LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift == 17 )
                     {
                         LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.AddRange( new bool[] { true, true, true } );
@@ -1148,6 +1149,7 @@ namespace SteelMeet
                 }
 
                 InfopanelsUpdate();
+
                 //Updaterar lyftar ordning
                 LiftingOrderUpdate();
 
@@ -1189,13 +1191,12 @@ namespace SteelMeet
                 }
             }
 
-            //Sätter den gröna färgen
+            //Sätter forest green färgen
             dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Style.BackColor = Color.ForestGreen;
             dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Style.ForeColor = Color.FromArgb( 187, 225, 250 );
 
             if( LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift < 19 )
             {
-
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Style.BackColor = currentLiftColor;
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Style.ForeColor = Color.Black;
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ];
@@ -1237,7 +1238,10 @@ namespace SteelMeet
                     }
                 }
                 //Updaterar lyftar ordning
-                LiftingOrderUpdate();
+                // Plate calculatorn klagar om den får en lyftare som är klar
+                if( LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift < 18 )
+                    LiftingOrderUpdate();
+
                 if( LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift < 20 )
                 {
                     LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Add( false ); //Registrerar ett underkänt lyft för lyftaren
@@ -1263,6 +1267,7 @@ namespace SteelMeet
                         MessageBox.Show( "Denna lyftare har redan lyft denna omgång", "⚠SteelMeet varning!⚠", MessageBoxButtons.OK, MessageBoxIcon.None );
                         return;
                     }
+
                     for( int i = 0 ; i < LiftingOrderList.Count ; i++ )
                     {
                         if( LifterID[ SelectedRowIndex + groupRowFixer ] == LiftingOrderList[ i ] )
@@ -1806,21 +1811,23 @@ namespace SteelMeet
 
                 List<int> ints = new List<int>();
 
+                // For determeting what the lowest current lift is
                 for( int i = startIndex ; i < endIndex ; i++ )
                 {
-                    if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 14 ) || !LifterID[ i ].isBenchOnly )
+                    if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
                     {
                         ints.Add( LifterID[ i ].CurrentLift );
                     }
                 }
 
+                // Adding every lifter that corresponds to the lowest currentlift
                 if( ints.Count > 0 )
                 {
                     int lowestCurrentLift = ints.Min();
 
                     for( int i = startIndex ; i < endIndex ; i++ )
                     {
-                        if( LifterID[ i ].CurrentLift == lowestCurrentLift )
+                        if( LifterID[ i ].CurrentLift == lowestCurrentLift && (( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly ))
                         {
                             LiftingOrderList.Add( LifterID[ i ] );
                         }
@@ -1908,8 +1915,12 @@ namespace SteelMeet
             {
                 string spacing = " ";
                 string SpacingIndex = "";
-                float value = LiftingOrderList[i].sbdList[LiftingOrderList[i].CurrentLift - firstLiftColumn];
+                float value = 0.0f;
                 string text = value.ToString();
+
+                // Om gruppen är klar
+                if ( LiftingOrderList[ i ].CurrentLift - firstLiftColumn <= 8 )
+                    value = LiftingOrderList[ i ].sbdList[ LiftingOrderList[ i ].CurrentLift - firstLiftColumn ];
 
                 if( value <= 100.0f )
                     spacing += "  ";
@@ -2322,7 +2333,7 @@ namespace SteelMeet
 
             LiftoffTiltedUpdate();
 
-            if( dataGridViewControlPanel.RowCount > 1 && LiftingOrderList.Count > 0 ) // Om datagridview har lyftare och om listan har lkyftare
+            if( dataGridViewControlPanel.RowCount > 1 && LiftingOrderList.Count > 0 && LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn <= 8 ) // Om datagridview har lyftare och om listan har lkyftare
             {
                 // Informationsruta 1 :
                 PlateCalculator( LiftingOrderList[ 0 ].sbdList[ LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn ], plateInfo );
@@ -2393,6 +2404,11 @@ namespace SteelMeet
                     }
                 }
             }
+            else 
+            {
+                PlateCalculator( 25.0f, plateInfo );
+                PlateCalculator2( 25.0f, plateInfo );
+            }
         }
 
         private void TimerTickRekordAnimering( object sender, EventArgs e )
@@ -2433,12 +2449,15 @@ namespace SteelMeet
                     dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ columnIndex ].Selected = true;
 
                 // Uppdaterar platcalculatorn för den buggar ibland asså
-                PlateCalculator( LiftingOrderList[ 0 ].sbdList[ LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn ], plateInfo );
-                if( LiftingOrderList.Count > 1 )
+                // Om gruppen är klar
+                if( LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn <= 8 )
+                    PlateCalculator( LiftingOrderList[ 0 ].sbdList[ LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn ], plateInfo );
+                // Om gruppen är klar
+                if( LiftingOrderList.Count > 1 && LiftingOrderList[ 1 ].CurrentLift - firstLiftColumn <= 8 )
                     PlateCalculator2( LiftingOrderList[ 1 ].sbdList[ LiftingOrderList[ 1 ].CurrentLift - firstLiftColumn ], plateInfo );
 
+                InfopanelsUpdate();
             }
-            InfopanelsUpdate();
         }
         private void lbl_timerLyft_Click( object sender, EventArgs e )
         {
