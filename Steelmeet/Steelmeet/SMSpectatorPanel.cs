@@ -217,6 +217,46 @@ namespace SteelMeet
                 LiftingOrderListLabels[ i ].Text = smk.LiftingOrderListLabels[ i ].Text;
         }
 
+
+
+
+
+
+
+
+
+        // Drwaing shit
+
+
+        private void DrawPlates( Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList )
+        {
+            // x1 = Börja rita här
+            // y1 = Börja rita här
+            // x2 = 
+            // y2 =
+
+            int x1 = -7, y1 = 84, x2 = -7, y2 = 196;
+            Pen p = new Pen(System.Drawing.Color.Red, 22);
+            int offset = 28;
+
+            for( int i = 0 ; i < 10 ; )
+            {
+                if( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
+                {
+                    p.Color = plateColorList[ i ];
+
+                    g.DrawLine( p, x1 + offset, y1, x2 + offset, y2 );
+                    offset += 28;
+
+                    paintedPlatesList[ i ]++;
+                }
+                else { i++; }
+            }
+
+            p.Color = System.Drawing.Color.DarkGray;
+            g.DrawLine( p, x1 + offset, 126, x2 + offset, 154 );
+        }
+
         public void infopanel_SpectatorPanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
@@ -254,36 +294,29 @@ namespace SteelMeet
             else
             {
                 g.Clear( infopanel_Spectatorpanel2.BackColor );
-                infopanel_Spectatorpanel2.Visible = false;
+                //infopanel_Spectatorpanel2.Visible = false;
             }
         }
-        private void DrawPlates( Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList )
+
+        // Lifting order
+        private void panel10_Paint( object sender, PaintEventArgs e )
         {
-            // x1 = Börja rita här
-            // y1 = Börja rita här
-            // x2 = 
-            // y2 =
+            Graphics g = e.Graphics;
+            RoundPanel.DrawRoundedRectangle( g, panel10.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
+        }
 
-            int x1 = -7, y1 = 84, x2 = -7, y2 = 196;
-            Pen p = new Pen(System.Drawing.Color.Red, 22);
-            int offset = 28;
+        // Next group
+        private void panel11_Paint( object sender, PaintEventArgs e )
+        {
+            Graphics g = e.Graphics;
+            RoundPanel.DrawRoundedRectangle( g, panel11.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
+        }
 
-            for( int i = 0 ; i < 10 ; )
-            {
-                if( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
-                {
-                    p.Color = plateColorList[ i ];
-
-                    g.DrawLine( p, x1 + offset, y1, x2 + offset, y2 );
-                    offset += 28;
-
-                    paintedPlatesList[ i ]++;
-                }
-                else { i++; }
-            }
-
-            p.Color = System.Drawing.Color.DarkGray;
-            g.DrawLine( p, x1 + offset, 126, x2 + offset, 154 );
+        // Timer
+        private void panel5_Paint( object sender, PaintEventArgs e )
+        {
+            Graphics g = e.Graphics;
+            RoundPanel.DrawRoundedRectangle( g, panel5.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
         }
     }
 }

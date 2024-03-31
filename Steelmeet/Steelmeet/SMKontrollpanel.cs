@@ -8,6 +8,7 @@ using System.Data;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Web;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskBand;
 using Color = System.Drawing.Color;
 using OpenXmlColor = DocumentFormat.OpenXml.Spreadsheet.Color;
 
@@ -1852,75 +1853,89 @@ namespace SteelMeet
         {
             int countToShow = 10;
 
-            // Determine the starting index based on the current lift
             int startIndex = 0;
+
+            // Determine the starting index based on the current lift
             if( LiftingOrderList.Count > 0 )
-            {
                 startIndex = LiftingOrderList.FindIndex( lifter => lifter.CurrentLift == LiftingOrderList[ 0 ].CurrentLift );
-            }
 
-            // If startIndex is -1, no matching lifter was found in the LiftingOrderList
             if( startIndex == -1 )
-            {
                 return;
-            }
 
-            if( LiftingOrderList.Count < 10 )
+            if( LiftingOrderList.Count < countToShow )
             {
-                if( groupIndexCurrent >= 0 && groupIndexCurrent <= 2 && LiftingOrderList.Count == 0 )
+                int startIndex2 = 0;
+                int endIndex2 = 0;
+
+                switch( groupIndexCurrent )
                 {
-                    int startIndex2 = 0;
-                    int endIndex2 = 0;
+                    case 0:
+                        endIndex2 = group1Count;
+                        break;
+                    case 1:
+                        startIndex2 = group1Count;
+                        endIndex2 = group1Count + group2Count;
+                        break;
+                    case 2:
+                        startIndex2 = group1Count + group2Count;
+                        endIndex2 = group1Count + group2Count + group3Count;
+                        break;
+                }
 
-                    switch( groupIndexCurrent )
+                List<int> ints = new List<int>();
+
+                // For determeting what the lowest current lift is
+                for( int i = startIndex2 ; i < endIndex2 ; i++ )
+                {
+                    if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
                     {
-                        case 0:
-                            endIndex2 = group1Count;
-                            break;
-                        case 1:
-                            startIndex2 = group1Count;
-                            endIndex2 = group1Count + group2Count;
-                            break;
-                        case 2:
-                            startIndex2 = group1Count + group2Count;
-                            endIndex2 = group1Count + group2Count + group3Count;
-                            break;
+                        ints.Add( LifterID[ i ].CurrentLift );
                     }
+                }
 
-                    List<int> ints = new List<int>();
+                // Adding every lifter that corresponds to the lowest currentlift
+                if( ints.Count > 0 )
+                {
+                    int lowestCurrentLift = ints.Min();
+
+                    ExtraLifters.Clear();
 
                     for( int i = startIndex2 ; i < endIndex2 ; i++ )
-                        if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
-                            if( i + 1 >= 0 && i + 1 < LifterID.Count )
-                                ints.Add( LifterID[ i ].CurrentLift + 1 );
-
-                    if( ints.Count > 0 )
                     {
-                        int lowestCurrentLift = ints.Min();
-
-                        for( int i = startIndex2 ; i < endIndex2 ; i++ )
+                        if( LifterID[ i ].CurrentLift == lowestCurrentLift + 1 &&
+                            ( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) ||
+                            !LifterID[ i ].isBenchOnly ) &&
+                            !ExtraLifters.Contains( LifterID[ i ] ))
                         {
-                            if( LifterID[ i ].CurrentLift + 1 == lowestCurrentLift )
-                            {
-                                if( i + 1 >= 0 && i + 1 < LifterID.Count )
-                                    ExtraLifters.Add( LifterID[ i + 1 ] );
-                            }
+                            ExtraLifters.Add( LifterID[ i ] );
                         }
                     }
                 }
             }
-
             // Show the next 10 lifters or as many as available
-            for( int i = startIndex + 1 ; i < LiftingOrderList.Count && i < startIndex + 1 + countToShow ; i++ )
+            for( int i = startIndex + 1 ; i < LiftingOrderList.Count + ExtraLifters.Count && i < startIndex + 1 + countToShow ; i++ )
             {
                 string spacing = " ";
                 string SpacingIndex = "";
                 float value = 0.0f;
-                string text = value.ToString();
 
                 // Om gruppen är klar
-                if ( LiftingOrderList[ i ].CurrentLift - firstLiftColumn <= 8 )
-                    value = LiftingOrderList[ i ].sbdList[ LiftingOrderList[ i ].CurrentLift - firstLiftColumn ];
+                if( i < LiftingOrderList.Count() ) 
+                {
+                    if( LiftingOrderList[ i ].CurrentLift - firstLiftColumn <= 8 )
+                    {
+                        // Update the corresponding label in LiftingOrderListLabels
+                        value = LiftingOrderList[ i ].sbdList[ LiftingOrderList[ i ].CurrentLift - firstLiftColumn ];
+                    }
+                }
+                else 
+                {
+                    if( ExtraLifters[ i - LiftingOrderList.Count ].CurrentLift - firstLiftColumn <= 8 )
+                        value = ExtraLifters[ i - LiftingOrderList.Count ].sbdList[ ExtraLifters[ i - LiftingOrderList.Count ].CurrentLift - firstLiftColumn ];
+                }
+
+
+                string text = value.ToString();
 
                 if( value <= 100.0f )
                     spacing += "  ";
@@ -1934,15 +1949,20 @@ namespace SteelMeet
                     SpacingIndex = "  | ";
 
                 // Update the corresponding label in LiftingOrderListLabels
-                LiftingOrderListLabels[ i - 1 ].Text = i + SpacingIndex + value + spacing + LiftingOrderList[ i ].name;
+                if ( i < LiftingOrderList.Count )
+                    LiftingOrderListLabels[ i - 1 ].Text = i + SpacingIndex + value + spacing + LiftingOrderList[ i ].name;
+                else if ( ExtraLifters.Count > 0 && ExtraLifters.Count > i - LiftingOrderList.Count )
+                    LiftingOrderListLabels[ i - 1 ].Text = i + SpacingIndex + value + spacing + ExtraLifters[ i - LiftingOrderList.Count ].name;
+
             }
 
             // Clear the remaining labels
-            for( int i = startIndex + 1 + countToShow ; i < LiftingOrderListLabels.Count ; i++ )
+            for( int i = startIndex + countToShow ; i < LiftingOrderListLabels.Count ; i++ )
             {
                 LiftingOrderListLabels[ i ].Text = "";
             }
         }
+
         public void GroupCountUpdater()
         {
             group1Count = 0;
@@ -2375,7 +2395,7 @@ namespace SteelMeet
                     PlateCalculator2( LiftingOrderList[ 1 ].sbdList[ LiftingOrderList[ 1 ].CurrentLift - firstLiftColumn ], plateInfo );
                     lbl_Name2.Text = LiftingOrderList[ 1 ].name;
                     //Kollar om det finns 25kg plates och sedan visar hur många det finns
-                    if( usedPlatesList2[ 1 ] > 0 )
+                    if( usedPlatesList2[ 1 ] > 1 )
                     {
                         lbl_25x2.Text = usedPlatesList2[ 1 ].ToString();
                     }
@@ -2553,6 +2573,7 @@ namespace SteelMeet
             GroupCountUpdater();
             RankUpdate();
             LiftingOrderList.Clear();
+            ExtraLifters.Clear();
             LiftingOrderUpdate();//Updaterar lyftar ordning
             GroupLiftOrderUpdate();//Updaterar nästa grupps lyftar ordning
 

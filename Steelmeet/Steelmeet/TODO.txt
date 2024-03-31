@@ -2,12 +2,13 @@ Steelmeet TODO
 
 :)
 Viktiga saker :
-krascahr när man är klar med bänken, förmodligen samma prblem som nedan
-spectator gör så att det kraschar på sista marken, man kan inte göra sista marken
-Underkända lyft scalar inte med nya scalen på spectator
+Dynamisk allokering av lyftarording och ingångar plats
 Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
 Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
+✅krascahr när man är klar med bänken, förmodligen samma prblem som nedan
+✅spectator gör så att det kraschar på sista marken, man kan inte göra sista marken
+✅Underkända lyft scalar inte med nya scalen på spectator
 ✅Fönster för publiken med reducerad information
 ✅Custom size på datagridview som man kan ändra genom kontrollpanelen
 

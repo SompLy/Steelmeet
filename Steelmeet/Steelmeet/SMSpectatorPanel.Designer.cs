@@ -175,7 +175,7 @@
             // 
             // panel11
             // 
-            panel11.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            panel11.BackColor =  SystemColors.WindowText ;
             panel11.Controls.Add( lbl_OpeningLift );
             panel11.Controls.Add( lbl_groupLiftOrder_control_1 );
             panel11.Controls.Add( lbl_groupLiftOrder_control_2 );
@@ -202,11 +202,12 @@
             panel11.Name =  "panel11" ;
             panel11.Size =  new Size( 404, 705 ) ;
             panel11.TabIndex =  51 ;
+            panel11.Paint +=  panel11_Paint ;
             // 
             // lbl_OpeningLift
             // 
             lbl_OpeningLift.AutoSize =  true ;
-            lbl_OpeningLift.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            lbl_OpeningLift.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_OpeningLift.Font =  new Font( "Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point ) ;
             lbl_OpeningLift.ForeColor =  Color.White ;
             lbl_OpeningLift.Location =  new Point( 21, -4 ) ;
@@ -417,7 +418,7 @@
             // 
             // panel10
             // 
-            panel10.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            panel10.BackColor =  SystemColors.WindowText ;
             panel10.Controls.Add( lbl_liftOrder_control_1 );
             panel10.Controls.Add( lbl_liftOrder_control_2 );
             panel10.Controls.Add( lbl_liftOrder_control_3 );
@@ -434,6 +435,7 @@
             panel10.Name =  "panel10" ;
             panel10.Size =  new Size( 404, 373 ) ;
             panel10.TabIndex =  50 ;
+            panel10.Paint +=  panel10_Paint ;
             // 
             // lbl_liftOrder_control_1
             // 
@@ -548,7 +550,7 @@
             // label30
             // 
             label30.AutoSize =  true ;
-            label30.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            label30.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             label30.Font =  new Font( "Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label30.ForeColor =  Color.White ;
             label30.Location =  new Point( 81, -9 ) ;
@@ -559,7 +561,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            panel5.BackColor =  SystemColors.WindowText ;
             panel5.Controls.Add( label25 );
             panel5.Controls.Add( label24 );
             panel5.Controls.Add( lbl_timerLapp );
@@ -569,6 +571,7 @@
             panel5.Name =  "panel5" ;
             panel5.Size =  new Size( 515, 117 ) ;
             panel5.TabIndex =  46 ;
+            panel5.Paint +=  panel5_Paint ;
             // 
             // label25
             // 
@@ -635,7 +638,7 @@
             lbl_currentWeight.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_currentWeight.Font =  new Font( "Segoe UI", 39.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
             lbl_currentWeight.ForeColor =  Color.White ;
-            lbl_currentWeight.Location =  new Point( 525, 0 ) ;
+            lbl_currentWeight.Location =  new Point( 527, 0 ) ;
             lbl_currentWeight.Name =  "lbl_currentWeight" ;
             lbl_currentWeight.Size =  new Size( 239, 84 ) ;
             lbl_currentWeight.TabIndex =  4 ;
