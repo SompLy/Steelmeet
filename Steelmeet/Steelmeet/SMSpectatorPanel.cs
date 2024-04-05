@@ -25,6 +25,8 @@ namespace SteelMeet
 
         private void SMSpectatorPanel_Load( object sender, EventArgs e )
         {
+            lbl_Record.Parent = dataGridViewSpectatorPanel;
+            lbl_Record.BackColor = System.Drawing.Color.Transparent;
             SetupDataGridView();
         }
 

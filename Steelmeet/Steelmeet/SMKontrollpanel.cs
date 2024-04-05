@@ -158,9 +158,9 @@ namespace SteelMeet
 
         void licensCheck()
         {
-            DateTime licenceEndDate = new DateTime(2024, 4, 1);
+            DateTime licenceEndDate = new DateTime(2024, 5, 1);
             if( DateTime.Now > licenceEndDate )
-                MessageBox.Show( "Din STEELMEET licens har utgått 2024-04-01" );
+                MessageBox.Show( "Din STEELMEET licens har utgått 2024-05-01" );
         }
 
         private void ForceCloseApplication()
@@ -1293,7 +1293,6 @@ namespace SteelMeet
                         dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value = //Upprepar samma lyft i nästa ruta för underkänt lyft
                         float.Parse( dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Value.ToString() );
                     }
-                    //dataGridViewControlPanel.BeginEdit(true);
 
                     dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 1 ];
                     // Markerar rad för den aktiva lyftaren
@@ -1322,10 +1321,10 @@ namespace SteelMeet
                 LiftingOrderList.Add( LifterID[ SelectedRowIndex + groupRowFixer ] );
                 LiftingOrderListSeamless.Add( LifterID[ SelectedRowIndex + groupRowFixer ] );
 
-                LiftingOrderUpdate();//Updaterar lyftar ordning
+                LiftingOrderUpdate();// Updaterar lyftar ordning
                 LifterID[ SelectedRowIndex + groupRowFixer ].isRetrying = true;
-                //Ångarar ett lyft för lyftaren i LiftRecord
-                //Lift record håller koll på vilka av lyften som lyftaren gjort har blivit godkända eller underkända i boolformat
+                // Ångarar ett lyft för lyftaren i LiftRecord
+                // Lift record håller koll på vilka av lyften som lyftaren gjort har blivit godkända eller underkända i boolformat
                 LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.RemoveAt( LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Count - 1 );
 
                 if( LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift != 13 && LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift != 16 )
@@ -1338,7 +1337,7 @@ namespace SteelMeet
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Style.Font = new System.Drawing.Font( "Segoe UI", 10f, FontStyle.Regular );
                 LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift -= 1;
 
-                //Uppdaterar total och GLpoints
+                // Uppdaterar total och GLpoints
                 LiftingOrderList[ 0 ].total = LiftingOrderList[ 0 ].bestS + LiftingOrderList[ 0 ].bestB + LiftingOrderList[ 0 ].bestD;
                 LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ] );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
@@ -1418,82 +1417,6 @@ namespace SteelMeet
             }
         }
 
-        //public void Display1(
-        //    string Namn,
-        //    string Lotnummer,
-        //    string Viktklass,
-        //    string Kategori,
-        //    string Licensnummer,
-        //    string Förening,
-        //    string Kroppsvikt,
-        //    string HöjdBöj,
-        //    string HöjdBänk,
-        //    string RackBänk,
-        //    string IngångBöj,
-        //    string IngångBänk,
-        //    string IngångMark)
-        //{
-        //    if (b)
-        //    {
-        //        dt2.Columns.Add("#");           //0
-        //        dt2.Columns.Add("Namn");        //1
-        //        dt2.Columns.Add("Lot");         //2 
-        //        dt2.Columns.Add("Klass");       //3
-        //        dt2.Columns.Add("Kategori");    //4
-        //        dt2.Columns.Add("Licensnr");//5
-        //        dt2.Columns.Add("Förening");    //6
-        //        dt2.Columns.Add("Kv");          //7
-        //        dt2.Columns.Add("H\nBöj");       //8
-        //        dt2.Columns.Add("H\nBänk");      //9
-        //        dt2.Columns.Add("R\nBänk");      //10
-        //        dt2.Columns.Add("S1");          //11
-        //        dt2.Columns.Add("S2");          //12
-        //        dt2.Columns.Add("S3");          //13
-        //        dt2.Columns.Add("B1");          //14
-        //        dt2.Columns.Add("B2");          //15
-        //        dt2.Columns.Add("B3");          //16
-        //        dt2.Columns.Add("D1");          //17
-        //        dt2.Columns.Add("D2");          //18
-        //        dt2.Columns.Add("D3");          //19
-        //        dt2.Columns.Add("Total");       //20
-        //        dt2.Columns.Add("IPF GL\nPoäng");
-
-        //        b = false;
-        //    }
-        //    DataRow dr2 = dt2.NewRow();
-
-        //    dr2[1] = Namn;
-        //    dr2[2] = Lotnummer;
-        //    dr2[3] = Viktklass;
-        //    dr2[4] = Kategori;
-        //    dr2[5] = Licensnummer;
-        //    dr2[6] = Förening;
-        //    dr2[7] = Kroppsvikt;
-        //    dr2[8] = HöjdBöj;
-        //    dr2[9] = HöjdBänk;
-        //    dr2[10] = RackBänk;
-        //    dr2[11] = IngångBöj;
-        //    dr2[14] = IngångBänk;
-        //    dr2[17] = IngångMark;
-
-        //    //Debug
-        //    //dr2[1] = "Namn";
-        //    //dr2[2] = "Lotnummer";
-        //    //dr2[3] = "Viktklass";
-        //    //dr2[4] = "Kategori";
-        //    //dr2[5] = "Licensnummer";
-        //    //dr2[6] = "Förening";
-        //    //dr2[7] = "Kroppsvikt";
-        //    //dr2[8] = "HöjdBöj";
-        //    //dr2[9] = "HöjdBänk";
-        //    //dr2[10] = "Rackbänk";
-        //    //dr2[11] = "IngångBöj";
-        //    //dr2[14] = "IngångBänk";
-        //    //dr2[17] = "IngångMark";
-
-        //    dt2.Rows.Add(dr2);
-        //    dataGridViewControlPanel.DataSource = dt2;
-        //}
         public void DisplayAll(
             string Place,
             string Namn,
