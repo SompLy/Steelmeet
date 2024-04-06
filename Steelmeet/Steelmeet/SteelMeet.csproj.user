@@ -7,6 +7,9 @@
     <Compile Update="BlueTooltip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="RoundLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="RoundPanels.cs">
       <SubType>Component</SubType>
     </Compile>

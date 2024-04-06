@@ -143,7 +143,7 @@
             lbl_25x2.BackColor =  Color.Transparent ;
             lbl_25x2.Font =  new Font( "Segoe UI", 33.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
             lbl_25x2.ForeColor =  Color.White ;
-            lbl_25x2.Location =  new Point( -2, 101 ) ;
+            lbl_25x2.Location =  new Point( -3, 107 ) ;
             lbl_25x2.Name =  "lbl_25x2" ;
             lbl_25x2.Size =  new Size( 156, 61 ) ;
             lbl_25x2.TabIndex =  26 ;
@@ -662,7 +662,7 @@
             lbl_25x.BackColor =  Color.Transparent ;
             lbl_25x.Font =  new Font( "Segoe UI", 33.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
             lbl_25x.ForeColor =  Color.White ;
-            lbl_25x.Location =  new Point( -2, 100 ) ;
+            lbl_25x.Location =  new Point( -3, 106 ) ;
             lbl_25x.Name =  "lbl_25x" ;
             lbl_25x.Size =  new Size( 156, 61 ) ;
             lbl_25x.TabIndex =  21 ;

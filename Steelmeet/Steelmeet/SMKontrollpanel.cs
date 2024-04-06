@@ -5,6 +5,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using SpreadsheetLight;
 using SteelMeet;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Web;
@@ -1881,9 +1882,7 @@ namespace SteelMeet
 
             // Clear the remaining labels
             for( int i = startIndex + countToShow ; i < LiftingOrderListLabels.Count ; i++ )
-            {
                 LiftingOrderListLabels[ i ].Text = "";
-            }
         }
 
         public void GroupCountUpdater()
@@ -1891,31 +1890,21 @@ namespace SteelMeet
             group1Count = 0;
             group2Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
             group3Count = 0;
+
             for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
-            {
                 if( LifterID[ i ].groupNumber == 1 )
-                {
                     group1Count += 1;
-                }
-            }
             for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
-            {
                 if( LifterID[ i ].groupNumber == 2 )
-                {
                     group2Count += 1;
-                }
-            }
             for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
-            {
                 if( LifterID[ i ].groupNumber == 3 )
-                {
                     group3Count += 1;
-                }
-            }
 
         }
-        public void GroupLiftOrderUpdate() //Updaterar nästa grupps ingångar
+        public void GroupLiftOrderUpdate() // Updaterar nästa grupps ingångar
         {
+            // Sets labels
             if( GroupLiftingOrderListLabels.Count < 1 )
                 GroupLiftingOrderListLabels.AddRange( new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
                                                         lbl_groupLiftOrder_control_5, lbl_groupLiftOrder_control_6, lbl_groupLiftOrder_control_7, lbl_groupLiftOrder_control_8,
@@ -1925,90 +1914,100 @@ namespace SteelMeet
 
             for( int i = 0 ; i < GroupLiftingOrderListLabels.Count ; i++ )
                 GroupLiftingOrderListLabels[ i ].Text = "";
+
+            // Group updater Group updater Group updater 
+            // Group updater Group updater Group updater 
             // Group updater Group updater Group updater 
 
-            //Fyller listan, om den aktiva gruppen är grupp 1
+            // For determeting what the lowest current lift is
+            List< int > lowestCurrentLiftInGroup = new List< int >();
+            int startIndex = groupRowFixer;
+            int endIndex = 0;
+
+            GroupCountUpdater();
+            // Lite fult men tyderligt
+            switch( groupIndexCurrent )
+            {
+                case 0:
+                    endIndex = group1Count;
+                    break;
+                case 1:
+                    endIndex = group1Count + group2Count;
+                    break;
+                case 2:
+                    endIndex = group1Count + group2Count + group3Count;
+                    break;
+            }
+
+            for( int i = startIndex ; i < endIndex ; i++ )
+            {
+                if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
+                    lowestCurrentLiftInGroup.Add( LifterID[ i ].CurrentLift );
+
+                // Om det bara finns bänkpressare i nästa grupp
+                if( lowestCurrentLiftInGroup.Count == 0 )
+                    lowestCurrentLiftInGroup.Add( LifterID[ i ].CurrentLift );
+            }
+
+            // Get tteh relevant lift ( the lowest currentlift in the group )
+            int relevantCurrentLift = 0;
+            if( lowestCurrentLiftInGroup.Count > 0 )
+                relevantCurrentLift = lowestCurrentLiftInGroup.Min() - firstLiftColumn;
+
+            // Fyller listan, om den aktiva gruppen är grupp 1
             eGroupLiftingOrderState groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
+
 
             if( groupIndexCount == 2 ) // Om det finns två grupper
             {
                 if( groupIndexCurrent == 0 ) //Om den aktiva gruppen är grupp 1
                 {
-                    if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 3 )
-                    {
+                    if( relevantCurrentLift < 3 )
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 6 )
-                    {
+                    else if( relevantCurrentLift < 6 )
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Bench;
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 9 )
-                    {
+                    else if( relevantCurrentLift < 9 )
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Deadlift;
-                    }
                 }
                 else if( groupIndexCurrent == 1 ) //Om den aktiva gruppen är grupp 2
                 {
-                    if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 3 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group1Squat; //Kommer aldrig att hända
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 6 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 9 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.nothing;
-                    }
+                    if( relevantCurrentLift < 3 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.group1Squat;
+                    else if( relevantCurrentLift < 6 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
+                    else if( relevantCurrentLift < 9 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.nothing;
                 }
             }
-            else if( groupIndexCount == 3 )// Om det finns tre grupper
+            else if( groupIndexCount == 3 ) // Om det finns tre grupper
             {
                 if( groupIndexCurrent == 0 ) //Om den aktiva gruppen är grupp 1
                 {
-                    if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 3 )
-                    {
+                    if( relevantCurrentLift < 3 )
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Squat;
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 6 )
-                    {
+                    else if( relevantCurrentLift < 6 )
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Bench;
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 9 )
-                    {
+                    else if( relevantCurrentLift < 9 )
                         groupLiftingOrderState = eGroupLiftingOrderState.group2Deadlift;
-                    }
                 }
+
                 else if( groupIndexCurrent == 1 ) //Om den aktiva gruppen är grupp 2
                 {
-                    if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 3 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group3Squat; //Kommer aldrig att hända
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 6 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group3Bench;
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 9 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group3Deadlift;
-                    }
+                    if( relevantCurrentLift < 3 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.group3Squat;
+                    else if( relevantCurrentLift < 6 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.group3Bench;
+                    else if( relevantCurrentLift < 9 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.group3Deadlift;
                 }
                 else if( groupIndexCurrent == 2 ) //Om den aktiva gruppen är grupp 2
                 {
-                    if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 3 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group1Squat; //Kommer aldrig att hända
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 6 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
-                    }
-                    else if( LifterID[ 0 + groupRowFixer ].CurrentLift - firstLiftColumn < 9 )
-                    {
-                        groupLiftingOrderState = eGroupLiftingOrderState.nothing;
-                    }
+                    if( relevantCurrentLift < 3 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.group1Squat;
+                    else if( relevantCurrentLift < 6 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
+                    else if( relevantCurrentLift < 9 )
+                    groupLiftingOrderState = eGroupLiftingOrderState.nothing;
                 }
             }
 
