@@ -6,6 +6,7 @@ using SpreadsheetLight;
 using SteelMeet;
 using System.Data;
 using System.DirectoryServices.ActiveDirectory;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Web;
@@ -2365,11 +2366,11 @@ namespace SteelMeet
                 }
 
                 //Till projector gör så det kommer upp text som blinkar som innehåller recordType
-                foreach( var sms in smsList )
+                foreach( var sms in smsList ) 
                     sms.lbl_Record.ForeColor = rainbowColor.GetRainbowArray()[ millisecondsRecord ];
+
             }
         }
-
 
         private void btn_klovad_Click( object sender, EventArgs e )
         {
