@@ -799,13 +799,13 @@
             lbl_Record.AutoSize = true;
             lbl_Record.Font = new Font( "Segoe UI", 80.25F, FontStyle.Bold, GraphicsUnit.Point );
             lbl_Record.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_Record.Location = new Point( 261, 301 );
+            lbl_Record.Location = new Point( 266, 237 );
             lbl_Record.Margin = new Padding( 0 );
             lbl_Record.Name = "lbl_Record";
             lbl_Record.Size = new Size( 1032, 568 );
             lbl_Record.TabIndex = 24;
             lbl_Record.Text = "Klubb Rekord !!!\r\nÖrebro KK\r\nJunior\r\nKlassiskt Bänkpress\r\n";
-            lbl_Record.TextAlign = ContentAlignment.TopCenter;
+            lbl_Record.TextAlign = ContentAlignment.MiddleCenter;
             lbl_Record.Visible = false;
             lbl_Record.Paint += lbl_Record_Paint;
             // 

@@ -2848,7 +2848,9 @@ namespace SteelMeet
                 foreach( var sms in smsList ) 
                 {
                     sms.lbl_Record.Text = recordLevelText + "\n" + AgeCategoryText + "\n" + isEquipedText + " " + eventText;
-                    sms.lbl_Record.Left = ( Width - sms.lbl_Record.Width ) / 2;
+                    //sms.lbl_Record.Left = ( Width - (sms.lbl_Record.Width ) / 2);
+                    sms.lbl_Record.Left = -( sms.lbl_Record.ClientRectangle.Width / 2 ) + ( sms.dataGridViewSpectatorPanel.Width / 2 );
+                    sms.lbl_Record.Top = -( sms.lbl_Record.ClientRectangle.Height / 2 ) + ( sms.dataGridViewSpectatorPanel.Height / 2 );
                 }
 
                 // Set lbl visable

@@ -328,17 +328,20 @@ namespace SteelMeet
             Graphics g = e.Graphics;
             GraphicsPath p = new GraphicsPath();
             Label label = (( Label )sender);
-            System.Drawing.FontFamily family;
+
+            float x = ( label.Width + g.MeasureString( label.Text, label.Font ).Width ) / 4;
+            float y = ( label.Height - g.MeasureString( label.Text, label.Font ).Height ) / 2;
+
 
             p.AddString(
                 label.Text,
                 label.Font.FontFamily,
                 ( int )label.Font.Style,
                 g.DpiY * label.Font.Size / 72,
-                new Point( 485, 0 ),
-                new StringFormat { Alignment = label.TextAlign } );          // set options here (e.g. center alignment)
+                new PointF( x, y ),
+                new StringFormat { Alignment = StringAlignment.Center } );          // set options here (e.g. center alignment)
 
-            using( Pen outlinePen = new Pen( System.Drawing.Color.Black, 4 ) )
+            using( Pen outlinePen = new Pen( System.Drawing.Color.Black, 8 ) )
             {
                 g.InterpolationMode = InterpolationMode.High;
                 g.SmoothingMode = SmoothingMode.HighQuality;
