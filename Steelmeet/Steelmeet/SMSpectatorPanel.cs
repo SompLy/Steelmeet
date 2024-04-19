@@ -16,7 +16,7 @@ using Font = System.Drawing.Font;
 
 namespace SteelMeet
 {
-    public partial class SMSpectatorPanel : Form
+    public partial class SMSpectatorPanel: Form
     {
         public SMSpectatorPanel( Form _form )
         {
@@ -27,8 +27,11 @@ namespace SteelMeet
 
         private void SMSpectatorPanel_Load( object sender, EventArgs e )
         {
+            RainbowLabel lbl_Record_Rainbow = new RainbowLabel( smk );
+            lbl_Record_Rainbow.
             lbl_Record.Parent = dataGridViewSpectatorPanel;
             lbl_Record.BackColor = System.Drawing.Color.Transparent;
+
             SetupDataGridView();
         }
 
@@ -51,7 +54,7 @@ namespace SteelMeet
             clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
 
             int indexOffset = 0;
-            for( Int32 index = 0; index < _row.Cells.Count; index++ )
+            for( Int32 index = 0 ; index < _row.Cells.Count ; index++ )
             {
                 if( index != 7 && index != 8 && index != 9 ) // Klonar inte höjder
                 {
@@ -128,7 +131,7 @@ namespace SteelMeet
                                                         lbl_groupLiftOrder_control_9, lbl_groupLiftOrder_control_10, lbl_groupLiftOrder_control_11, lbl_groupLiftOrder_control_12,
                                                         lbl_groupLiftOrder_control_13, lbl_groupLiftOrder_control_14, lbl_groupLiftOrder_control_15, lbl_groupLiftOrder_control_16,
                                                         lbl_groupLiftOrder_control_17, lbl_groupLiftOrder_control_18, lbl_groupLiftOrder_control_19, lbl_groupLiftOrder_control_20} );
-            for( int i = 0; i < smk.GroupLiftingOrderListLabels.Count; i++ )
+            for( int i = 0 ; i < smk.GroupLiftingOrderListLabels.Count ; i++ )
                 GroupLiftingOrderListLabels[ i ].Text = smk.GroupLiftingOrderListLabels[ i ].Text;
         }
         public void UpdateDataGriview()
@@ -137,13 +140,13 @@ namespace SteelMeet
             dataGridViewSpectatorPanel.Rows.Clear();
             if( dataGridViewSpectatorPanel.ColumnCount > 0 ) // Det måste finnas columner för att kunna lägga till rader
             {
-                for( int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++ )
+                for( int i = 0 ; i < smk.dataGridViewControlPanel.RowCount ; i++ )
                     dataGridViewSpectatorPanel.Rows.Add( CloneRow( smk.dataGridViewControlPanel.Rows[ i ] ) );
 
                 // Markera nuvarande lyftare
                 dataGridViewSpectatorPanel.CurrentCell = null; // Annars markerar den alltid första cellen
                 if( smk.dataGridViewControlPanel.RowCount > 1 && smk.LiftingOrderList.Count > 0 )
-                    for( int columnIndex = 1; columnIndex <= 5; columnIndex++ )
+                    for( int columnIndex = 1 ; columnIndex <= 5 ; columnIndex++ )
                         dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
             }
         }
@@ -217,7 +220,7 @@ namespace SteelMeet
                     lbl_liftOrder_control_9, lbl_liftOrder_control_10
                     } );
 
-            for( int i = 0; i < smk.LiftingOrderListLabels.Count; i++ )
+            for( int i = 0 ; i < smk.LiftingOrderListLabels.Count ; i++ )
                 LiftingOrderListLabels[ i ].Text = smk.LiftingOrderListLabels[ i ].Text;
         }
 
@@ -243,7 +246,7 @@ namespace SteelMeet
             Pen p = new Pen(System.Drawing.Color.Red, 22);
             int offset = 28;
 
-            for( int i = 0; i < 10; )
+            for( int i = 0 ; i < 10 ; )
             {
                 if( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
                 {
@@ -323,33 +326,5 @@ namespace SteelMeet
             RoundPanel.DrawRoundedRectangle( g, panel5.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
         }
 
-        private void lbl_Record_Paint( object sender, PaintEventArgs e )
-        {
-            Graphics g = e.Graphics;
-            GraphicsPath p = new GraphicsPath();
-            Label label = (( Label )sender);
-
-            float x = ( label.Width + g.MeasureString( label.Text, label.Font ).Width ) / 4;
-            float y = ( label.Height - g.MeasureString( label.Text, label.Font ).Height ) / 2;
-
-
-            p.AddString(
-                label.Text,
-                label.Font.FontFamily,
-                ( int )label.Font.Style,
-                g.DpiY * label.Font.Size / 72,
-                new PointF( x, y ),
-                new StringFormat { Alignment = StringAlignment.Center } );          // set options here (e.g. center alignment)
-
-            using( Pen outlinePen = new Pen( System.Drawing.Color.Black, 8 ) )
-            {
-                g.InterpolationMode = InterpolationMode.High;
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-
-                g.DrawPath( outlinePen, p );
-            }
-        }
     }
 }

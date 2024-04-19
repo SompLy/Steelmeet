@@ -9,7 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace SteelMeet
 {
-    internal class RainbowColor
+    public class RainbowColor
     {
         public struct ColorRGB
         {

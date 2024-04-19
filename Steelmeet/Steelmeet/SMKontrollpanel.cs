@@ -41,7 +41,7 @@ namespace SteelMeet
 
         BlueToolTip blueToolTip = new BlueToolTip();
         //RoundPanel roundPanel = new RoundPanel();
-        RainbowColor rainbowColor = new RainbowColor();
+        public RainbowColor rainbowColor = new RainbowColor();
         Fullscreen fullscreen = new Fullscreen();
         bool isFullscreen = false;
 
@@ -52,7 +52,7 @@ namespace SteelMeet
 
         public string BrowsedFilePath;
         public string BrowsedFile;
-        public string recordType;               //Klubb, Distrikt, Svenskt rekord, Europa rekord, World record!!!
+        public string recordType;               // Klubb, Distrikt, Svenskt rekord, Europa rekord, World record!!!
 
         Color currentLiftColor = Color.White;   // Color of current lift on the datagridview
 
@@ -62,7 +62,7 @@ namespace SteelMeet
         int minutesLapp;
         int secondsLyft;
         int minutesLyft;
-        int millisecondsRecord;
+        public int millisecondsRecord;
         public int groupIndexCurrent;
         int groupIndexCount = 1;            // Antal grupper
         int group1Count;                    // Antal lyftare i grupp
@@ -73,22 +73,22 @@ namespace SteelMeet
 
         public Dictionary<int, Lifter> LifterID = new();
 
-        public List<int> usedPlatesList = new List<int>(); // Hur många plates calculatorn har använt.
-        List<int> totalPlatesList = new List<int>(); // Antalet paltes som användaren anvivit
-        List<float> weightsList = new List<float>(); // Vikter
+        public List<int> usedPlatesList = new List<int>();  // Hur många plates calculatorn har använt.
+        List<int> totalPlatesList = new List<int>();        // Antalet paltes som användaren anvivit
+        List<float> weightsList = new List<float>();        // Vikter
         public List<int> usedPlatesList2 = new List<int>(); // Hur många plates calculatorn har använt.
-        List<int> totalPlatesList2 = new List<int>(); // Antalet paltes som användaren anvivit
-        List<float> weightsList2 = new List<float>(); // Vikter
+        List<int> totalPlatesList2 = new List<int>();       // Antalet paltes som användaren anvivit
+        List<float> weightsList2 = new List<float>();       // Vikter
 
-        public List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
-        public List<Lifter> LiftingOrderList = new List<Lifter>();                                                 // För att sortera
+        public List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();    // Order med lyftare och vikt de ska ta i rätt ordning.
+        public List<Lifter> LiftingOrderList = new List<Lifter>();                                                  // För att sortera
 
         List<System.Windows.Forms.Label> LiftingOrderListLabelsSeamless = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning. För seamless
         List<Lifter> LiftingOrderListSeamless = new List<Lifter>();                                                 // För att sortera
         int LiftingOrderSeamlessMax = 10;
 
-        public List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>();  // Order med lyftare och vikt de ska ta i rätt ordning.
-        List<Lifter> GroupLiftingOrderList = new List<Lifter>();                                                // För att sortera viktera
+        public List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
+        List<Lifter> GroupLiftingOrderList = new List<Lifter>();                                                        // För att sortera viktera
 
         List<Lifter> ExtraLifters = new List<Lifter>();
         enum eGroupLiftingOrderState
@@ -162,7 +162,7 @@ namespace SteelMeet
         {
             DateTime licenceEndDate = new DateTime(2024, 5, 1);
             if( DateTime.Now > licenceEndDate )
-                MessageBox.Show( "Din STEELMEET licens har utgått 2024-05-01" );
+                MessageBox.Show( "Din STEELMEET licens har utgått 2024-05-01 \n Ladda ner nyaste versionen på STEELMEET.SE :)" );
         }
 
         private void ForceCloseApplication()
@@ -177,11 +177,11 @@ namespace SteelMeet
             Application.Exit();
         }
 
-        //Invägning
-        //Invägning
-        //Invägning
-        //Invägning
-        //Invägning
+        // Invägning
+        // Invägning
+        // Invägning
+        // Invägning
+        // Invägning
 
         private void infoPanel_WeighInPanel_Paint( object sender, PaintEventArgs e )
         {
@@ -2356,19 +2356,16 @@ namespace SteelMeet
 
         private void TimerTickRekordAnimering( object sender, EventArgs e )
         {
+            // Is used for choosing color in rainbow array to get rainbow effect
             if( IsRecord )
             {
                 millisecondsRecord--;
 
                 if( millisecondsRecord <= 0 )
-                {
                     millisecondsRecord = rainbowColor.GetRainbowArray().Count - 1;
-                }
 
-                //Till projector gör så det kommer upp text som blinkar som innehåller recordType
-                foreach( var sms in smsList ) 
-                    sms.lbl_Record.ForeColor = rainbowColor.GetRainbowArray()[ millisecondsRecord ];
-
+                foreach( var sms in smsList )
+                    sms.lbl_Record.Invalidate();
             }
         }
 
