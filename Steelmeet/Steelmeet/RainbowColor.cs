@@ -43,7 +43,7 @@ namespace SteelMeet
 
         private void SetRainbowColors() 
         {
-            for( double i = 0 ; i < 1 ; i += 0.01 )
+            for( double i = 0 ; i < 1 ; i += 0.02 ) // 0.025 = 40 färger
             {
                 ColorRGB c = HSL2RGB(i, 0.5, 0.5);
                 rainbowColors.Add( (Color)c );

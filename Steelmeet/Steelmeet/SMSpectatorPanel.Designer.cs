@@ -89,7 +89,6 @@
             pictureBox3 =  new PictureBox() ;
             pictureBox1 =  new PictureBox() ;
             label2 =  new Label() ;
-            lbl_Record =  new Label() ;
             infopanel_Spectatorpanel2.SuspendLayout();
             panel11.SuspendLayout();
             panel10.SuspendLayout();
@@ -793,28 +792,12 @@
             label2.TabIndex =  4 ;
             label2.Text =  "www.STEELMEET.se" ;
             // 
-            // lbl_Record
-            // 
-            lbl_Record.Anchor =        AnchorStyles.Top  |  AnchorStyles.Bottom   |  AnchorStyles.Left   |  AnchorStyles.Right   ;
-            lbl_Record.AutoSize =  true ;
-            lbl_Record.Font =  new Font( "Segoe UI", 80.25F, FontStyle.Bold, GraphicsUnit.Point ) ;
-            lbl_Record.ForeColor =  Color.White ;
-            lbl_Record.Location =  new Point( 266, 237 ) ;
-            lbl_Record.Margin =  new Padding( 0 ) ;
-            lbl_Record.Name =  "lbl_Record" ;
-            lbl_Record.Size =  new Size( 1032, 568 ) ;
-            lbl_Record.TabIndex =  24 ;
-            lbl_Record.Text =  "Klubb Rekord !!!\r\nÖrebro KK\r\nJunior\r\nKlassiskt Bänkpress\r\n" ;
-            lbl_Record.TextAlign =  ContentAlignment.MiddleCenter ;
-            lbl_Record.Visible =  false ;
-            // 
             // SMSpectatorPanel
             // 
             AutoScaleDimensions =  new SizeF( 7F, 15F ) ;
             AutoScaleMode =  AutoScaleMode.Font ;
             BackColor =  SystemColors.WindowText ;
             ClientSize =  new Size( 1920, 1061 ) ;
-            Controls.Add( lbl_Record );
             Controls.Add( label2 );
             Controls.Add( pictureBox3 );
             Controls.Add( label32 );
@@ -905,6 +888,5 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox1;
         private Label label2;
-        public Label lbl_Record;
     }
 }

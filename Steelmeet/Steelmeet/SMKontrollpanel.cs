@@ -62,7 +62,6 @@ namespace SteelMeet
         int minutesLapp;
         int secondsLyft;
         int minutesLyft;
-        public int millisecondsRecord;
         public int groupIndexCurrent;
         int groupIndexCount = 1;            // Antal grupper
         int group1Count;                    // Antal lyftare i grupp
@@ -2354,21 +2353,6 @@ namespace SteelMeet
             }
         }
 
-        private void TimerTickRekordAnimering( object sender, EventArgs e )
-        {
-            // Is used for choosing color in rainbow array to get rainbow effect
-            if( IsRecord )
-            {
-                millisecondsRecord--;
-
-                if( millisecondsRecord <= 0 )
-                    millisecondsRecord = rainbowColor.GetRainbowArray().Count - 1;
-
-                foreach( var sms in smsList )
-                    sms.lbl_Record.Invalidate();
-            }
-        }
-
         private void btn_klovad_Click( object sender, EventArgs e )
         {
             TimerController( 0 );
@@ -2844,15 +2828,15 @@ namespace SteelMeet
                 // Set the full record lbl, Svenskt Rekord + \n + Ålderskategori + Klassiskt + Gren
                 foreach( var sms in smsList ) 
                 {
-                    sms.lbl_Record.Text = recordLevelText + "\n" + AgeCategoryText + "\n" + isEquipedText + " " + eventText;
+                    sms.lbl_Record_Rainbow.Text = recordLevelText + "\n" + AgeCategoryText + "\n" + isEquipedText + " " + eventText;
                     //sms.lbl_Record.Left = ( Width - (sms.lbl_Record.Width ) / 2);
-                    sms.lbl_Record.Left = -( sms.lbl_Record.ClientRectangle.Width / 2 ) + ( sms.dataGridViewSpectatorPanel.Width / 2 );
-                    sms.lbl_Record.Top = -( sms.lbl_Record.ClientRectangle.Height / 2 ) + ( sms.dataGridViewSpectatorPanel.Height / 2 );
+                    sms.lbl_Record_Rainbow.Left = -( sms.lbl_Record_Rainbow.ClientRectangle.Width / 2 ) + ( sms.dataGridViewSpectatorPanel.Width / 2 );
+                    sms.lbl_Record_Rainbow.Top = -( sms.lbl_Record_Rainbow.ClientRectangle.Height / 2 ) + ( sms.dataGridViewSpectatorPanel.Height / 2 );
                 }
 
                 // Set lbl visable
                 foreach( var sms in smsList )
-                    sms.lbl_Record.Visible = true;
+                    sms.lbl_Record_Rainbow.Visible = true;
             }
             else
             {
@@ -2860,7 +2844,7 @@ namespace SteelMeet
                 timerRekordAnimering.Stop();
 
                 foreach( var sms in smsList )
-                    sms.lbl_Record.Visible = false;
+                    sms.lbl_Record_Rainbow.Visible = false;
             }
         }
 

@@ -2337,11 +2337,6 @@
             timerLapp.Interval =  1000 ;
             timerLapp.Tick +=  TimerTickLapp ;
             // 
-            // timerRekordAnimering
-            // 
-            timerRekordAnimering.Interval =  10 ;
-            timerRekordAnimering.Tick +=  TimerTickRekordAnimering ;
-            // 
             // groupBox1
             // 
             groupBox1.Controls.Add( rb_club );

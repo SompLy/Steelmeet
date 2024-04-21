@@ -27,15 +27,18 @@ namespace SteelMeet
 
         private void SMSpectatorPanel_Load( object sender, EventArgs e )
         {
-            RainbowLabel lbl_Record_Rainbow = new RainbowLabel( smk );
-            lbl_Record_Rainbow.
-            lbl_Record.Parent = dataGridViewSpectatorPanel;
-            lbl_Record.BackColor = System.Drawing.Color.Transparent;
+            lbl_Record_Rainbow = new RainbowLabel( smk );
+            lbl_Record_Rainbow.Parent = dataGridViewSpectatorPanel;
+            lbl_Record_Rainbow.Location = new Point( 0, 0 ); // Maybe gay af
+            lbl_Record_Rainbow.BackColor = System.Drawing.Color.Transparent;
+            lbl_Record_Rainbow.AutoSize = true;
+            dataGridViewSpectatorPanel.Controls.Add( lbl_Record_Rainbow );
 
             SetupDataGridView();
         }
 
-        SMKontrollpanel smk;
+        public SMKontrollpanel smk;
+        public RainbowLabel lbl_Record_Rainbow;
         Fullscreen fullscreen = new Fullscreen();
         bool isFullscreen = false;
 
@@ -224,16 +227,7 @@ namespace SteelMeet
                 LiftingOrderListLabels[ i ].Text = smk.LiftingOrderListLabels[ i ].Text;
         }
 
-
-
-
-
-
-
-
-
         // Drwaing shit
-
 
         private void DrawPlates( Graphics g, List<int> usedPlatesList, List<System.Drawing.Color> plateColorList, List<int> paintedPlatesList )
         {
