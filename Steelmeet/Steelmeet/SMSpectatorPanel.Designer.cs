@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( SMSpectatorPanel ) );
             infopanel_Spectatorpanel2 =  new Panel() ;
             lbl_currentWeight2 =  new Label() ;
@@ -697,32 +697,32 @@
             dataGridViewSpectatorPanel.AllowUserToDeleteRows =  false ;
             dataGridViewSpectatorPanel.AllowUserToResizeColumns =  false ;
             dataGridViewSpectatorPanel.AllowUserToResizeRows =  false ;
-            dataGridViewCellStyle1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            dataGridViewCellStyle1.ForeColor =  Color.White ;
-            dataGridViewSpectatorPanel.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle1 ;
+            dataGridViewCellStyle4.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle4.ForeColor =  Color.White ;
+            dataGridViewSpectatorPanel.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle4 ;
             dataGridViewSpectatorPanel.AutoSizeColumnsMode =  DataGridViewAutoSizeColumnsMode.AllCells ;
             dataGridViewSpectatorPanel.AutoSizeRowsMode =  DataGridViewAutoSizeRowsMode.AllCells ;
             dataGridViewSpectatorPanel.BackgroundColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             dataGridViewSpectatorPanel.BorderStyle =  BorderStyle.None ;
             dataGridViewSpectatorPanel.CellBorderStyle =  DataGridViewCellBorderStyle.SingleHorizontal ;
             dataGridViewSpectatorPanel.ColumnHeadersBorderStyle =  DataGridViewHeaderBorderStyle.None ;
-            dataGridViewCellStyle2.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            dataGridViewCellStyle2.Font =  new Font( "Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle2.ForeColor =  Color.White ;
-            dataGridViewCellStyle2.SelectionBackColor =  SystemColors.Highlight ;
-            dataGridViewCellStyle2.SelectionForeColor =  SystemColors.HighlightText ;
-            dataGridViewCellStyle2.WrapMode =  DataGridViewTriState.True ;
-            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle2 ;
+            dataGridViewCellStyle5.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
+            dataGridViewCellStyle5.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle5.Font =  new Font( "Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point ) ;
+            dataGridViewCellStyle5.ForeColor =  Color.White ;
+            dataGridViewCellStyle5.SelectionBackColor =  SystemColors.Highlight ;
+            dataGridViewCellStyle5.SelectionForeColor =  SystemColors.HighlightText ;
+            dataGridViewCellStyle5.WrapMode =  DataGridViewTriState.True ;
+            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle5 ;
             dataGridViewSpectatorPanel.ColumnHeadersHeightSizeMode =  DataGridViewColumnHeadersHeightSizeMode.AutoSize ;
-            dataGridViewCellStyle3.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle3.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            dataGridViewCellStyle3.Font =  new Font( "Trebuchet MS", 18.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle3.ForeColor =  Color.White ;
-            dataGridViewCellStyle3.SelectionBackColor =  SystemColors.Highlight ;
-            dataGridViewCellStyle3.SelectionForeColor =  SystemColors.HighlightText ;
-            dataGridViewCellStyle3.WrapMode =  DataGridViewTriState.False ;
-            dataGridViewSpectatorPanel.DefaultCellStyle =  dataGridViewCellStyle3 ;
+            dataGridViewCellStyle6.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
+            dataGridViewCellStyle6.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            dataGridViewCellStyle6.Font =  new Font( "Trebuchet MS", 18.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            dataGridViewCellStyle6.ForeColor =  Color.White ;
+            dataGridViewCellStyle6.SelectionBackColor =  SystemColors.Highlight ;
+            dataGridViewCellStyle6.SelectionForeColor =  SystemColors.HighlightText ;
+            dataGridViewCellStyle6.WrapMode =  DataGridViewTriState.False ;
+            dataGridViewSpectatorPanel.DefaultCellStyle =  dataGridViewCellStyle6 ;
             dataGridViewSpectatorPanel.EnableHeadersVisualStyles =  false ;
             dataGridViewSpectatorPanel.GridColor =  SystemColors.WindowText ;
             dataGridViewSpectatorPanel.ImeMode =  ImeMode.NoControl ;
@@ -740,11 +740,11 @@
             label32.BackColor =  Color.Black ;
             label32.Font =  new Font( "Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label32.ForeColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            label32.Location =  new Point( 373, 967 ) ;
+            label32.Location =  new Point( 386, 967 ) ;
             label32.Name =  "label32" ;
-            label32.Size =  new Size( 206, 35 ) ;
+            label32.Size =  new Size( 165, 35 ) ;
             label32.TabIndex =  53 ;
-            label32.Text =  "Testversion v1.2.0" ;
+            label32.Text =  "Version v1.2.1" ;
             label32.TextAlign =  ContentAlignment.TopCenter ;
             // 
             // label1

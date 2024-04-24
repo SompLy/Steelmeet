@@ -68,7 +68,7 @@ namespace SteelMeet
         int group2Count;                    // Antal lyftare i grupp
         int group3Count;                    // Antal lyftare i grupp
         public int groupRowFixer;           // Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
-        int firstLiftColumn = 10;           // 157, 217 måste ändras också ????
+        int firstLiftColumn = 10;           // 130, 217 måste ändras också ????
 
         public Dictionary<int, Lifter> LifterID = new();
 
@@ -1921,6 +1921,7 @@ namespace SteelMeet
 
             // For determeting what the lowest current lift is
             List< int > lowestCurrentLiftInGroup = new List< int >();
+            lowestCurrentLiftInGroup.Clear();
             int startIndex = groupRowFixer;
             int endIndex = 0;
 
@@ -1947,6 +1948,14 @@ namespace SteelMeet
                 // Om det bara finns bänkpressare i nästa grupp
                 if( lowestCurrentLiftInGroup.Count == 0 )
                     lowestCurrentLiftInGroup.Add( LifterID[ i ].CurrentLift );
+
+            }
+
+            if( lowestCurrentLiftInGroup.Count > 0 )
+            {
+                // If group has some benchpressers and some full power
+                int lowestValue = lowestCurrentLiftInGroup.Min();
+                lowestCurrentLiftInGroup.RemoveAll( x => x != lowestValue );
             }
 
             // Get tteh relevant lift ( the lowest currentlift in the group )
@@ -2092,7 +2101,17 @@ namespace SteelMeet
             // Använd custom comparer to sort LiftingOrderListNew.
             GroupLiftingOrderList = GroupLiftingOrderList.OrderBy( item => item, comparer ).ToList();
 
-            //Skriv ut alla lyftare och enum för vad det är som visas
+
+            // Remove all lifter who are not in the lowest currentlift
+            var tempLowestCurrentLift = GroupLiftingOrderList.Select( x => x.CurrentLift );
+            int low = tempLowestCurrentLift.Min();
+            for( int i = 0 ; i < GroupLiftingOrderList.Count ; )
+                if( GroupLiftingOrderList[ i ].CurrentLift > low )
+                    GroupLiftingOrderList.RemoveAt( i );
+                else
+                    i++;
+
+            // Skriv ut alla lyftare och enum för vad det är som visas
             lbl_OpeningLift.Text = lblText;
 
             if( !ViewNothing )

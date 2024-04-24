@@ -21,7 +21,6 @@ namespace SteelMeet
         public SMSpectatorPanel( Form _form )
         {
             smk = ( SMKontrollpanel )_form;
-
             InitializeComponent();
         }
 
@@ -35,6 +34,7 @@ namespace SteelMeet
             dataGridViewSpectatorPanel.Controls.Add( lbl_Record_Rainbow );
 
             SetupDataGridView();
+            UpdateAll();
         }
 
         public SMKontrollpanel smk;
