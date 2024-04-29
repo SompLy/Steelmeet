@@ -1,2 +1,2 @@
 # Steelmeet
-Program for powerlifting competitions made by Edvin Öhrström
+Program for managing powerlifting competitions made by Edvin Öhrström
