@@ -159,7 +159,7 @@ namespace SteelMeet
 
         void licensCheck()
         {
-            DateTime licenceEndDate = new DateTime(2024, 5, 1);
+            DateTime licenceEndDate = new DateTime(2025, 1, 1);
             if( DateTime.Now > licenceEndDate )
                 MessageBox.Show( "Din STEELMEET licens har utgått 2024-05-01 \n Ladda ner nyaste versionen på STEELMEET.SE :)" );
         }
@@ -1902,6 +1902,30 @@ namespace SteelMeet
                     group3Count += 1;
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void GroupLiftOrderUpdate() // Updaterar nästa grupps ingångar
         {
             // Sets labels
@@ -1922,22 +1946,45 @@ namespace SteelMeet
             // For determeting what the lowest current lift is
             List< int > lowestCurrentLiftInGroup = new List< int >();
             lowestCurrentLiftInGroup.Clear();
+
             int startIndex = groupRowFixer;
             int endIndex = 0;
 
             GroupCountUpdater();
-            // Lite fult men tyderligt
-            switch( groupIndexCurrent )
+            // Lite fult men tyderligt, update NU ÄR DEL HELVETTE FUL OCH ÄCKLIG
+
+            if( groupIndexCount == 2 ) // Om det finns två grupper
             {
-                case 0:
-                    endIndex = group1Count;
-                    break;
-                case 1:
-                    endIndex = group1Count + group2Count;
-                    break;
-                case 2:
-                    endIndex = group1Count + group2Count + group3Count;
-                    break;
+                switch( groupIndexCurrent )
+                {
+                    case 0:
+                        startIndex = group1Count;
+                        endIndex = group1Count + group2Count;
+                        break;
+                    case 1:
+                        startIndex = 0;
+                        endIndex = group1Count;
+                        break;
+                }
+            }
+
+            if( groupIndexCount == 3 ) // Om det finns två grupper
+            {
+                switch( groupIndexCurrent )
+                {
+                    case 0:
+                        startIndex = group1Count;
+                        endIndex = group1Count + group2Count;
+                        break;
+                    case 1:
+                        startIndex = group1Count + group2Count;
+                        endIndex = group1Count + group2Count + group3Count;
+                        break;
+                    case 2:
+                        startIndex = 0;
+                        endIndex = group1Count;
+                        break;
+                }
             }
 
             for( int i = startIndex ; i < endIndex ; i++ )
@@ -1946,16 +1993,16 @@ namespace SteelMeet
                     lowestCurrentLiftInGroup.Add( LifterID[ i ].CurrentLift );
 
                 // Om det bara finns bänkpressare i nästa grupp
-                if( lowestCurrentLiftInGroup.Count == 0 )
-                    lowestCurrentLiftInGroup.Add( LifterID[ i ].CurrentLift );
+                //if( lowestCurrentLiftInGroup.Count == 0 )
+                  //  lowestCurrentLiftInGroup.Add( LifterID[ i ].CurrentLift );
 
             }
 
             if( lowestCurrentLiftInGroup.Count > 0 )
             {
                 // If group has some benchpressers and some full power
-                int lowestValue = lowestCurrentLiftInGroup.Min();
-                lowestCurrentLiftInGroup.RemoveAll( x => x != lowestValue );
+                //int lowestValue = lowestCurrentLiftInGroup.Min();
+                //lowestCurrentLiftInGroup.RemoveAll( x => x != lowestValue );
             }
 
             // Get tteh relevant lift ( the lowest currentlift in the group )
@@ -1985,7 +2032,7 @@ namespace SteelMeet
                     else if( relevantCurrentLift < 6 )
                     groupLiftingOrderState = eGroupLiftingOrderState.group1Bench;
                     else if( relevantCurrentLift < 9 )
-                    groupLiftingOrderState = eGroupLiftingOrderState.nothing;
+                    groupLiftingOrderState = eGroupLiftingOrderState.group1Deadlift;
                 }
             }
             else if( groupIndexCount == 3 ) // Om det finns tre grupper
@@ -2104,12 +2151,15 @@ namespace SteelMeet
 
             // Remove all lifter who are not in the lowest currentlift
             var tempLowestCurrentLift = GroupLiftingOrderList.Select( x => x.CurrentLift );
-            int low = tempLowestCurrentLift.Min();
-            for( int i = 0 ; i < GroupLiftingOrderList.Count ; )
-                if( GroupLiftingOrderList[ i ].CurrentLift > low )
-                    GroupLiftingOrderList.RemoveAt( i );
-                else
-                    i++;
+            if( tempLowestCurrentLift.Count() > 0 ) 
+            {
+                int low = tempLowestCurrentLift.Min();
+                for( int i = 0 ; i < GroupLiftingOrderList.Count ; )
+                    if( GroupLiftingOrderList[ i ].CurrentLift > low )
+                        GroupLiftingOrderList.RemoveAt( i );
+                    else
+                        i++;
+            }
 
             // Skriv ut alla lyftare och enum för vad det är som visas
             lbl_OpeningLift.Text = lblText;
@@ -2141,6 +2191,27 @@ namespace SteelMeet
                     GroupLiftingOrderListLabels[ i ].Text = "";
 
         } //GroupLiftingOrder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void BestSBDUpdate()
         {
             //gör en lista som har alla cellers value i sig 
