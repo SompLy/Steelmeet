@@ -1,0 +1,5 @@
+﻿Dark blue	: 27, 38, 44
+Blue		: 15, 76, 117
+Light blue	: 187, 225, 250
+
+Font		: new System.Drawing.Font( "Segoe UI", 10f, FontStyle.Regular );

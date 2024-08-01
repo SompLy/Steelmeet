@@ -1,11 +1,28 @@
 Steelmeet TODO
 
+Optimering :
+
+Use this to change alot of labels and then draw them all at the same time when the are all changed
+SuspendLayout();
+// Update the labels
+ResumeLayout(performLayout: true);
+
+Datagridview 20x faster?
+static void SetDoubleBuffer(Control dgv, bool DoubleBuffered)
+{
+    typeof(Control).InvokeMember("DoubleBuffered", 
+        BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, 
+        null, dgv, new object[] { DoubleBuffered });
+}
+
 :)
 Viktiga saker :
+Dynamisk storlek på datagridviewn så den alltid är så stor som möjligt.
 Dynamisk allokering av lyftarording och ingångar plats
 Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
 Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
+nuvarande total med en pil till totalen som lyftaren kommer få om hen klarar lyftet
 ✅krascahr när man är klar med bänken, förmodligen samma prblem som nedan
 ✅spectator gör så att det kraschar på sista marken, man kan inte göra sista marken
 ✅Underkända lyft scalar inte med nya scalen på spectator
@@ -88,7 +105,7 @@ Rekord blinka saken
 ✅problem med liftingorder återbördat
 
 Projector :
-1920x1080
+✅1920x1080
 ✅1366x768 Örebro KKs laptop lol
 1280x720
 Gör programmet i olika upplösningar gör projector
@@ -115,9 +132,9 @@ Invägning :
 ✅Automatisk klass string korrigering
 
 Kontrollpanel / Tävlingsfönster :
-gör en timer som man kan sätta ett visst klockslag och sen utifrån system klockan så sätter den timern
+✅gör en timer som man kan sätta ett visst klockslag och sen utifrån system klockan så sätter den timern
 gör så att om man skiver in mer vikt än man har så blir det max vikten man mkan ha med de vkter man har anget.
-Byta färg på tabcontrol1 "Changetabcolor"
+✅Byta färg på tabcontrol1 "Changetabcolor"
 ✅Gör lite bättre format på vikten av liftingorderlist samt grouporder så att alla är 000.0 KG
 ✅1,2,3 deras ranking ska ha färg i rutorna för att indikera brons silver guld	(bronze 169, 106, 64 | silver 132, 132, 130 | guld 175, 149, 0)
 ✅Aktiv grupp comboboxen är lite unsafe eftersom om man byter mid runda så 

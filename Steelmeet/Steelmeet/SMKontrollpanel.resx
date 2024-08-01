@@ -936,9 +936,9 @@ Ta bort lyftare : Markera lyftaren och klicka "Del" / "Delete" på tagentbordet<
   <data name="label21.Text" xml:space="preserve">
     <value>Tack för att du använder STEELMEET
 SpreadSheetLight biblioteket används för hantering av excel filer,
- se LICENCE.txt
+se LICENCE.txt
 Applikation skapad av Edvin Öhrström
- med användning av .NET-ramverket och WinForms.</value>
+med användning av .NET 6 ramverket och WinForms.</value>
   </data>
   <metadata name="timerLyft.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

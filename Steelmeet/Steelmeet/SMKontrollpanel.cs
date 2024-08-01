@@ -10,6 +10,7 @@ using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Web;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskBand;
 using Color = System.Drawing.Color;
 using OpenXmlColor = DocumentFormat.OpenXml.Spreadsheet.Color;
@@ -26,7 +27,7 @@ namespace SteelMeet
             InitializeComponent();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-            tabControl1.TabPages[ 0 ].ForeColor = Color.FromArgb( 187, 225, 250 );
+            ctc_Main.TabPages[ 0 ].ForeColor = Color.FromArgb( 187, 225, 250 );
             licensCheck();
             blueToolTip.SetAllToolTips( btn_Import, btn_Export, btn_Refresh, btn_Comp );
         }
@@ -185,7 +186,7 @@ namespace SteelMeet
         private void infoPanel_WeighInPanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle( g, infoPanel_WeighInPanel.ClientRectangle, 12, BackColor );
+            RoundPanel.DrawRoundedRectangle( g, infoPanel_WeighInPanel.ClientRectangle, 12, Color.FromArgb( 27, 38, 44 ) );
         }
 
         private void dataGridViewWeighIn_CellEnter( object sender, DataGridViewCellEventArgs e )
@@ -256,11 +257,11 @@ namespace SteelMeet
             {
                 ExcelImportHandler();
             }
-            else
-            {
-                string text = File.ReadAllText(BrowsedFilePath);
-                TxtImportHandler( text );
-            }
+            //else
+            //{
+            //string text = File.ReadAllText(BrowsedFilePath);
+            //TxtImportHandler( text );
+            //}
         }
 
         public void TxtImportHandler( string text )                                                                                               // Hanterar text impoteringen av text
@@ -904,7 +905,7 @@ namespace SteelMeet
         public void infopanel_Controlpanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel.ClientRectangle, 12, BackColor );
+            RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel.ClientRectangle, 12, Color.FromArgb( 27, 38, 44 ) );
 
             List<Color> plateColorList = new List<Color>
     {
@@ -920,7 +921,7 @@ namespace SteelMeet
         private void infopanel_Controlpanel_Paint2( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel2.ClientRectangle, 12, BackColor );
+            RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel2.ClientRectangle, 12, Color.FromArgb( 27, 38, 44 ) );
 
             List<Color> plateColorList = new List<Color>
     {
@@ -937,7 +938,7 @@ namespace SteelMeet
             else
             {
                 g.Clear( infoPanel_Controlpanel2.BackColor );
-                RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel2.ClientRectangle, 10, BackColor );
+                RoundPanel.DrawRoundedRectangle( g, infoPanel_Controlpanel2.ClientRectangle, 10, Color.FromArgb( 27, 38, 44 ) );
             }
         }
 
@@ -1075,14 +1076,14 @@ namespace SteelMeet
         {
             try
             {
-                if( tabControl1.SelectedIndex == 2 &&
+                if( ctc_Main.SelectedIndex == 2 &&
                     keyData == Keys.Enter
                     //om man är på sista raden 
                     )
                 {
                     dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ SelectedColumnIndex - 1 ].Selected = true;
                 }
-                if( tabControl1.SelectedIndex == 2 &&
+                if( ctc_Main.SelectedIndex == 2 &&
                     keyData == Keys.G && LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift <= firstLiftColumn + 8 &&
                     dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value != DBNull.Value &&
                     !dataGridViewControlPanel.IsCurrentCellInEditMode )            //Godkänt lyft
@@ -1091,7 +1092,7 @@ namespace SteelMeet
 
                     return true;
                 }
-                if( tabControl1.SelectedIndex == 2 &&
+                if( ctc_Main.SelectedIndex == 2 &&
                     keyData == Keys.U && LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift <= firstLiftColumn + 8 &&
                     dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value != DBNull.Value &&
                     !dataGridViewControlPanel.IsCurrentCellInEditMode )       //Underkänt lyft
@@ -1100,7 +1101,7 @@ namespace SteelMeet
 
                     return true;
                 }
-                if( tabControl1.SelectedIndex == 2 && keyData == Keys.R && LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift >= firstLiftColumn + 1 &&
+                if( ctc_Main.SelectedIndex == 2 && keyData == Keys.R && LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift >= firstLiftColumn + 1 &&
                     !dataGridViewControlPanel.IsCurrentCellInEditMode )       //Ångra lyft
                 {
                     undoLift( false );
@@ -1348,9 +1349,9 @@ namespace SteelMeet
             InfopanelsUpdate();
         }
 
-        private void tabControl1_SelectedIndexChanged( object sender, EventArgs e )
+        private void ctc_Main_SelectedIndexChanged( object sender, EventArgs e )
         {
-            switch( tabControl1.SelectedIndex )
+            switch( ctc_Main.SelectedIndex )
             {
                 case 0:
                     {
@@ -1416,6 +1417,40 @@ namespace SteelMeet
                 default:
                     break;
             }
+        }
+        private void ctc_Main_DrawItem( object sender, DrawItemEventArgs e )
+        {
+            Graphics g = e.Graphics;
+            SetStyle( ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true );
+            // Borders
+            Pen WindowPen = new Pen( Color.Black, 50 );
+            Pen TabPen = new Pen( Color.Lime, 8 );
+
+            // Tabs and text
+            System.Drawing.Font fntTab;
+            Brush bshBack;
+            Brush bshFore = new SolidBrush( Color.FromArgb( 187, 225, 250 ) );
+            if( e.Index == this.ctc_Main.SelectedIndex )
+            {
+                fntTab = new System.Drawing.Font( "Segoe UI", 9f, FontStyle.Bold );
+                bshBack = new System.Drawing.Drawing2D.LinearGradientBrush( e.Bounds, Color.Black, Color.FromArgb( 27, 38, 120 ), System.Drawing.Drawing2D.LinearGradientMode.Vertical );
+            }
+            else
+            {
+                fntTab = new System.Drawing.Font( "Segoe UI", 9f, FontStyle.Regular );
+                bshBack = new SolidBrush( Color.FromArgb( 27, 38, 44 ) );
+            }
+            string tabName = this.ctc_Main.TabPages[e.Index].Text;
+            StringFormat sftTab = new StringFormat(StringFormatFlags.NoClip);
+            sftTab.Alignment = StringAlignment.Center;
+            sftTab.LineAlignment = StringAlignment.Center;
+            g.FillRectangle( bshBack, e.Bounds );
+            Rectangle recTab = e.Bounds;
+            recTab = new Rectangle( recTab.X, recTab.Y + 4, recTab.Width, recTab.Height - 4 );
+            //g.DrawRectangle( TabPen, recTab );
+            g.DrawString( tabName, fntTab, bshFore, recTab, sftTab );
+            g.DrawRectangle( WindowPen, e.Bounds );
+
         }
 
         public void DisplayAll(
@@ -1902,25 +1937,6 @@ namespace SteelMeet
                     group3Count += 1;
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
