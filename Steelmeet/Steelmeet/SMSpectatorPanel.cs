@@ -206,10 +206,12 @@ namespace SteelMeet
                         }
                     }
                 };
-
-                // Refresh the DataGridView to apply the changes
-                dataGridViewSpectatorPanel.Refresh();
             }
+
+            // Instantly resize gridView
+            dataGridViewSpectatorPanel.AutoResizeColumns();
+            dataGridViewSpectatorPanel.AutoResizeRows();
+            UpdateDataGridviewFontAutoSize();
         }
         private void UpdateinfoPanel()
         {
