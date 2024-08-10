@@ -115,6 +115,10 @@ namespace SteelMeet
             // DataGridView
             UpdateDataGriview();
 
+            // DataGridView auto size
+            if( smk.cb_dataGridViewAutoSize.Checked )
+                UpdateDataGridviewFontAutoSize();
+
             // Lables update
             UpdateinfoPanel();
             UpdateLiftingOrderLables();
@@ -137,17 +141,32 @@ namespace SteelMeet
             for( int i = 0; i < smk.GroupLiftingOrderListLabels.Count; i++ )
                 GroupLiftingOrderListLabels[ i ].Text = smk.GroupLiftingOrderListLabels[ i ].Text;
         }
+        void UpdateDataGridviewFontAutoSize()
+        {
+            // None of theese are corrent :(
+            int currentWidth = dataGridViewSpectatorPanel.Columns[ 0 ].Width * dataGridViewSpectatorPanel.ColumnCount;
+            int currentHeight = dataGridViewSpectatorPanel.Rows[ 0 ].Height * dataGridViewSpectatorPanel.RowCount;
+            int goalWidth = dataGridViewSpectatorPanel.Width;
+            int goalHeight = dataGridViewSpectatorPanel.Height;
+            // Every font change adds 
+
+
+            // DEBUG
+            lbl_gridWidth.Text = currentWidth.ToString() + "/" + goalWidth;
+            lbl_gridHeight.Text = currentHeight.ToString() + "/" + goalHeight;
+
+        }
         public void UpdateDataGriview()
         {
-            // Uppdatera values och färg
+            // Uppdate values and colors
             dataGridViewSpectatorPanel.Rows.Clear();
-            if( dataGridViewSpectatorPanel.ColumnCount > 0 ) // Det måste finnas columner för att kunna lägga till rader
+            if( dataGridViewSpectatorPanel.ColumnCount > 0 ) // There must be columns to add more rows
             {
                 for( int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++ )
                     dataGridViewSpectatorPanel.Rows.Add( CloneRow( smk.dataGridViewControlPanel.Rows[ i ] ) );
 
-                // Markera nuvarande lyftare
-                dataGridViewSpectatorPanel.CurrentCell = null; // Annars markerar den alltid första cellen
+                // Select current lifter
+                dataGridViewSpectatorPanel.CurrentCell = null; // Otherwise it will always select the first cell
                 if( smk.dataGridViewControlPanel.RowCount > 1 && smk.LiftingOrderList.Count > 0 )
                     for( int columnIndex = 1; columnIndex <= 5; columnIndex++ )
                         dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
@@ -162,6 +181,11 @@ namespace SteelMeet
 
                 // Set the default font for the entire DataGridView
                 dataGridViewSpectatorPanel.DefaultCellStyle.Font = newFont;
+                dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle.Font = newFont;
+
+                dataGridViewSpectatorPanel.Columns[ 4 ].HeaderText = "";
+                for( int i = 0; i < dataGridViewSpectatorPanel.RowCount; i++ )
+                    dataGridViewSpectatorPanel.Rows[ i ].Cells[ 4 ].Value = "";
 
                 // Subscribe to the CellFormatting event
                 dataGridViewSpectatorPanel.CellFormatting += ( sender, e ) =>

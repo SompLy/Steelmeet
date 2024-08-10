@@ -33,6 +33,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( SMSpectatorPanel ) );
             infopanel_Spectatorpanel2 = new Panel();
+            lbl_gridHeight = new Label();
+            lbl_gridWidth = new Label();
             lbl_currentWeight2 = new Label();
             lbl_Name2 = new Label();
             lbl_25x2 = new Label();
@@ -112,6 +114,8 @@
             // infopanel_Spectatorpanel2
             // 
             infopanel_Spectatorpanel2.BackColor = SystemColors.WindowText;
+            infopanel_Spectatorpanel2.Controls.Add( lbl_gridHeight );
+            infopanel_Spectatorpanel2.Controls.Add( lbl_gridWidth );
             infopanel_Spectatorpanel2.Controls.Add( lbl_currentWeight2 );
             infopanel_Spectatorpanel2.Controls.Add( lbl_Name2 );
             infopanel_Spectatorpanel2.Controls.Add( lbl_25x2 );
@@ -122,6 +126,30 @@
             infopanel_Spectatorpanel2.Size = new Size( 750, 206 );
             infopanel_Spectatorpanel2.TabIndex = 52;
             infopanel_Spectatorpanel2.Paint += infopanel_SpectatorPanel2_Paint;
+            // 
+            // lbl_gridHeight
+            // 
+            lbl_gridHeight.AutoSize = true;
+            lbl_gridHeight.BackColor = Color.FromArgb(       27  ,       38  ,       44   );
+            lbl_gridHeight.Font = new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_gridHeight.ForeColor = Color.White;
+            lbl_gridHeight.Location = new Point( 225, 138 );
+            lbl_gridHeight.Name = "lbl_gridHeight";
+            lbl_gridHeight.Size = new Size( 168, 65 );
+            lbl_gridHeight.TabIndex = 29;
+            lbl_gridHeight.Text = "\"Höjd\"";
+            // 
+            // lbl_gridWidth
+            // 
+            lbl_gridWidth.AutoSize = true;
+            lbl_gridWidth.BackColor = Color.FromArgb(       27  ,       38  ,       44   );
+            lbl_gridWidth.Font = new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_gridWidth.ForeColor = Color.White;
+            lbl_gridWidth.Location = new Point( 225, 73 );
+            lbl_gridWidth.Name = "lbl_gridWidth";
+            lbl_gridWidth.Size = new Size( 168, 65 );
+            lbl_gridWidth.TabIndex = 28;
+            lbl_gridWidth.Text = "\"Höjd\"";
             // 
             // lbl_currentWeight2
             // 

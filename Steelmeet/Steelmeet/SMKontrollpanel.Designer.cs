@@ -111,6 +111,8 @@
             cb_squat = new CheckBox();
             btn_rekord = new Button();
             panel13 = new Panel();
+            cb_dataGridViewAutoSize = new CheckBox();
+            label4 = new Label();
             button5 = new Button();
             txt_box_SpecSize = new TextBox();
             label23 = new Label();
@@ -1164,6 +1166,8 @@
             // panel13
             // 
             panel13.BackColor = SystemColors.WindowText;
+            panel13.Controls.Add( cb_dataGridViewAutoSize );
+            panel13.Controls.Add( label4 );
             panel13.Controls.Add( button5 );
             panel13.Controls.Add( txt_box_SpecSize );
             panel13.Controls.Add( label23 );
@@ -1172,6 +1176,26 @@
             panel13.Name = "panel13";
             panel13.Size = new Size( 188, 147 );
             panel13.TabIndex = 12;
+            // 
+            // cb_dataGridViewAutoSize
+            // 
+            cb_dataGridViewAutoSize.AutoSize = true;
+            cb_dataGridViewAutoSize.Location = new Point( 153, 75 );
+            cb_dataGridViewAutoSize.Name = "cb_dataGridViewAutoSize";
+            cb_dataGridViewAutoSize.Size = new Size( 15, 14 );
+            cb_dataGridViewAutoSize.TabIndex = 31;
+            cb_dataGridViewAutoSize.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font( "Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point );
+            label4.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            label4.Location = new Point( 5, 71 );
+            label4.Name = "label4";
+            label4.Size = new Size( 142, 21 );
+            label4.TabIndex = 30;
+            label4.Text = "Tabell auto storlek :";
             // 
             // button5
             // 
