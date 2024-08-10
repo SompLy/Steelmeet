@@ -59,7 +59,7 @@ namespace SteelMeet
             int indexOffset = 0;
             for( Int32 index = 0; index < _row.Cells.Count; index++ )
             {
-                if( index != 7 && index != 8 && index != 9 ) // Klonar inte höjder
+                if( index != 7 && index != 8 && index != 9 ) // Does not clone heights
                 {
                     clonedRow.Cells[ index - indexOffset ].Value = _row.Cells[ index ].Value;
                     clonedRow.Cells[ index - indexOffset ].Style = _row.Cells[ index ].Style;
@@ -73,7 +73,7 @@ namespace SteelMeet
         {
             foreach( DataGridViewColumn column in _columns )
             {
-                if( column.Index != 7 && column.Index != 8 && column.Index != 9 ) // Klonar inte ställningshöjder
+                if( column.Index != 7 && column.Index != 8 && column.Index != 9 ) // Does not clone rack heights
                 {
                     DataGridViewColumn clonedCloumn = (DataGridViewColumn)column.Clone();
 
@@ -92,7 +92,7 @@ namespace SteelMeet
                 }
             }
         }
-        protected override bool ProcessCmdKey( ref Message msg, Keys keyData ) //Hanterar all input från tagentbord
+        protected override bool ProcessCmdKey( ref Message msg, Keys keyData ) // Handles all keyboard input
         {
             try
             {
@@ -119,7 +119,7 @@ namespace SteelMeet
             UpdateinfoPanel();
             UpdateLiftingOrderLables();
 
-            // UpdateTimer(); Uppdateras inte här för att den måste uppdateras samtidigt eftersom den går helatiden
+            // UpdateTimer(); Not updated here because it has to be updated at the same time, since it runs all the time
             UpdateNextGroup();
 
             // Redraw plates
@@ -220,11 +220,43 @@ namespace SteelMeet
                     {
                     lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
                     lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
-                    lbl_liftOrder_control_9, lbl_liftOrder_control_10
+                    lbl_liftOrder_control_9, lbl_liftOrder_control_10, lbl_liftOrder_control_11, lbl_liftOrder_control_12,
+                    lbl_liftOrder_control_13, lbl_liftOrder_control_14, lbl_liftOrder_control_15, lbl_liftOrder_control_16,
+                    lbl_liftOrder_control_17, lbl_liftOrder_control_18, lbl_liftOrder_control_19, lbl_liftOrder_control_20
                     } );
 
             for( int i = 0; i < smk.LiftingOrderListLabels.Count; i++ )
                 LiftingOrderListLabels[ i ].Text = smk.LiftingOrderListLabels[ i ].Text;
+
+            // Offset panel to make space for lifting order
+
+            int headerPixels = 53;
+            int stepPixels = 32; // Height of label plus space inbetween
+
+            int nextGroupCount = 0;
+
+            switch( smk.groupIndexCurrent )
+            {
+                case 0:
+                    nextGroupCount = smk.group2Count;
+                    break;
+                case 1:
+                    if( smk.groupIndexCount == 2 )
+                        nextGroupCount = smk.group1Count;
+                    else
+                        nextGroupCount = smk.group3Count;
+                    break;
+                case 2:
+                    nextGroupCount = smk.group1Count;
+                    break;
+
+                default:
+                    break;
+            }
+
+            int offset = stepPixels * nextGroupCount;
+
+            p_NextGroupLifters.Location = new Point( p_NextGroupLifters.Location.X, 1080 - offset - headerPixels );
         }
 
         // Drwaing shit
@@ -310,7 +342,7 @@ namespace SteelMeet
         private void panel11_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
-            RoundPanel.DrawRoundedRectangle( g, panel11.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
+            RoundPanel.DrawRoundedRectangle( g, p_NextGroupLifters.ClientRectangle, 12, System.Drawing.Color.FromArgb( 27, 38, 44 ) );
         }
 
         // Timer

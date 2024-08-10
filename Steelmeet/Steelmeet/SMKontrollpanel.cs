@@ -64,10 +64,10 @@ namespace SteelMeet
         int secondsLyft;
         int minutesLyft;
         public int groupIndexCurrent;
-        int groupIndexCount = 1;            // Antal grupper
-        int group1Count;                    // Antal lyftare i grupp
-        int group2Count;                    // Antal lyftare i grupp
-        int group3Count;                    // Antal lyftare i grupp
+        public int groupIndexCount = 1;            // Antal grupper
+        public int group1Count;                    // Antal lyftare i grupp
+        public int group2Count;                    // Antal lyftare i grupp
+        public int group3Count;                    // Antal lyftare i grupp
         public int groupRowFixer;           // Ändars beronde på grupp så att LifterID[SelectedRowIndex + groupRowFixer] blir rätt
         int firstLiftColumn = 10;           // 130, 217 måste ändras också ????
 
@@ -82,10 +82,6 @@ namespace SteelMeet
 
         public List<System.Windows.Forms.Label> LiftingOrderListLabels = new List<System.Windows.Forms.Label>();    // Order med lyftare och vikt de ska ta i rätt ordning.
         public List<Lifter> LiftingOrderList = new List<Lifter>();                                                  // För att sortera
-
-        List<System.Windows.Forms.Label> LiftingOrderListLabelsSeamless = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning. För seamless
-        List<Lifter> LiftingOrderListSeamless = new List<Lifter>();                                                 // För att sortera
-        int LiftingOrderSeamlessMax = 10;
 
         public List<System.Windows.Forms.Label> GroupLiftingOrderListLabels = new List<System.Windows.Forms.Label>();   // Order med lyftare och vikt de ska ta i rätt ordning.
         List<Lifter> GroupLiftingOrderList = new List<Lifter>();                                                        // För att sortera viktera
@@ -1321,7 +1317,6 @@ namespace SteelMeet
                     LifterID[ SelectedRowIndex + groupRowFixer ].isRetrying = true;
 
                 LiftingOrderList.Add( LifterID[ SelectedRowIndex + groupRowFixer ] );
-                LiftingOrderListSeamless.Add( LifterID[ SelectedRowIndex + groupRowFixer ] );
 
                 LiftingOrderUpdate();// Updaterar lyftar ordning
                 LifterID[ SelectedRowIndex + groupRowFixer ].isRetrying = true;
@@ -1746,7 +1741,9 @@ namespace SteelMeet
                 {
         lbl_liftOrder_control_1, lbl_liftOrder_control_2, lbl_liftOrder_control_3, lbl_liftOrder_control_4,
         lbl_liftOrder_control_5, lbl_liftOrder_control_6, lbl_liftOrder_control_7, lbl_liftOrder_control_8,
-        lbl_liftOrder_control_9, lbl_liftOrder_control_10
+        lbl_liftOrder_control_9, lbl_liftOrder_control_10, lbl_liftOrder_control_11, lbl_liftOrder_control_12,
+        lbl_liftOrder_control_13, lbl_liftOrder_control_14, lbl_liftOrder_control_15, lbl_liftOrder_control_16,
+        lbl_liftOrder_control_17, lbl_liftOrder_control_18, lbl_liftOrder_control_19, lbl_liftOrder_control_20
                 } );
 
             if( groupIndexCurrent >= 0 && groupIndexCurrent <= 2 && LiftingOrderList.Count == 0 )
@@ -1810,7 +1807,7 @@ namespace SteelMeet
         }
         public void VisualLifterListUpdate()
         {
-            int countToShow = 10;
+            int countToShow = 20;
 
             int startIndex = 0;
 
@@ -2602,10 +2599,9 @@ namespace SteelMeet
                     weightsList.Clear();
                     group1Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
                     for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
-                    {
                         if( LifterID[ i ].groupNumber == 1 )
                             group1Count += 1;
-                    }
+
                     LiftoffTiltedUpdate();
 
                     for( int i = 0; i < group1Count; i++ )
@@ -2665,10 +2661,9 @@ namespace SteelMeet
                     weightsList.Clear();
                     group2Count = 0;                         //Resettar så att den inte blir för mycket om man ändrar grupper
                     for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
-                    {
                         if( LifterID[ i ].groupNumber == 2 )
                             group2Count += 1;
-                    }
+
                     LiftoffTiltedUpdate();
 
                     for( int i = group1Count; i < group1Count + group2Count; i++ )
@@ -2725,10 +2720,9 @@ namespace SteelMeet
                     weightsList.Clear();
                     group3Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
                     for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
-                    {
                         if( LifterID[ i ].groupNumber == 3 )
                             group3Count += 1;
-                    }
+
                     LiftoffTiltedUpdate();
 
                     for( int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++ )
@@ -3002,19 +2996,17 @@ namespace SteelMeet
                 smsList[ smsList.Count - 1 ].Show();
             }
             else
-            {
                 MessageBox.Show( "Importera lyftare innan du kan öppna detta fönster", "⚠SteelMeet varning!⚠" );
-            }
         }
 
         private void txt_box_SpecSize_TextChanged( object sender, EventArgs e )
         {
             float result = 0;
-            foreach( var smsForm in smsList )
-                if( smsForm != null && float.TryParse( txt_box_SpecSize.Text.Trim(), out result ) )
-                {
-                    smsForm.UpdateDataGridviewFont( result );
-                }
+
+            if( !cb_dataGridViewAutoSize.Checked )
+                foreach( var smsForm in smsList )
+                    if( smsForm != null && float.TryParse( txt_box_SpecSize.Text.Trim(), out result ) )
+                        smsForm.UpdateDataGridviewFont( result );
         }
 
 

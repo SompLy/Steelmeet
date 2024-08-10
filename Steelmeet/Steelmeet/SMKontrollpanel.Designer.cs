@@ -161,6 +161,7 @@
             lbl_groupLiftOrder_control_4 = new Label();
             lbl_OpeningLift = new Label();
             panel10 = new Panel();
+            label30 = new Label();
             lbl_liftOrder_control_1 = new Label();
             lbl_liftOrder_control_2 = new Label();
             lbl_liftOrder_control_3 = new Label();
@@ -171,7 +172,7 @@
             lbl_liftOrder_control_8 = new Label();
             lbl_liftOrder_control_9 = new Label();
             lbl_liftOrder_control_10 = new Label();
-            label30 = new Label();
+            lbl_liftOrder_control_11 = new Label();
             panel8 = new Panel();
             combo_Aktivgrupp = new ComboBox();
             label29 = new Label();
@@ -201,6 +202,15 @@
             WeightInTab = new TabPage();
             settningsTab = new TabPage();
             competitionTab = new TabPage();
+            lbl_liftOrder_control_15 = new Label();
+            lbl_liftOrder_control_16 = new Label();
+            lbl_liftOrder_control_17 = new Label();
+            lbl_liftOrder_control_18 = new Label();
+            lbl_liftOrder_control_19 = new Label();
+            lbl_liftOrder_control_13 = new Label();
+            lbl_liftOrder_control_12 = new Label();
+            lbl_liftOrder_control_20 = new Label();
+            lbl_liftOrder_control_14 = new Label();
             resultsTab = new TabPage();
             btn_fastExportResult = new Button();
             btn_DetailedexportResult = new Button();
@@ -1186,7 +1196,7 @@
             txt_box_SpecSize.Name = "txt_box_SpecSize";
             txt_box_SpecSize.Size = new Size( 52, 25 );
             txt_box_SpecSize.TabIndex = 15;
-            txt_box_SpecSize.Text = "15";
+            txt_box_SpecSize.Text = "21";
             txt_box_SpecSize.TextAlign = HorizontalAlignment.Center;
             txt_box_SpecSize.WordWrap = false;
             txt_box_SpecSize.TextChanged += txt_box_SpecSize_TextChanged;
@@ -1232,7 +1242,7 @@
             dataGridViewControlPanel.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.FromArgb(       27  ,       38  ,       44   );
-            dataGridViewCellStyle5.Font = new Font( "Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point );
+            dataGridViewCellStyle5.Font = new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point );
             dataGridViewCellStyle5.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
             dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
@@ -1241,7 +1251,7 @@
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.FromArgb(       15  ,       76  ,       117   );
-            dataGridViewCellStyle6.Font = new Font( "Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point );
+            dataGridViewCellStyle6.Font = new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point );
             dataGridViewCellStyle6.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
             dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
@@ -1838,6 +1848,7 @@
             // panel10
             // 
             panel10.BackColor = Color.FromArgb(       0  ,       0  ,       0  ,       0   );
+            panel10.Controls.Add( label30 );
             panel10.Controls.Add( lbl_liftOrder_control_1 );
             panel10.Controls.Add( lbl_liftOrder_control_2 );
             panel10.Controls.Add( lbl_liftOrder_control_3 );
@@ -1848,17 +1859,29 @@
             panel10.Controls.Add( lbl_liftOrder_control_8 );
             panel10.Controls.Add( lbl_liftOrder_control_9 );
             panel10.Controls.Add( lbl_liftOrder_control_10 );
-            panel10.Controls.Add( label30 );
-            panel10.Location = new Point( 1079, 360 );
+            panel10.Controls.Add( lbl_liftOrder_control_11 );
+            panel10.Location = new Point( 1079, 354 );
             panel10.Name = "panel10";
             panel10.Size = new Size( 270, 376 );
             panel10.TabIndex = 7;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.BackColor = Color.FromArgb(       15  ,       76  ,       117   );
+            label30.Font = new Font( "Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point );
+            label30.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            label30.Location = new Point( 43, -2 );
+            label30.Name = "label30";
+            label30.Size = new Size( 183, 37 );
+            label30.TabIndex = 13;
+            label30.Text = "Lyftar ordning";
             // 
             // lbl_liftOrder_control_1
             // 
             lbl_liftOrder_control_1.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_1.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_1.Location = new Point( -4, 34 );
+            lbl_liftOrder_control_1.Location = new Point( -4, 31 );
             lbl_liftOrder_control_1.Margin = new Padding( 0 );
             lbl_liftOrder_control_1.Name = "lbl_liftOrder_control_1";
             lbl_liftOrder_control_1.Size = new Size( 310, 36 );
@@ -1869,7 +1892,7 @@
             // 
             lbl_liftOrder_control_2.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_2.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_2.Location = new Point( -4, 61 );
+            lbl_liftOrder_control_2.Location = new Point( -4, 59 );
             lbl_liftOrder_control_2.Margin = new Padding( 0 );
             lbl_liftOrder_control_2.Name = "lbl_liftOrder_control_2";
             lbl_liftOrder_control_2.Size = new Size( 310, 36 );
@@ -1880,7 +1903,7 @@
             // 
             lbl_liftOrder_control_3.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_3.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_3.Location = new Point( -4, 88 );
+            lbl_liftOrder_control_3.Location = new Point( -4, 87 );
             lbl_liftOrder_control_3.Margin = new Padding( 0 );
             lbl_liftOrder_control_3.Name = "lbl_liftOrder_control_3";
             lbl_liftOrder_control_3.Size = new Size( 310, 36 );
@@ -1902,7 +1925,7 @@
             // 
             lbl_liftOrder_control_5.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_5.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_5.Location = new Point( -4, 142 );
+            lbl_liftOrder_control_5.Location = new Point( -4, 143 );
             lbl_liftOrder_control_5.Margin = new Padding( 0 );
             lbl_liftOrder_control_5.Name = "lbl_liftOrder_control_5";
             lbl_liftOrder_control_5.Size = new Size( 310, 36 );
@@ -1913,7 +1936,7 @@
             // 
             lbl_liftOrder_control_6.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_6.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_6.Location = new Point( -4, 169 );
+            lbl_liftOrder_control_6.Location = new Point( -4, 171 );
             lbl_liftOrder_control_6.Margin = new Padding( 0 );
             lbl_liftOrder_control_6.Name = "lbl_liftOrder_control_6";
             lbl_liftOrder_control_6.Size = new Size( 310, 36 );
@@ -1924,7 +1947,7 @@
             // 
             lbl_liftOrder_control_7.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_7.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_7.Location = new Point( -4, 196 );
+            lbl_liftOrder_control_7.Location = new Point( -4, 199 );
             lbl_liftOrder_control_7.Margin = new Padding( 0 );
             lbl_liftOrder_control_7.Name = "lbl_liftOrder_control_7";
             lbl_liftOrder_control_7.Size = new Size( 310, 36 );
@@ -1935,7 +1958,7 @@
             // 
             lbl_liftOrder_control_8.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_8.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_8.Location = new Point( -4, 223 );
+            lbl_liftOrder_control_8.Location = new Point( -4, 227 );
             lbl_liftOrder_control_8.Margin = new Padding( 0 );
             lbl_liftOrder_control_8.Name = "lbl_liftOrder_control_8";
             lbl_liftOrder_control_8.Size = new Size( 310, 36 );
@@ -1946,7 +1969,7 @@
             // 
             lbl_liftOrder_control_9.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_9.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_9.Location = new Point( -4, 250 );
+            lbl_liftOrder_control_9.Location = new Point( -4, 255 );
             lbl_liftOrder_control_9.Margin = new Padding( 0 );
             lbl_liftOrder_control_9.Name = "lbl_liftOrder_control_9";
             lbl_liftOrder_control_9.Size = new Size( 310, 36 );
@@ -1957,24 +1980,23 @@
             // 
             lbl_liftOrder_control_10.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
             lbl_liftOrder_control_10.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            lbl_liftOrder_control_10.Location = new Point( -4, 277 );
+            lbl_liftOrder_control_10.Location = new Point( -4, 283 );
             lbl_liftOrder_control_10.Margin = new Padding( 0 );
             lbl_liftOrder_control_10.Name = "lbl_liftOrder_control_10";
             lbl_liftOrder_control_10.Size = new Size( 310, 36 );
             lbl_liftOrder_control_10.TabIndex = 23;
             lbl_liftOrder_control_10.Text = "000.0 Lyftare Lyftarsson";
             // 
-            // label30
+            // lbl_liftOrder_control_11
             // 
-            label30.AutoSize = true;
-            label30.BackColor = Color.FromArgb(       15  ,       76  ,       117   );
-            label30.Font = new Font( "Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point );
-            label30.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
-            label30.Location = new Point( 43, -2 );
-            label30.Name = "label30";
-            label30.Size = new Size( 183, 37 );
-            label30.TabIndex = 13;
-            label30.Text = "Lyftar ordning";
+            lbl_liftOrder_control_11.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_11.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_11.Location = new Point( -4, 311 );
+            lbl_liftOrder_control_11.Margin = new Padding( 0 );
+            lbl_liftOrder_control_11.Name = "lbl_liftOrder_control_11";
+            lbl_liftOrder_control_11.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_11.TabIndex = 24;
+            lbl_liftOrder_control_11.Text = "000.0 Lyftare Lyftarsson";
             // 
             // panel8
             // 
@@ -2355,6 +2377,16 @@
             // competitionTab
             // 
             competitionTab.BackColor = Color.Black;
+            competitionTab.Controls.Add( dataGridViewControlPanel );
+            competitionTab.Controls.Add( lbl_liftOrder_control_15 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_16 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_17 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_18 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_19 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_13 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_12 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_20 );
+            competitionTab.Controls.Add( lbl_liftOrder_control_14 );
             competitionTab.Controls.Add( panel9 );
             competitionTab.Controls.Add( panel13 );
             competitionTab.Controls.Add( panel14 );
@@ -2365,7 +2397,6 @@
             competitionTab.Controls.Add( panel6 );
             competitionTab.Controls.Add( panel5 );
             competitionTab.Controls.Add( infoPanel_Controlpanel );
-            competitionTab.Controls.Add( dataGridViewControlPanel );
             competitionTab.Controls.Add( panel11 );
             competitionTab.Location = new Point( 4, 28 );
             competitionTab.Name = "competitionTab";
@@ -2373,6 +2404,105 @@
             competitionTab.Size = new Size( 1912, 1048 );
             competitionTab.TabIndex = 2;
             competitionTab.Text = "Tävling";
+            // 
+            // lbl_liftOrder_control_15
+            // 
+            lbl_liftOrder_control_15.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_15.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_15.Location = new Point( 691, 331 );
+            lbl_liftOrder_control_15.Margin = new Padding( 0 );
+            lbl_liftOrder_control_15.Name = "lbl_liftOrder_control_15";
+            lbl_liftOrder_control_15.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_15.TabIndex = 51;
+            lbl_liftOrder_control_15.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_16
+            // 
+            lbl_liftOrder_control_16.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_16.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_16.Location = new Point( 691, 367 );
+            lbl_liftOrder_control_16.Margin = new Padding( 0 );
+            lbl_liftOrder_control_16.Name = "lbl_liftOrder_control_16";
+            lbl_liftOrder_control_16.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_16.TabIndex = 50;
+            lbl_liftOrder_control_16.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_17
+            // 
+            lbl_liftOrder_control_17.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_17.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_17.Location = new Point( 691, 403 );
+            lbl_liftOrder_control_17.Margin = new Padding( 0 );
+            lbl_liftOrder_control_17.Name = "lbl_liftOrder_control_17";
+            lbl_liftOrder_control_17.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_17.TabIndex = 49;
+            lbl_liftOrder_control_17.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_18
+            // 
+            lbl_liftOrder_control_18.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_18.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_18.Location = new Point( 691, 441 );
+            lbl_liftOrder_control_18.Margin = new Padding( 0 );
+            lbl_liftOrder_control_18.Name = "lbl_liftOrder_control_18";
+            lbl_liftOrder_control_18.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_18.TabIndex = 48;
+            lbl_liftOrder_control_18.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_19
+            // 
+            lbl_liftOrder_control_19.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_19.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_19.Location = new Point( 691, 478 );
+            lbl_liftOrder_control_19.Margin = new Padding( 0 );
+            lbl_liftOrder_control_19.Name = "lbl_liftOrder_control_19";
+            lbl_liftOrder_control_19.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_19.TabIndex = 47;
+            lbl_liftOrder_control_19.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_13
+            // 
+            lbl_liftOrder_control_13.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_13.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_13.Location = new Point( 691, 259 );
+            lbl_liftOrder_control_13.Margin = new Padding( 0 );
+            lbl_liftOrder_control_13.Name = "lbl_liftOrder_control_13";
+            lbl_liftOrder_control_13.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_13.TabIndex = 46;
+            lbl_liftOrder_control_13.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_12
+            // 
+            lbl_liftOrder_control_12.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_12.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_12.Location = new Point( 691, 222 );
+            lbl_liftOrder_control_12.Margin = new Padding( 0 );
+            lbl_liftOrder_control_12.Name = "lbl_liftOrder_control_12";
+            lbl_liftOrder_control_12.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_12.TabIndex = 45;
+            lbl_liftOrder_control_12.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_20
+            // 
+            lbl_liftOrder_control_20.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_20.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_20.Location = new Point( 691, 514 );
+            lbl_liftOrder_control_20.Margin = new Padding( 0 );
+            lbl_liftOrder_control_20.Name = "lbl_liftOrder_control_20";
+            lbl_liftOrder_control_20.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_20.TabIndex = 44;
+            lbl_liftOrder_control_20.Text = "000.0 Lyftare Lyftarsson";
+            // 
+            // lbl_liftOrder_control_14
+            // 
+            lbl_liftOrder_control_14.Font = new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point );
+            lbl_liftOrder_control_14.ForeColor = Color.FromArgb(       187  ,       225  ,       250   );
+            lbl_liftOrder_control_14.Location = new Point( 691, 295 );
+            lbl_liftOrder_control_14.Margin = new Padding( 0 );
+            lbl_liftOrder_control_14.Name = "lbl_liftOrder_control_14";
+            lbl_liftOrder_control_14.Size = new Size( 310, 36 );
+            lbl_liftOrder_control_14.TabIndex = 25;
+            lbl_liftOrder_control_14.Text = "000.0 Lyftare Lyftarsson";
             // 
             // resultsTab
             // 
@@ -2431,7 +2561,7 @@
             Icon = ( Icon ) resources.GetObject( "$this.Icon" ) ;
             Name = "SMKontrollpanel";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Steelmeet Kontrollpanel - v1.2.1";
+            Text = "Steelmeet Kontrollpanel - v1.2.2";
             infoPanel_WeighInPanel.ResumeLayout( false );
             infoPanel_WeighInPanel.PerformLayout();
             ( ( System.ComponentModel.ISupportInitialize ) pictureBox1  ).EndInit();
@@ -2654,5 +2784,17 @@
         private TabPage settningsTab;
         private TabPage competitionTab;
         private TabPage resultsTab;
+        private Label lbl_liftOrder_control_11;
+        private Label lbl_liftOrder_control_15;
+        private Label lbl_liftOrder_control_16;
+        private Label lbl_liftOrder_control_17;
+        private Label lbl_liftOrder_control_18;
+        private Label lbl_liftOrder_control_19;
+        private Label lbl_liftOrder_control_13;
+        private Label lbl_liftOrder_control_12;
+        private Label lbl_liftOrder_control_20;
+        private Label lbl_liftOrder_control_14;
+        public CheckBox cb_dataGridViewAutoSize;
+        private Label label4;
     }
 }
