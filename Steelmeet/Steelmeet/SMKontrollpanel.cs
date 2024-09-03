@@ -107,7 +107,8 @@ namespace SteelMeet
         MouseEventArgs mouseEvent = new MouseEventArgs(System.Windows.Forms.Control.MouseButtons, 0, 0, 0, 0);
 
         // Default Plate setup 16x25kg
-        public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2, Color.ForestGreen, Color.Red, Color.Blue, Color.Yellow, Color.ForestGreen, Color.WhiteSmoke, Color.Black, Color.Silver, Color.Gainsboro, Color.Gainsboro);
+        public PlateInfo plateInfo = new PlateInfo(0, 16, 2, 2, 2, 2, 2, 2, 2, 2,
+            Color.ForestGreen, Color.Red, Color.Blue, Color.Yellow, Color.ForestGreen, Color.WhiteSmoke, Color.Black, Color.Silver, Color.Gainsboro, Color.Gainsboro);
 
         public CultureInfo customCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -827,14 +828,12 @@ namespace SteelMeet
             // y2 =
 
             int x1 = -5, y1 = 60, x2 = -5, y2 = 140;
-            Pen p = new Pen(Color.Red, 16);
             int offset = 20;
 
             for( int i = 0; i < 10; )
             {
                 if( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
                 {
-                    p.Color = plateColorList[ i ];
                     //switch (i)
                     //{
                     //    case 3: // 15 KG
@@ -886,7 +885,20 @@ namespace SteelMeet
                     //        offset = 20;
                     //        break;
                     //}
-                    g.DrawLine( p, x1 + offset, y1, x2 + offset, y2 );
+                    if ( plateColorList[ i ] != Color.Silver )
+                    {
+                        Brush gradientBrush = new LinearGradientBrush( new Point( 0, 0 ), new Point( 10, 0 ),
+                            BlendColor( Color.Black, plateColorList[ i ], 0.25f ), plateColorList[ i ] );
+                        Pen p1 = new Pen( gradientBrush, 16 );
+                        g.DrawLine( p1, x1 + offset, y1, x2 + offset, y2 );
+                    }
+                    else 
+                    {
+                        Brush gradientBrush = new LinearGradientBrush( new Point( 0, 0 ), new Point( 20, 10 ),
+                            BlendColor( Color.Black, Color.Silver, 0.5f ), Color.White );
+                        Pen p2 = new Pen( gradientBrush, 16 );
+                        g.DrawLine( p2, x1 + offset, y1, x2 + offset, y2 );
+                    }
                     offset += 20;
 
                     paintedPlatesList[ i ]++;
@@ -894,10 +906,17 @@ namespace SteelMeet
                 else { i++; }
             }
 
+            Pen p = new Pen( Color.Red, 16 );
             p.Color = Color.DarkGray;
             g.DrawLine( p, x1 + offset, 90, x2 + offset, 110 );
         }
-
+        Color BlendColor( Color color, Color secondColor, float amount )
+        {
+            byte r = ( byte )( color.R * amount + secondColor.R * ( 1 - amount ) );
+            byte g = ( byte )( color.G * amount + secondColor.G * ( 1 - amount ) );
+            byte b = ( byte )( color.B * amount + secondColor.B * ( 1 - amount ) );
+            return Color.FromArgb( r, g, b );
+        }
         public void infopanel_Controlpanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;
@@ -980,8 +999,8 @@ namespace SteelMeet
                         //lbl_Infällt.Text = LifterID[SelectedRowIndex + groupRowFixer].tilted.ToString();
                         //lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
 
-                        InfopanelsUpdate();
 
+                        InfopanelsUpdate();
                     }
                 }
             }
@@ -1147,7 +1166,6 @@ namespace SteelMeet
                     }
                 }
 
-                InfopanelsUpdate();
 
                 //Updaterar lyftar ordning
                 LiftingOrderUpdate();
@@ -1219,6 +1237,8 @@ namespace SteelMeet
                     float.Parse( dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Value.ToString() );
 
             }
+            
+            InfopanelsUpdate();
         }
         public void badLiftMarked()
         {
@@ -2175,7 +2195,11 @@ namespace SteelMeet
             }
 
             // Skriv ut alla lyftare och enum för vad det är som visas
-            lbl_OpeningLift.Text = lblText;
+            if( ViewNothing )
+                lbl_OpeningLift.Text = lblText;
+            else
+                lbl_OpeningLift.Text = "";
+                
 
             if( !ViewNothing )
                 for( int i = 0; i < GroupLiftingOrderList.Count; i++ )
@@ -2606,7 +2630,7 @@ namespace SteelMeet
 
                     for( int i = 0; i < group1Count; i++ )
                     {
-                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, "Senior"
+                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, ""/*Senior*/
                             , LifterID[ i ].accossiation, LifterID[ i ].bodyWeight.ToString(), LifterID[ i ].squatHeight.ToString(), LifterID[ i ].benchHeight.ToString()
                             , LifterID[ i ].benchRack.ToString()
                             , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
@@ -2669,7 +2693,7 @@ namespace SteelMeet
                     for( int i = group1Count; i < group1Count + group2Count; i++ )
                     {
 
-                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, "Senior"
+                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, ""/*Senior*/
                             , LifterID[ i ].accossiation, LifterID[ i ].bodyWeight.ToString(), LifterID[ i ].squatHeight.ToString(), LifterID[ i ].benchHeight.ToString()
                             , LifterID[ i ].benchRack.ToString()
                             , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
@@ -2728,7 +2752,7 @@ namespace SteelMeet
                     for( int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++ )
                     {
 
-                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, "Senior"
+                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, ""/*Senior*/
                             , LifterID[ i ].accossiation, LifterID[ i ].bodyWeight.ToString(), LifterID[ i ].squatHeight.ToString(), LifterID[ i ].benchHeight.ToString()
                             , LifterID[ i ].benchRack.ToString()
                             , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
@@ -2994,6 +3018,8 @@ namespace SteelMeet
             {
                 smsList.Add( new SMSpectatorPanel( this ) );
                 smsList[ smsList.Count - 1 ].Show();
+
+                ChangeSpectatorGridviewSize();
             }
             else
                 MessageBox.Show( "Importera lyftare innan du kan öppna detta fönster", "⚠SteelMeet varning!⚠" );
@@ -3001,12 +3027,17 @@ namespace SteelMeet
 
         private void txt_box_SpecSize_TextChanged( object sender, EventArgs e )
         {
+            ChangeSpectatorGridviewSize();
+        }
+
+        private void ChangeSpectatorGridviewSize() 
+        {
             float result = 0;
 
-            if( !cb_dataGridViewAutoSize.Checked )
-                foreach( var smsForm in smsList )
-                    if( smsForm != null && float.TryParse( txt_box_SpecSize.Text.Trim(), out result ) )
-                        smsForm.UpdateDataGridviewFont( result );
+            if (!cb_dataGridViewAutoSize.Checked)
+                foreach (var smsForm in smsList)
+                    if (smsForm != null && float.TryParse(txt_box_SpecSize.Text.Trim(), out result))
+                        smsForm.UpdateDataGridviewFont(result);
         }
 
 

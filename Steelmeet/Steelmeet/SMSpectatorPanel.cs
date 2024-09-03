@@ -152,8 +152,8 @@ namespace SteelMeet
 
 
             // DEBUG
-            lbl_gridWidth.Text = currentWidth.ToString() + "/" + goalWidth;
-            lbl_gridHeight.Text = currentHeight.ToString() + "/" + goalHeight;
+            //lbl_gridWidth.Text = currentWidth.ToString() + "/" + goalWidth;
+            //lbl_gridHeight.Text = currentHeight.ToString() + "/" + goalHeight;
 
         }
         public void UpdateDataGriview()

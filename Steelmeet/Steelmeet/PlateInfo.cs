@@ -51,8 +51,8 @@ namespace SteelMeet
         public Color col_plate10 { get; set; }
         public Color col_plate5 { get; set; }
         public Color col_plate25small { get; set; }
-        public Color col_plate05 { get; set; }
         public Color col_plate125 { get; set; }
+        public Color col_plate05 { get; set; }
         public Color col_plate025 { get; set; }
 
     }
