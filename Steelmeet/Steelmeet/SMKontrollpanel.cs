@@ -1469,16 +1469,16 @@ namespace SteelMeet
         }
 
         public void DisplayAll(
-            string Place,
-            string Namn,
-            string Lotnummer,
-            string Viktklass,
-            string Kategori,
-            string Förening,
-            string Kroppsvikt,
-            string HöjdBöj,
-            string HöjdBänk,
-            string RackBänk,
+            string place,
+            string namn,
+            string lotnummer,
+            string viktklass,
+            string kategori,
+            string förening,
+            string kroppsvikt,
+            string höjdBöj,
+            string höjdBänk,
+            string rackBänk,
             string s1,
             string s2,
             string s3,
@@ -1489,7 +1489,8 @@ namespace SteelMeet
             string d2,
             string d3,
             string total,
-            string GLPoäng )
+            string estimatedTotal,
+            string glPoäng )
         {
             if( b )
             {
@@ -1513,22 +1514,23 @@ namespace SteelMeet
                 dt2.Columns.Add( "D2" );           //17
                 dt2.Columns.Add( "D3" );           //18
                 dt2.Columns.Add( "Tot." );         //19
-                dt2.Columns.Add( "IPF\nGL" );      //20
+                dt2.Columns.Add( "Est." );         //20
+                dt2.Columns.Add( "IPF\nGL" );      //21
 
                 b = false;
             }
             DataRow dr2 = dt2.NewRow();
 
-            dr2[ 0 ] = Place;
-            dr2[ 1 ] = Namn;
-            dr2[ 2 ] = Lotnummer;
-            dr2[ 3 ] = Viktklass;
-            dr2[ 4 ] = Kategori;
-            dr2[ 5 ] = Förening;
-            dr2[ 6 ] = Kroppsvikt;
-            dr2[ 7 ] = HöjdBöj;
-            dr2[ 8 ] = HöjdBänk;
-            dr2[ 9 ] = RackBänk;
+            dr2[ 0 ] = place;
+            dr2[ 1 ] = namn;
+            dr2[ 2 ] = lotnummer;
+            dr2[ 3 ] = viktklass;
+            dr2[ 4 ] = kategori;
+            dr2[ 5 ] = förening;
+            dr2[ 6 ] = kroppsvikt;
+            dr2[ 7 ] = höjdBöj;
+            dr2[ 8 ] = höjdBänk;
+            dr2[ 9 ] = rackBänk;
             dr2[ 10 ] = s1;
             dr2[ 11 ] = s2;
             dr2[ 12 ] = s3;
@@ -1539,7 +1541,8 @@ namespace SteelMeet
             dr2[ 17 ] = d2;
             dr2[ 18 ] = d3;
             dr2[ 19 ] = total;
-            dr2[ 20 ] = GLPoäng;
+            dr2[ 20 ] = estimatedTotal;
+            dr2[ 21 ] = glPoäng;
 
             List<string> sbdlist = new List<string>();
             sbdlist.AddRange( new string[] { s1, s2, s3, b1, b2, b3, d1, d2, d3 } );
@@ -2499,7 +2502,7 @@ namespace SteelMeet
                 for( int columnIndex = 2; columnIndex <= 5; columnIndex++ )
                     dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ columnIndex ].Selected = true;
 
-                // Uppdaterar platcalculatorn för den buggar ibland asså
+                // Uppdaterar platcalculatorn för den buggar ibland
                 // Om gruppen är klar
                 if( LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn <= 8 )
                     PlateCalculator( LiftingOrderList[ 0 ].sbdList[ LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn ], plateInfo );
@@ -2597,6 +2600,17 @@ namespace SteelMeet
             }
         }
 
+        private void combo_Aktiv_SlectedIndexChanged_DisplayAll( int i ) 
+        {
+            DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, ""/*Senior*/
+                                , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
+                                , LifterID[i].benchRack.ToString()
+                                , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
+                                , LifterID[i].sbdList[3].ToString(), LifterID[i].sbdList[4].ToString(), LifterID[i].sbdList[5].ToString()
+                                , LifterID[i].sbdList[6].ToString(), LifterID[i].sbdList[7].ToString(), LifterID[i].sbdList[8].ToString()
+                                , LifterID[i].total.ToString(), LifterID[i].estimatedTotal.ToString(), LifterID[i].pointsGL.ToString("0.00"));
+        }
+
         private void combo_Aktivgrupp_SelectedIndexChanged( object sender, EventArgs e )
         {
             groupIndexCurrent = combo_Aktivgrupp.SelectedIndex;
@@ -2614,10 +2628,7 @@ namespace SteelMeet
                     //ladda första gruppen
                     //1111111111111111
                     //1111111111111111
-                    //1111111111111111
-                    //1111111111111111
-                    //1111111111111111
-                    //1111111111111111
+
                     dt2.Rows.Clear();
                     groupRowFixer = 0;
                     weightsList.Clear();
@@ -2629,15 +2640,7 @@ namespace SteelMeet
                     LiftoffTiltedUpdate();
 
                     for( int i = 0; i < group1Count; i++ )
-                    {
-                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, ""/*Senior*/
-                            , LifterID[ i ].accossiation, LifterID[ i ].bodyWeight.ToString(), LifterID[ i ].squatHeight.ToString(), LifterID[ i ].benchHeight.ToString()
-                            , LifterID[ i ].benchRack.ToString()
-                            , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
-                            , LifterID[ i ].sbdList[ 3 ].ToString(), LifterID[ i ].sbdList[ 4 ].ToString(), LifterID[ i ].sbdList[ 5 ].ToString()
-                            , LifterID[ i ].sbdList[ 6 ].ToString(), LifterID[ i ].sbdList[ 7 ].ToString(), LifterID[ i ].sbdList[ 8 ].ToString()
-                            , LifterID[ i ].total.ToString(), LifterID[ i ].pointsGL.ToString( "0.00" ) );
-                    }
+                        combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
                     for( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
                     {
@@ -2677,9 +2680,7 @@ namespace SteelMeet
                     //ladda andra gruppen
                     //222222222222
                     //222222222222
-                    //222222222222
-                    //222222222222
-                    //222222222222
+
                     dt2.Rows.Clear();
                     groupRowFixer = group1Count;
                     weightsList.Clear();
@@ -2691,18 +2692,9 @@ namespace SteelMeet
                     LiftoffTiltedUpdate();
 
                     for( int i = group1Count; i < group1Count + group2Count; i++ )
-                    {
+                        combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
-                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, ""/*Senior*/
-                            , LifterID[ i ].accossiation, LifterID[ i ].bodyWeight.ToString(), LifterID[ i ].squatHeight.ToString(), LifterID[ i ].benchHeight.ToString()
-                            , LifterID[ i ].benchRack.ToString()
-                            , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
-                            , LifterID[ i ].sbdList[ 3 ].ToString(), LifterID[ i ].sbdList[ 4 ].ToString(), LifterID[ i ].sbdList[ 5 ].ToString()
-                            , LifterID[ i ].sbdList[ 6 ].ToString(), LifterID[ i ].sbdList[ 7 ].ToString(), LifterID[ i ].sbdList[ 8 ].ToString()
-                            , LifterID[ i ].total.ToString(), LifterID[ i ].pointsGL.ToString( "0.00" ) );
-                    }
-
-                    for( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
+                    for ( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
                     {
                         for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0; o < LifterID[ i + groupRowFixer ].LiftRecord.Count; o++ ) //Man har ju lyft ettm indre lyft än currentlift
                         {
@@ -2736,9 +2728,7 @@ namespace SteelMeet
                     //ladda tredje gruppen
                     //333333333333333
                     //333333333333333
-                    //333333333333333
-                    //333333333333333
-                    //333333333333333
+
                     dt2.Rows.Clear();
                     groupRowFixer = group1Count + group2Count;
                     weightsList.Clear();
@@ -2750,18 +2740,9 @@ namespace SteelMeet
                     LiftoffTiltedUpdate();
 
                     for( int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++ )
-                    {
+                        combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
-                        DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, ""/*Senior*/
-                            , LifterID[ i ].accossiation, LifterID[ i ].bodyWeight.ToString(), LifterID[ i ].squatHeight.ToString(), LifterID[ i ].benchHeight.ToString()
-                            , LifterID[ i ].benchRack.ToString()
-                            , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
-                            , LifterID[ i ].sbdList[ 3 ].ToString(), LifterID[ i ].sbdList[ 4 ].ToString(), LifterID[ i ].sbdList[ 5 ].ToString()
-                            , LifterID[ i ].sbdList[ 6 ].ToString(), LifterID[ i ].sbdList[ 7 ].ToString(), LifterID[ i ].sbdList[ 8 ].ToString()
-                            , LifterID[ i ].total.ToString(), LifterID[ i ].pointsGL.ToString( "0.00" ) );
-                    }
-
-                    for( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
+                    for ( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
                     {
                         for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0; o < LifterID[ i + groupRowFixer ].LiftRecord.Count; o++ ) //Man har ju lyft ettm indre lyft än currentlift
                         {
@@ -2804,31 +2785,31 @@ namespace SteelMeet
         {
 
             //Men
-            double MenEquippedA = 1236.25115;
-            double MenEquippedB = 1449.21864;
-            double MenEquippedC = 0.01644;
-            double MenClassicA = 1199.72839;
-            double MenClassicB = 1025.18162;
-            double MenClassicC = 0.00921;
+            double MenEquippedA      = 1236.25115;
+            double MenEquippedB      = 1449.21864;
+            double MenEquippedC      = 0.01644;
+            double MenClassicA       = 1199.72839;
+            double MenClassicB       = 1025.18162;
+            double MenClassicC       = 0.00921;
             double MenEquippedBenchA = 381.22073;
             double MenEquippedBenchB = 733.79378;
             double MenEquippedBenchC = 0.02398;
-            double MenClassicBenchA = 320.98041;
-            double MenClassicBenchB = 281.40258;
-            double MenClassicBenchC = 0.01008;
+            double MenClassicBenchA  = 320.98041;
+            double MenClassicBenchB  = 281.40258;
+            double MenClassicBenchC  = 0.01008;
             //Women
-            double WomenEquippedA = 758.63878;
-            double WomenEquippedB = 949.31382;
-            double WomenEquippedC = 0.02435;
-            double WomenClassicA = 610.32796;
-            double WomenClassicB = 1045.59282;
-            double WomenClassicC = 0.03048;
+            double WomenEquippedA      = 758.63878;
+            double WomenEquippedB      = 949.31382;
+            double WomenEquippedC      = 0.02435;
+            double WomenClassicA       = 610.32796;
+            double WomenClassicB       = 1045.59282;
+            double WomenClassicC       = 0.03048;
             double WomenEquippedBenchA = 221.82209;
             double WomenEquippedBenchB = 357.00377;
             double WomenEquippedBenchC = 0.02937;
-            double WomenClassicBenchA = 142.40398;
-            double WomenClassicBenchB = 442.52671;
-            double WomenClassicBenchC = 0.04724;
+            double WomenClassicBenchA  = 142.40398;
+            double WomenClassicBenchB  = 442.52671;
+            double WomenClassicBenchC  = 0.04724;
 
             double A = 1;
             double B = 1;

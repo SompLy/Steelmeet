@@ -89,6 +89,7 @@ namespace SteelMeet
         public float d2 { get; set; }
         public float d3 { get; set; }
         public float total { get; set; }
+        public float estimatedTotal { get; set; }
         public int pointsWilks { get; set; }
         public double pointsGL { get; set; }
 

@@ -17,12 +17,12 @@ static void SetDoubleBuffer(Control dgv, bool DoubleBuffered)
 
 :)
 Viktiga saker :
-Dynamisk storlek på datagridviewn så den alltid är så stor som möjligt.
-Dynamisk allokering av lyftarording och ingångar plats
+en pognostotal brevid vanliga totalen.
+✅Dynamisk allokering av lyftarording och ingångar plats
 Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
-Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
 nuvarande total med en pil till totalen som lyftaren kommer få om hen klarar lyftet
+Dynamisk storlek på datagridviewn så den alltid är så stor som möjligt.
 ✅krascahr när man är klar med bänken, förmodligen samma prblem som nedan
 ✅spectator gör så att det kraschar på sista marken, man kan inte göra sista marken
 ✅Underkända lyft scalar inte med nya scalen på spectator
@@ -30,8 +30,8 @@ nuvarande total med en pil till totalen som lyftaren kommer få om hen klarar ly
 ✅Custom size på datagridview som man kan ändra genom kontrollpanelen
 
 Mindre viktiga saker :
-en pognostotal brevid vanliga totalen.
 Förkorta namn och föreningsnamn 
+Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
 En keybind som kan toggle vilen sida lyftarordningen är på ( då måste layouten vara typ 100% klar annars behöver man göra om det ) 
 autosave och loading av pågående tävlingar
 vikter visibility kanske ändra lite färger o sånt
