@@ -1589,6 +1589,9 @@ namespace SteelMeet
 
             for( int i = 0 ; weightSum != targetWeight ; )
             {
+                if( usedPlatesList.Count <= i ) // if picked for example 229.5 kilo
+                    return;
+
                 if( weightSum + weightsList[ i ] <= targetWeight && totalPlatesList[ i ] > usedPlatesList[ i ] )
                 {
                     weightSum += weightsList[ i ];
