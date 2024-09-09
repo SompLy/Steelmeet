@@ -25,7 +25,7 @@ using OpenXmlColor = DocumentFormat.OpenXml.Spreadsheet.Color;
 namespace SteelMeet
 {
 
-    public partial class SMKontrollpanel : Form
+    public partial class SMKontrollpanel: Form
     {
         public SMKontrollpanel()
         {
@@ -117,7 +117,7 @@ namespace SteelMeet
 
         public CultureInfo customCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        public class LifterComparer : IComparer<Lifter>
+        public class LifterComparer: IComparer<Lifter>
         {
             public int Compare( Lifter x, Lifter y )
             {
@@ -151,7 +151,7 @@ namespace SteelMeet
                 return 0;
             }
         }
-        public class LifterComparerTotal : IComparer<Lifter>
+        public class LifterComparerTotal: IComparer<Lifter>
         {
             public int Compare( Lifter x, Lifter y )
             {
@@ -280,7 +280,7 @@ namespace SteelMeet
                 }
             }
 
-            for( int i = 0; i < LyftarID.Count; i++ )
+            for( int i = 0 ; i < LyftarID.Count ; i++ )
             {
                 string[] data = LyftarID[i].Split(',');
                 //Display(data[0], data[1], data[2], data[3], data[4]);
@@ -299,7 +299,7 @@ namespace SteelMeet
             int columnCount = stats.NumberOfColumns;
 
             List<string> data = new List<string>();
-            for( int i = 1; i < 1000; i++ ) //Hittar antal rader som är ifyllda
+            for( int i = 1 ; i < 1000 ; i++ ) //Hittar antal rader som är ifyllda
             {
                 if( string.IsNullOrWhiteSpace( sl.GetCellValueAsString( i, 1 ) ) )
                 {
@@ -308,7 +308,7 @@ namespace SteelMeet
                 }
             }
 
-            for( int i = 1; i < realRowCount; i++ )
+            for( int i = 1 ; i < realRowCount ; i++ )
             {
                 if( sl.GetCellValueAsString( i, 1 ) != "Grupp" )
                 {
@@ -341,7 +341,7 @@ namespace SteelMeet
                 MessageBox.Show( ex.Message );
             }
 
-            for( int i = 0; i < dataGridViewWeighIn.ColumnCount; i++ )
+            for( int i = 0 ; i < dataGridViewWeighIn.ColumnCount ; i++ )
             {
                 dataGridViewWeighIn.Columns[ i ].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
@@ -459,9 +459,9 @@ namespace SteelMeet
                 if( result == DialogResult.OK )
                 {
                     SLDocument sl = new SLDocument();
-                    for( int i = 0; i < dataGridViewWeighIn.RowCount - 1; i++ )
+                    for( int i = 0 ; i < dataGridViewWeighIn.RowCount - 1 ; i++ )
                     {
-                        for( int o = 0; o < dataGridViewWeighIn.ColumnCount; o++ )
+                        for( int o = 0 ; o < dataGridViewWeighIn.ColumnCount ; o++ )
                         {
                             sl.SetCellValue( i + 1, o + 1, dataGridViewWeighIn.Rows[ i ].Cells[ o ].Value.ToString() );
                         }
@@ -487,9 +487,9 @@ namespace SteelMeet
             LifterID.Clear();
             dt2.Rows.Clear();
 
-            for( int o = 0; o < dataGridViewWeighIn.RowCount - 1; o++ )
+            for( int o = 0 ; o < dataGridViewWeighIn.RowCount - 1 ; o++ )
             {
-                for( int i = 0; i < dataGridViewWeighIn.ColumnCount; i++ ) // Antal columner som inte är lyft
+                for( int i = 0 ; i < dataGridViewWeighIn.ColumnCount ; i++ ) // Antal columner som inte är lyft
                 {
                     list.Add( dataGridViewWeighIn[ i, o ].Value.ToString() );
                 }
@@ -636,7 +636,7 @@ namespace SteelMeet
             }
 
             // Stränger av sorting (gör header rutorna så feta också)
-            for( int i = 0; i < dataGridViewControlPanel.ColumnCount; i++ )
+            for( int i = 0 ; i < dataGridViewControlPanel.ColumnCount ; i++ )
             {
                 dataGridViewControlPanel.Columns[ i ].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
@@ -835,7 +835,7 @@ namespace SteelMeet
             int x1 = -5, y1 = 60, x2 = -5, y2 = 140;
             int offset = 20;
 
-            for( int i = 0; i < 10; )
+            for( int i = 0 ; i < 10 ; )
             {
                 if( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
                 {
@@ -1011,6 +1011,7 @@ namespace SteelMeet
             {
                 dataGridViewControlPanel.EndEdit();
                 RankUpdate();
+                EstimatedUpdate( LifterID[ e.RowIndex + groupRowFixer ] );
                 if( dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value != DBNull.Value )
                 {
                     string s = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString();
@@ -1026,7 +1027,6 @@ namespace SteelMeet
                         {
                             LifterID[ SelectedRowIndex + groupRowFixer ].sbdList[ LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Count ] =
                                 float.Parse( dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value.ToString() ); // Sätter vikten till sbdlist
-
                         }
 
                         LiftingOrderUpdate();//Updaterar lyftar ordning
@@ -1037,7 +1037,7 @@ namespace SteelMeet
 
                         if( float.TryParse( s, out f ) || s == 0.ToString() )
                         {
-                            for( int i = 0; i < weightsList.Count; i++ )
+                            for( int i = 0 ; i < weightsList.Count ; i++ )
                             {
                                 totalWeightAllPlates = ( totalPlatesList[ i ] * 2 ) * weightsList[ i ];
                             }
@@ -1196,7 +1196,7 @@ namespace SteelMeet
                     MessageBox.Show( "Denna lyftare har redan lyft denna omgång", "⚠SteelMeet varning!⚠", MessageBoxButtons.OK, MessageBoxIcon.None );
                     return;
                 }
-                for( int i = 0; i < LiftingOrderList.Count; i++ )
+                for( int i = 0 ; i < LiftingOrderList.Count ; i++ )
                 {
                     if( LifterID[ SelectedRowIndex + groupRowFixer ] == LiftingOrderList[ i ] )
                     {
@@ -1221,12 +1221,13 @@ namespace SteelMeet
                 {
                     dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value = //Lägger till 2,5 automatiskt när man godkänner ett lyft
                         2.5f + float.Parse( dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Value.ToString() );
+
                 }
                 //dataGridViewControlPanel.BeginEdit(true);
 
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 1 ];
                 // Markerar rad för den aktiva lyftaren
-                for( int columnIndex = 2; columnIndex <= 5; columnIndex++ )
+                for( int columnIndex = 2 ; columnIndex <= 5 ; columnIndex++ )
                     dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ columnIndex ].Selected = true;
             }
 
@@ -1286,7 +1287,7 @@ namespace SteelMeet
                         return;
                     }
 
-                    for( int i = 0; i < LiftingOrderList.Count; i++ )
+                    for( int i = 0 ; i < LiftingOrderList.Count ; i++ )
                     {
                         if( LifterID[ SelectedRowIndex + groupRowFixer ] == LiftingOrderList[ i ] )
                         {
@@ -1313,7 +1314,7 @@ namespace SteelMeet
 
                     dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 1 ];
                     // Markerar rad för den aktiva lyftaren
-                    for( int columnIndex = 2; columnIndex <= 5; columnIndex++ )
+                    for( int columnIndex = 2 ; columnIndex <= 5 ; columnIndex++ )
                         dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ columnIndex ].Selected = true;
                 }
 
@@ -1368,66 +1369,68 @@ namespace SteelMeet
             switch( ctc_Main.SelectedIndex )
             {
                 case 0:
-                    {
-                        //Invägning tabben laddas
+                {
+                    //Invägning tabben laddas
 
-                        break;
-                    }
+                    break;
+                }
                 case 1:
-                    {
-                        //Inställningar tabben laddas
-                        break;
-                    }
+                {
+                    //Inställningar tabben laddas
+                    break;
+                }
                 case 2:
+                {
+                    // Competition tab loads
+
+                    // Updates info of weight plates like amount and color
+                    plateInfo = new PlateInfo( Int16.Parse( txtb50.Text ), Int16.Parse( txtb25.Text ), Int16.Parse( txtb20.Text ), Int16.Parse( txtb15.Text ), Int16.Parse( txtb10.Text ), Int16.Parse( txtb5.Text ), Int16.Parse( txtb25small.Text ), Int16.Parse( txtb125small.Text ), Int16.Parse( txtb05small.Text ), Int16.Parse( txtb025small.Text )
+                                    , btn50.BackColor, btn25.BackColor, btn20.BackColor, btn15.BackColor, btn10.BackColor, btn5.BackColor, btn25small.BackColor, btn05small.BackColor, btn125small.BackColor, btn025small.BackColor );
+
+                    // Uppdaterar hur många grupper som finns
+                    for( int i = 0 ; i < LifterID.Count ; i++ )
                     {
-                        //Tävling tabben laddas
-
-                        //Uppdaterar information of viktsivor såsom antal och färg
-                        plateInfo = new PlateInfo( Int16.Parse( txtb50.Text ), Int16.Parse( txtb25.Text ), Int16.Parse( txtb20.Text ), Int16.Parse( txtb15.Text ), Int16.Parse( txtb10.Text ), Int16.Parse( txtb5.Text ), Int16.Parse( txtb25small.Text ), Int16.Parse( txtb125small.Text ), Int16.Parse( txtb05small.Text ), Int16.Parse( txtb025small.Text )
-                                        , btn50.BackColor, btn25.BackColor, btn20.BackColor, btn15.BackColor, btn10.BackColor, btn5.BackColor, btn25small.BackColor, btn05small.BackColor, btn125small.BackColor, btn025small.BackColor );
-
-                        //Uppdaterar hur många grupper som finns
-                        for( int i = 0; i < LifterID.Count; i++ )
+                        if( LifterID[ i ].groupNumber > groupIndexCount )
                         {
-                            if( LifterID[ i ].groupNumber > groupIndexCount )
-                            {
-                                groupIndexCount = LifterID[ i ].groupNumber;
-                            }
+                            groupIndexCount = LifterID[ i ].groupNumber;
                         }
-
-                        // Återställa och uppdatera antal grupper
-                        combo_Aktivgrupp.Items.Clear();
-                        for( int i = 0; i < groupIndexCount; i++ )
-                        {
-                            if( !combo_Aktivgrupp.Items.Contains( i + 1 ) )
-                            {
-                                combo_Aktivgrupp.Items.Add( i + 1 );
-                            }
-                        }
-
-                        combo_Aktivgrupp.SelectedItem = 1;
-
-                        if( Enumerable.Any( LifterID ) )
-                        {
-                            //LiftOrderUpdate();//Updaterar lyftar ordning
-                            // dataGridViewControlPanel.Rows[0].Selected = false;  //Gör så att inget är markerat när datagrdiviewn laddas
-                        }
-                        for( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
-                        {
-                            for( int o = 0; o < 7; o++ )
-                            {
-                                dataGridViewControlPanel.Rows[ i ].Cells[ o ].ReadOnly = true;
-                                dataGridViewControlPanel.Columns[ 19 ].ReadOnly = true; //total
-                                dataGridViewControlPanel.Columns[ 20 ].ReadOnly = true; //poäng
-                            }
-                        }
-                        break;
                     }
+
+                    // Återställa och uppdatera antal grupper
+                    combo_Aktivgrupp.Items.Clear();
+                    for( int i = 0 ; i < groupIndexCount ; i++ )
+                    {
+                        if( !combo_Aktivgrupp.Items.Contains( i + 1 ) )
+                        {
+                            combo_Aktivgrupp.Items.Add( i + 1 );
+                        }
+                    }
+
+                    combo_Aktivgrupp.SelectedItem = 1;
+
+                    if( Enumerable.Any( LifterID ) )
+                    {
+                        // LiftOrderUpdate();//Updaterar lyftar ordning
+                        // dataGridViewControlPanel.Rows[0].Selected = false;  //Gör så att inget är markerat när datagrdiviewn laddas
+                    }
+                    for( int i = 0 ; i < dataGridViewControlPanel.RowCount ; i++ )
+                    {
+                        for( int o = 0 ; o < 7 ; o++ )
+                        {
+                            dataGridViewControlPanel.Rows[ i ].Cells[ o ].ReadOnly = true;
+                            dataGridViewControlPanel.Columns[ 19 ].ReadOnly = true; // Total
+                            dataGridViewControlPanel.Columns[ 20 ].ReadOnly = true; // Estimated Points
+                            dataGridViewControlPanel.Columns[ 21 ].ReadOnly = true; // Points
+                        }
+                    }
+
+                    break;
+                }
                 case 3:
-                    {
-                        //Resultat tabben laddas
-                        break;
-                    }
+                {
+                    //Resultat tabben laddas
+                    break;
+                }
                 default:
                     break;
             }
@@ -1582,7 +1585,7 @@ namespace SteelMeet
                 return;
             }
 
-            for( int i = 0; weightSum != targetWeight; )
+            for( int i = 0 ; weightSum != targetWeight ; )
             {
                 if( weightSum + weightsList[ i ] <= targetWeight && totalPlatesList[ i ] > usedPlatesList[ i ] )
                 {
@@ -1640,7 +1643,7 @@ namespace SteelMeet
                 return;
             }
 
-            for( int i = 0; weightSum != targetWeight; )
+            for( int i = 0 ; weightSum != targetWeight ; )
             {
                 if( weightSum + weightsList2[ i ] <= targetWeight && totalPlatesList2[ i ] > usedPlatesList2[ i ] )
                 {
@@ -1664,40 +1667,40 @@ namespace SteelMeet
             switch( _option )
             {
                 case 0:         // Sätt klockan på 1 minut
-                    {
-                        minutesLyft = 1;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
+                {
+                    minutesLyft = 1;
+                    secondsLyft = 0;
+                    timerLyft.Start();
+                    break;
+                }
                 case 1:         // Sätt klockan på custom timer
-                    {
-                        minutesLyft = _customMinTime;
-                        secondsLyft = _customSecTime;
-                        timerLyft.Start();
-                        break;
-                    }
+                {
+                    minutesLyft = _customMinTime;
+                    secondsLyft = _customSecTime;
+                    timerLyft.Start();
+                    break;
+                }
                 case 2:         // Starta lapp timern på 1 minut
-                    {
-                        minutesLapp = 1;
-                        secondsLapp = 0;
-                        timerLapp.Start();
-                        break;
-                    }
+                {
+                    minutesLapp = 1;
+                    secondsLapp = 0;
+                    timerLapp.Start();
+                    break;
+                }
                 case 3:         // Stoppar och resettar lyft timern
-                    {
-                        minutesLyft = 0;
-                        secondsLyft = 0;
-                        timerLyft.Start();
-                        break;
-                    }
+                {
+                    minutesLyft = 0;
+                    secondsLyft = 0;
+                    timerLyft.Start();
+                    break;
+                }
                 case 4:         // Stoppar och resettar lapp timern
-                    {
-                        minutesLapp = 0;
-                        secondsLapp = 0;
-                        timerLyft.Start();
-                        break;
-                    }
+                {
+                    minutesLapp = 0;
+                    secondsLapp = 0;
+                    timerLyft.Start();
+                    break;
+                }
                 default: { break; }
 
             }
@@ -1791,7 +1794,7 @@ namespace SteelMeet
                 List<int> ints = new List<int>();
 
                 // For determeting what the lowest current lift is
-                for( int i = startIndex; i < endIndex; i++ )
+                for( int i = startIndex ; i < endIndex ; i++ )
                 {
                     if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
                     {
@@ -1804,7 +1807,7 @@ namespace SteelMeet
                 {
                     int lowestCurrentLift = ints.Min();
 
-                    for( int i = startIndex; i < endIndex; i++ )
+                    for( int i = startIndex ; i < endIndex ; i++ )
                     {
                         if( LifterID[ i ].CurrentLift == lowestCurrentLift && ( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly ) )
                         {
@@ -1815,7 +1818,7 @@ namespace SteelMeet
             }
 
             // Clear the labels before the visual update
-            for( int i = 0; i < LiftingOrderListLabels.Count; i++ )
+            for( int i = 0 ; i < LiftingOrderListLabels.Count ; i++ )
             {
                 LiftingOrderListLabels[ i ].Text = "";
             }
@@ -1863,7 +1866,7 @@ namespace SteelMeet
                 List<int> ints = new List<int>();
 
                 // For determeting what the lowest current lift is
-                for( int i = startIndex2; i < endIndex2; i++ )
+                for( int i = startIndex2 ; i < endIndex2 ; i++ )
                 {
                     if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
                     {
@@ -1878,7 +1881,7 @@ namespace SteelMeet
 
                     ExtraLifters.Clear();
 
-                    for( int i = startIndex2; i < endIndex2; i++ )
+                    for( int i = startIndex2 ; i < endIndex2 ; i++ )
                     {
                         if( LifterID[ i ].CurrentLift == lowestCurrentLift + 1 &&
                             ( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) ||
@@ -1891,7 +1894,7 @@ namespace SteelMeet
                 }
             }
             // Show the next 10 lifters or as many as available
-            for( int i = startIndex + 1; i < LiftingOrderList.Count + ExtraLifters.Count && i < startIndex + 1 + countToShow; i++ )
+            for( int i = startIndex + 1 ; i < LiftingOrderList.Count + ExtraLifters.Count && i < startIndex + 1 + countToShow ; i++ )
             {
                 string spacing = " ";
                 string SpacingIndex = "";
@@ -1935,7 +1938,7 @@ namespace SteelMeet
             }
 
             // Clear the remaining labels
-            for( int i = startIndex + countToShow; i < LiftingOrderListLabels.Count; i++ )
+            for( int i = startIndex + countToShow ; i < LiftingOrderListLabels.Count ; i++ )
                 LiftingOrderListLabels[ i ].Text = "";
         }
 
@@ -1945,13 +1948,13 @@ namespace SteelMeet
             group2Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
             group3Count = 0;
 
-            for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
+            for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
                 if( LifterID[ i ].groupNumber == 1 )
                     group1Count += 1;
-            for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
+            for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
                 if( LifterID[ i ].groupNumber == 2 )
                     group2Count += 1;
-            for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
+            for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
                 if( LifterID[ i ].groupNumber == 3 )
                     group3Count += 1;
 
@@ -1971,7 +1974,7 @@ namespace SteelMeet
                                                         lbl_groupLiftOrder_control_13, lbl_groupLiftOrder_control_14, lbl_groupLiftOrder_control_15, lbl_groupLiftOrder_control_16,
                                                         lbl_groupLiftOrder_control_17, lbl_groupLiftOrder_control_18, lbl_groupLiftOrder_control_19, lbl_groupLiftOrder_control_20} );
 
-            for( int i = 0; i < GroupLiftingOrderListLabels.Count; i++ )
+            for( int i = 0 ; i < GroupLiftingOrderListLabels.Count ; i++ )
                 GroupLiftingOrderListLabels[ i ].Text = "";
 
             // Group updater Group updater Group updater 
@@ -2022,7 +2025,7 @@ namespace SteelMeet
                 }
             }
 
-            for( int i = startIndex; i < endIndex; i++ )
+            for( int i = startIndex ; i < endIndex ; i++ )
             {
                 if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
                     lowestCurrentLiftInGroup.Add( LifterID[ i ].CurrentLift );
@@ -2172,7 +2175,7 @@ namespace SteelMeet
             }
 
             GroupLiftingOrderList.Clear();
-            for( int i = loopLeft; i < loopMiddle; i++ )
+            for( int i = loopLeft ; i < loopMiddle ; i++ )
             {
                 GroupLiftingOrderList.Add( LifterID[ i ] );
             }
@@ -2189,7 +2192,7 @@ namespace SteelMeet
             if( tempLowestCurrentLift.Count() > 0 )
             {
                 int low = tempLowestCurrentLift.Min();
-                for( int i = 0; i < GroupLiftingOrderList.Count; )
+                for( int i = 0 ; i < GroupLiftingOrderList.Count ; )
                     if( GroupLiftingOrderList[ i ].CurrentLift > low )
                         GroupLiftingOrderList.RemoveAt( i );
                     else
@@ -2201,10 +2204,10 @@ namespace SteelMeet
                 lbl_OpeningLift.Text = lblText;
             else
                 lbl_OpeningLift.Text = "";
-                
+
 
             if( !ViewNothing )
-                for( int i = 0; i < GroupLiftingOrderList.Count; i++ )
+                for( int i = 0 ; i < GroupLiftingOrderList.Count ; i++ )
                 {
                     string Spacing = " ";
                     string SpacingIndex = " ";
@@ -2226,7 +2229,7 @@ namespace SteelMeet
                 }
             else
                 //Om man inte vill visa några ingångar t.ex som i sista marken eller om man kör endast bänk tävling
-                for( int i = 0; i < GroupLiftingOrderList.Count; i++ )
+                for( int i = 0 ; i < GroupLiftingOrderList.Count ; i++ )
                     GroupLiftingOrderListLabels[ i ].Text = "";
 
         } //GroupLiftingOrder
@@ -2298,17 +2301,18 @@ namespace SteelMeet
                 string cellValue = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[i].Value.ToString();
                 valuesToParse[ i - firstLiftColumn ] = float.Parse( cellValue );
             }
-            //lägger till floats i lista
+
             cellValuesList.AddRange( valuesToParse );
 
-            LiftingOrderList[ 0 ].s2 = cellValuesList[ 1 ];
-            LiftingOrderList[ 0 ].s3 = cellValuesList[ 2 ];
-            LiftingOrderList[ 0 ].b2 = cellValuesList[ 4 ];
-            LiftingOrderList[ 0 ].b3 = cellValuesList[ 5 ];
-            LiftingOrderList[ 0 ].d2 = cellValuesList[ 7 ];
-            LiftingOrderList[ 0 ].d3 = cellValuesList[ 8 ];
+            // Maybe neccessary?
+            //LiftingOrderList[ 0 ].s2 = cellValuesList[ 1 ];
+            //LiftingOrderList[ 0 ].s3 = cellValuesList[ 2 ];
+            //LiftingOrderList[ 0 ].b2 = cellValuesList[ 4 ];
+            //LiftingOrderList[ 0 ].b3 = cellValuesList[ 5 ];
+            //LiftingOrderList[ 0 ].d2 = cellValuesList[ 7 ];
+            //LiftingOrderList[ 0 ].d3 = cellValuesList[ 8 ];
 
-            for( int i = 0; i < LiftingOrderList[ 0 ].LiftRecord.Count(); i++ )
+            for( int i = 0 ; i < LiftingOrderList[ 0 ].LiftRecord.Count() ; i++ )
             {
                 if( !LiftingOrderList[ 0 ].LiftRecord[ i ] )
                 {
@@ -2335,7 +2339,7 @@ namespace SteelMeet
                 else
                     sortedLifters = group.OrderByDescending( l => l.total ).ThenBy( l => l.bodyWeight ).ToList();
 
-                for( int i = 0; i < sortedLifters.Count; i++ )
+                for( int i = 0 ; i < sortedLifters.Count ; i++ )
                 {
                     var lifterToUpdate = LifterID.Values.FirstOrDefault(l => l.weightClass == group.Key.weightClass && l.CategoryEnum == group.Key.CategoryEnum && l.name == sortedLifters[i].name);
 
@@ -2345,7 +2349,7 @@ namespace SteelMeet
             }
 
             // Update the DataGridView
-            for( int i = 0; i < dataGridViewControlPanel.Rows.Count; i++ )
+            for( int i = 0 ; i < dataGridViewControlPanel.Rows.Count ; i++ )
             {
                 dataGridViewControlPanel.Rows[ i ].Cells[ 0 ].Value = LifterID[ i + groupRowFixer ].place;
 
@@ -2498,7 +2502,7 @@ namespace SteelMeet
             {
                 dataGridViewControlPanel.CurrentCell = dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ 1 ];
                 // Markerar rad för den aktiva lyftaren
-                for( int columnIndex = 2; columnIndex <= 5; columnIndex++ )
+                for( int columnIndex = 2 ; columnIndex <= 5 ; columnIndex++ )
                     dataGridViewControlPanel.Rows[ LiftingOrderList[ 0 ].index - groupRowFixer ].Cells[ columnIndex ].Selected = true;
 
                 // Uppdaterar platcalculatorn för den buggar ibland
@@ -2599,15 +2603,15 @@ namespace SteelMeet
             }
         }
 
-        private void combo_Aktiv_SlectedIndexChanged_DisplayAll( int i ) 
+        private void combo_Aktiv_SlectedIndexChanged_DisplayAll( int i )
         {
-            DisplayAll(LifterID[i].place.ToString(), LifterID[i].name, LifterID[i].lotNumber.ToString(), LifterID[i].weightClass, ""/*Senior*/
-                                , LifterID[i].accossiation, LifterID[i].bodyWeight.ToString(), LifterID[i].squatHeight.ToString(), LifterID[i].benchHeight.ToString()
-                                , LifterID[i].benchRack.ToString()
-                                , LifterID[i].sbdList[0].ToString(), LifterID[i].sbdList[1].ToString(), LifterID[i].sbdList[2].ToString()
-                                , LifterID[i].sbdList[3].ToString(), LifterID[i].sbdList[4].ToString(), LifterID[i].sbdList[5].ToString()
-                                , LifterID[i].sbdList[6].ToString(), LifterID[i].sbdList[7].ToString(), LifterID[i].sbdList[8].ToString()
-                                , LifterID[i].total.ToString(), LifterID[i].estimatedTotal.ToString(), LifterID[i].pointsGL.ToString("0.00"));
+            DisplayAll( LifterID[ i ].place.ToString(), LifterID[ i ].name, LifterID[ i ].lotNumber.ToString(), LifterID[ i ].weightClass, ""/*Senior*/
+                                , LifterID[ i ].accossiation, LifterID[ i ].bodyWeight.ToString(), LifterID[ i ].squatHeight.ToString(), LifterID[ i ].benchHeight.ToString()
+                                , LifterID[ i ].benchRack.ToString()
+                                , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
+                                , LifterID[ i ].sbdList[ 3 ].ToString(), LifterID[ i ].sbdList[ 4 ].ToString(), LifterID[ i ].sbdList[ 5 ].ToString()
+                                , LifterID[ i ].sbdList[ 6 ].ToString(), LifterID[ i ].sbdList[ 7 ].ToString(), LifterID[ i ].sbdList[ 8 ].ToString()
+                                , LifterID[ i ].total.ToString(), LifterID[ i ].estimatedTotal.ToString(), LifterID[ i ].pointsGL.ToString( "0.00" ) );
         }
 
         private void combo_Aktivgrupp_SelectedIndexChanged( object sender, EventArgs e )
@@ -2618,8 +2622,8 @@ namespace SteelMeet
             RankUpdate();
             LiftingOrderList.Clear();
             ExtraLifters.Clear();
-            LiftingOrderUpdate();//Updaterar lyftar ordning
-            GroupLiftOrderUpdate();//Updaterar nästa grupps lyftar ordning
+            LiftingOrderUpdate();   // Updaterar lyftar ordning
+            GroupLiftOrderUpdate(); // Updaterar nästa grupps lyftar ordning
 
             switch( combo_Aktivgrupp.SelectedIndex )
             {
@@ -2632,7 +2636,7 @@ namespace SteelMeet
                     groupRowFixer = 0;
                     weightsList.Clear();
                     group1Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
-                    for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
+                    for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
                         if( LifterID[ i ].groupNumber == 1 )
                             group1Count += 1;
 
@@ -2641,9 +2645,10 @@ namespace SteelMeet
                     for( int i = 0; i < group1Count; i++ )
                         combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
-                    for( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
+
+                    for( int i = 0 ; i < dataGridViewControlPanel.RowCount ; i++ )
                     {
-                        for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0; o < LifterID[ i + groupRowFixer ].LiftRecord.Count; o++ ) //Man har ju lyft ettm indre lyft än currentlift
+                        for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0 ; o < LifterID[ i + groupRowFixer ].LiftRecord.Count ; o++ ) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if( LifterID[ i + groupRowFixer ].LiftRecord[ o ] == true )
                             {
@@ -2664,11 +2669,11 @@ namespace SteelMeet
                             dataGridViewControlPanel.Rows[ i ].Cells[ LifterID[ i ].CurrentLift ].Style.ForeColor = Color.Black;
                         }
 
-                        for( int o = 0; o < 7; o++ )
+                        for( int o = 0 ; o < 7 ; o++ )
                             dataGridViewControlPanel.Rows[ i ].Cells[ o ].ReadOnly = true;
                     }
 
-                    for( int i = 0; i < dataGridViewControlPanel.ColumnCount; i++ )
+                    for( int i = 0 ; i < dataGridViewControlPanel.ColumnCount ; i++ )
                         dataGridViewControlPanel.Columns[ i ].SortMode = DataGridViewColumnSortMode.NotSortable;
 
                     if( LiftingOrderList.Count > 0 )
@@ -2684,18 +2689,18 @@ namespace SteelMeet
                     groupRowFixer = group1Count;
                     weightsList.Clear();
                     group2Count = 0;                         //Resettar så att den inte blir för mycket om man ändrar grupper
-                    for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
+                    for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
                         if( LifterID[ i ].groupNumber == 2 )
                             group2Count += 1;
 
                     LiftoffTiltedUpdate();
 
-                    for( int i = group1Count; i < group1Count + group2Count; i++ )
+                    for( int i = group1Count ; i < group1Count + group2Count ; i++ )
                         combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
-                    for ( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
+                    for( int i = 0 ; i < dataGridViewControlPanel.RowCount ; i++ )
                     {
-                        for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0; o < LifterID[ i + groupRowFixer ].LiftRecord.Count; o++ ) //Man har ju lyft ettm indre lyft än currentlift
+                        for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0 ; o < LifterID[ i + groupRowFixer ].LiftRecord.Count ; o++ ) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if( LifterID[ i + groupRowFixer ].LiftRecord[ o ] == true )
                             {
@@ -2716,10 +2721,10 @@ namespace SteelMeet
                         }
 
 
-                        for( int o = 0; o < 7; o++ )
+                        for( int o = 0 ; o < 7 ; o++ )
                             dataGridViewControlPanel.Rows[ i ].Cells[ o ].ReadOnly = true;
                     }
-                    for( int i = 0; i < dataGridViewControlPanel.ColumnCount; i++ )
+                    for( int i = 0 ; i < dataGridViewControlPanel.ColumnCount ; i++ )
                         dataGridViewControlPanel.Columns[ i ].SortMode = DataGridViewColumnSortMode.NotSortable;
 
                     break;
@@ -2732,18 +2737,18 @@ namespace SteelMeet
                     groupRowFixer = group1Count + group2Count;
                     weightsList.Clear();
                     group3Count = 0;                        //Resettar så att den inte blir för mycket om man ändrar grupper
-                    for( int i = 0; i < LifterID.Count; i++ ) //Antal lyftare i grupp 1
+                    for( int i = 0 ; i < LifterID.Count ; i++ ) //Antal lyftare i grupp 1
                         if( LifterID[ i ].groupNumber == 3 )
                             group3Count += 1;
 
                     LiftoffTiltedUpdate();
 
-                    for( int i = group1Count + group2Count; i < group1Count + group2Count + group3Count; i++ )
+                    for( int i = group1Count + group2Count ; i < group1Count + group2Count + group3Count ; i++ )
                         combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
-                    for ( int i = 0; i < dataGridViewControlPanel.RowCount; i++ )
+                    for( int i = 0 ; i < dataGridViewControlPanel.RowCount ; i++ )
                     {
-                        for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0; o < LifterID[ i + groupRowFixer ].LiftRecord.Count; o++ ) //Man har ju lyft ettm indre lyft än currentlift
+                        for( int o = LifterID[ i + groupRowFixer ].isBenchOnly ? 3 : 0 ; o < LifterID[ i + groupRowFixer ].LiftRecord.Count ; o++ ) //Man har ju lyft ettm indre lyft än currentlift
                         {
                             if( LifterID[ i + groupRowFixer ].LiftRecord[ o ] == true )
                             {
@@ -2761,10 +2766,10 @@ namespace SteelMeet
                             dataGridViewControlPanel.Rows[ i ].Cells[ LifterID[ i + group1Count + group2Count ].CurrentLift ].Style.BackColor = currentLiftColor;
                         dataGridViewControlPanel.Rows[ i ].Cells[ LifterID[ i + group1Count + group2Count ].CurrentLift ].Style.ForeColor = Color.Black;
 
-                        for( int o = 0; o < 7; o++ )
+                        for( int o = 0 ; o < 7 ; o++ )
                             dataGridViewControlPanel.Rows[ i ].Cells[ o ].ReadOnly = true;
                     }
-                    for( int i = 0; i < dataGridViewControlPanel.ColumnCount; i++ )
+                    for( int i = 0 ; i < dataGridViewControlPanel.ColumnCount ; i++ )
                         dataGridViewControlPanel.Columns[ i ].SortMode = DataGridViewColumnSortMode.NotSortable;
 
                     break;
@@ -3010,7 +3015,7 @@ namespace SteelMeet
             ChangeSpectatorGridviewSize();
         }
 
-        private void ChangeSpectatorGridviewSize() 
+        private void ChangeSpectatorGridviewSize()
         {
             float result = 0;
 
@@ -3060,7 +3065,7 @@ namespace SteelMeet
                     sl.SetCellValue( 1, 9, "GL poäng" );
                     sl.SetCellValue( 1, 10, "Placering" );
 
-                    for( int i = 0; i < LifterID.Count(); i++ )
+                    for( int i = 0 ; i < LifterID.Count() ; i++ )
                     {
                         sl.SetCellValue( i + 2, 1, LifterID[ i ].name );
                         sl.SetCellValue( i + 2, 2, LifterID[ i ].bodyWeight );
@@ -3099,7 +3104,7 @@ namespace SteelMeet
                 {
                     SLDocument sl = new SLDocument(ofd.FileName);
 
-                    for( int i = 0; i < LifterID.Count(); i++ )
+                    for( int i = 0 ; i < LifterID.Count() ; i++ )
                     {
                         sl.SetCellValue( i + 16, 2, LifterID[ i ].licenceNumber );
                         sl.SetCellValue( i + 16, 3, LifterID[ i ].bodyWeight );
@@ -3134,7 +3139,7 @@ namespace SteelMeet
                         SLStyle badStyle = sl.CreateStyle();
                         badStyle.Font.Strike = true;
 
-                        for( int o = 0; o < LifterID[ i ].LiftRecord.Count; o++ )
+                        for( int o = 0 ; o < LifterID[ i ].LiftRecord.Count ; o++ )
                         {
                             if( LifterID[ i ].LiftRecord[ o ] )
                                 sl.SetCellStyle( sbdStringListColumn[ o ] + ( i + 16 ), goodStyle );

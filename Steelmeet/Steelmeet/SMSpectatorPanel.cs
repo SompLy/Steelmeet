@@ -22,7 +22,7 @@ using Font = System.Drawing.Font;
 
 namespace SteelMeet
 {
-    public partial class SMSpectatorPanel : Form
+    public partial class SMSpectatorPanel: Form
     {
         public SMSpectatorPanel( Form _form )
         {
@@ -63,7 +63,7 @@ namespace SteelMeet
             clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
 
             int indexOffset = 0;
-            for( Int32 index = 0; index < _row.Cells.Count; index++ )
+            for( Int32 index = 0 ; index < _row.Cells.Count ; index++ )
             {
                 if( index != 7 && index != 8 && index != 9 ) // Does not clone heights
                 {
@@ -144,7 +144,7 @@ namespace SteelMeet
                                                         lbl_groupLiftOrder_control_9, lbl_groupLiftOrder_control_10, lbl_groupLiftOrder_control_11, lbl_groupLiftOrder_control_12,
                                                         lbl_groupLiftOrder_control_13, lbl_groupLiftOrder_control_14, lbl_groupLiftOrder_control_15, lbl_groupLiftOrder_control_16,
                                                         lbl_groupLiftOrder_control_17, lbl_groupLiftOrder_control_18, lbl_groupLiftOrder_control_19, lbl_groupLiftOrder_control_20} );
-            for( int i = 0; i < smk.GroupLiftingOrderListLabels.Count; i++ )
+            for( int i = 0 ; i < smk.GroupLiftingOrderListLabels.Count ; i++ )
                 GroupLiftingOrderListLabels[ i ].Text = smk.GroupLiftingOrderListLabels[ i ].Text;
         }
         void UpdateDataGridviewFontAutoSize()
@@ -168,13 +168,13 @@ namespace SteelMeet
             dataGridViewSpectatorPanel.Rows.Clear();
             if( dataGridViewSpectatorPanel.ColumnCount > 0 ) // There must be columns to add more rows
             {
-                for( int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++ )
+                for( int i = 0 ; i < smk.dataGridViewControlPanel.RowCount ; i++ )
                     dataGridViewSpectatorPanel.Rows.Add( CloneRow( smk.dataGridViewControlPanel.Rows[ i ] ) );
 
                 // Select current lifter
                 dataGridViewSpectatorPanel.CurrentCell = null; // Otherwise it will always select the first cell
                 if( smk.dataGridViewControlPanel.RowCount > 1 && smk.LiftingOrderList.Count > 0 )
-                    for( int columnIndex = 1; columnIndex <= 5; columnIndex++ )
+                    for( int columnIndex = 1 ; columnIndex <= 5 ; columnIndex++ )
                         dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
             }
         }
@@ -190,7 +190,7 @@ namespace SteelMeet
                 dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle.Font = newFont;
 
                 dataGridViewSpectatorPanel.Columns[ 4 ].HeaderText = "";
-                for( int i = 0; i < dataGridViewSpectatorPanel.RowCount; i++ )
+                for( int i = 0 ; i < dataGridViewSpectatorPanel.RowCount ; i++ )
                     dataGridViewSpectatorPanel.Rows[ i ].Cells[ 4 ].Value = "";
 
                 // Subscribe to the CellFormatting event
@@ -257,7 +257,7 @@ namespace SteelMeet
                     lbl_liftOrder_control_17, lbl_liftOrder_control_18, lbl_liftOrder_control_19, lbl_liftOrder_control_20
                     } );
 
-            for( int i = 0; i < smk.LiftingOrderListLabels.Count; i++ )
+            for( int i = 0 ; i < smk.LiftingOrderListLabels.Count ; i++ )
                 LiftingOrderListLabels[ i ].Text = smk.LiftingOrderListLabels[ i ].Text;
 
             // Offset panel to make space for lifting order
