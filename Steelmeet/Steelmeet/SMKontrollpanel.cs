@@ -890,17 +890,17 @@ namespace SteelMeet
                     //        offset = 20;
                     //        break;
                     //}
-                    if ( plateColorList[ i ] != Color.Silver )
+                    if( plateColorList[ i ] != Color.Silver )
                     {
-                        Brush gradientBrush = new LinearGradientBrush( new Point( 0, 0 ), new Point( 10, 0 ),
-                            BlendColor( Color.Black, plateColorList[ i ], 0.25f ), plateColorList[ i ] );
+                        Brush gradientBrush = new LinearGradientBrush( new Point( -1, 0 ), new Point( 9, 0 ),
+                            BlendColor.BlendColorRGB( Color.Black, plateColorList[ i ], 0.4f ), plateColorList[ i ] );
                         Pen p1 = new Pen( gradientBrush, 16 );
                         g.DrawLine( p1, x1 + offset, y1, x2 + offset, y2 );
                     }
-                    else 
+                    else
                     {
                         Brush gradientBrush = new LinearGradientBrush( new Point( 0, 0 ), new Point( 20, 10 ),
-                            BlendColor( Color.Black, Color.Silver, 0.5f ), Color.White );
+                            BlendColor.BlendColorRGB( Color.Black, Color.Silver, 0.5f ), Color.White );
                         Pen p2 = new Pen( gradientBrush, 16 );
                         g.DrawLine( p2, x1 + offset, y1, x2 + offset, y2 );
                     }
@@ -915,13 +915,7 @@ namespace SteelMeet
             p.Color = Color.DarkGray;
             g.DrawLine( p, x1 + offset, 90, x2 + offset, 110 );
         }
-        Color BlendColor( Color color, Color secondColor, float amount )
-        {
-            byte r = ( byte )( color.R * amount + secondColor.R * ( 1 - amount ) );
-            byte g = ( byte )( color.G * amount + secondColor.G * ( 1 - amount ) );
-            byte b = ( byte )( color.B * amount + secondColor.B * ( 1 - amount ) );
-            return Color.FromArgb( r, g, b );
-        }
+
         public void infopanel_Controlpanel_Paint( object sender, PaintEventArgs e )
         {
             Graphics g = e.Graphics;

@@ -301,16 +301,26 @@ namespace SteelMeet
             // y2 =
 
             int x1 = -7, y1 = 84, x2 = -7, y2 = 196;
-            Pen p = new Pen(System.Drawing.Color.Red, 22);
             int offset = 28;
 
-            for( int i = 0; i < 10; )
+            for( int i = 0 ; i < 10 ; )
             {
                 if( Enumerable.Any( usedPlatesList ) && usedPlatesList[ i ] > paintedPlatesList[ i ] )
                 {
-                    p.Color = plateColorList[ i ];
-
-                    g.DrawLine( p, x1 + offset, y1, x2 + offset, y2 );
+                    if( plateColorList[ i ] != System.Drawing.Color.Silver )
+                    {
+                        Brush gradientBrush = new LinearGradientBrush( new Point( -2, 0 ), new Point( 12, 0 ),
+                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, plateColorList[ i ], 0.4f ), plateColorList[ i ] );
+                        Pen p1 = new Pen( gradientBrush, 22 );
+                        g.DrawLine( p1, x1 + offset, y1, x2 + offset, y2 );
+                    }
+                    else
+                    {
+                        Brush gradientBrush = new LinearGradientBrush( new Point( 0, 0 ), new Point( 20, 10 ),
+                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, System.Drawing.Color.Silver, 0.5f ), System.Drawing.Color.White );
+                        Pen p2 = new Pen( gradientBrush, 22 );
+                        g.DrawLine( p2, x1 + offset, y1, x2 + offset, y2 );
+                    }
                     offset += 28;
 
                     paintedPlatesList[ i ]++;
@@ -318,6 +328,7 @@ namespace SteelMeet
                 else { i++; }
             }
 
+            Pen p = new Pen(System.Drawing.Color.Red, 22);
             p.Color = System.Drawing.Color.DarkGray;
             g.DrawLine( p, x1 + offset, 126, x2 + offset, 154 );
         }
