@@ -1173,13 +1173,13 @@ namespace SteelMeet
                 {
                     LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Add( true ); //Registrerar ett godkänt lyft för lyftaren
                 }
-                BestSBDUpdateMarked();
+                BestSBDUpdate( LifterID[ SelectedRowIndex + groupRowFixer ] );
 
                 //Sätter total och GL points
                 LiftingOrderList[ 0 ].total = LiftingOrderList[ 0 ].bestS + LiftingOrderList[ 0 ].bestB + LiftingOrderList[ 0 ].bestD;
                 LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ] );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
-                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 20 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
+                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 21 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
                 TimerController( 2 ); //Startar lapp timern på 1 minut
                 TimerController( 3 ); //Stoppar lyft timern och sätter timern på 00:00
@@ -1236,8 +1236,9 @@ namespace SteelMeet
                 LifterID[ SelectedRowIndex + groupRowFixer ].sbdList[ LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Count - 1 ] =
                     float.Parse( dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift - 1 ].Value.ToString() );
 
+                EstimatedUpdate( LifterID[ SelectedRowIndex + groupRowFixer ] );
             }
-            
+
             InfopanelsUpdate();
         }
         public void badLiftMarked()
@@ -1265,12 +1266,13 @@ namespace SteelMeet
                 {
                     LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Add( false ); //Registrerar ett underkänt lyft för lyftaren
                 }
-                BestSBDUpdateMarked();
+                BestSBDUpdate( LifterID[ SelectedRowIndex + groupRowFixer ] );
+
                 //Sätter total och GL points
                 LiftingOrderList[ 0 ].total = LiftingOrderList[ 0 ].bestS + LiftingOrderList[ 0 ].bestB + LiftingOrderList[ 0 ].bestD;
                 LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ] );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
-                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 20 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
+                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 21 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
                 TimerController( 2, 0 ); //Startar lapp timern på 1 minut
                 TimerController( 3, 0 ); //Stoppar lyft timern och sätter timern på 00:00
@@ -1358,7 +1360,7 @@ namespace SteelMeet
                 LiftingOrderList[ 0 ].total = LiftingOrderList[ 0 ].bestS + LiftingOrderList[ 0 ].bestB + LiftingOrderList[ 0 ].bestD;
                 LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ] );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
-                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 20 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
+                dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 21 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
             }
             InfopanelsUpdate();
@@ -2255,50 +2257,28 @@ namespace SteelMeet
 
 
 
-
-        public void BestSBDUpdate()
+        public void EstimatedUpdate( Lifter lifter )
         {
-            //gör en lista som har alla cellers value i sig 
-            //ta från recordslistan och om de är false sätt de till noll
-            //kör MoreMath.Max för att få ut de bästa lyften
-            List<float> cellValuesList = new List<float>();
+            // Needs to run after the following :
+            // Group load               done
+            // Exiting cell             done
+            // suggesten button lift    done
 
-            float[] valuesToParse = new float[9];
-            for( int i = firstLiftColumn; i < firstLiftColumn + LiftingOrderList[ 0 ].LiftRecord.Count(); i++ )
-            {
-                string cellValue = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[i].Value.ToString();
-                valuesToParse[ i - firstLiftColumn ] = float.Parse( cellValue );
-            }
-            //lägger till floats i lista
-            cellValuesList.AddRange( valuesToParse );
+            float estimatedSquat    = MoreMath.Max( lifter.sbdList[ 0 ], lifter.sbdList[ 1 ], lifter.sbdList[ 2 ] );
+            float estimatedBench    = MoreMath.Max( lifter.sbdList[ 3 ], lifter.sbdList[ 4 ], lifter.sbdList[ 5 ] );
+            float estimatedDeadlift = MoreMath.Max( lifter.sbdList[ 6 ], lifter.sbdList[ 7 ], lifter.sbdList[ 8 ] );
 
-            for( int i = 0; i < LiftingOrderList[ 0 ].LiftRecord.Count(); i++ )
-            {
-                if( !LiftingOrderList[ 0 ].LiftRecord[ i ] )
-                {
-                    cellValuesList[ i ] = 0.0f;
-                }
-            }
-            LiftingOrderList[ 0 ].s2 = cellValuesList[ 1 ];
-            LiftingOrderList[ 0 ].s3 = cellValuesList[ 2 ];
-            LiftingOrderList[ 0 ].b2 = cellValuesList[ 4 ];
-            LiftingOrderList[ 0 ].b3 = cellValuesList[ 5 ];
-            LiftingOrderList[ 0 ].d2 = cellValuesList[ 7 ];
-            LiftingOrderList[ 0 ].d3 = cellValuesList[ 8 ];
+            lifter.estimatedTotal = estimatedSquat + estimatedBench + estimatedDeadlift;
 
-            LiftingOrderList[ 0 ].bestS = MoreMath.Max( cellValuesList[ 0 ], cellValuesList[ 1 ], cellValuesList[ 2 ] );
-            LiftingOrderList[ 0 ].bestB = MoreMath.Max( cellValuesList[ 3 ], cellValuesList[ 4 ], cellValuesList[ 5 ] );
-            LiftingOrderList[ 0 ].bestD = MoreMath.Max( cellValuesList[ 6 ], cellValuesList[ 7 ], cellValuesList[ 8 ] );
+            if( dataGridViewControlPanel.RowCount > lifter.index - groupRowFixer )
+                dataGridViewControlPanel.Rows[ lifter.index - groupRowFixer ].Cells[ 20 ].Value = lifter.estimatedTotal;
         }
-        public void BestSBDUpdateMarked()
+        public void BestSBDUpdate( Lifter lifter )
         {
-            //gör en lista som har alla cellers value i sig 
-            //ta från recordslistan och om de är false sätt de till noll
-            //kör MoreMath.Max för att få ut de bästa lyften
             List<float> cellValuesList = new List<float>();
 
-            float[] valuesToParse = new float[9];
-            for( int i = firstLiftColumn; i < firstLiftColumn + LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Count(); i++ )
+            float[] valuesToParse = new float[ 9 ];
+            for( int i = firstLiftColumn ; i < firstLiftColumn + lifter.LiftRecord.Count() ; i++ )
             {
                 string cellValue = dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[i].Value.ToString();
                 valuesToParse[ i - firstLiftColumn ] = float.Parse( cellValue );
@@ -2322,9 +2302,9 @@ namespace SteelMeet
                 }
             }
 
-            LifterID[ SelectedRowIndex + groupRowFixer ].bestS = MoreMath.Max( cellValuesList[ 0 ], cellValuesList[ 1 ], cellValuesList[ 2 ] );
-            LifterID[ SelectedRowIndex + groupRowFixer ].bestB = MoreMath.Max( cellValuesList[ 3 ], cellValuesList[ 4 ], cellValuesList[ 5 ] );
-            LifterID[ SelectedRowIndex + groupRowFixer ].bestD = MoreMath.Max( cellValuesList[ 6 ], cellValuesList[ 7 ], cellValuesList[ 8 ] );
+            lifter.bestS = MoreMath.Max( cellValuesList[ 0 ], cellValuesList[ 1 ], cellValuesList[ 2 ] );
+            lifter.bestB = MoreMath.Max( cellValuesList[ 3 ], cellValuesList[ 4 ], cellValuesList[ 5 ] );
+            lifter.bestD = MoreMath.Max( cellValuesList[ 6 ], cellValuesList[ 7 ], cellValuesList[ 8 ] );
         }
         public void RankUpdate()
         {
@@ -2589,7 +2569,17 @@ namespace SteelMeet
                 if( float.TryParse( cellValue, out float currentValue ) )
                 {
                     cell.Value = ( currentValue + increment ).ToString();
+
                     SuggestionBtnUpdate();
+
+                    if( LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift < 19 )
+                    {
+                        LifterID[ SelectedRowIndex + groupRowFixer ].sbdList[ LifterID[ SelectedRowIndex + groupRowFixer ].LiftRecord.Count ] =
+                            float.Parse( dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value.ToString() ); // Sätter vikten till sbdlist
+                    }
+
+                    EstimatedUpdate( LifterID[ SelectedRowIndex + groupRowFixer ] );
+
                     foreach( var smsForm in smsList )
                         if( smsForm != null && !smsForm.IsDisposed )
                             smsForm.UpdateDataGriview();
@@ -2645,7 +2635,10 @@ namespace SteelMeet
 
                     LiftoffTiltedUpdate();
 
-                    for( int i = 0; i < group1Count; i++ )
+                    for( int i = 0 ; i < group1Count ; i++ )
+                        EstimatedUpdate( LifterID[ i ] );
+
+                    for( int i = 0 ; i < group1Count ; i++ )
                         combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
 
@@ -2665,6 +2658,7 @@ namespace SteelMeet
                                 dataGridViewControlPanel.Rows[ i ].Cells[ firstLiftColumn + o ].Style.Font = new System.Drawing.Font( "Segoe UI", 10f, FontStyle.Strikeout );
                             }
                         }
+
 
                         if( LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift < 19 )
                         {
@@ -2697,6 +2691,9 @@ namespace SteelMeet
                             group2Count += 1;
 
                     LiftoffTiltedUpdate();
+
+                    for( int i = group1Count ; i < group1Count + group2Count ; i++ )
+                        EstimatedUpdate( LifterID[ i ] );
 
                     for( int i = group1Count ; i < group1Count + group2Count ; i++ )
                         combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
@@ -2745,6 +2742,9 @@ namespace SteelMeet
                             group3Count += 1;
 
                     LiftoffTiltedUpdate();
+
+                    for( int i = group1Count + group2Count ; i < group1Count + group2Count + group3Count ; i++ )
+                        EstimatedUpdate( LifterID[ i ] );
 
                     for( int i = group1Count + group2Count ; i < group1Count + group2Count + group3Count ; i++ )
                         combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
