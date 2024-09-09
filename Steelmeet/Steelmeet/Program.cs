@@ -1,3 +1,9 @@
+///////////////////////////////
+//                           //
+// Written by Edvin Öhrström //
+//                           //
+///////////////////////////////
+
 namespace SteelMeet
 {
     internal static class Program

@@ -1,4 +1,9 @@
-﻿
+﻿///////////////////////////////
+//                           //
+// Written by Edvin Öhrström //
+//                           //
+///////////////////////////////
+
 using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;

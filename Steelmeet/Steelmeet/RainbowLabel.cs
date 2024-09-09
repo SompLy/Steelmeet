@@ -1,4 +1,10 @@
-﻿using System;
+﻿///////////////////////////////
+//                           //
+// Written by Edvin Öhrström //
+//                           //
+///////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;

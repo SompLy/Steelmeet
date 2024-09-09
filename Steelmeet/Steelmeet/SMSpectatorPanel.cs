@@ -1,4 +1,10 @@
-﻿using DocumentFormat.OpenXml.Drawing.Charts;
+﻿///////////////////////////////
+//                           //
+// Written by Edvin Öhrström //
+//                           //
+///////////////////////////////
+
+using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;

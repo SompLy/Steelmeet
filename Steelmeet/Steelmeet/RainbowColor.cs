@@ -1,4 +1,10 @@
-﻿using DocumentFormat.OpenXml.Math;
+﻿///////////////////////////////
+//                           //
+// Written by Edvin Öhrström //
+//                           //
+///////////////////////////////
+
+using DocumentFormat.OpenXml.Math;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Design;

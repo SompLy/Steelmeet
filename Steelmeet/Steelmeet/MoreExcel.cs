@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Taken from C# Exercises, 2023-07-24, link : https://csharp.agrimetsoft.com/exercises/Export_DataGridView_to_Excel
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SteelMeet 
 {
-    public static class MoreExcel //Taget från C# Exercises, 2023-07-24, länk : https://csharp.agrimetsoft.com/exercises/Export_DataGridView_to_Excel
+    public static class MoreExcel
     {
         public static void exportToExcel(this System.Data.DataTable DataTable, string ExcelFilePath = null)
         {

@@ -1,3 +1,9 @@
+///////////////////////////////
+//                           //
+// Written by Edvin Öhrström //
+//                           //
+///////////////////////////////
+
 Steelmeet TODO
 
 Optimering :
