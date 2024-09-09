@@ -1937,7 +1937,9 @@ namespace SteelMeet
                     SpacingIndex = "  | ";
 
                 // Update the corresponding label in LiftingOrderListLabels
-                if( i < LiftingOrderList.Count )
+                if( value == 0.0f )
+                    LiftingOrderListLabels[ i - 1 ].Text = "";
+                else if( i < LiftingOrderList.Count )
                     LiftingOrderListLabels[ i - 1 ].Text = i + SpacingIndex + value + spacing + LiftingOrderList[ i ].name;
                 else if( ExtraLifters.Count > 0 && ExtraLifters.Count > i - LiftingOrderList.Count )
                     LiftingOrderListLabels[ i - 1 ].Text = i + SpacingIndex + value + spacing + ExtraLifters[ i - LiftingOrderList.Count ].name;
