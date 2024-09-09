@@ -1720,7 +1720,8 @@ namespace SteelMeet
             }
             lbl_timerLyft.Text = minutesLyft.ToString().PadLeft( 2, '0' ) + ":" + secondsLyft.ToString().PadLeft( 2, '0' );
             foreach( var smsForm in smsList )
-                smsForm.lbl_timerLyft.Text = lbl_timerLyft.Text;
+                if( smsForm != null && !smsForm.IsDisposed )
+                    smsForm.lbl_timerLyft.Text = lbl_timerLyft.Text;
         }
         private void TimerTickLapp( object sender, EventArgs e )
         {
@@ -1737,7 +1738,8 @@ namespace SteelMeet
             }
             lbl_timerLapp.Text = minutesLapp.ToString().PadLeft( 2, '0' ) + ":" + secondsLapp.ToString().PadLeft( 2, '0' );
             foreach( var smsForm in smsList )
-                smsForm.lbl_timerLapp.Text = lbl_timerLapp.Text;
+                if( smsForm != null && !smsForm.IsDisposed )
+                    smsForm.lbl_timerLapp.Text = lbl_timerLapp.Text;
         }
         private void btn_MinutesLappTimer_Click( object sender, EventArgs e )
         {
@@ -2589,7 +2591,8 @@ namespace SteelMeet
                     cell.Value = ( currentValue + increment ).ToString();
                     SuggestionBtnUpdate();
                     foreach( var smsForm in smsList )
-                        smsForm.UpdateDataGriview();
+                        if( smsForm != null && !smsForm.IsDisposed )
+                            smsForm.UpdateDataGriview();
                 }
             }
         }
@@ -2935,13 +2938,14 @@ namespace SteelMeet
                 }
 
                 // Set the full record lbl, Svenskt Rekord + \n + Ålderskategori + Klassiskt + Gren
-                foreach( var sms in smsList )
-                {
-                    sms.lbl_Record_Rainbow.Text = recordLevelText + "\n" + AgeCategoryText + "\n" + isEquipedText + " " + eventText;
-                    //sms.lbl_Record.Left = ( Width - (sms.lbl_Record.Width ) / 2);
-                    sms.lbl_Record_Rainbow.Left = -( sms.lbl_Record_Rainbow.ClientRectangle.Width / 2 ) + ( sms.dataGridViewSpectatorPanel.Width / 2 );
-                    sms.lbl_Record_Rainbow.Top = -( sms.lbl_Record_Rainbow.ClientRectangle.Height / 2 ) + ( sms.dataGridViewSpectatorPanel.Height / 2 );
-                }
+                foreach( var smsForm in smsList )
+                    if( smsForm != null && !smsForm.IsDisposed )
+                    {
+                        smsForm.lbl_Record_Rainbow.Text = recordLevelText + "\n" + AgeCategoryText + "\n" + isEquipedText + " " + eventText;
+                        //sms.lbl_Record.Left = ( Width - (sms.lbl_Record.Width ) / 2);
+                        smsForm.lbl_Record_Rainbow.Left = -( smsForm.lbl_Record_Rainbow.ClientRectangle.Width / 2 ) + ( smsForm.dataGridViewSpectatorPanel.Width / 2 );
+                        smsForm.lbl_Record_Rainbow.Top = -( smsForm.lbl_Record_Rainbow.ClientRectangle.Height / 2 ) + ( smsForm.dataGridViewSpectatorPanel.Height / 2 );
+                    }
 
                 // Set lbl visable
                 foreach( var sms in smsList )
@@ -2952,8 +2956,9 @@ namespace SteelMeet
                 btn_rekord.Text = "Aktivera rekord";
                 timerRekordAnimering.Stop();
 
-                foreach( var sms in smsList )
-                    sms.lbl_Record_Rainbow.Visible = false;
+                foreach( var smsForm in smsList )
+                    if( smsForm != null && !smsForm.IsDisposed )
+                        smsForm.lbl_Record_Rainbow.Visible = false;
             }
         }
 
@@ -3019,10 +3024,10 @@ namespace SteelMeet
         {
             float result = 0;
 
-            if (!cb_dataGridViewAutoSize.Checked)
-                foreach (var smsForm in smsList)
-                    if (smsForm != null && float.TryParse(txt_box_SpecSize.Text.Trim(), out result))
-                        smsForm.UpdateDataGridviewFont(result);
+            if( !cb_dataGridViewAutoSize.Checked )
+                foreach( var smsForm in smsList )
+                    if( smsForm != null && float.TryParse( txt_box_SpecSize.Text.Trim(), out result ) && !smsForm.IsDisposed )
+                        smsForm.UpdateDataGridviewFont( result );
         }
 
 
