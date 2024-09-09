@@ -23,7 +23,9 @@ static void SetDoubleBuffer(Control dgv, bool DoubleBuffered)
 
 :)
 Viktiga saker :
-en pognostotal brevid vanliga totalen.
+man måste dubbel uppdatera när man är på sista marken ( kör bara en infopanel update så kommer det lösa sig tror jag )
+lifting order är fel 
+✅en pognostotal brevid vanliga totalen.
 ✅Dynamisk allokering av lyftarording och ingångar plats
 Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
