@@ -140,7 +140,7 @@ namespace SteelMeet
         {
             // Header text
             lbl_OpeningLift.Text = smk.lbl_OpeningLift.Text;
-            
+
             // Lifters text
             if( GroupLiftingOrderListLabels.Count < 1 )
                 GroupLiftingOrderListLabels.AddRange( new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
@@ -320,14 +320,14 @@ namespace SteelMeet
                     if( plateColorList[ i ] != System.Drawing.Color.Silver )
                     {
                         Brush gradientBrush = new LinearGradientBrush( new Point( -2, 0 ), new Point( 12, 0 ),
-                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, plateColorList[ i ], 0.4f ), plateColorList[ i ] );
+                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, plateColorList[ i ], 0.2f ), plateColorList[ i ] );
                         Pen p1 = new Pen( gradientBrush, 22 );
                         g.DrawLine( p1, x1 + offset, y1, x2 + offset, y2 );
                     }
                     else
                     {
                         Brush gradientBrush = new LinearGradientBrush( new Point( 0, 0 ), new Point( 20, 10 ),
-                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, System.Drawing.Color.Silver, 0.3f ), System.Drawing.Color.White );
+                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, System.Drawing.Color.Silver, 0.2f ), System.Drawing.Color.Silver );
                         Pen p2 = new Pen( gradientBrush, 22 );
                         g.DrawLine( p2, x1 + offset, y1, x2 + offset, y2 );
                     }

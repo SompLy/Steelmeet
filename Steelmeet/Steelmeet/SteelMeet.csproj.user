@@ -52,8 +52,5 @@
     <Compile Update="TabControl\TabStyleProviders\TabStyleVS2010Provider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="WilksForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

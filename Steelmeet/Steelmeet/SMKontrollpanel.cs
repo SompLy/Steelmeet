@@ -2261,9 +2261,9 @@ namespace SteelMeet
             // Exiting cell             done
             // suggesten button lift    done
 
-            float estimatedSquat    = MoreMath.Max( lifter.sbdList[ 0 ], lifter.sbdList[ 1 ], lifter.sbdList[ 2 ] );
-            float estimatedBench    = MoreMath.Max( lifter.sbdList[ 3 ], lifter.sbdList[ 4 ], lifter.sbdList[ 5 ] );
-            float estimatedDeadlift = MoreMath.Max( lifter.sbdList[ 6 ], lifter.sbdList[ 7 ], lifter.sbdList[ 8 ] );
+            float estimatedSquat    = Math.Max( lifter.sbdList[ 0 ], Math.Max( lifter.sbdList[ 1 ], lifter.sbdList[ 2 ] ) );
+            float estimatedBench    = Math.Max( lifter.sbdList[ 3 ], Math.Max( lifter.sbdList[ 4 ], lifter.sbdList[ 5 ] ) );
+            float estimatedDeadlift = Math.Max( lifter.sbdList[ 6 ], Math.Max( lifter.sbdList[ 7 ], lifter.sbdList[ 8 ] ) );
 
             lifter.estimatedTotal = estimatedSquat + estimatedBench + estimatedDeadlift;
 
@@ -2299,9 +2299,9 @@ namespace SteelMeet
                 }
             }
 
-            lifter.bestS = MoreMath.Max( cellValuesList[ 0 ], cellValuesList[ 1 ], cellValuesList[ 2 ] );
-            lifter.bestB = MoreMath.Max( cellValuesList[ 3 ], cellValuesList[ 4 ], cellValuesList[ 5 ] );
-            lifter.bestD = MoreMath.Max( cellValuesList[ 6 ], cellValuesList[ 7 ], cellValuesList[ 8 ] );
+            lifter.bestS = Math.Max( cellValuesList[ 0 ], Math.Max( cellValuesList[ 1 ], cellValuesList[ 2 ] ) );
+            lifter.bestB = Math.Max( cellValuesList[ 3 ], Math.Max( cellValuesList[ 4 ], cellValuesList[ 5 ] ) );
+            lifter.bestD = Math.Max( cellValuesList[ 6 ], Math.Max( cellValuesList[ 7 ], cellValuesList[ 8 ] ) );
         }
         public void RankUpdate()
         {

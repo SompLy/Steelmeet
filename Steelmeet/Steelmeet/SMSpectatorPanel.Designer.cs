@@ -452,7 +452,7 @@
             panel10.ForeColor =  Color.White ;
             panel10.Location =  new Point( 1513, 5 ) ;
             panel10.Name =  "panel10" ;
-            panel10.Size =  new Size( 404, 705 ) ;
+            panel10.Size =  new Size( 404, 1077 ) ;
             panel10.TabIndex =  50 ;
             panel10.Paint +=  panel10_Paint ;
             // 
