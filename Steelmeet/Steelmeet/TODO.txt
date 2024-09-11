@@ -23,11 +23,13 @@ static void SetDoubleBuffer(Control dgv, bool DoubleBuffered)
 
 :)
 Viktiga saker :
+"Ingångar" texen visasa inte ibalnd
 man måste dubbel uppdatera när man är på sista marken ( kör bara en infopanel update så kommer det lösa sig tror jag )
-lifting order är fel 
-✅en pognostotal brevid vanliga totalen.
+✅lifting order är fel 
+✅Ta bort Infoanelen om det inte finns någon att visa ifrån lyftarordningen
+✅En estimerad total brevid vanliga totalen.
 ✅Dynamisk allokering av lyftarording och ingångar plats
-Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
+✅Seamless liftingorder gör en internal liftingorder som är den som är nu och sen en ny som har nästa omgång i sig också
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
 nuvarande total med en pil till totalen som lyftaren kommer få om hen klarar lyftet
 Dynamisk storlek på datagridviewn så den alltid är så stor som möjligt.

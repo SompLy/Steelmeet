@@ -1802,12 +1802,8 @@ namespace SteelMeet
 
                 // For determeting what the lowest current lift is
                 for( int i = startIndex ; i < endIndex ; i++ )
-                {
                     if( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly )
-                    {
                         ints.Add( LifterID[ i ].CurrentLift );
-                    }
-                }
 
                 // Adding every lifter that corresponds to the lowest currentlift
                 if( ints.Count > 0 )
@@ -1815,26 +1811,19 @@ namespace SteelMeet
                     int lowestCurrentLift = ints.Min();
 
                     for( int i = startIndex ; i < endIndex ; i++ )
-                    {
                         if( LifterID[ i ].CurrentLift == lowestCurrentLift && ( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) || !LifterID[ i ].isBenchOnly ) )
-                        {
                             LiftingOrderList.Add( LifterID[ i ] );
-                        }
-                    }
                 }
             }
 
             // Clear the labels before the visual update
             for( int i = 0 ; i < LiftingOrderListLabels.Count ; i++ )
-            {
                 LiftingOrderListLabels[ i ].Text = "";
-            }
-
-            VisualLifterListUpdate();
 
             var comparer = new LifterComparer();
             LiftingOrderList = LiftingOrderList.OrderBy( item => item, comparer ).ToList();
 
+            VisualLifterListUpdate();
 
         }
         public void VisualLifterListUpdate()
@@ -1881,7 +1870,7 @@ namespace SteelMeet
                     }
                 }
 
-                // Adding every lifter that corresponds to the lowest currentlift
+                // Adding Extra lifters, the ones that have one more currentLift than the lowestCurrentLift
                 if( ints.Count > 0 )
                 {
                     int lowestCurrentLift = ints.Min();
@@ -1892,15 +1881,20 @@ namespace SteelMeet
                     {
                         if( LifterID[ i ].CurrentLift == lowestCurrentLift + 1 &&
                             ( ( LifterID[ i ].isBenchOnly && LifterID[ i ].CurrentLift < 16 ) ||
-                            !LifterID[ i ].isBenchOnly ) &&
-                            !ExtraLifters.Contains( LifterID[ i ] ) )
+                            !LifterID[ i ].isBenchOnly ) && !ExtraLifters.Contains( LifterID[ i ] ) )
                         {
                             ExtraLifters.Add( LifterID[ i ] );
                         }
                     }
                 }
+
+                // Sort the Extra lifters
+                var comparer = new LifterComparer();
+                ExtraLifters = ExtraLifters.OrderBy( item => item, comparer ).ToList();
+
             }
-            // Show the next 10 lifters or as many as available
+
+            // Show the next countToShow-amount of lifters or as many as available
             for( int i = startIndex + 1 ; i < LiftingOrderList.Count + ExtraLifters.Count && i < startIndex + 1 + countToShow ; i++ )
             {
                 string spacing = " ";
@@ -2394,6 +2388,7 @@ namespace SteelMeet
                     smsForm.UpdateAll();
 
             LiftoffTiltedUpdate();
+            LiftingOrderUpdate();
 
             if( dataGridViewControlPanel.RowCount > 1 && LiftingOrderList.Count > 0 && LiftingOrderList[ 0 ].CurrentLift - firstLiftColumn <= 8 ) // Om datagridview har lyftare och om listan har lkyftare
             {
