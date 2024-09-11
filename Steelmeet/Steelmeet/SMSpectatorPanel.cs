@@ -221,14 +221,24 @@ namespace SteelMeet
         }
         private void UpdateinfoPanel()
         {
-            lbl_Name.Text = smk.lbl_Name.Text;
-            lbl_currentWeight.Text = smk.lbl_currentWeight.Text;
-            lbl_Avlyft.Text = smk.lbl_Avlyft.Text;
-            lbl_Height.Text = smk.lbl_Height.Text;
-            lbl_25x.Text = smk.lbl_25x.Text;
-            lbl_OpeningLift.Text = smk.lbl_OpeningLift.Text;
+            if( smk.LiftingOrderList.Count > 0 )
+            {
+                infopanel_Spectatorpanel.Visible = true;
+                lbl_Name.Text = smk.lbl_Name.Text;
+                lbl_currentWeight.Text = smk.lbl_currentWeight.Text;
+                lbl_Avlyft.Text = smk.lbl_Avlyft.Text;
+                lbl_Height.Text = smk.lbl_Height.Text;
+                lbl_25x.Text = smk.lbl_25x.Text;
+            }
+            else
+            {
+                // If there is not next lifter just make it empty to not be confusing
+                infopanel_Spectatorpanel.Visible = false;
+            }
+
             if( smk.LiftingOrderList.Count > 1 )
             {
+                infopanel_Spectatorpanel2.Visible = true;
                 lbl_Name2.Text = smk.lbl_Name2.Text;
                 lbl_currentWeight2.Text = smk.lbl_currentWeight2.Text;
                 lbl_Avlyft2.Text = smk.lbl_Avlyft2.Text;
@@ -238,11 +248,7 @@ namespace SteelMeet
             else
             {
                 // If there is not next lifter just make it empty to not be confusing
-                lbl_Name2.Text = "";
-                lbl_currentWeight2.Text = "";
-                lbl_Avlyft2.Text = "";
-                lbl_Height2.Text = "";
-                lbl_25x2.Text = "";
+                infopanel_Spectatorpanel2.Visible = false;
             }
         }
         private void UpdateLiftingOrderLables()
@@ -317,7 +323,7 @@ namespace SteelMeet
                     else
                     {
                         Brush gradientBrush = new LinearGradientBrush( new Point( 0, 0 ), new Point( 20, 10 ),
-                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, System.Drawing.Color.Silver, 0.5f ), System.Drawing.Color.White );
+                            BlendColor.BlendColorRGB( System.Drawing.Color.Black, System.Drawing.Color.Silver, 0.3f ), System.Drawing.Color.White );
                         Pen p2 = new Pen( gradientBrush, 22 );
                         g.DrawLine( p2, x1 + offset, y1, x2 + offset, y2 );
                     }
