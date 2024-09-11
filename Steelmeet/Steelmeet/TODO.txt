@@ -23,7 +23,8 @@ static void SetDoubleBuffer(Control dgv, bool DoubleBuffered)
 
 :)
 Viktiga saker :
-"Ingångar" texen visasa inte ibalnd
+Om man laddar en invägning med 3 grupper sen en med 2 grupper så finns det fortfarnade tre grupper, cleara antal grupper varje gång man klickar på.
+✅"Ingångar" texten visar alltid Grupp 1 bänk på spectator viewn för den sätts legit inte ens 
 man måste dubbel uppdatera när man är på sista marken ( kör bara en infopanel update så kommer det lösa sig tror jag )
 ✅lifting order är fel 
 ✅Ta bort Infoanelen om det inte finns någon att visa ifrån lyftarordningen

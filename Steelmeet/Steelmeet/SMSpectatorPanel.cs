@@ -138,6 +138,10 @@ namespace SteelMeet
         }
         void UpdateNextGroup()
         {
+            // Header text
+            lbl_OpeningLift.Text = smk.lbl_OpeningLift.Text;
+            
+            // Lifters text
             if( GroupLiftingOrderListLabels.Count < 1 )
                 GroupLiftingOrderListLabels.AddRange( new System.Windows.Forms.Label[] { lbl_groupLiftOrder_control_1, lbl_groupLiftOrder_control_2, lbl_groupLiftOrder_control_3, lbl_groupLiftOrder_control_4,
                                                         lbl_groupLiftOrder_control_5, lbl_groupLiftOrder_control_6, lbl_groupLiftOrder_control_7, lbl_groupLiftOrder_control_8,

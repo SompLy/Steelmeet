@@ -1981,8 +1981,6 @@ namespace SteelMeet
                 GroupLiftingOrderListLabels[ i ].Text = "";
 
             // Group updater Group updater Group updater 
-            // Group updater Group updater Group updater 
-            // Group updater Group updater Group updater 
 
             // For determeting what the lowest current lift is
             List< int > lowestCurrentLiftInGroup = new List< int >();
@@ -2203,7 +2201,7 @@ namespace SteelMeet
             }
 
             // Skriv ut alla lyftare och enum för vad det är som visas
-            if( ViewNothing )
+            if( ViewNothing == false )
                 lbl_OpeningLift.Text = lblText;
             else
                 lbl_OpeningLift.Text = "";
