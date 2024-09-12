@@ -23,6 +23,8 @@ static void SetDoubleBuffer(Control dgv, bool DoubleBuffered)
 
 :)
 Viktiga saker :
+✅Nästa grupp visar tomma lyftare sepctator window
+✅Om en grupp är klar så kan man inte visa den på spectator windowet
 Om man laddar en invägning med 3 grupper sen en med 2 grupper så finns det fortfarnade tre grupper, cleara antal grupper varje gång man klickar på.
 ✅"Ingångar" texten visar alltid Grupp 1 bänk på spectator viewn för den sätts legit inte ens 
 man måste dubbel uppdatera när man är på sista marken ( kör bara en infopanel update så kommer det lösa sig tror jag )

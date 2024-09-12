@@ -986,22 +986,22 @@ namespace SteelMeet
                 //}
                 SelectedRowIndex = e.RowIndex;
                 SelectedColumnIndex = e.ColumnIndex;
-                if( LiftingOrderList.Count > 0 )
-                {
-                    if( Enumerable.Any( LifterID ) && dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value != DBNull.Value &&
-                        LiftingOrderList[ 0 ].CurrentLift < 19 ) //Kollar om det finns något i LifterID listan annars blir det error
-                    {
-                        //Visar Info om den lyftare som är klickad på i informationsrutan
-                        //lbl_Name.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
-                        //PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()), plateInfo);
-                        //lbl_Placement.Text = LifterID[SelectedRowIndex + groupRowFixer].place.ToString();
-                        //lbl_Infällt.Text = LifterID[SelectedRowIndex + groupRowFixer].tilted.ToString();
-                        //lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
+                //if( LiftingOrderList.Count > 0 )
+                //{
+                //    if( Enumerable.Any( LifterID ) && dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ LifterID[ SelectedRowIndex + groupRowFixer ].CurrentLift ].Value != DBNull.Value &&
+                //        LiftingOrderList[ 0 ].CurrentLift < 19 ) //Kollar om det finns något i LifterID listan annars blir det error
+                //    {
+                //        //Visar Info om den lyftare som är klickad på i informationsrutan
+                //        //lbl_Name.Text = LifterID[SelectedRowIndex + groupRowFixer].name;
+                //        //PlateCalculator(float.Parse(dataGridViewControlPanel.Rows[SelectedRowIndex].Cells[LifterID[SelectedRowIndex + groupRowFixer].CurrentLift].Value.ToString()), plateInfo);
+                //        //lbl_Placement.Text = LifterID[SelectedRowIndex + groupRowFixer].place.ToString();
+                //        //lbl_Infällt.Text = LifterID[SelectedRowIndex + groupRowFixer].tilted.ToString();
+                //        //lbl_Avlyft.Text = LifterID[SelectedRowIndex + groupRowFixer].liftoff.ToString();
 
 
+                //    }
+                //}
                         InfopanelsUpdate();
-                    }
-                }
             }
         }
 
@@ -2240,20 +2240,6 @@ namespace SteelMeet
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public void EstimatedUpdate( Lifter lifter )
         {
             // Needs to run after the following :
@@ -2639,6 +2625,7 @@ namespace SteelMeet
                     for( int i = 0 ; i < group1Count ; i++ )
                         combo_Aktiv_SlectedIndexChanged_DisplayAll( i );
 
+                    RankUpdate();
 
                     for( int i = 0 ; i < dataGridViewControlPanel.RowCount ; i++ )
                     {

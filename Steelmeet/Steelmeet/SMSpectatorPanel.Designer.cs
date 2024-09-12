@@ -207,9 +207,9 @@
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_19 );
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_20 );
             p_NextGroupLifters.ForeColor =  Color.White ;
-            p_NextGroupLifters.Location =  new Point( 1513, 384 ) ;
+            p_NextGroupLifters.Location =  new Point( 1513, 365 ) ;
             p_NextGroupLifters.Name =  "p_NextGroupLifters" ;
-            p_NextGroupLifters.Size =  new Size( 404, 705 ) ;
+            p_NextGroupLifters.Size =  new Size( 404, 1084 ) ;
             p_NextGroupLifters.TabIndex =  51 ;
             p_NextGroupLifters.Paint +=  panel11_Paint ;
             // 
@@ -408,7 +408,7 @@
             // lbl_groupLiftOrder_control_19
             // 
             lbl_groupLiftOrder_control_19.Font =  new Font( "Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_19.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            lbl_groupLiftOrder_control_19.ForeColor =  Color.White ;
             lbl_groupLiftOrder_control_19.Location =  new Point( 0, 617 ) ;
             lbl_groupLiftOrder_control_19.Name =  "lbl_groupLiftOrder_control_19" ;
             lbl_groupLiftOrder_control_19.Size =  new Size( 429, 44 ) ;
@@ -452,7 +452,7 @@
             panel10.ForeColor =  Color.White ;
             panel10.Location =  new Point( 1513, 5 ) ;
             panel10.Name =  "panel10" ;
-            panel10.Size =  new Size( 404, 1077 ) ;
+            panel10.Size =  new Size( 404, 692 ) ;
             panel10.TabIndex =  50 ;
             panel10.Paint +=  panel10_Paint ;
             // 
