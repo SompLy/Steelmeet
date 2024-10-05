@@ -43,6 +43,9 @@ Dynamisk storlek på datagridviewn så den alltid är så stor som möjligt.
 ✅Custom size på datagridview som man kan ändra genom kontrollpanelen
 
 Mindre viktiga saker :
+Spara inställningar
+Möjlighet att byta ut loggan
+Gör en Icon för den byggda .exe filen
 Förkorta namn och föreningsnamn 
 Fönster för klovare med endast viktkakor för nuvarande och nästa lyftare
 En keybind som kan toggle vilen sida lyftarordningen är på ( då måste layouten vara typ 100% klar annars behöver man göra om det ) 
