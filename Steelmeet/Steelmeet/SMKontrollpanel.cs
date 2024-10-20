@@ -1898,7 +1898,7 @@ namespace SteelMeet
             for( int i = startIndex + 1 ; i < LiftingOrderList.Count + ExtraLifters.Count && i < startIndex + 1 + countToShow ; i++ )
             {
                 string spacing = " ";
-                string SpacingIndex = "";
+                string spacingIndex = "";
                 float value = 0.0f;
 
                 // Om gruppen är klar
@@ -1926,17 +1926,17 @@ namespace SteelMeet
                     spacing += "   ";
 
                 if( i >= 10 )
-                    SpacingIndex = "| ";
+                    spacingIndex = "| ";
                 else
-                    SpacingIndex = "  | ";
+                    spacingIndex = "  | ";
 
                 // Update the corresponding label in LiftingOrderListLabels
                 if( value == 0.0f )
                     LiftingOrderListLabels[ i - 1 ].Text = "";
                 else if( i < LiftingOrderList.Count )
-                    LiftingOrderListLabels[ i - 1 ].Text = i + SpacingIndex + value + spacing + LiftingOrderList[ i ].name;
+                    LiftingOrderListLabels[ i - 1 ].Text = i + spacingIndex + value + spacing + LiftingOrderList[ i ].name;
                 else if( ExtraLifters.Count > 0 && ExtraLifters.Count > i - LiftingOrderList.Count )
-                    LiftingOrderListLabels[ i - 1 ].Text = i + SpacingIndex + value + spacing + ExtraLifters[ i - LiftingOrderList.Count ].name;
+                    LiftingOrderListLabels[ i - 1 ].Text = i + spacingIndex + value + spacing + ExtraLifters[ i - LiftingOrderList.Count ].name;
 
             }
 
