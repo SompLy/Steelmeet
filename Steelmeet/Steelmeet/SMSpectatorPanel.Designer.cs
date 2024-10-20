@@ -28,16 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( SMSpectatorPanel ) );
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( SMSpectatorPanel ) );
-            infopanel_Spectatorpanel2 =  new Panel() ;
-            lbl_currentWeight2 =  new Label() ;
-            lbl_Name2 =  new Label() ;
-            lbl_25x2 =  new Label() ;
-            lbl_Height2 =  new Label() ;
-            lbl_Avlyft2 =  new Label() ;
+            ctc_Spectator =  new CustomTabControl() ;
+            CompetitionTab =  new TabPage() ;
+            pb_smallAdvertisement =  new PictureBox() ;
             p_NextGroupLifters =  new Panel() ;
             lbl_OpeningLift =  new Label() ;
             lbl_groupLiftOrder_control_1 =  new Label() ;
@@ -45,6 +42,7 @@
             lbl_groupLiftOrder_control_3 =  new Label() ;
             lbl_groupLiftOrder_control_4 =  new Label() ;
             lbl_groupLiftOrder_control_5 =  new Label() ;
+            label32 =  new Label() ;
             lbl_groupLiftOrder_control_6 =  new Label() ;
             lbl_groupLiftOrder_control_7 =  new Label() ;
             lbl_groupLiftOrder_control_8 =  new Label() ;
@@ -60,6 +58,26 @@
             lbl_groupLiftOrder_control_18 =  new Label() ;
             lbl_groupLiftOrder_control_19 =  new Label() ;
             lbl_groupLiftOrder_control_20 =  new Label() ;
+            dataGridViewSpectatorPanel =  new DataGridView() ;
+            pb_bigAdvertisement =  new PictureBox() ;
+            infopanel_Spectatorpanel =  new Panel() ;
+            lbl_currentWeight =  new Label() ;
+            lbl_Name =  new Label() ;
+            lbl_25x =  new Label() ;
+            lbl_Height =  new Label() ;
+            lbl_Avlyft =  new Label() ;
+            panel5 =  new Panel() ;
+            label25 =  new Label() ;
+            label24 =  new Label() ;
+            lbl_timerLapp =  new Label() ;
+            lbl_timerLyft =  new Label() ;
+            infopanel_Spectatorpanel2 =  new Panel() ;
+            lbl_currentWeight2 =  new Label() ;
+            lbl_Name2 =  new Label() ;
+            lbl_25x2 =  new Label() ;
+            lbl_Height2 =  new Label() ;
+            lbl_Avlyft2 =  new Label() ;
+            pb_emblemAdvertisement =  new PictureBox() ;
             panel10 =  new Panel() ;
             lbl_liftOrder_control_1 =  new Label() ;
             lbl_liftOrder_control_2 =  new Label() ;
@@ -82,105 +100,80 @@
             lbl_liftOrder_control_19 =  new Label() ;
             lbl_liftOrder_control_20 =  new Label() ;
             label30 =  new Label() ;
-            panel5 =  new Panel() ;
-            label25 =  new Label() ;
-            label24 =  new Label() ;
-            lbl_timerLapp =  new Label() ;
-            lbl_timerLyft =  new Label() ;
-            infopanel_Spectatorpanel =  new Panel() ;
-            lbl_currentWeight =  new Label() ;
-            lbl_Name =  new Label() ;
-            lbl_25x =  new Label() ;
-            lbl_Height =  new Label() ;
-            lbl_Avlyft =  new Label() ;
-            dataGridViewSpectatorPanel =  new DataGridView() ;
-            label32 =  new Label() ;
-            label1 =  new Label() ;
-            pictureBox3 =  new PictureBox() ;
-            pictureBox1 =  new PictureBox() ;
-            label2 =  new Label() ;
-            infopanel_Spectatorpanel2.SuspendLayout();
+            ResultsTab =  new TabPage() ;
+            ctc_Spectator.SuspendLayout();
+            CompetitionTab.SuspendLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) pb_smallAdvertisement  ).BeginInit();
             p_NextGroupLifters.SuspendLayout();
-            panel10.SuspendLayout();
-            panel5.SuspendLayout();
-            infopanel_Spectatorpanel.SuspendLayout();
             ( ( System.ComponentModel.ISupportInitialize ) dataGridViewSpectatorPanel  ).BeginInit();
-            ( ( System.ComponentModel.ISupportInitialize ) pictureBox3  ).BeginInit();
-            ( ( System.ComponentModel.ISupportInitialize ) pictureBox1  ).BeginInit();
+            ( ( System.ComponentModel.ISupportInitialize ) pb_bigAdvertisement  ).BeginInit();
+            infopanel_Spectatorpanel.SuspendLayout();
+            panel5.SuspendLayout();
+            infopanel_Spectatorpanel2.SuspendLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) pb_emblemAdvertisement  ).BeginInit();
+            panel10.SuspendLayout();
             SuspendLayout();
             // 
-            // infopanel_Spectatorpanel2
+            // ctc_Spectator
             // 
-            infopanel_Spectatorpanel2.BackColor =  SystemColors.WindowText ;
-            infopanel_Spectatorpanel2.Controls.Add( lbl_currentWeight2 );
-            infopanel_Spectatorpanel2.Controls.Add( lbl_Name2 );
-            infopanel_Spectatorpanel2.Controls.Add( lbl_25x2 );
-            infopanel_Spectatorpanel2.Controls.Add( lbl_Height2 );
-            infopanel_Spectatorpanel2.Controls.Add( lbl_Avlyft2 );
-            infopanel_Spectatorpanel2.Location =  new Point( 757, 5 ) ;
-            infopanel_Spectatorpanel2.Name =  "infopanel_Spectatorpanel2" ;
-            infopanel_Spectatorpanel2.Size =  new Size( 750, 206 ) ;
-            infopanel_Spectatorpanel2.TabIndex =  52 ;
-            infopanel_Spectatorpanel2.Paint +=  infopanel_SpectatorPanel2_Paint ;
+            ctc_Spectator.Controls.Add( CompetitionTab );
+            ctc_Spectator.Controls.Add( ResultsTab );
             // 
-            // lbl_currentWeight2
             // 
-            lbl_currentWeight2.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            lbl_currentWeight2.Font =  new Font( "Segoe UI", 39.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_currentWeight2.ForeColor =  Color.White ;
-            lbl_currentWeight2.Location =  new Point( 527, 0 ) ;
-            lbl_currentWeight2.Name =  "lbl_currentWeight2" ;
-            lbl_currentWeight2.Size =  new Size( 254, 84 ) ;
-            lbl_currentWeight2.TabIndex =  23 ;
-            lbl_currentWeight2.Text =  "000.0KG" ;
             // 
-            // lbl_Name2
+            ctc_Spectator.DisplayStyleProvider.BorderColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            ctc_Spectator.DisplayStyleProvider.BorderColorHot =  SystemColors.ControlDark ;
+            ctc_Spectator.DisplayStyleProvider.BorderColorSelected =  Color.FromArgb(       127  ,       157  ,       185   ) ;
+            ctc_Spectator.DisplayStyleProvider.CloserColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            ctc_Spectator.DisplayStyleProvider.CloserColorActive =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            ctc_Spectator.DisplayStyleProvider.FocusColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            ctc_Spectator.DisplayStyleProvider.FocusTrack =  true ;
+            ctc_Spectator.DisplayStyleProvider.HotTrack =  true ;
+            ctc_Spectator.DisplayStyleProvider.ImageAlign =  ContentAlignment.MiddleLeft ;
+            ctc_Spectator.DisplayStyleProvider.Opacity =  1F ;
+            ctc_Spectator.DisplayStyleProvider.Overlap =  0 ;
+            ctc_Spectator.DisplayStyleProvider.Padding =  new Point( 6, 3 ) ;
+            ctc_Spectator.DisplayStyleProvider.Radius =  2 ;
+            ctc_Spectator.DisplayStyleProvider.ShowTabCloser =  false ;
+            ctc_Spectator.DisplayStyleProvider.TextColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            ctc_Spectator.DisplayStyleProvider.TextColorSelected =  SystemColors.ControlText ;
+            ctc_Spectator.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            ctc_Spectator.HotTrack =  true ;
+            ctc_Spectator.Location =  new Point( -3, -28 ) ;
+            ctc_Spectator.Name =  "ctc_Spectator" ;
+            ctc_Spectator.SelectedIndex =  0 ;
+            ctc_Spectator.Size =  new Size( 1920, 1126 ) ;
+            ctc_Spectator.TabIndex =  57 ;
             // 
-            lbl_Name2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_Name2.Font =  new Font( "Segoe UI", 50.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Name2.ForeColor =  Color.White ;
-            lbl_Name2.Location =  new Point( -7, -17 ) ;
-            lbl_Name2.Margin =  new Padding( 0 ) ;
-            lbl_Name2.Name =  "lbl_Name2" ;
-            lbl_Name2.Size =  new Size( 755, 89 ) ;
-            lbl_Name2.TabIndex =  27 ;
-            lbl_Name2.Text =  "Lyftare Lyftarsson" ;
+            // CompetitionTab
             // 
-            // lbl_25x2
+            CompetitionTab.BackColor =  Color.Black ;
+            CompetitionTab.Controls.Add( pb_smallAdvertisement );
+            CompetitionTab.Controls.Add( p_NextGroupLifters );
+            CompetitionTab.Controls.Add( dataGridViewSpectatorPanel );
+            CompetitionTab.Controls.Add( pb_bigAdvertisement );
+            CompetitionTab.Controls.Add( infopanel_Spectatorpanel );
+            CompetitionTab.Controls.Add( panel5 );
+            CompetitionTab.Controls.Add( infopanel_Spectatorpanel2 );
+            CompetitionTab.Controls.Add( pb_emblemAdvertisement );
+            CompetitionTab.Controls.Add( panel10 );
+            CompetitionTab.Location =  new Point( 4, 28 ) ;
+            CompetitionTab.Name =  "CompetitionTab" ;
+            CompetitionTab.Padding =  new Padding( 3 ) ;
+            CompetitionTab.Size =  new Size( 1912, 1094 ) ;
+            CompetitionTab.TabIndex =  0 ;
+            CompetitionTab.Text =  "Tävling" ;
             // 
-            lbl_25x2.AutoSize =  true ;
-            lbl_25x2.BackColor =  Color.Transparent ;
-            lbl_25x2.Font =  new Font( "Segoe UI", 33.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_25x2.ForeColor =  Color.White ;
-            lbl_25x2.Location =  new Point( -3, 107 ) ;
-            lbl_25x2.Name =  "lbl_25x2" ;
-            lbl_25x2.Size =  new Size( 156, 61 ) ;
-            lbl_25x2.TabIndex =  26 ;
-            lbl_25x2.Text =  "\"25x0\"" ;
+            // pb_smallAdvertisement
             // 
-            // lbl_Height2
-            // 
-            lbl_Height2.AutoSize =  true ;
-            lbl_Height2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_Height2.Font =  new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Height2.ForeColor =  Color.White ;
-            lbl_Height2.Location =  new Point( 457, 82 ) ;
-            lbl_Height2.Name =  "lbl_Height2" ;
-            lbl_Height2.Size =  new Size( 168, 65 ) ;
-            lbl_Height2.TabIndex =  25 ;
-            lbl_Height2.Text =  "\"Höjd\"" ;
-            // 
-            // lbl_Avlyft2
-            // 
-            lbl_Avlyft2.AutoSize =  true ;
-            lbl_Avlyft2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_Avlyft2.Font =  new Font( "Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Avlyft2.ForeColor =  Color.White ;
-            lbl_Avlyft2.Location =  new Point( 458, 147 ) ;
-            lbl_Avlyft2.Name =  "lbl_Avlyft2" ;
-            lbl_Avlyft2.Size =  new Size( 283, 54 ) ;
-            lbl_Avlyft2.TabIndex =  24 ;
-            lbl_Avlyft2.Text =  "\"Avlyft /Infällt\"" ;
+            pb_smallAdvertisement.BackColor =  Color.Black ;
+            pb_smallAdvertisement.Image =  ( Image ) resources.GetObject( "pb_smallAdvertisement.Image" )  ;
+            pb_smallAdvertisement.Location =  new Point( 1, 972 ) ;
+            pb_smallAdvertisement.Name =  "pb_smallAdvertisement" ;
+            pb_smallAdvertisement.Size =  new Size( 319, 110 ) ;
+            pb_smallAdvertisement.SizeMode =  PictureBoxSizeMode.Zoom ;
+            pb_smallAdvertisement.TabIndex =  57 ;
+            pb_smallAdvertisement.TabStop =  false ;
             // 
             // p_NextGroupLifters
             // 
@@ -191,6 +184,7 @@
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_3 );
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_4 );
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_5 );
+            p_NextGroupLifters.Controls.Add( label32 );
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_6 );
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_7 );
             p_NextGroupLifters.Controls.Add( lbl_groupLiftOrder_control_8 );
@@ -274,6 +268,19 @@
             lbl_groupLiftOrder_control_5.Size =  new Size( 429, 44 ) ;
             lbl_groupLiftOrder_control_5.TabIndex =  38 ;
             lbl_groupLiftOrder_control_5.Text =  "Vikt + Lyftare" ;
+            // 
+            // label32
+            // 
+            label32.AutoSize =  true ;
+            label32.BackColor =  Color.Black ;
+            label32.Font =  new Font( "Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label32.ForeColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            label32.Location =  new Point( 3, 694 ) ;
+            label32.Name =  "label32" ;
+            label32.Size =  new Size( 165, 35 ) ;
+            label32.TabIndex =  53 ;
+            label32.Text =  "Version v1.2.2" ;
+            label32.TextAlign =  ContentAlignment.TopCenter ;
             // 
             // lbl_groupLiftOrder_control_6
             // 
@@ -425,6 +432,276 @@
             lbl_groupLiftOrder_control_20.TabIndex =  53 ;
             lbl_groupLiftOrder_control_20.Text =  "Vikt + Lyftare" ;
             // 
+            // dataGridViewSpectatorPanel
+            // 
+            dataGridViewSpectatorPanel.AllowUserToAddRows =  false ;
+            dataGridViewSpectatorPanel.AllowUserToDeleteRows =  false ;
+            dataGridViewSpectatorPanel.AllowUserToResizeColumns =  false ;
+            dataGridViewSpectatorPanel.AllowUserToResizeRows =  false ;
+            dataGridViewCellStyle1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle1.ForeColor =  Color.White ;
+            dataGridViewSpectatorPanel.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle1 ;
+            dataGridViewSpectatorPanel.AutoSizeColumnsMode =  DataGridViewAutoSizeColumnsMode.AllCells ;
+            dataGridViewSpectatorPanel.AutoSizeRowsMode =  DataGridViewAutoSizeRowsMode.AllCells ;
+            dataGridViewSpectatorPanel.BackgroundColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewSpectatorPanel.BorderStyle =  BorderStyle.None ;
+            dataGridViewSpectatorPanel.CellBorderStyle =  DataGridViewCellBorderStyle.SingleHorizontal ;
+            dataGridViewSpectatorPanel.ColumnHeadersBorderStyle =  DataGridViewHeaderBorderStyle.None ;
+            dataGridViewCellStyle2.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
+            dataGridViewCellStyle2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle2.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            dataGridViewCellStyle2.ForeColor =  Color.White ;
+            dataGridViewCellStyle2.SelectionBackColor =  SystemColors.Highlight ;
+            dataGridViewCellStyle2.SelectionForeColor =  SystemColors.HighlightText ;
+            dataGridViewCellStyle2.WrapMode =  DataGridViewTriState.True ;
+            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle2 ;
+            dataGridViewSpectatorPanel.ColumnHeadersHeightSizeMode =  DataGridViewColumnHeadersHeightSizeMode.AutoSize ;
+            dataGridViewCellStyle3.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
+            dataGridViewCellStyle3.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            dataGridViewCellStyle3.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            dataGridViewCellStyle3.ForeColor =  Color.White ;
+            dataGridViewCellStyle3.SelectionBackColor =  SystemColors.Highlight ;
+            dataGridViewCellStyle3.SelectionForeColor =  SystemColors.HighlightText ;
+            dataGridViewCellStyle3.WrapMode =  DataGridViewTriState.False ;
+            dataGridViewSpectatorPanel.DefaultCellStyle =  dataGridViewCellStyle3 ;
+            dataGridViewSpectatorPanel.EnableHeadersVisualStyles =  false ;
+            dataGridViewSpectatorPanel.GridColor =  SystemColors.WindowText ;
+            dataGridViewSpectatorPanel.ImeMode =  ImeMode.NoControl ;
+            dataGridViewSpectatorPanel.Location =  new Point( 0, 217 ) ;
+            dataGridViewSpectatorPanel.Name =  "dataGridViewSpectatorPanel" ;
+            dataGridViewSpectatorPanel.RowHeadersVisible =  false ;
+            dataGridViewSpectatorPanel.RowTemplate.Height =  25 ;
+            dataGridViewSpectatorPanel.ScrollBars =  ScrollBars.None ;
+            dataGridViewSpectatorPanel.Size =  new Size( 1507, 749 ) ;
+            dataGridViewSpectatorPanel.TabIndex =  45 ;
+            // 
+            // pb_bigAdvertisement
+            // 
+            pb_bigAdvertisement.BackColor =  Color.Black ;
+            pb_bigAdvertisement.Image =  ( Image ) resources.GetObject( "pb_bigAdvertisement.Image" )  ;
+            pb_bigAdvertisement.Location =  new Point( 326, 972 ) ;
+            pb_bigAdvertisement.Name =  "pb_bigAdvertisement" ;
+            pb_bigAdvertisement.Size =  new Size( 550, 110 ) ;
+            pb_bigAdvertisement.SizeMode =  PictureBoxSizeMode.Zoom ;
+            pb_bigAdvertisement.TabIndex =  56 ;
+            pb_bigAdvertisement.TabStop =  false ;
+            // 
+            // infopanel_Spectatorpanel
+            // 
+            infopanel_Spectatorpanel.BackColor =  Color.Black ;
+            infopanel_Spectatorpanel.Controls.Add( lbl_currentWeight );
+            infopanel_Spectatorpanel.Controls.Add( lbl_Name );
+            infopanel_Spectatorpanel.Controls.Add( lbl_25x );
+            infopanel_Spectatorpanel.Controls.Add( lbl_Height );
+            infopanel_Spectatorpanel.Controls.Add( lbl_Avlyft );
+            infopanel_Spectatorpanel.Location =  new Point( 761, 0 ) ;
+            infopanel_Spectatorpanel.Name =  "infopanel_Spectatorpanel" ;
+            infopanel_Spectatorpanel.Size =  new Size( 746, 206 ) ;
+            infopanel_Spectatorpanel.TabIndex =  44 ;
+            infopanel_Spectatorpanel.Paint +=  infopanel_SpectatorPanel_Paint ;
+            // 
+            // lbl_currentWeight
+            // 
+            lbl_currentWeight.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            lbl_currentWeight.Font =  new Font( "Segoe UI", 39.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_currentWeight.ForeColor =  Color.White ;
+            lbl_currentWeight.Location =  new Point( 527, 0 ) ;
+            lbl_currentWeight.Name =  "lbl_currentWeight" ;
+            lbl_currentWeight.Size =  new Size( 239, 84 ) ;
+            lbl_currentWeight.TabIndex =  4 ;
+            lbl_currentWeight.Text =  "000.0KG" ;
+            // 
+            // lbl_Name
+            // 
+            lbl_Name.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_Name.Font =  new Font( "Segoe UI", 50.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_Name.ForeColor =  Color.White ;
+            lbl_Name.Location =  new Point( -9, -17 ) ;
+            lbl_Name.Margin =  new Padding( 0 ) ;
+            lbl_Name.Name =  "lbl_Name" ;
+            lbl_Name.Size =  new Size( 755, 89 ) ;
+            lbl_Name.TabIndex =  22 ;
+            lbl_Name.Text =  "Lyftare Lyftarsson" ;
+            // 
+            // lbl_25x
+            // 
+            lbl_25x.AutoSize =  true ;
+            lbl_25x.BackColor =  Color.Transparent ;
+            lbl_25x.Font =  new Font( "Segoe UI", 33.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_25x.ForeColor =  Color.White ;
+            lbl_25x.Location =  new Point( -3, 106 ) ;
+            lbl_25x.Name =  "lbl_25x" ;
+            lbl_25x.Size =  new Size( 156, 61 ) ;
+            lbl_25x.TabIndex =  21 ;
+            lbl_25x.Text =  "\"25x0\"" ;
+            // 
+            // lbl_Height
+            // 
+            lbl_Height.AutoSize =  true ;
+            lbl_Height.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_Height.Font =  new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_Height.ForeColor =  Color.White ;
+            lbl_Height.Location =  new Point( 456, 81 ) ;
+            lbl_Height.Name =  "lbl_Height" ;
+            lbl_Height.Size =  new Size( 168, 65 ) ;
+            lbl_Height.TabIndex =  19 ;
+            lbl_Height.Text =  "\"Höjd\"" ;
+            // 
+            // lbl_Avlyft
+            // 
+            lbl_Avlyft.AutoSize =  true ;
+            lbl_Avlyft.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_Avlyft.Font =  new Font( "Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_Avlyft.ForeColor =  Color.White ;
+            lbl_Avlyft.Location =  new Point( 457, 146 ) ;
+            lbl_Avlyft.Name =  "lbl_Avlyft" ;
+            lbl_Avlyft.Size =  new Size( 283, 54 ) ;
+            lbl_Avlyft.TabIndex =  15 ;
+            lbl_Avlyft.Text =  "\"Avlyft /Infällt\"" ;
+            // 
+            // panel5
+            // 
+            panel5.BackColor =  SystemColors.WindowText ;
+            panel5.Controls.Add( label25 );
+            panel5.Controls.Add( label24 );
+            panel5.Controls.Add( lbl_timerLapp );
+            panel5.Controls.Add( lbl_timerLyft );
+            panel5.ForeColor =  SystemColors.WindowText ;
+            panel5.Location =  new Point( 992, 972 ) ;
+            panel5.Name =  "panel5" ;
+            panel5.Size =  new Size( 515, 117 ) ;
+            panel5.TabIndex =  46 ;
+            panel5.Paint +=  panel5_Paint ;
+            // 
+            // label25
+            // 
+            label25.AutoSize =  true ;
+            label25.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label25.ForeColor =  Color.White ;
+            label25.Location =  new Point( 374, -3 ) ;
+            label25.Name =  "label25" ;
+            label25.Size =  new Size( 65, 32 ) ;
+            label25.TabIndex =  3 ;
+            label25.Text =  "Lapp" ;
+            // 
+            // label24
+            // 
+            label24.AutoSize =  true ;
+            label24.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label24.ForeColor =  Color.White ;
+            label24.Location =  new Point( 124, -3 ) ;
+            label24.Name =  "label24" ;
+            label24.Size =  new Size( 52, 32 ) ;
+            label24.TabIndex =  2 ;
+            label24.Text =  "Lyft" ;
+            // 
+            // lbl_timerLapp
+            // 
+            lbl_timerLapp.AutoSize =  true ;
+            lbl_timerLapp.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_timerLapp.Font =  new Font( "Segoe UI", 60F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_timerLapp.ForeColor =  Color.White ;
+            lbl_timerLapp.Location =  new Point( 293, 11 ) ;
+            lbl_timerLapp.Name =  "lbl_timerLapp" ;
+            lbl_timerLapp.Size =  new Size( 234, 106 ) ;
+            lbl_timerLapp.TabIndex =  1 ;
+            lbl_timerLapp.Text =  "00:00" ;
+            // 
+            // lbl_timerLyft
+            // 
+            lbl_timerLyft.AutoSize =  true ;
+            lbl_timerLyft.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_timerLyft.Font =  new Font( "Segoe UI", 90F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_timerLyft.ForeColor =  Color.White ;
+            lbl_timerLyft.Location =  new Point( -20, -22 ) ;
+            lbl_timerLyft.Name =  "lbl_timerLyft" ;
+            lbl_timerLyft.Size =  new Size( 353, 159 ) ;
+            lbl_timerLyft.TabIndex =  0 ;
+            lbl_timerLyft.Text =  "00:00" ;
+            // 
+            // infopanel_Spectatorpanel2
+            // 
+            infopanel_Spectatorpanel2.BackColor =  SystemColors.WindowText ;
+            infopanel_Spectatorpanel2.Controls.Add( lbl_currentWeight2 );
+            infopanel_Spectatorpanel2.Controls.Add( lbl_Name2 );
+            infopanel_Spectatorpanel2.Controls.Add( lbl_25x2 );
+            infopanel_Spectatorpanel2.Controls.Add( lbl_Height2 );
+            infopanel_Spectatorpanel2.Controls.Add( lbl_Avlyft2 );
+            infopanel_Spectatorpanel2.Location =  new Point( 0, 0 ) ;
+            infopanel_Spectatorpanel2.Name =  "infopanel_Spectatorpanel2" ;
+            infopanel_Spectatorpanel2.Size =  new Size( 750, 206 ) ;
+            infopanel_Spectatorpanel2.TabIndex =  52 ;
+            infopanel_Spectatorpanel2.Paint +=  infopanel_SpectatorPanel2_Paint ;
+            // 
+            // lbl_currentWeight2
+            // 
+            lbl_currentWeight2.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            lbl_currentWeight2.Font =  new Font( "Segoe UI", 39.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_currentWeight2.ForeColor =  Color.White ;
+            lbl_currentWeight2.Location =  new Point( 527, 0 ) ;
+            lbl_currentWeight2.Name =  "lbl_currentWeight2" ;
+            lbl_currentWeight2.Size =  new Size( 254, 84 ) ;
+            lbl_currentWeight2.TabIndex =  23 ;
+            lbl_currentWeight2.Text =  "000.0KG" ;
+            // 
+            // lbl_Name2
+            // 
+            lbl_Name2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_Name2.Font =  new Font( "Segoe UI", 50.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_Name2.ForeColor =  Color.White ;
+            lbl_Name2.Location =  new Point( -7, -17 ) ;
+            lbl_Name2.Margin =  new Padding( 0 ) ;
+            lbl_Name2.Name =  "lbl_Name2" ;
+            lbl_Name2.Size =  new Size( 755, 89 ) ;
+            lbl_Name2.TabIndex =  27 ;
+            lbl_Name2.Text =  "Lyftare Lyftarsson" ;
+            // 
+            // lbl_25x2
+            // 
+            lbl_25x2.AutoSize =  true ;
+            lbl_25x2.BackColor =  Color.Transparent ;
+            lbl_25x2.Font =  new Font( "Segoe UI", 33.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_25x2.ForeColor =  Color.White ;
+            lbl_25x2.Location =  new Point( -3, 107 ) ;
+            lbl_25x2.Name =  "lbl_25x2" ;
+            lbl_25x2.Size =  new Size( 156, 61 ) ;
+            lbl_25x2.TabIndex =  26 ;
+            lbl_25x2.Text =  "\"25x0\"" ;
+            // 
+            // lbl_Height2
+            // 
+            lbl_Height2.AutoSize =  true ;
+            lbl_Height2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_Height2.Font =  new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_Height2.ForeColor =  Color.White ;
+            lbl_Height2.Location =  new Point( 457, 82 ) ;
+            lbl_Height2.Name =  "lbl_Height2" ;
+            lbl_Height2.Size =  new Size( 168, 65 ) ;
+            lbl_Height2.TabIndex =  25 ;
+            lbl_Height2.Text =  "\"Höjd\"" ;
+            // 
+            // lbl_Avlyft2
+            // 
+            lbl_Avlyft2.AutoSize =  true ;
+            lbl_Avlyft2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            lbl_Avlyft2.Font =  new Font( "Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            lbl_Avlyft2.ForeColor =  Color.White ;
+            lbl_Avlyft2.Location =  new Point( 458, 147 ) ;
+            lbl_Avlyft2.Name =  "lbl_Avlyft2" ;
+            lbl_Avlyft2.Size =  new Size( 283, 54 ) ;
+            lbl_Avlyft2.TabIndex =  24 ;
+            lbl_Avlyft2.Text =  "\"Avlyft /Infällt\"" ;
+            // 
+            // pb_emblemAdvertisement
+            // 
+            pb_emblemAdvertisement.Image =  ( Image ) resources.GetObject( "pb_emblemAdvertisement.Image" )  ;
+            pb_emblemAdvertisement.Location =  new Point( 880, 972 ) ;
+            pb_emblemAdvertisement.Name =  "pb_emblemAdvertisement" ;
+            pb_emblemAdvertisement.Size =  new Size( 110, 110 ) ;
+            pb_emblemAdvertisement.SizeMode =  PictureBoxSizeMode.StretchImage ;
+            pb_emblemAdvertisement.TabIndex =  55 ;
+            pb_emblemAdvertisement.TabStop =  false ;
+            // 
             // panel10
             // 
             panel10.BackColor =  SystemColors.WindowText ;
@@ -450,7 +727,7 @@
             panel10.Controls.Add( lbl_liftOrder_control_20 );
             panel10.Controls.Add( label30 );
             panel10.ForeColor =  Color.White ;
-            panel10.Location =  new Point( 1513, 5 ) ;
+            panel10.Location =  new Point( 1513, 0 ) ;
             panel10.Name =  "panel10" ;
             panel10.Size =  new Size( 404, 692 ) ;
             panel10.TabIndex =  50 ;
@@ -688,301 +965,78 @@
             label30.TabIndex =  13 ;
             label30.Text =  "Lyftar ordning" ;
             // 
-            // panel5
+            // ResultsTab
             // 
-            panel5.BackColor =  SystemColors.WindowText ;
-            panel5.Controls.Add( label25 );
-            panel5.Controls.Add( label24 );
-            panel5.Controls.Add( lbl_timerLapp );
-            panel5.Controls.Add( lbl_timerLyft );
-            panel5.ForeColor =  SystemColors.WindowText ;
-            panel5.Location =  new Point( 876, 972 ) ;
-            panel5.Name =  "panel5" ;
-            panel5.Size =  new Size( 515, 117 ) ;
-            panel5.TabIndex =  46 ;
-            panel5.Paint +=  panel5_Paint ;
-            // 
-            // label25
-            // 
-            label25.AutoSize =  true ;
-            label25.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label25.ForeColor =  Color.White ;
-            label25.Location =  new Point( 374, -3 ) ;
-            label25.Name =  "label25" ;
-            label25.Size =  new Size( 65, 32 ) ;
-            label25.TabIndex =  3 ;
-            label25.Text =  "Lapp" ;
-            // 
-            // label24
-            // 
-            label24.AutoSize =  true ;
-            label24.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label24.ForeColor =  Color.White ;
-            label24.Location =  new Point( 124, -3 ) ;
-            label24.Name =  "label24" ;
-            label24.Size =  new Size( 52, 32 ) ;
-            label24.TabIndex =  2 ;
-            label24.Text =  "Lyft" ;
-            // 
-            // lbl_timerLapp
-            // 
-            lbl_timerLapp.AutoSize =  true ;
-            lbl_timerLapp.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_timerLapp.Font =  new Font( "Segoe UI", 60F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_timerLapp.ForeColor =  Color.White ;
-            lbl_timerLapp.Location =  new Point( 293, 11 ) ;
-            lbl_timerLapp.Name =  "lbl_timerLapp" ;
-            lbl_timerLapp.Size =  new Size( 234, 106 ) ;
-            lbl_timerLapp.TabIndex =  1 ;
-            lbl_timerLapp.Text =  "00:00" ;
-            // 
-            // lbl_timerLyft
-            // 
-            lbl_timerLyft.AutoSize =  true ;
-            lbl_timerLyft.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_timerLyft.Font =  new Font( "Segoe UI", 90F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_timerLyft.ForeColor =  Color.White ;
-            lbl_timerLyft.Location =  new Point( -20, -22 ) ;
-            lbl_timerLyft.Name =  "lbl_timerLyft" ;
-            lbl_timerLyft.Size =  new Size( 353, 159 ) ;
-            lbl_timerLyft.TabIndex =  0 ;
-            lbl_timerLyft.Text =  "00:00" ;
-            // 
-            // infopanel_Spectatorpanel
-            // 
-            infopanel_Spectatorpanel.BackColor =  Color.Black ;
-            infopanel_Spectatorpanel.Controls.Add( lbl_currentWeight );
-            infopanel_Spectatorpanel.Controls.Add( lbl_Name );
-            infopanel_Spectatorpanel.Controls.Add( lbl_25x );
-            infopanel_Spectatorpanel.Controls.Add( lbl_Height );
-            infopanel_Spectatorpanel.Controls.Add( lbl_Avlyft );
-            infopanel_Spectatorpanel.Location =  new Point( 5, 5 ) ;
-            infopanel_Spectatorpanel.Name =  "infopanel_Spectatorpanel" ;
-            infopanel_Spectatorpanel.Size =  new Size( 746, 206 ) ;
-            infopanel_Spectatorpanel.TabIndex =  44 ;
-            infopanel_Spectatorpanel.Paint +=  infopanel_SpectatorPanel_Paint ;
-            // 
-            // lbl_currentWeight
-            // 
-            lbl_currentWeight.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            lbl_currentWeight.Font =  new Font( "Segoe UI", 39.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_currentWeight.ForeColor =  Color.White ;
-            lbl_currentWeight.Location =  new Point( 527, 0 ) ;
-            lbl_currentWeight.Name =  "lbl_currentWeight" ;
-            lbl_currentWeight.Size =  new Size( 239, 84 ) ;
-            lbl_currentWeight.TabIndex =  4 ;
-            lbl_currentWeight.Text =  "000.0KG" ;
-            // 
-            // lbl_Name
-            // 
-            lbl_Name.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_Name.Font =  new Font( "Segoe UI", 50.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Name.ForeColor =  Color.White ;
-            lbl_Name.Location =  new Point( -9, -17 ) ;
-            lbl_Name.Margin =  new Padding( 0 ) ;
-            lbl_Name.Name =  "lbl_Name" ;
-            lbl_Name.Size =  new Size( 755, 89 ) ;
-            lbl_Name.TabIndex =  22 ;
-            lbl_Name.Text =  "Lyftare Lyftarsson" ;
-            // 
-            // lbl_25x
-            // 
-            lbl_25x.AutoSize =  true ;
-            lbl_25x.BackColor =  Color.Transparent ;
-            lbl_25x.Font =  new Font( "Segoe UI", 33.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_25x.ForeColor =  Color.White ;
-            lbl_25x.Location =  new Point( -3, 106 ) ;
-            lbl_25x.Name =  "lbl_25x" ;
-            lbl_25x.Size =  new Size( 156, 61 ) ;
-            lbl_25x.TabIndex =  21 ;
-            lbl_25x.Text =  "\"25x0\"" ;
-            // 
-            // lbl_Height
-            // 
-            lbl_Height.AutoSize =  true ;
-            lbl_Height.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_Height.Font =  new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Height.ForeColor =  Color.White ;
-            lbl_Height.Location =  new Point( 456, 81 ) ;
-            lbl_Height.Name =  "lbl_Height" ;
-            lbl_Height.Size =  new Size( 168, 65 ) ;
-            lbl_Height.TabIndex =  19 ;
-            lbl_Height.Text =  "\"Höjd\"" ;
-            // 
-            // lbl_Avlyft
-            // 
-            lbl_Avlyft.AutoSize =  true ;
-            lbl_Avlyft.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            lbl_Avlyft.Font =  new Font( "Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Avlyft.ForeColor =  Color.White ;
-            lbl_Avlyft.Location =  new Point( 457, 146 ) ;
-            lbl_Avlyft.Name =  "lbl_Avlyft" ;
-            lbl_Avlyft.Size =  new Size( 283, 54 ) ;
-            lbl_Avlyft.TabIndex =  15 ;
-            lbl_Avlyft.Text =  "\"Avlyft /Infällt\"" ;
-            // 
-            // dataGridViewSpectatorPanel
-            // 
-            dataGridViewSpectatorPanel.AllowUserToAddRows =  false ;
-            dataGridViewSpectatorPanel.AllowUserToDeleteRows =  false ;
-            dataGridViewSpectatorPanel.AllowUserToResizeColumns =  false ;
-            dataGridViewSpectatorPanel.AllowUserToResizeRows =  false ;
-            dataGridViewCellStyle1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            dataGridViewCellStyle1.ForeColor =  Color.White ;
-            dataGridViewSpectatorPanel.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle1 ;
-            dataGridViewSpectatorPanel.AutoSizeColumnsMode =  DataGridViewAutoSizeColumnsMode.AllCells ;
-            dataGridViewSpectatorPanel.AutoSizeRowsMode =  DataGridViewAutoSizeRowsMode.AllCells ;
-            dataGridViewSpectatorPanel.BackgroundColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            dataGridViewSpectatorPanel.BorderStyle =  BorderStyle.None ;
-            dataGridViewSpectatorPanel.CellBorderStyle =  DataGridViewCellBorderStyle.SingleHorizontal ;
-            dataGridViewSpectatorPanel.ColumnHeadersBorderStyle =  DataGridViewHeaderBorderStyle.None ;
-            dataGridViewCellStyle2.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            dataGridViewCellStyle2.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Bold, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle2.ForeColor =  Color.White ;
-            dataGridViewCellStyle2.SelectionBackColor =  SystemColors.Highlight ;
-            dataGridViewCellStyle2.SelectionForeColor =  SystemColors.HighlightText ;
-            dataGridViewCellStyle2.WrapMode =  DataGridViewTriState.True ;
-            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle2 ;
-            dataGridViewSpectatorPanel.ColumnHeadersHeightSizeMode =  DataGridViewColumnHeadersHeightSizeMode.AutoSize ;
-            dataGridViewCellStyle3.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle3.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            dataGridViewCellStyle3.Font =  new Font( "Trebuchet MS", 18.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle3.ForeColor =  Color.White ;
-            dataGridViewCellStyle3.SelectionBackColor =  SystemColors.Highlight ;
-            dataGridViewCellStyle3.SelectionForeColor =  SystemColors.HighlightText ;
-            dataGridViewCellStyle3.WrapMode =  DataGridViewTriState.False ;
-            dataGridViewSpectatorPanel.DefaultCellStyle =  dataGridViewCellStyle3 ;
-            dataGridViewSpectatorPanel.EnableHeadersVisualStyles =  false ;
-            dataGridViewSpectatorPanel.GridColor =  SystemColors.WindowText ;
-            dataGridViewSpectatorPanel.ImeMode =  ImeMode.NoControl ;
-            dataGridViewSpectatorPanel.Location =  new Point( 5, 217 ) ;
-            dataGridViewSpectatorPanel.Name =  "dataGridViewSpectatorPanel" ;
-            dataGridViewSpectatorPanel.RowHeadersVisible =  false ;
-            dataGridViewSpectatorPanel.RowTemplate.Height =  25 ;
-            dataGridViewSpectatorPanel.ScrollBars =  ScrollBars.None ;
-            dataGridViewSpectatorPanel.Size =  new Size( 1502, 749 ) ;
-            dataGridViewSpectatorPanel.TabIndex =  45 ;
-            // 
-            // label32
-            // 
-            label32.AutoSize =  true ;
-            label32.BackColor =  Color.Black ;
-            label32.Font =  new Font( "Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label32.ForeColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            label32.Location =  new Point( 72, 981 ) ;
-            label32.Name =  "label32" ;
-            label32.Size =  new Size( 165, 35 ) ;
-            label32.TabIndex =  53 ;
-            label32.Text =  "Version v1.2.2" ;
-            label32.TextAlign =  ContentAlignment.TopCenter ;
-            // 
-            // label1
-            // 
-            label1.AutoSize =  true ;
-            label1.BackColor =  Color.Black ;
-            label1.Font =  new Font( "Segoe UI", 95.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label1.ForeColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            label1.Location =  new Point( 286, 931 ) ;
-            label1.Name =  "label1" ;
-            label1.Size =  new Size( 0, 168 ) ;
-            label1.TabIndex =  54 ;
-            label1.TextAlign =  ContentAlignment.TopCenter ;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image =  ( Image ) resources.GetObject( "pictureBox3.Image" )  ;
-            pictureBox3.Location =  new Point( 1402, 972 ) ;
-            pictureBox3.Name =  "pictureBox3" ;
-            pictureBox3.Size =  new Size( 100, 100 ) ;
-            pictureBox3.SizeMode =  PictureBoxSizeMode.StretchImage ;
-            pictureBox3.TabIndex =  55 ;
-            pictureBox3.TabStop =  false ;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor =  Color.Black ;
-            pictureBox1.Image =  ( Image ) resources.GetObject( "pictureBox1.Image" )  ;
-            pictureBox1.Location =  new Point( 321, 949 ) ;
-            pictureBox1.Name =  "pictureBox1" ;
-            pictureBox1.Size =  new Size( 549, 162 ) ;
-            pictureBox1.SizeMode =  PictureBoxSizeMode.Zoom ;
-            pictureBox1.TabIndex =  56 ;
-            pictureBox1.TabStop =  false ;
-            // 
-            // label2
-            // 
-            label2.AutoSize =  true ;
-            label2.Font =  new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label2.ForeColor =  Color.White ;
-            label2.Location =  new Point( -3, 1017 ) ;
-            label2.Name =  "label2" ;
-            label2.Size =  new Size( 321, 65 ) ;
-            label2.TabIndex =  4 ;
-            label2.Text =  "STEELMEET.se" ;
+            ResultsTab.BackColor =  Color.Black ;
+            ResultsTab.Location =  new Point( 4, 26 ) ;
+            ResultsTab.Name =  "ResultsTab" ;
+            ResultsTab.Padding =  new Padding( 3 ) ;
+            ResultsTab.Size =  new Size( 192, 70 ) ;
+            ResultsTab.TabIndex =  1 ;
+            ResultsTab.Text =  "Resultat" ;
             // 
             // SMSpectatorPanel
             // 
             AutoScaleDimensions =  new SizeF( 96F, 96F ) ;
             AutoScaleMode =  AutoScaleMode.Dpi ;
             BackColor =  SystemColors.WindowText ;
-            ClientSize =  new Size( 1920, 1061 ) ;
-            Controls.Add( p_NextGroupLifters );
-            Controls.Add( panel10 );
-            Controls.Add( label2 );
-            Controls.Add( pictureBox3 );
-            Controls.Add( label32 );
-            Controls.Add( infopanel_Spectatorpanel2 );
-            Controls.Add( panel5 );
-            Controls.Add( infopanel_Spectatorpanel );
-            Controls.Add( label1 );
-            Controls.Add( dataGridViewSpectatorPanel );
-            Controls.Add( pictureBox1 );
+            ClientSize =  new Size( 1984, 1351 ) ;
+            Controls.Add( ctc_Spectator );
             Name =  "SMSpectatorPanel" ;
             Text =  "Steelmeet Åskådarpanel - v1.2.2" ;
             Load +=  SMSpectatorPanel_Load ;
-            infopanel_Spectatorpanel2.ResumeLayout( false );
-            infopanel_Spectatorpanel2.PerformLayout();
+            ctc_Spectator.ResumeLayout( false );
+            CompetitionTab.ResumeLayout( false );
+            ( ( System.ComponentModel.ISupportInitialize ) pb_smallAdvertisement  ).EndInit();
             p_NextGroupLifters.ResumeLayout( false );
             p_NextGroupLifters.PerformLayout();
-            panel10.ResumeLayout( false );
-            panel10.PerformLayout();
-            panel5.ResumeLayout( false );
-            panel5.PerformLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) dataGridViewSpectatorPanel  ).EndInit();
+            ( ( System.ComponentModel.ISupportInitialize ) pb_bigAdvertisement  ).EndInit();
             infopanel_Spectatorpanel.ResumeLayout( false );
             infopanel_Spectatorpanel.PerformLayout();
-            ( ( System.ComponentModel.ISupportInitialize ) dataGridViewSpectatorPanel  ).EndInit();
-            ( ( System.ComponentModel.ISupportInitialize ) pictureBox3  ).EndInit();
-            ( ( System.ComponentModel.ISupportInitialize ) pictureBox1  ).EndInit();
+            panel5.ResumeLayout( false );
+            panel5.PerformLayout();
+            infopanel_Spectatorpanel2.ResumeLayout( false );
+            infopanel_Spectatorpanel2.PerformLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) pb_emblemAdvertisement  ).EndInit();
+            panel10.ResumeLayout( false );
+            panel10.PerformLayout();
             ResumeLayout( false );
-            PerformLayout();
         }
 
         #endregion
-
+        private CustomTabControl ctc_Spectator;
+        private TabPage ResultsTab;
+        private TabPage CompetitionTab;
+        public DataGridView dataGridViewSpectatorPanel;
         private Panel infopanel_Spectatorpanel2;
+        private Label lbl_currentWeight2;
+        private Label lbl_Name2;
+        private Label lbl_25x2;
+        private Label lbl_Height2;
+        private Label lbl_Avlyft2;
         private Panel p_NextGroupLifters;
-        private Label lbl_groupLiftOrder_control_20;
-        private Label lbl_groupLiftOrder_control_19;
-        private Label lbl_groupLiftOrder_control_18;
-        private Label lbl_groupLiftOrder_control_17;
-        private Label lbl_groupLiftOrder_control_16;
-        private Label lbl_groupLiftOrder_control_15;
-        private Label lbl_groupLiftOrder_control_14;
-        private Label lbl_groupLiftOrder_control_13;
-        private Label lbl_groupLiftOrder_control_12;
-        private Label lbl_groupLiftOrder_control_11;
-        private Label lbl_groupLiftOrder_control_6;
-        private Label lbl_groupLiftOrder_control_7;
-        private Label lbl_groupLiftOrder_control_8;
-        private Label lbl_groupLiftOrder_control_10;
-        private Label lbl_groupLiftOrder_control_9;
-        private Label lbl_groupLiftOrder_control_5;
+        private Label lbl_OpeningLift;
         private Label lbl_groupLiftOrder_control_1;
         private Label lbl_groupLiftOrder_control_2;
         private Label lbl_groupLiftOrder_control_3;
         private Label lbl_groupLiftOrder_control_4;
-        private Label lbl_OpeningLift;
+        private Label lbl_groupLiftOrder_control_5;
+        private Label lbl_groupLiftOrder_control_6;
+        private Label lbl_groupLiftOrder_control_7;
+        private Label lbl_groupLiftOrder_control_8;
+        private Label lbl_groupLiftOrder_control_9;
+        private Label lbl_groupLiftOrder_control_10;
+        private Label lbl_groupLiftOrder_control_11;
+        private Label lbl_groupLiftOrder_control_12;
+        private Label lbl_groupLiftOrder_control_13;
+        private Label lbl_groupLiftOrder_control_14;
+        private Label lbl_groupLiftOrder_control_15;
+        private Label lbl_groupLiftOrder_control_16;
+        private Label lbl_groupLiftOrder_control_17;
+        private Label lbl_groupLiftOrder_control_18;
+        private Label lbl_groupLiftOrder_control_19;
+        private Label lbl_groupLiftOrder_control_20;
         private Panel panel10;
         private Label lbl_liftOrder_control_1;
         private Label lbl_liftOrder_control_2;
@@ -994,6 +1048,16 @@
         private Label lbl_liftOrder_control_8;
         private Label lbl_liftOrder_control_9;
         private Label lbl_liftOrder_control_10;
+        private Label lbl_liftOrder_control_11;
+        private Label lbl_liftOrder_control_12;
+        private Label lbl_liftOrder_control_13;
+        private Label lbl_liftOrder_control_14;
+        private Label lbl_liftOrder_control_15;
+        private Label lbl_liftOrder_control_16;
+        private Label lbl_liftOrder_control_17;
+        private Label lbl_liftOrder_control_18;
+        private Label lbl_liftOrder_control_19;
+        private Label lbl_liftOrder_control_20;
         private Label label30;
         private Panel panel5;
         private Label label25;
@@ -1006,26 +1070,9 @@
         private Label lbl_25x;
         private Label lbl_Height;
         private Label lbl_Avlyft;
-        public DataGridView dataGridViewSpectatorPanel;
-        private Label lbl_currentWeight2;
-        private Label lbl_Name2;
-        private Label lbl_25x2;
-        private Label lbl_Height2;
-        private Label lbl_Avlyft2;
         private Label label32;
-        private Label label1;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox1;
-        private Label label2;
-        private Label lbl_liftOrder_control_11;
-        private Label lbl_liftOrder_control_12;
-        private Label lbl_liftOrder_control_13;
-        private Label lbl_liftOrder_control_14;
-        private Label lbl_liftOrder_control_15;
-        private Label lbl_liftOrder_control_16;
-        private Label lbl_liftOrder_control_17;
-        private Label lbl_liftOrder_control_18;
-        private Label lbl_liftOrder_control_19;
-        private Label lbl_liftOrder_control_20;
+        public PictureBox pb_emblemAdvertisement;
+        public PictureBox pb_bigAdvertisement;
+        public PictureBox pb_smallAdvertisement;
     }
 }

@@ -1001,7 +1001,7 @@ namespace SteelMeet
 
                 //    }
                 //}
-                        InfopanelsUpdate();
+                InfopanelsUpdate();
             }
         }
 
@@ -2995,6 +2995,13 @@ namespace SteelMeet
                 smsList[ smsList.Count - 1 ].Show();
 
                 ChangeSpectatorGridviewSize();
+
+                smsList[ smsList.Count - 1 ].pb_smallAdvertisement.Image = pb_smallAdvertisement.Image;
+                smsList[ smsList.Count - 1 ].pb_smallAdvertisement.SizeMode = pb_smallAdvertisement.SizeMode;
+                smsList[ smsList.Count - 1 ].pb_bigAdvertisement.Image = pb_bigAdvertisement.Image;
+                smsList[ smsList.Count - 1 ].pb_bigAdvertisement.SizeMode = pb_bigAdvertisement.SizeMode;
+                smsList[ smsList.Count - 1 ].pb_emblemAdvertisement.Image = pb_emblemAdvertisement.Image;
+                smsList[ smsList.Count - 1 ].pb_emblemAdvertisement.SizeMode = pb_emblemAdvertisement.SizeMode;
             }
             else
                 MessageBox.Show( "Importera lyftare innan du kan öppna detta fönster", "⚠SteelMeet varning!⚠" );
@@ -3149,7 +3156,103 @@ namespace SteelMeet
             }
         }
 
+        private void btn_smallAdvertisement_Click( object sender, EventArgs e )
+        {
+            ApplyAdvertisementPicture( "Steelmeet Öppna Reklam 1 :)", pb_smallAdvertisement, cb_smallAdvertisementStretch.Checked );
+        }
 
+        private void btn_bigAdvertisement_Click( object sender, EventArgs e )
+        {
+            ApplyAdvertisementPicture( "Steelmeet Öppna Reklam 2 :)", pb_bigAdvertisement, cb_bigAdvertisementStretch.Checked );
+        }
+
+        private void btn_emblemAdvertisement_Click( object sender, EventArgs e )
+        {
+            ApplyAdvertisementPicture( "Steelmeet Öppna erat epsika Emblem :)", pb_emblemAdvertisement, cb_emblemAdvertisementStretch.Checked );
+        }
+
+        private void ApplyAdvertisementPicture( String title, PictureBox pictureBox, bool isStretched )
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = "C:/Users";
+            openFileDialog1.Title = title;
+            openFileDialog1.Filter = "PNG, JPG, JPEG, GIF|*.png; *.jpg; *.jpeg; *.gif";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if( result == DialogResult.OK )
+            {
+                BrowsedFile = openFileDialog1.FileName;
+                try
+                {
+                    Image BrowsedImage = Image.FromFile( BrowsedFile );
+                    pictureBox.Image = BrowsedImage;
+
+                    foreach( var smsForm in smsList )
+                        if( smsForm != null && !smsForm.IsDisposed )
+                        {
+                            switch( pictureBox.Name )
+                            {
+                                case "pb_smallAdvertisement":
+                                    smsForm.pb_smallAdvertisement.Image = BrowsedImage;
+                                    break;
+                                case "pb_bigAdvertisement":
+                                    smsForm.pb_bigAdvertisement.Image = BrowsedImage;
+                                    break;
+                                case "pb_emblemAdvertisement":
+                                    smsForm.pb_emblemAdvertisement.Image = BrowsedImage;
+                                    break;
+                            }
+                        }
+                }
+                catch( IOException )
+                {
+                }
+            }
+        }
+
+        private void cb_smallAdvertisementStretch_CheckedChanged( object sender, EventArgs e )
+        {
+            ApplyAdvertisementPictureStretch( pb_smallAdvertisement, cb_smallAdvertisementStretch.Checked );
+        }
+
+        private void cb_bigAdvertisementStretch_CheckedChanged( object sender, EventArgs e )
+        {
+            ApplyAdvertisementPictureStretch( pb_bigAdvertisement, cb_bigAdvertisementStretch.Checked );
+        }
+
+        private void cb_emblemAdvertisementStretch_CheckedChanged( object sender, EventArgs e )
+        {
+            ApplyAdvertisementPictureStretch( pb_emblemAdvertisement, cb_emblemAdvertisementStretch.Checked );
+        }
+
+        private void ApplyAdvertisementPictureStretch( PictureBox pictureBox, bool isStretched )
+        {
+            PictureBoxSizeMode sizeMode = isStretched ? PictureBoxSizeMode.StretchImage : PictureBoxSizeMode.Zoom;
+            pictureBox.SizeMode = sizeMode;
+            try
+            {
+                foreach( var smsForm in smsList )
+                    if( smsForm != null && !smsForm.IsDisposed )
+                    {
+                        switch( pictureBox.Name )
+                        {
+                            case "pb_smallAdvertisement":
+                                smsForm.pb_smallAdvertisement.SizeMode = sizeMode;
+                                break;
+                            case "pb_bigAdvertisement":
+                                smsForm.pb_bigAdvertisement.SizeMode = sizeMode;
+                                break;
+                            case "pb_emblemAdvertisement":
+                                smsForm.pb_emblemAdvertisement.SizeMode = sizeMode;
+                                break;
+                        }
+                    }
+            }
+            catch( Exception e )
+            {
+                Console.WriteLine( e );
+                throw;
+            }
+        }
         //Resultat
         //Resultat
         //Resultat
