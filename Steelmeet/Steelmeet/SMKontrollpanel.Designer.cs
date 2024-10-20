@@ -121,6 +121,7 @@
             cb_squat =  new CheckBox() ;
             btn_rekord =  new Button() ;
             panel13 =  new Panel() ;
+            button1 =  new Button() ;
             cb_dataGridViewAutoSize =  new CheckBox() ;
             label4 =  new Label() ;
             button5 =  new Button() ;
@@ -281,7 +282,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            pictureBox1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             pictureBox1.Image =  ( Image ) resources.GetObject( "pictureBox1.Image" )  ;
             pictureBox1.Location =  new Point( 3, 3 ) ;
             pictureBox1.Name =  "pictureBox1" ;
@@ -293,9 +294,9 @@
             // label26
             // 
             label26.AutoSize =  true ;
-            label26.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            label26.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             label26.Font =  new Font( "Trebuchet MS", 9.75F, FontStyle.Italic, GraphicsUnit.Point ) ;
-            label26.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            label26.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             label26.Location =  new Point( 840, 13 ) ;
             label26.Name =  "label26" ;
             label26.Size =  new Size( 480, 54 ) ;
@@ -305,9 +306,9 @@
             // label35
             // 
             label35.AutoSize =  true ;
-            label35.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            label35.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             label35.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label35.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            label35.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             label35.Location =  new Point( 684, 8 ) ;
             label35.Name =  "label35" ;
             label35.Size =  new Size( 148, 24 ) ;
@@ -317,9 +318,9 @@
             // lbl_WeightInData
             // 
             lbl_WeightInData.AutoSize =  true ;
-            lbl_WeightInData.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_WeightInData.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_WeightInData.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_WeightInData.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_WeightInData.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_WeightInData.Location =  new Point( 684, 31 ) ;
             lbl_WeightInData.Name =  "lbl_WeightInData" ;
             lbl_WeightInData.Size =  new Size( 109, 36 ) ;
@@ -342,9 +343,9 @@
             // btn_Import
             // 
             btn_Import.AutoSize =  true ;
-            btn_Import.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            btn_Import.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             btn_Import.FlatStyle =  FlatStyle.Popup ;
-            btn_Import.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            btn_Import.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             btn_Import.Location =  new Point( 357, 8 ) ;
             btn_Import.Name =  "btn_Import" ;
             btn_Import.Size =  new Size( 131, 28 ) ;
@@ -383,9 +384,9 @@
             // lbl_ImportedfilePath
             // 
             lbl_ImportedfilePath.AutoSize =  true ;
-            lbl_ImportedfilePath.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_ImportedfilePath.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_ImportedfilePath.Font =  new Font( "Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point ) ;
-            lbl_ImportedfilePath.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_ImportedfilePath.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_ImportedfilePath.Location =  new Point( 3, 79 ) ;
             lbl_ImportedfilePath.Name =  "lbl_ImportedfilePath" ;
             lbl_ImportedfilePath.Size =  new Size( 70, 18 ) ;
@@ -396,26 +397,26 @@
             // 
             dataGridViewWeighIn.AllowUserToResizeColumns =  false ;
             dataGridViewWeighIn.AllowUserToResizeRows =  false ;
-            dataGridViewCellStyle1.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
-            dataGridViewCellStyle1.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            dataGridViewCellStyle1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle1.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             dataGridViewWeighIn.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle1 ;
-            dataGridViewWeighIn.Anchor =     AnchorStyles.Top  |  AnchorStyles.Bottom   |  AnchorStyles.Left   |  AnchorStyles.Right  ;
+            dataGridViewWeighIn.Anchor =        AnchorStyles.Top  |  AnchorStyles.Bottom   |  AnchorStyles.Left   |  AnchorStyles.Right   ;
             dataGridViewWeighIn.AutoSizeColumnsMode =  DataGridViewAutoSizeColumnsMode.AllCells ;
             dataGridViewWeighIn.AutoSizeRowsMode =  DataGridViewAutoSizeRowsMode.DisplayedCells ;
-            dataGridViewWeighIn.BackgroundColor =  Color.FromArgb( 27, 38, 44 ) ;
+            dataGridViewWeighIn.BackgroundColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             dataGridViewWeighIn.CellBorderStyle =  DataGridViewCellBorderStyle.SingleHorizontal ;
             dataGridViewWeighIn.ColumnHeadersBorderStyle =  DataGridViewHeaderBorderStyle.None ;
             dataGridViewCellStyle2.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle2.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            dataGridViewCellStyle2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             dataGridViewCellStyle2.Font =  new Font( "Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle2.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            dataGridViewCellStyle2.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             dataGridViewCellStyle2.SelectionBackColor =  SystemColors.Highlight ;
             dataGridViewCellStyle2.SelectionForeColor =  SystemColors.HighlightText ;
             dataGridViewCellStyle2.WrapMode =  DataGridViewTriState.True ;
             dataGridViewWeighIn.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle2 ;
             dataGridViewWeighIn.ColumnHeadersHeightSizeMode =  DataGridViewColumnHeadersHeightSizeMode.AutoSize ;
             dataGridViewCellStyle3.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle3.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            dataGridViewCellStyle3.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             dataGridViewCellStyle3.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
             dataGridViewCellStyle3.ForeColor =  SystemColors.ControlText ;
             dataGridViewCellStyle3.SelectionBackColor =  SystemColors.Highlight ;
@@ -437,7 +438,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            panel3.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             panel3.Controls.Add( label28 );
             panel3.Controls.Add( label33 );
             panel3.Controls.Add( label36 );
@@ -454,7 +455,7 @@
             // 
             // label28
             // 
-            label28.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label28.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label28.AutoSize =  true ;
             label28.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label28.Location =  new Point( 107, 241 ) ;
@@ -466,7 +467,7 @@
             // 
             // label33
             // 
-            label33.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label33.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label33.AutoSize =  true ;
             label33.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label33.Location =  new Point( 118, 266 ) ;
@@ -478,7 +479,7 @@
             // 
             // label36
             // 
-            label36.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label36.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label36.AutoSize =  true ;
             label36.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label36.Location =  new Point( 98, 142 ) ;
@@ -490,7 +491,7 @@
             // 
             // label31
             // 
-            label31.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label31.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label31.AutoSize =  true ;
             label31.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label31.Location =  new Point( 98, 108 ) ;
@@ -523,7 +524,7 @@
             // 
             // label18
             // 
-            label18.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label18.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label18.AutoSize =  true ;
             label18.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label18.Location =  new Point( 24, 42 ) ;
@@ -535,7 +536,7 @@
             // 
             // label19
             // 
-            label19.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label19.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label19.AutoSize =  true ;
             label19.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label19.Location =  new Point( 103, 9 ) ;
@@ -547,7 +548,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            panel2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             panel2.Controls.Add( cb_emblemAdvertisementStretch );
             panel2.Controls.Add( cb_bigAdvertisementStretch );
             panel2.Controls.Add( cb_smallAdvertisementStretch );
@@ -614,7 +615,7 @@
             // 
             // label32
             // 
-            label32.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label32.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label32.AutoSize =  true ;
             label32.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label32.Location =  new Point( 292, 167 ) ;
@@ -683,7 +684,7 @@
             // 
             // label1
             // 
-            label1.Anchor =   AnchorStyles.Top  |  AnchorStyles.Bottom  ;
+            label1.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label1.AutoSize =  true ;
             label1.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
             label1.Location =  new Point( 211, 9 ) ;
@@ -695,7 +696,7 @@
             // 
             // pb_smallAdvertisement
             // 
-            pb_smallAdvertisement.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            pb_smallAdvertisement.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             pb_smallAdvertisement.Image =  ( Image ) resources.GetObject( "pb_smallAdvertisement.Image" )  ;
             pb_smallAdvertisement.Location =  new Point( 5, 197 ) ;
             pb_smallAdvertisement.Name =  "pb_smallAdvertisement" ;
@@ -706,7 +707,7 @@
             // 
             // pb_bigAdvertisement
             // 
-            pb_bigAdvertisement.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            pb_bigAdvertisement.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             pb_bigAdvertisement.Image =  ( Image ) resources.GetObject( "pb_bigAdvertisement.Image" )  ;
             pb_bigAdvertisement.Location =  new Point( 234, 197 ) ;
             pb_bigAdvertisement.Name =  "pb_bigAdvertisement" ;
@@ -750,7 +751,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            panel1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             panel1.Controls.Add( label8 );
             panel1.Controls.Add( btn_Weightplates );
             panel1.Controls.Add( label17 );
@@ -1162,7 +1163,7 @@
             // 
             rb_senior.AutoSize =  true ;
             rb_senior.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            rb_senior.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            rb_senior.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             rb_senior.Location =  new Point( 165, 24 ) ;
             rb_senior.Name =  "rb_senior" ;
             rb_senior.Size =  new Size( 61, 22 ) ;
@@ -1175,7 +1176,7 @@
             // 
             rb_junior.AutoSize =  true ;
             rb_junior.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            rb_junior.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            rb_junior.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             rb_junior.Location =  new Point( 104, 24 ) ;
             rb_junior.Name =  "rb_junior" ;
             rb_junior.Size =  new Size( 61, 22 ) ;
@@ -1188,7 +1189,7 @@
             // 
             rb_subJunior.AutoSize =  true ;
             rb_subJunior.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            rb_subJunior.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            rb_subJunior.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             rb_subJunior.Location =  new Point( 34, 24 ) ;
             rb_subJunior.Name =  "rb_subJunior" ;
             rb_subJunior.Size =  new Size( 70, 22 ) ;
@@ -1212,7 +1213,7 @@
             // rb_national
             // 
             rb_national.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            rb_national.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            rb_national.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             rb_national.Location =  new Point( 124, 15 ) ;
             rb_national.Name =  "rb_national" ;
             rb_national.Size =  new Size( 67, 24 ) ;
@@ -1224,7 +1225,7 @@
             // rb_club
             // 
             rb_club.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            rb_club.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            rb_club.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             rb_club.Location =  new Point( -1, 15 ) ;
             rb_club.Name =  "rb_club" ;
             rb_club.Size =  new Size( 57, 24 ) ;
@@ -1237,7 +1238,7 @@
             // 
             rb_district.AutoSize =  true ;
             rb_district.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            rb_district.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            rb_district.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             rb_district.Location =  new Point( 62, 16 ) ;
             rb_district.Name =  "rb_district" ;
             rb_district.Size =  new Size( 65, 22 ) ;
@@ -1251,7 +1252,7 @@
             cb_total.AutoSize =  true ;
             cb_total.BackColor =  Color.Transparent ;
             cb_total.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            cb_total.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            cb_total.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             cb_total.Location =  new Point( 63, 63 ) ;
             cb_total.Name =  "cb_total" ;
             cb_total.Size =  new Size( 54, 22 ) ;
@@ -1264,7 +1265,7 @@
             cb_deadlift.AutoSize =  true ;
             cb_deadlift.BackColor =  Color.Transparent ;
             cb_deadlift.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            cb_deadlift.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            cb_deadlift.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             cb_deadlift.Location =  new Point( 63, 44 ) ;
             cb_deadlift.Name =  "cb_deadlift" ;
             cb_deadlift.Size =  new Size( 54, 22 ) ;
@@ -1277,7 +1278,7 @@
             cb_bench.AutoSize =  true ;
             cb_bench.BackColor =  Color.Transparent ;
             cb_bench.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            cb_bench.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            cb_bench.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             cb_bench.Location =  new Point( 7, 63 ) ;
             cb_bench.Name =  "cb_bench" ;
             cb_bench.Size =  new Size( 53, 22 ) ;
@@ -1290,7 +1291,7 @@
             cb_squat.AutoSize =  true ;
             cb_squat.BackColor =  Color.Transparent ;
             cb_squat.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            cb_squat.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            cb_squat.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             cb_squat.Location =  new Point( 7, 44 ) ;
             cb_squat.Name =  "cb_squat" ;
             cb_squat.Size =  new Size( 45, 22 ) ;
@@ -1300,10 +1301,10 @@
             // 
             // btn_rekord
             // 
-            btn_rekord.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            btn_rekord.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             btn_rekord.FlatStyle =  FlatStyle.Popup ;
             btn_rekord.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            btn_rekord.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            btn_rekord.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             btn_rekord.Location =  new Point( 137, 52 ) ;
             btn_rekord.Name =  "btn_rekord" ;
             btn_rekord.Size =  new Size( 119, 23 ) ;
@@ -1315,6 +1316,7 @@
             // panel13
             // 
             panel13.BackColor =  SystemColors.WindowText ;
+            panel13.Controls.Add( button1 );
             panel13.Controls.Add( cb_dataGridViewAutoSize );
             panel13.Controls.Add( label4 );
             panel13.Controls.Add( button5 );
@@ -1326,10 +1328,23 @@
             panel13.Size =  new Size( 188, 147 ) ;
             panel13.TabIndex =  12 ;
             // 
+            // button1
+            // 
+            button1.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            button1.FlatStyle =  FlatStyle.Popup ;
+            button1.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            button1.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            button1.Location =  new Point( 8, 115 ) ;
+            button1.Name =  "button1" ;
+            button1.Size =  new Size( 173, 24 ) ;
+            button1.TabIndex =  32 ;
+            button1.Text =  "Växla resultat i Åskådarvy" ;
+            button1.UseVisualStyleBackColor =  false ;
+            // 
             // cb_dataGridViewAutoSize
             // 
             cb_dataGridViewAutoSize.AutoSize =  true ;
-            cb_dataGridViewAutoSize.Location =  new Point( 153, 75 ) ;
+            cb_dataGridViewAutoSize.Location =  new Point( 153, 63 ) ;
             cb_dataGridViewAutoSize.Name =  "cb_dataGridViewAutoSize" ;
             cb_dataGridViewAutoSize.Size =  new Size( 15, 14 ) ;
             cb_dataGridViewAutoSize.TabIndex =  31 ;
@@ -1339,8 +1354,8 @@
             // 
             label4.AutoSize =  true ;
             label4.Font =  new Font( "Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label4.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
-            label4.Location =  new Point( 5, 71 ) ;
+            label4.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            label4.Location =  new Point( 5, 59 ) ;
             label4.Name =  "label4" ;
             label4.Size =  new Size( 142, 21 ) ;
             label4.TabIndex =  30 ;
@@ -1348,24 +1363,25 @@
             // 
             // button5
             // 
-            button5.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            button5.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             button5.FlatStyle =  FlatStyle.Popup ;
-            button5.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
-            button5.Location =  new Point( 8, 109 ) ;
+            button5.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            button5.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            button5.Location =  new Point( 8, 85 ) ;
             button5.Name =  "button5" ;
-            button5.Size =  new Size( 173, 31 ) ;
+            button5.Size =  new Size( 173, 24 ) ;
             button5.TabIndex =  29 ;
-            button5.Text =  "Åskådar panel 1920x1080" ;
+            button5.Text =  "Öppna Åskådarvy 1920x1080" ;
             button5.UseVisualStyleBackColor =  false ;
             button5.Click +=  button5_Click ;
             // 
             // txt_box_SpecSize
             // 
-            txt_box_SpecSize.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            txt_box_SpecSize.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             txt_box_SpecSize.BorderStyle =  BorderStyle.FixedSingle ;
             txt_box_SpecSize.Font =  new Font( "Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            txt_box_SpecSize.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
-            txt_box_SpecSize.Location =  new Point( 116, 43 ) ;
+            txt_box_SpecSize.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            txt_box_SpecSize.Location =  new Point( 116, 32 ) ;
             txt_box_SpecSize.Name =  "txt_box_SpecSize" ;
             txt_box_SpecSize.Size =  new Size( 52, 25 ) ;
             txt_box_SpecSize.TabIndex =  15 ;
@@ -1377,21 +1393,21 @@
             // label23
             // 
             label23.AutoSize =  true ;
-            label23.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
-            label23.Font =  new Font( "Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label23.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
-            label23.Location =  new Point( 4, 1 ) ;
+            label23.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
+            label23.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label23.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            label23.Location =  new Point( 1, 1 ) ;
             label23.Name =  "label23" ;
-            label23.Size =  new Size( 179, 30 ) ;
+            label23.Size =  new Size( 189, 25 ) ;
             label23.TabIndex =  14 ;
-            label23.Text =  "Spectator settings" ;
+            label23.Text =  "Åskådar inställningar" ;
             // 
             // label22
             // 
             label22.AutoSize =  true ;
             label22.Font =  new Font( "Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label22.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
-            label22.Location =  new Point( 5, 42 ) ;
+            label22.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
+            label22.Location =  new Point( 5, 31 ) ;
             label22.Name =  "label22" ;
             label22.Size =  new Size( 107, 21 ) ;
             label22.TabIndex =  10 ;
@@ -1403,29 +1419,29 @@
             dataGridViewControlPanel.AllowUserToDeleteRows =  false ;
             dataGridViewControlPanel.AllowUserToResizeColumns =  false ;
             dataGridViewControlPanel.AllowUserToResizeRows =  false ;
-            dataGridViewCellStyle4.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
-            dataGridViewCellStyle4.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            dataGridViewCellStyle4.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle4.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             dataGridViewControlPanel.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle4 ;
             dataGridViewControlPanel.Anchor =  AnchorStyles.Left ;
             dataGridViewControlPanel.AutoSizeColumnsMode =  DataGridViewAutoSizeColumnsMode.AllCells ;
             dataGridViewControlPanel.AutoSizeRowsMode =  DataGridViewAutoSizeRowsMode.AllCells ;
-            dataGridViewControlPanel.BackgroundColor =  Color.FromArgb( 27, 38, 44 ) ;
+            dataGridViewControlPanel.BackgroundColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             dataGridViewControlPanel.BorderStyle =  BorderStyle.None ;
             dataGridViewControlPanel.CellBorderStyle =  DataGridViewCellBorderStyle.SingleHorizontal ;
             dataGridViewControlPanel.ColumnHeadersBorderStyle =  DataGridViewHeaderBorderStyle.None ;
             dataGridViewCellStyle5.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle5.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            dataGridViewCellStyle5.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             dataGridViewCellStyle5.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle5.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            dataGridViewCellStyle5.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             dataGridViewCellStyle5.SelectionBackColor =  SystemColors.Highlight ;
             dataGridViewCellStyle5.SelectionForeColor =  SystemColors.HighlightText ;
             dataGridViewCellStyle5.WrapMode =  DataGridViewTriState.True ;
             dataGridViewControlPanel.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle5 ;
             dataGridViewControlPanel.ColumnHeadersHeightSizeMode =  DataGridViewColumnHeadersHeightSizeMode.AutoSize ;
             dataGridViewCellStyle6.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle6.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            dataGridViewCellStyle6.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             dataGridViewCellStyle6.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle6.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            dataGridViewCellStyle6.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             dataGridViewCellStyle6.SelectionBackColor =  SystemColors.Highlight ;
             dataGridViewCellStyle6.SelectionForeColor =  SystemColors.HighlightText ;
             dataGridViewCellStyle6.WrapMode =  DataGridViewTriState.False ;
@@ -1448,7 +1464,7 @@
             // 
             // panel14
             // 
-            panel14.BackColor =  Color.FromArgb( 0, 0, 0, 0 ) ;
+            panel14.BackColor =  Color.FromArgb(       0  ,       0  ,       0  ,       0   ) ;
             panel14.Controls.Add( cb_Infällt );
             panel14.Controls.Add( cb_Avlyft );
             panel14.Location =  new Point( 1220, 237 ) ;
@@ -1461,7 +1477,7 @@
             cb_Infällt.AutoSize =  true ;
             cb_Infällt.BackColor =  Color.Transparent ;
             cb_Infällt.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            cb_Infällt.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            cb_Infällt.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             cb_Infällt.Location =  new Point( 69, 4 ) ;
             cb_Infällt.Name =  "cb_Infällt" ;
             cb_Infällt.Size =  new Size( 58, 22 ) ;
@@ -1475,7 +1491,7 @@
             cb_Avlyft.AutoSize =  true ;
             cb_Avlyft.BackColor =  Color.Transparent ;
             cb_Avlyft.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            cb_Avlyft.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            cb_Avlyft.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             cb_Avlyft.Location =  new Point( 7, 4 ) ;
             cb_Avlyft.Name =  "cb_Avlyft" ;
             cb_Avlyft.Size =  new Size( 56, 22 ) ;
@@ -1500,9 +1516,9 @@
             // 
             // lbl_currentWeight2
             // 
-            lbl_currentWeight2.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_currentWeight2.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_currentWeight2.Font =  new Font( "Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_currentWeight2.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_currentWeight2.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_currentWeight2.Location =  new Point( 280, 9 ) ;
             lbl_currentWeight2.Name =  "lbl_currentWeight2" ;
             lbl_currentWeight2.Size =  new Size( 187, 50 ) ;
@@ -1511,9 +1527,9 @@
             // 
             // lbl_Name2
             // 
-            lbl_Name2.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_Name2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_Name2.Font =  new Font( "Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Name2.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_Name2.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_Name2.Location =  new Point( 4, 4 ) ;
             lbl_Name2.Margin =  new Padding( 0 ) ;
             lbl_Name2.Name =  "lbl_Name2" ;
@@ -1536,9 +1552,9 @@
             // lbl_Height2
             // 
             lbl_Height2.AutoSize =  true ;
-            lbl_Height2.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_Height2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_Height2.Font =  new Font( "Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Height2.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_Height2.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_Height2.Location =  new Point( 250, 59 ) ;
             lbl_Height2.Name =  "lbl_Height2" ;
             lbl_Height2.Size =  new Size( 115, 45 ) ;
@@ -1548,9 +1564,9 @@
             // lbl_Avlyft2
             // 
             lbl_Avlyft2.AutoSize =  true ;
-            lbl_Avlyft2.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_Avlyft2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_Avlyft2.Font =  new Font( "Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Avlyft2.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_Avlyft2.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_Avlyft2.Location =  new Point( 250, 104 ) ;
             lbl_Avlyft2.Name =  "lbl_Avlyft2" ;
             lbl_Avlyft2.Size =  new Size( 190, 37 ) ;
@@ -1559,7 +1575,7 @@
             // 
             // panel12
             // 
-            panel12.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            panel12.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             panel12.Controls.Add( lbl_suggestedWeight175 );
             panel12.Controls.Add( lbl_suggestedWeight250 );
             panel12.Controls.Add( lbl_suggestedWeight75Minus );
@@ -1579,10 +1595,10 @@
             // 
             // lbl_suggestedWeight175
             // 
-            lbl_suggestedWeight175.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight175.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight175.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight175.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight175.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight175.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight175.Location =  new Point( 0, 21 ) ;
             lbl_suggestedWeight175.Name =  "lbl_suggestedWeight175" ;
             lbl_suggestedWeight175.Size =  new Size( 46, 22 ) ;
@@ -1594,10 +1610,10 @@
             // 
             // lbl_suggestedWeight250
             // 
-            lbl_suggestedWeight250.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight250.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight250.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight250.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight250.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight250.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight250.Location =  new Point( 90, 21 ) ;
             lbl_suggestedWeight250.Name =  "lbl_suggestedWeight250" ;
             lbl_suggestedWeight250.Size =  new Size( 46, 22 ) ;
@@ -1624,10 +1640,10 @@
             // 
             // lbl_suggestedWeight125
             // 
-            lbl_suggestedWeight125.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight125.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight125.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight125.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight125.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight125.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight125.Location =  new Point( 180, 0 ) ;
             lbl_suggestedWeight125.Name =  "lbl_suggestedWeight125" ;
             lbl_suggestedWeight125.Size =  new Size( 46, 22 ) ;
@@ -1654,10 +1670,10 @@
             // 
             // lbl_suggestedWeight10
             // 
-            lbl_suggestedWeight10.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight10.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight10.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight10.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight10.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight10.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight10.Location =  new Point( 135, 0 ) ;
             lbl_suggestedWeight10.Name =  "lbl_suggestedWeight10" ;
             lbl_suggestedWeight10.Size =  new Size( 46, 22 ) ;
@@ -1684,10 +1700,10 @@
             // 
             // lbl_suggestedWeight75
             // 
-            lbl_suggestedWeight75.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight75.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight75.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight75.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight75.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight75.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight75.Location =  new Point( 90, 0 ) ;
             lbl_suggestedWeight75.Name =  "lbl_suggestedWeight75" ;
             lbl_suggestedWeight75.Size =  new Size( 46, 22 ) ;
@@ -1699,10 +1715,10 @@
             // 
             // lbl_suggestedWeight20
             // 
-            lbl_suggestedWeight20.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight20.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight20.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight20.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight20.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight20.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight20.Location =  new Point( 45, 21 ) ;
             lbl_suggestedWeight20.Name =  "lbl_suggestedWeight20" ;
             lbl_suggestedWeight20.Size =  new Size( 46, 22 ) ;
@@ -1714,10 +1730,10 @@
             // 
             // lbl_suggestedWeight5
             // 
-            lbl_suggestedWeight5.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight5.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight5.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight5.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight5.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight5.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight5.Location =  new Point( 45, 0 ) ;
             lbl_suggestedWeight5.Name =  "lbl_suggestedWeight5" ;
             lbl_suggestedWeight5.Size =  new Size( 46, 22 ) ;
@@ -1729,10 +1745,10 @@
             // 
             // lbl_suggestedWeight15
             // 
-            lbl_suggestedWeight15.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight15.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight15.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight15.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight15.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight15.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight15.Location =  new Point( 225, 0 ) ;
             lbl_suggestedWeight15.Name =  "lbl_suggestedWeight15" ;
             lbl_suggestedWeight15.Size =  new Size( 46, 22 ) ;
@@ -1744,10 +1760,10 @@
             // 
             // lbl_suggestedWeight25
             // 
-            lbl_suggestedWeight25.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_suggestedWeight25.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_suggestedWeight25.FlatStyle =  FlatStyle.Popup ;
             lbl_suggestedWeight25.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_suggestedWeight25.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_suggestedWeight25.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_suggestedWeight25.Location =  new Point( 0, 0 ) ;
             lbl_suggestedWeight25.Name =  "lbl_suggestedWeight25" ;
             lbl_suggestedWeight25.Size =  new Size( 46, 22 ) ;
@@ -1759,7 +1775,7 @@
             // 
             // panel11
             // 
-            panel11.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            panel11.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             panel11.Controls.Add( lbl_groupLiftOrder_control_20 );
             panel11.Controls.Add( lbl_groupLiftOrder_control_19 );
             panel11.Controls.Add( lbl_groupLiftOrder_control_18 );
@@ -1790,7 +1806,7 @@
             // 
             lbl_groupLiftOrder_control_20.AutoSize =  true ;
             lbl_groupLiftOrder_control_20.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_20.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_20.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_20.Location =  new Point( 841, 86 ) ;
             lbl_groupLiftOrder_control_20.Name =  "lbl_groupLiftOrder_control_20" ;
             lbl_groupLiftOrder_control_20.Size =  new Size( 123, 25 ) ;
@@ -1801,7 +1817,7 @@
             // 
             lbl_groupLiftOrder_control_19.AutoSize =  true ;
             lbl_groupLiftOrder_control_19.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_19.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_19.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_19.Location =  new Point( 841, 65 ) ;
             lbl_groupLiftOrder_control_19.Name =  "lbl_groupLiftOrder_control_19" ;
             lbl_groupLiftOrder_control_19.Size =  new Size( 123, 25 ) ;
@@ -1812,7 +1828,7 @@
             // 
             lbl_groupLiftOrder_control_18.AutoSize =  true ;
             lbl_groupLiftOrder_control_18.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_18.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_18.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_18.Location =  new Point( 841, 44 ) ;
             lbl_groupLiftOrder_control_18.Name =  "lbl_groupLiftOrder_control_18" ;
             lbl_groupLiftOrder_control_18.Size =  new Size( 123, 25 ) ;
@@ -1823,7 +1839,7 @@
             // 
             lbl_groupLiftOrder_control_17.AutoSize =  true ;
             lbl_groupLiftOrder_control_17.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_17.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_17.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_17.Location =  new Point( 841, 23 ) ;
             lbl_groupLiftOrder_control_17.Name =  "lbl_groupLiftOrder_control_17" ;
             lbl_groupLiftOrder_control_17.Size =  new Size( 123, 25 ) ;
@@ -1834,7 +1850,7 @@
             // 
             lbl_groupLiftOrder_control_16.AutoSize =  true ;
             lbl_groupLiftOrder_control_16.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_16.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_16.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_16.Location =  new Point( 841, 2 ) ;
             lbl_groupLiftOrder_control_16.Name =  "lbl_groupLiftOrder_control_16" ;
             lbl_groupLiftOrder_control_16.Size =  new Size( 123, 25 ) ;
@@ -1845,7 +1861,7 @@
             // 
             lbl_groupLiftOrder_control_15.AutoSize =  true ;
             lbl_groupLiftOrder_control_15.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_15.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_15.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_15.Location =  new Point( 607, 87 ) ;
             lbl_groupLiftOrder_control_15.Name =  "lbl_groupLiftOrder_control_15" ;
             lbl_groupLiftOrder_control_15.Size =  new Size( 123, 25 ) ;
@@ -1856,7 +1872,7 @@
             // 
             lbl_groupLiftOrder_control_14.AutoSize =  true ;
             lbl_groupLiftOrder_control_14.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_14.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_14.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_14.Location =  new Point( 607, 66 ) ;
             lbl_groupLiftOrder_control_14.Name =  "lbl_groupLiftOrder_control_14" ;
             lbl_groupLiftOrder_control_14.Size =  new Size( 123, 25 ) ;
@@ -1867,7 +1883,7 @@
             // 
             lbl_groupLiftOrder_control_13.AutoSize =  true ;
             lbl_groupLiftOrder_control_13.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_13.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_13.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_13.Location =  new Point( 607, 44 ) ;
             lbl_groupLiftOrder_control_13.Name =  "lbl_groupLiftOrder_control_13" ;
             lbl_groupLiftOrder_control_13.Size =  new Size( 123, 25 ) ;
@@ -1878,7 +1894,7 @@
             // 
             lbl_groupLiftOrder_control_12.AutoSize =  true ;
             lbl_groupLiftOrder_control_12.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_12.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_12.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_12.Location =  new Point( 607, 23 ) ;
             lbl_groupLiftOrder_control_12.Name =  "lbl_groupLiftOrder_control_12" ;
             lbl_groupLiftOrder_control_12.Size =  new Size( 123, 25 ) ;
@@ -1889,7 +1905,7 @@
             // 
             lbl_groupLiftOrder_control_11.AutoSize =  true ;
             lbl_groupLiftOrder_control_11.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_11.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_11.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_11.Location =  new Point( 607, 2 ) ;
             lbl_groupLiftOrder_control_11.Name =  "lbl_groupLiftOrder_control_11" ;
             lbl_groupLiftOrder_control_11.Size =  new Size( 123, 25 ) ;
@@ -1900,7 +1916,7 @@
             // 
             lbl_groupLiftOrder_control_6.AutoSize =  true ;
             lbl_groupLiftOrder_control_6.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_6.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_6.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_6.Location =  new Point( 380, 2 ) ;
             lbl_groupLiftOrder_control_6.Name =  "lbl_groupLiftOrder_control_6" ;
             lbl_groupLiftOrder_control_6.Size =  new Size( 123, 25 ) ;
@@ -1911,7 +1927,7 @@
             // 
             lbl_groupLiftOrder_control_7.AutoSize =  true ;
             lbl_groupLiftOrder_control_7.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_7.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_7.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_7.Location =  new Point( 380, 23 ) ;
             lbl_groupLiftOrder_control_7.Name =  "lbl_groupLiftOrder_control_7" ;
             lbl_groupLiftOrder_control_7.Size =  new Size( 123, 25 ) ;
@@ -1922,7 +1938,7 @@
             // 
             lbl_groupLiftOrder_control_8.AutoSize =  true ;
             lbl_groupLiftOrder_control_8.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_8.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_8.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_8.Location =  new Point( 380, 43 ) ;
             lbl_groupLiftOrder_control_8.Name =  "lbl_groupLiftOrder_control_8" ;
             lbl_groupLiftOrder_control_8.Size =  new Size( 123, 25 ) ;
@@ -1933,7 +1949,7 @@
             // 
             lbl_groupLiftOrder_control_10.AutoSize =  true ;
             lbl_groupLiftOrder_control_10.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_10.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_10.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_10.Location =  new Point( 380, 85 ) ;
             lbl_groupLiftOrder_control_10.Name =  "lbl_groupLiftOrder_control_10" ;
             lbl_groupLiftOrder_control_10.Size =  new Size( 123, 25 ) ;
@@ -1944,7 +1960,7 @@
             // 
             lbl_groupLiftOrder_control_9.AutoSize =  true ;
             lbl_groupLiftOrder_control_9.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_9.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_9.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_9.Location =  new Point( 380, 64 ) ;
             lbl_groupLiftOrder_control_9.Name =  "lbl_groupLiftOrder_control_9" ;
             lbl_groupLiftOrder_control_9.Size =  new Size( 123, 25 ) ;
@@ -1955,7 +1971,7 @@
             // 
             lbl_groupLiftOrder_control_5.AutoSize =  true ;
             lbl_groupLiftOrder_control_5.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_5.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_5.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_5.Location =  new Point( 134, 85 ) ;
             lbl_groupLiftOrder_control_5.Name =  "lbl_groupLiftOrder_control_5" ;
             lbl_groupLiftOrder_control_5.Size =  new Size( 123, 25 ) ;
@@ -1966,7 +1982,7 @@
             // 
             lbl_groupLiftOrder_control_1.AutoSize =  true ;
             lbl_groupLiftOrder_control_1.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_1.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_1.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_1.Location =  new Point( 134, 1 ) ;
             lbl_groupLiftOrder_control_1.Name =  "lbl_groupLiftOrder_control_1" ;
             lbl_groupLiftOrder_control_1.Size =  new Size( 123, 25 ) ;
@@ -1977,7 +1993,7 @@
             // 
             lbl_groupLiftOrder_control_2.AutoSize =  true ;
             lbl_groupLiftOrder_control_2.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_2.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_2.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_2.Location =  new Point( 134, 22 ) ;
             lbl_groupLiftOrder_control_2.Name =  "lbl_groupLiftOrder_control_2" ;
             lbl_groupLiftOrder_control_2.Size =  new Size( 123, 25 ) ;
@@ -1988,7 +2004,7 @@
             // 
             lbl_groupLiftOrder_control_3.AutoSize =  true ;
             lbl_groupLiftOrder_control_3.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_3.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_3.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_3.Location =  new Point( 134, 43 ) ;
             lbl_groupLiftOrder_control_3.Name =  "lbl_groupLiftOrder_control_3" ;
             lbl_groupLiftOrder_control_3.Size =  new Size( 123, 25 ) ;
@@ -1999,7 +2015,7 @@
             // 
             lbl_groupLiftOrder_control_4.AutoSize =  true ;
             lbl_groupLiftOrder_control_4.Font =  new Font( "Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_groupLiftOrder_control_4.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_groupLiftOrder_control_4.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_groupLiftOrder_control_4.Location =  new Point( 134, 64 ) ;
             lbl_groupLiftOrder_control_4.Name =  "lbl_groupLiftOrder_control_4" ;
             lbl_groupLiftOrder_control_4.Size =  new Size( 123, 25 ) ;
@@ -2009,9 +2025,9 @@
             // lbl_OpeningLift
             // 
             lbl_OpeningLift.AutoSize =  true ;
-            lbl_OpeningLift.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_OpeningLift.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_OpeningLift.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_OpeningLift.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_OpeningLift.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_OpeningLift.Location =  new Point( 5, 9 ) ;
             lbl_OpeningLift.Name =  "lbl_OpeningLift" ;
             lbl_OpeningLift.Size =  new Size( 126, 96 ) ;
@@ -2020,7 +2036,7 @@
             // 
             // panel10
             // 
-            panel10.BackColor =  Color.FromArgb( 0, 0, 0, 0 ) ;
+            panel10.BackColor =  Color.FromArgb(       0  ,       0  ,       0  ,       0   ) ;
             panel10.Controls.Add( label30 );
             panel10.Controls.Add( lbl_liftOrder_control_1 );
             panel10.Controls.Add( lbl_liftOrder_control_2 );
@@ -2041,9 +2057,9 @@
             // label30
             // 
             label30.AutoSize =  true ;
-            label30.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            label30.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             label30.Font =  new Font( "Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label30.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            label30.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             label30.Location =  new Point( 43, -2 ) ;
             label30.Name =  "label30" ;
             label30.Size =  new Size( 183, 37 ) ;
@@ -2053,7 +2069,7 @@
             // lbl_liftOrder_control_1
             // 
             lbl_liftOrder_control_1.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_1.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_1.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_1.Location =  new Point( -4, 31 ) ;
             lbl_liftOrder_control_1.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_1.Name =  "lbl_liftOrder_control_1" ;
@@ -2064,7 +2080,7 @@
             // lbl_liftOrder_control_2
             // 
             lbl_liftOrder_control_2.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_2.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_2.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_2.Location =  new Point( -4, 59 ) ;
             lbl_liftOrder_control_2.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_2.Name =  "lbl_liftOrder_control_2" ;
@@ -2075,7 +2091,7 @@
             // lbl_liftOrder_control_3
             // 
             lbl_liftOrder_control_3.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_3.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_3.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_3.Location =  new Point( -4, 87 ) ;
             lbl_liftOrder_control_3.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_3.Name =  "lbl_liftOrder_control_3" ;
@@ -2086,7 +2102,7 @@
             // lbl_liftOrder_control_4
             // 
             lbl_liftOrder_control_4.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_4.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_4.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_4.Location =  new Point( -4, 115 ) ;
             lbl_liftOrder_control_4.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_4.Name =  "lbl_liftOrder_control_4" ;
@@ -2097,7 +2113,7 @@
             // lbl_liftOrder_control_5
             // 
             lbl_liftOrder_control_5.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_5.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_5.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_5.Location =  new Point( -4, 143 ) ;
             lbl_liftOrder_control_5.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_5.Name =  "lbl_liftOrder_control_5" ;
@@ -2108,7 +2124,7 @@
             // lbl_liftOrder_control_6
             // 
             lbl_liftOrder_control_6.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_6.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_6.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_6.Location =  new Point( -4, 171 ) ;
             lbl_liftOrder_control_6.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_6.Name =  "lbl_liftOrder_control_6" ;
@@ -2119,7 +2135,7 @@
             // lbl_liftOrder_control_7
             // 
             lbl_liftOrder_control_7.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_7.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_7.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_7.Location =  new Point( -4, 199 ) ;
             lbl_liftOrder_control_7.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_7.Name =  "lbl_liftOrder_control_7" ;
@@ -2130,7 +2146,7 @@
             // lbl_liftOrder_control_8
             // 
             lbl_liftOrder_control_8.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_8.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_8.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_8.Location =  new Point( -4, 227 ) ;
             lbl_liftOrder_control_8.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_8.Name =  "lbl_liftOrder_control_8" ;
@@ -2141,7 +2157,7 @@
             // lbl_liftOrder_control_9
             // 
             lbl_liftOrder_control_9.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_9.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_9.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_9.Location =  new Point( -4, 255 ) ;
             lbl_liftOrder_control_9.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_9.Name =  "lbl_liftOrder_control_9" ;
@@ -2152,7 +2168,7 @@
             // lbl_liftOrder_control_10
             // 
             lbl_liftOrder_control_10.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_10.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_10.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_10.Location =  new Point( -4, 283 ) ;
             lbl_liftOrder_control_10.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_10.Name =  "lbl_liftOrder_control_10" ;
@@ -2163,7 +2179,7 @@
             // lbl_liftOrder_control_11
             // 
             lbl_liftOrder_control_11.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_11.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_11.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_11.Location =  new Point( -4, 311 ) ;
             lbl_liftOrder_control_11.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_11.Name =  "lbl_liftOrder_control_11" ;
@@ -2173,7 +2189,7 @@
             // 
             // panel8
             // 
-            panel8.BackColor =  Color.FromArgb( 0, 0, 0, 0 ) ;
+            panel8.BackColor =  Color.FromArgb(       0  ,       0  ,       0  ,       0   ) ;
             panel8.Controls.Add( combo_Aktivgrupp );
             panel8.Controls.Add( label29 );
             panel8.Location =  new Point( 1079, 237 ) ;
@@ -2183,9 +2199,9 @@
             // 
             // combo_Aktivgrupp
             // 
-            combo_Aktivgrupp.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            combo_Aktivgrupp.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             combo_Aktivgrupp.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            combo_Aktivgrupp.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            combo_Aktivgrupp.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             combo_Aktivgrupp.FormattingEnabled =  true ;
             combo_Aktivgrupp.Location =  new Point( 70, 1 ) ;
             combo_Aktivgrupp.Name =  "combo_Aktivgrupp" ;
@@ -2197,7 +2213,7 @@
             // 
             label29.AutoSize =  true ;
             label29.Font =  new Font( "Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label29.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            label29.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             label29.Location =  new Point( 2, 0 ) ;
             label29.Name =  "label29" ;
             label29.Size =  new Size( 61, 21 ) ;
@@ -2206,7 +2222,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            panel6.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             panel6.Controls.Add( button4 );
             panel6.Controls.Add( button2 );
             panel6.Controls.Add( btn_SelectNextLifter );
@@ -2246,10 +2262,10 @@
             // 
             // btn_SelectNextLifter
             // 
-            btn_SelectNextLifter.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            btn_SelectNextLifter.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             btn_SelectNextLifter.FlatStyle =  FlatStyle.Popup ;
             btn_SelectNextLifter.Font =  new Font( "Trebuchet MS", 7F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            btn_SelectNextLifter.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            btn_SelectNextLifter.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             btn_SelectNextLifter.Location =  new Point( 90, 0 ) ;
             btn_SelectNextLifter.Name =  "btn_SelectNextLifter" ;
             btn_SelectNextLifter.Size =  new Size( 91, 38 ) ;
@@ -2284,10 +2300,10 @@
             // 
             // btn_klovad
             // 
-            btn_klovad.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            btn_klovad.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             btn_klovad.FlatStyle =  FlatStyle.Popup ;
             btn_klovad.Font =  new Font( "Trebuchet MS", 7F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            btn_klovad.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            btn_klovad.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             btn_klovad.Location =  new Point( 0, 0 ) ;
             btn_klovad.Name =  "btn_klovad" ;
             btn_klovad.Size =  new Size( 91, 38 ) ;
@@ -2338,10 +2354,10 @@
             // 
             // btn_MinutesLappTimer
             // 
-            btn_MinutesLappTimer.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            btn_MinutesLappTimer.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             btn_MinutesLappTimer.FlatStyle =  FlatStyle.Popup ;
             btn_MinutesLappTimer.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            btn_MinutesLappTimer.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            btn_MinutesLappTimer.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             btn_MinutesLappTimer.Location =  new Point( 63, 65 ) ;
             btn_MinutesLappTimer.Name =  "btn_MinutesLappTimer" ;
             btn_MinutesLappTimer.Size =  new Size( 63, 23 ) ;
@@ -2352,10 +2368,10 @@
             // 
             // btn_SystemClockLappTimer
             // 
-            btn_SystemClockLappTimer.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            btn_SystemClockLappTimer.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             btn_SystemClockLappTimer.FlatStyle =  FlatStyle.Popup ;
             btn_SystemClockLappTimer.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            btn_SystemClockLappTimer.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            btn_SystemClockLappTimer.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             btn_SystemClockLappTimer.Location =  new Point( 200, 65 ) ;
             btn_SystemClockLappTimer.Name =  "btn_SystemClockLappTimer" ;
             btn_SystemClockLappTimer.Size =  new Size( 68, 23 ) ;
@@ -2368,7 +2384,7 @@
             // 
             label25.AutoSize =  true ;
             label25.Font =  new Font( "Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label25.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            label25.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             label25.Location =  new Point( 49, -2 ) ;
             label25.Name =  "label25" ;
             label25.Size =  new Size( 44, 21 ) ;
@@ -2379,7 +2395,7 @@
             // 
             label24.AutoSize =  true ;
             label24.Font =  new Font( "Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label24.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            label24.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             label24.Location =  new Point( 191, -4 ) ;
             label24.Name =  "label24" ;
             label24.Size =  new Size( 35, 21 ) ;
@@ -2389,9 +2405,9 @@
             // lbl_timerLapp
             // 
             lbl_timerLapp.AutoSize =  true ;
-            lbl_timerLapp.BackColor =  Color.FromArgb( 0, 0, 0, 0 ) ;
+            lbl_timerLapp.BackColor =  Color.FromArgb(       0  ,       0  ,       0  ,       0   ) ;
             lbl_timerLapp.Font =  new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_timerLapp.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_timerLapp.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_timerLapp.Location =  new Point( 3, 1 ) ;
             lbl_timerLapp.Name =  "lbl_timerLapp" ;
             lbl_timerLapp.Size =  new Size( 142, 65 ) ;
@@ -2402,9 +2418,9 @@
             // lbl_timerLyft
             // 
             lbl_timerLyft.AutoSize =  true ;
-            lbl_timerLyft.BackColor =  Color.FromArgb( 0, 0, 0, 0 ) ;
+            lbl_timerLyft.BackColor =  Color.FromArgb(       0  ,       0  ,       0  ,       0   ) ;
             lbl_timerLyft.Font =  new Font( "Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_timerLyft.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_timerLyft.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_timerLyft.Location =  new Point( 142, 1 ) ;
             lbl_timerLyft.Name =  "lbl_timerLyft" ;
             lbl_timerLyft.RightToLeft =  RightToLeft.No ;
@@ -2429,9 +2445,9 @@
             // 
             // lbl_currentWeight
             // 
-            lbl_currentWeight.BackColor =  Color.FromArgb( 15, 76, 117 ) ;
+            lbl_currentWeight.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
             lbl_currentWeight.Font =  new Font( "Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_currentWeight.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_currentWeight.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_currentWeight.Location =  new Point( 271, 10 ) ;
             lbl_currentWeight.Name =  "lbl_currentWeight" ;
             lbl_currentWeight.Size =  new Size( 178, 50 ) ;
@@ -2441,9 +2457,9 @@
             // 
             // lbl_Name
             // 
-            lbl_Name.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_Name.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_Name.Font =  new Font( "Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Name.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_Name.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_Name.Location =  new Point( 4, 4 ) ;
             lbl_Name.Margin =  new Padding( 0 ) ;
             lbl_Name.Name =  "lbl_Name" ;
@@ -2466,9 +2482,9 @@
             // lbl_Height
             // 
             lbl_Height.AutoSize =  true ;
-            lbl_Height.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_Height.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_Height.Font =  new Font( "Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Height.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_Height.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_Height.Location =  new Point( 241, 60 ) ;
             lbl_Height.Name =  "lbl_Height" ;
             lbl_Height.Size =  new Size( 115, 45 ) ;
@@ -2478,9 +2494,9 @@
             // lbl_Avlyft
             // 
             lbl_Avlyft.AutoSize =  true ;
-            lbl_Avlyft.BackColor =  Color.FromArgb( 27, 38, 44 ) ;
+            lbl_Avlyft.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             lbl_Avlyft.Font =  new Font( "Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_Avlyft.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_Avlyft.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_Avlyft.Location =  new Point( 241, 105 ) ;
             lbl_Avlyft.Name =  "lbl_Avlyft" ;
             lbl_Avlyft.Size =  new Size( 190, 37 ) ;
@@ -2496,12 +2512,12 @@
             // 
             // 
             // 
-            ctc_Main.DisplayStyleProvider.BorderColor =  Color.FromArgb( 27, 38, 44 ) ;
+            ctc_Main.DisplayStyleProvider.BorderColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             ctc_Main.DisplayStyleProvider.BorderColorHot =  SystemColors.ControlDark ;
-            ctc_Main.DisplayStyleProvider.BorderColorSelected =  Color.FromArgb( 127, 157, 185 ) ;
-            ctc_Main.DisplayStyleProvider.CloserColor =  Color.FromArgb( 27, 38, 44 ) ;
-            ctc_Main.DisplayStyleProvider.CloserColorActive =  Color.FromArgb( 27, 38, 44 ) ;
-            ctc_Main.DisplayStyleProvider.FocusColor =  Color.FromArgb( 27, 38, 44 ) ;
+            ctc_Main.DisplayStyleProvider.BorderColorSelected =  Color.FromArgb(       127  ,       157  ,       185   ) ;
+            ctc_Main.DisplayStyleProvider.CloserColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            ctc_Main.DisplayStyleProvider.CloserColorActive =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            ctc_Main.DisplayStyleProvider.FocusColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             ctc_Main.DisplayStyleProvider.FocusTrack =  true ;
             ctc_Main.DisplayStyleProvider.HotTrack =  true ;
             ctc_Main.DisplayStyleProvider.ImageAlign =  ContentAlignment.MiddleLeft ;
@@ -2510,7 +2526,7 @@
             ctc_Main.DisplayStyleProvider.Padding =  new Point( 6, 3 ) ;
             ctc_Main.DisplayStyleProvider.Radius =  2 ;
             ctc_Main.DisplayStyleProvider.ShowTabCloser =  false ;
-            ctc_Main.DisplayStyleProvider.TextColor =  Color.FromArgb( 187, 225, 250 ) ;
+            ctc_Main.DisplayStyleProvider.TextColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             ctc_Main.DisplayStyleProvider.TextColorSelected =  SystemColors.ControlText ;
             ctc_Main.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
             ctc_Main.HotTrack =  true ;
@@ -2581,7 +2597,7 @@
             // lbl_liftOrder_control_15
             // 
             lbl_liftOrder_control_15.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_15.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_15.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_15.Location =  new Point( 691, 331 ) ;
             lbl_liftOrder_control_15.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_15.Name =  "lbl_liftOrder_control_15" ;
@@ -2592,7 +2608,7 @@
             // lbl_liftOrder_control_16
             // 
             lbl_liftOrder_control_16.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_16.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_16.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_16.Location =  new Point( 691, 367 ) ;
             lbl_liftOrder_control_16.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_16.Name =  "lbl_liftOrder_control_16" ;
@@ -2603,7 +2619,7 @@
             // lbl_liftOrder_control_17
             // 
             lbl_liftOrder_control_17.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_17.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_17.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_17.Location =  new Point( 691, 403 ) ;
             lbl_liftOrder_control_17.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_17.Name =  "lbl_liftOrder_control_17" ;
@@ -2614,7 +2630,7 @@
             // lbl_liftOrder_control_18
             // 
             lbl_liftOrder_control_18.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_18.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_18.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_18.Location =  new Point( 691, 441 ) ;
             lbl_liftOrder_control_18.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_18.Name =  "lbl_liftOrder_control_18" ;
@@ -2625,7 +2641,7 @@
             // lbl_liftOrder_control_19
             // 
             lbl_liftOrder_control_19.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_19.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_19.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_19.Location =  new Point( 691, 478 ) ;
             lbl_liftOrder_control_19.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_19.Name =  "lbl_liftOrder_control_19" ;
@@ -2636,7 +2652,7 @@
             // lbl_liftOrder_control_13
             // 
             lbl_liftOrder_control_13.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_13.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_13.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_13.Location =  new Point( 691, 259 ) ;
             lbl_liftOrder_control_13.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_13.Name =  "lbl_liftOrder_control_13" ;
@@ -2647,7 +2663,7 @@
             // lbl_liftOrder_control_12
             // 
             lbl_liftOrder_control_12.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_12.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_12.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_12.Location =  new Point( 691, 222 ) ;
             lbl_liftOrder_control_12.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_12.Name =  "lbl_liftOrder_control_12" ;
@@ -2658,7 +2674,7 @@
             // lbl_liftOrder_control_20
             // 
             lbl_liftOrder_control_20.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_20.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_20.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_20.Location =  new Point( 691, 514 ) ;
             lbl_liftOrder_control_20.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_20.Name =  "lbl_liftOrder_control_20" ;
@@ -2669,7 +2685,7 @@
             // lbl_liftOrder_control_14
             // 
             lbl_liftOrder_control_14.Font =  new Font( "Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            lbl_liftOrder_control_14.ForeColor =  Color.FromArgb( 187, 225, 250 ) ;
+            lbl_liftOrder_control_14.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
             lbl_liftOrder_control_14.Location =  new Point( 691, 295 ) ;
             lbl_liftOrder_control_14.Margin =  new Padding( 0 ) ;
             lbl_liftOrder_control_14.Name =  "lbl_liftOrder_control_14" ;
@@ -2982,5 +2998,6 @@
         private CheckBox cb_emblemAdvertisementStretch;
         private CheckBox cb_bigAdvertisementStretch;
         private CheckBox cb_smallAdvertisementStretch;
+        private Button button1;
     }
 }

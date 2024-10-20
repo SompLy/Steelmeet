@@ -47,6 +47,7 @@ Dynamisk storlek på datagridviewn så den alltid är så stor som möjligt.
 ✅Custom size på datagridview som man kan ändra genom kontrollpanelen
 
 Mindre viktiga saker :
+Sliders för att ändra storlek på ads, så man kan dra emellan bilderna i previewn
 Spara inställningar i JSON
 Möjlighet att byta ut loggan
 ✅Gör en Icon för den byggda .exe filen
