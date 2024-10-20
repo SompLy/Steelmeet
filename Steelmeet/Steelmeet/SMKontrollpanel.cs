@@ -1390,6 +1390,7 @@ namespace SteelMeet
                                     , btn50.BackColor, btn25.BackColor, btn20.BackColor, btn15.BackColor, btn10.BackColor, btn5.BackColor, btn25small.BackColor, btn05small.BackColor, btn125small.BackColor, btn025small.BackColor );
 
                     // Uppdaterar hur många grupper som finns
+                    groupIndexCount = 0;
                     for( int i = 0 ; i < LifterID.Count ; i++ )
                     {
                         if( LifterID[ i ].groupNumber > groupIndexCount )

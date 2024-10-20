@@ -23,11 +23,11 @@ static void SetDoubleBuffer(Control dgv, bool DoubleBuffered)
 
 :)
 Viktiga saker :
-Om man laddar en invägning med 3 grupper sen en med 2 grupper så finns det fortfarnade tre grupper, cleara antal grupper varje gång man klickar på.
 man måste dubbel uppdatera när man är på sista marken ( kör bara en infopanel update så kommer det lösa sig tror jag )
 Sortera data gridview inom klasser på vem som leder ( Detta borde göras i RankUpdate under Update datagridview )
 nuvarande total med en pil till totalen som lyftaren kommer få om hen klarar lyftet
 Dynamisk storlek på datagridviewn så den alltid är så stor som möjligt.
+✅Om man laddar en invägning med 3 grupper sen en med 2 grupper så finns det fortfarnade tre grupper, cleara antal grupper varje gång man klickar på Skicka till tävlingsfönster
 ✅Reklambilder stretch i Preview
 ✅Stretch checkbox
 ✅När man sätter reklam bilder så sätt de i alla spectator windows om de finns
