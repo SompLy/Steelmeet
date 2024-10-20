@@ -1449,7 +1449,7 @@
             dataGridViewControlPanel.EnableHeadersVisualStyles =  false ;
             dataGridViewControlPanel.GridColor =  SystemColors.WindowText ;
             dataGridViewControlPanel.ImeMode =  ImeMode.NoControl ;
-            dataGridViewControlPanel.Location =  new Point( -2, 153 ) ;
+            dataGridViewControlPanel.Location =  new Point( -2, -336 ) ;
             dataGridViewControlPanel.Name =  "dataGridViewControlPanel" ;
             dataGridViewControlPanel.RowHeadersVisible =  false ;
             dataGridViewControlPanel.RowTemplate.Height =  25 ;
@@ -2587,10 +2587,10 @@
             competitionTab.Controls.Add( panel5 );
             competitionTab.Controls.Add( infoPanel_Controlpanel );
             competitionTab.Controls.Add( panel11 );
-            competitionTab.Location =  new Point( 4, 28 ) ;
+            competitionTab.Location =  new Point( 4, 26 ) ;
             competitionTab.Name =  "competitionTab" ;
             competitionTab.Padding =  new Padding( 3 ) ;
-            competitionTab.Size =  new Size( 1912, 1048 ) ;
+            competitionTab.Size =  new Size( 192, 70 ) ;
             competitionTab.TabIndex =  2 ;
             competitionTab.Text =  "Tävling" ;
             // 

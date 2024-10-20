@@ -101,6 +101,13 @@
             lbl_liftOrder_control_20 =  new Label() ;
             label30 =  new Label() ;
             ResultsTab =  new TabPage() ;
+            label31 =  new Label() ;
+            label1 =  new Label() ;
+            label2 =  new Label() ;
+            label3 =  new Label() ;
+            pictureBox1 =  new PictureBox() ;
+            pictureBox2 =  new PictureBox() ;
+            pictureBox3 =  new PictureBox() ;
             ctc_Spectator.SuspendLayout();
             CompetitionTab.SuspendLayout();
             ( ( System.ComponentModel.ISupportInitialize ) pb_smallAdvertisement  ).BeginInit();
@@ -112,6 +119,10 @@
             infopanel_Spectatorpanel2.SuspendLayout();
             ( ( System.ComponentModel.ISupportInitialize ) pb_emblemAdvertisement  ).BeginInit();
             panel10.SuspendLayout();
+            ResultsTab.SuspendLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) pictureBox1  ).BeginInit();
+            ( ( System.ComponentModel.ISupportInitialize ) pictureBox2  ).BeginInit();
+            ( ( System.ComponentModel.ISupportInitialize ) pictureBox3  ).BeginInit();
             SuspendLayout();
             // 
             // ctc_Spectator
@@ -967,13 +978,109 @@
             // 
             // ResultsTab
             // 
-            ResultsTab.BackColor =  Color.Black ;
-            ResultsTab.Location =  new Point( 4, 26 ) ;
+            ResultsTab.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            ResultsTab.Controls.Add( label3 );
+            ResultsTab.Controls.Add( label2 );
+            ResultsTab.Controls.Add( label1 );
+            ResultsTab.Controls.Add( label31 );
+            ResultsTab.Controls.Add( pictureBox3 );
+            ResultsTab.Controls.Add( pictureBox2 );
+            ResultsTab.Controls.Add( pictureBox1 );
+            ResultsTab.Location =  new Point( 4, 28 ) ;
             ResultsTab.Name =  "ResultsTab" ;
             ResultsTab.Padding =  new Padding( 3 ) ;
-            ResultsTab.Size =  new Size( 192, 70 ) ;
+            ResultsTab.Size =  new Size( 1912, 1094 ) ;
             ResultsTab.TabIndex =  1 ;
             ResultsTab.Text =  "Resultat" ;
+            // 
+            // label31
+            // 
+            label31.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
+            label31.AutoSize =  true ;
+            label31.BackColor =  Color.Transparent ;
+            label31.Font =  new Font( "Trebuchet MS", 48F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label31.ForeColor =  SystemColors.Window ;
+            label31.Location =  new Point( 624, 17 ) ;
+            label31.Name =  "label31" ;
+            label31.Size =  new Size( 704, 81 ) ;
+            label31.TabIndex =  46 ;
+            label31.Text =  "-83 Bänkpress ( Poäng )" ;
+            label31.TextAlign =  ContentAlignment.MiddleCenter ;
+            // 
+            // label1
+            // 
+            label1.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
+            label1.AutoSize =  true ;
+            label1.BackColor =  Color.Transparent ;
+            label1.Font =  new Font( "Trebuchet MS", 48F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label1.ForeColor =  SystemColors.Window ;
+            label1.Location =  new Point( 720, 120 ) ;
+            label1.Name =  "label1" ;
+            label1.Size =  new Size( 474, 81 ) ;
+            label1.TabIndex =  47 ;
+            label1.Text =  "Edvin Öhrström" ;
+            label1.TextAlign =  ContentAlignment.MiddleCenter ;
+            // 
+            // label2
+            // 
+            label2.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
+            label2.AutoSize =  true ;
+            label2.BackColor =  Color.Transparent ;
+            label2.Font =  new Font( "Trebuchet MS", 48F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label2.ForeColor =  SystemColors.Window ;
+            label2.Location =  new Point( 157, 162 ) ;
+            label2.Name =  "label2" ;
+            label2.Size =  new Size( 362, 81 ) ;
+            label2.TabIndex =  48 ;
+            label2.Text =  "Andra Plats" ;
+            label2.TextAlign =  ContentAlignment.MiddleCenter ;
+            // 
+            // label3
+            // 
+            label3.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
+            label3.AutoSize =  true ;
+            label3.BackColor =  Color.Transparent ;
+            label3.Font =  new Font( "Trebuchet MS", 48F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label3.ForeColor =  SystemColors.Window ;
+            label3.Location =  new Point( 1413, 180 ) ;
+            label3.Name =  "label3" ;
+            label3.Size =  new Size( 378, 81 ) ;
+            label3.TabIndex =  49 ;
+            label3.Text =  "Tredje Plats" ;
+            label3.TextAlign =  ContentAlignment.MiddleCenter ;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            pictureBox1.Image =  ( Image ) resources.GetObject( "pictureBox1.Image" )  ;
+            pictureBox1.Location =  new Point( 1333, 264 ) ;
+            pictureBox1.Name =  "pictureBox1" ;
+            pictureBox1.Size =  new Size( 524, 111 ) ;
+            pictureBox1.SizeMode =  PictureBoxSizeMode.AutoSize ;
+            pictureBox1.TabIndex =  61 ;
+            pictureBox1.TabStop =  false ;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            pictureBox2.Image =  ( Image ) resources.GetObject( "pictureBox2.Image" )  ;
+            pictureBox2.Location =  new Point( 75, 246 ) ;
+            pictureBox2.Name =  "pictureBox2" ;
+            pictureBox2.Size =  new Size( 524, 129 ) ;
+            pictureBox2.SizeMode =  PictureBoxSizeMode.AutoSize ;
+            pictureBox2.TabIndex =  62 ;
+            pictureBox2.TabStop =  false ;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            pictureBox3.Image =  ( Image ) resources.GetObject( "pictureBox3.Image" )  ;
+            pictureBox3.Location =  new Point( 651, 216 ) ;
+            pictureBox3.Name =  "pictureBox3" ;
+            pictureBox3.Size =  new Size( 624, 159 ) ;
+            pictureBox3.SizeMode =  PictureBoxSizeMode.AutoSize ;
+            pictureBox3.TabIndex =  63 ;
+            pictureBox3.TabStop =  false ;
             // 
             // SMSpectatorPanel
             // 
@@ -1001,6 +1108,11 @@
             ( ( System.ComponentModel.ISupportInitialize ) pb_emblemAdvertisement  ).EndInit();
             panel10.ResumeLayout( false );
             panel10.PerformLayout();
+            ResultsTab.ResumeLayout( false );
+            ResultsTab.PerformLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) pictureBox1  ).EndInit();
+            ( ( System.ComponentModel.ISupportInitialize ) pictureBox2  ).EndInit();
+            ( ( System.ComponentModel.ISupportInitialize ) pictureBox3  ).EndInit();
             ResumeLayout( false );
         }
 
@@ -1074,5 +1186,12 @@
         public PictureBox pb_emblemAdvertisement;
         public PictureBox pb_bigAdvertisement;
         public PictureBox pb_smallAdvertisement;
+        private Label label31;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox1;
     }
 }
