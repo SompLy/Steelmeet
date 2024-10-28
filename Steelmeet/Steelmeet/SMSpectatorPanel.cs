@@ -61,11 +61,23 @@ namespace SteelMeet
             clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
             clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
             clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
 
             int indexOffset = 0;
             for( Int32 index = 0 ; index < _row.Cells.Count ; index++ )
             {
-                if( index != 7 && index != 8 && index != 9 ) // Does not clone heights
+                if( index != 7 && index != 8 && index != 9 &&
+                    index != 10 && index != 11 && index != 12 &&
+                    index != 16 && index != 17 && index != 18 &&
+                    index != 4 && index != 19 && index != 20 ) // Does not clone heights
                 {
                     clonedRow.Cells[ index - indexOffset ].Value = _row.Cells[ index ].Value;
                     clonedRow.Cells[ index - indexOffset ].Style = _row.Cells[ index ].Style;
@@ -79,7 +91,12 @@ namespace SteelMeet
         {
             foreach( DataGridViewColumn column in _columns )
             {
-                if( column.Index != 7 && column.Index != 8 && column.Index != 9 ) // Does not clone rack heights
+                if(
+                    column.Index != 7 && column.Index != 8 && column.Index != 9 &&
+                    column.Index != 10 && column.Index != 11 && column.Index != 12 &&
+                    column.Index != 16 && column.Index != 17 && column.Index != 18 &&
+                    column.Index != 4 && column.Index != 19 && column.Index != 20
+                ) // Does not clone rack heights
                 {
                     DataGridViewColumn clonedCloumn = (DataGridViewColumn)column.Clone();
 
@@ -160,10 +177,10 @@ namespace SteelMeet
         void UpdateDataGridviewFontAutoSize()
         {
             // None of theese are corrent :(
-            int currentWidth = dataGridViewSpectatorPanel.Columns[ 0 ].Width * dataGridViewSpectatorPanel.ColumnCount;
-            int currentHeight = dataGridViewSpectatorPanel.Rows[ 0 ].Height * dataGridViewSpectatorPanel.RowCount;
-            int goalWidth = dataGridViewSpectatorPanel.Width;
-            int goalHeight = dataGridViewSpectatorPanel.Height;
+            //int currentWidth = dataGridViewSpectatorPanel.Columns[ 0 ].Width * dataGridViewSpectatorPanel.ColumnCount;
+            //int currentHeight = dataGridViewSpectatorPanel.Rows[ 0 ].Height * dataGridViewSpectatorPanel.RowCount;
+            //int goalWidth = dataGridViewSpectatorPanel.Width;
+            //int goalHeight = dataGridViewSpectatorPanel.Height;
             // Every font change adds 
 
 
@@ -174,12 +191,14 @@ namespace SteelMeet
         }
         public void UpdateDataGriview()
         {
-            // Uppdate values and colors
+            // Update values and colors
             dataGridViewSpectatorPanel.Rows.Clear();
             if( dataGridViewSpectatorPanel.ColumnCount > 0 ) // There must be columns to add more rows
             {
-                for( int i = 0 ; i < smk.dataGridViewControlPanel.RowCount ; i++ )
+                for (int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++)
+                {
                     dataGridViewSpectatorPanel.Rows.Add( CloneRow( smk.dataGridViewControlPanel.Rows[ i ] ) );
+                }
 
                 // Select current lifter
                 dataGridViewSpectatorPanel.CurrentCell = null; // Otherwise it will always select the first cell
@@ -198,10 +217,6 @@ namespace SteelMeet
                 // Set the default font for the entire DataGridView
                 dataGridViewSpectatorPanel.DefaultCellStyle.Font = newFont;
                 dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle.Font = newFont;
-
-                dataGridViewSpectatorPanel.Columns[ 4 ].HeaderText = "";
-                for( int i = 0 ; i < dataGridViewSpectatorPanel.RowCount ; i++ )
-                    dataGridViewSpectatorPanel.Rows[ i ].Cells[ 4 ].Value = "";
 
                 // Subscribe to the CellFormatting event
                 dataGridViewSpectatorPanel.CellFormatting += ( sender, e ) =>
