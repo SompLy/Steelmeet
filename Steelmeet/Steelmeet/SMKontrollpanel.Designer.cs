@@ -713,7 +713,7 @@
             label1.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
             label1.AutoSize =  true ;
             label1.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label1.Location =  new Point( 211, 9 ) ;
+            label1.Location =  new Point( 210, 9 ) ;
             label1.Name =  "label1" ;
             label1.Size =  new Size( 307, 24 ) ;
             label1.TabIndex =  61 ;
@@ -723,7 +723,6 @@
             // pb_smallAdvertisement
             // 
             pb_smallAdvertisement.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            pb_smallAdvertisement.Image =  ( Image ) resources.GetObject( "pb_smallAdvertisement.Image" )  ;
             pb_smallAdvertisement.Location =  new Point( 5, 197 ) ;
             pb_smallAdvertisement.Name =  "pb_smallAdvertisement" ;
             pb_smallAdvertisement.Size =  new Size( 223, 77 ) ;
@@ -744,7 +743,6 @@
             // 
             // pb_emblemAdvertisement
             // 
-            pb_emblemAdvertisement.Image =  ( Image ) resources.GetObject( "pb_emblemAdvertisement.Image" )  ;
             pb_emblemAdvertisement.Location =  new Point( 624, 197 ) ;
             pb_emblemAdvertisement.Name =  "pb_emblemAdvertisement" ;
             pb_emblemAdvertisement.Size =  new Size( 77, 77 ) ;
