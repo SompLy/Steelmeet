@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CheckBox = System.Windows.Forms.CheckBox;
 using Font = System.Drawing.Font;
 
 namespace SteelMeet
@@ -50,34 +51,24 @@ namespace SteelMeet
 
         List<Label> LiftingOrderListLabels = new List<Label>();
         List<Label> GroupLiftingOrderListLabels = new List<Label>();
+        public List<int> ColumnsToIgnore = new List<int>();
 
-        void SetupDataGridView()
+        public void SetupDataGridView()
         {
+            UpdateColumnsToIgnoreList();
             CloneColumns( smk.dataGridViewControlPanel.Columns );
         }
         public DataGridViewRow CloneRow( DataGridViewRow _row )
         {
             DataGridViewRow clonedRow = (DataGridViewRow)_row.Clone();
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
-            clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
+
+            for( int i = 0 ; i < ColumnsToIgnore.Count ; i++ )
+                clonedRow.Cells.RemoveAt( clonedRow.Cells.Count - 1 );
 
             int indexOffset = 0;
             for( Int32 index = 0 ; index < _row.Cells.Count ; index++ )
             {
-                if( index != 7 && index != 8 && index != 9 &&
-                    index != 10 && index != 11 && index != 12 &&
-                    index != 16 && index != 17 && index != 18 &&
-                    index != 4 && index != 19 && index != 20 ) // Does not clone heights
+                if( !ColumnsToIgnore.Contains( index ) ) // Does not clone heights
                 {
                     clonedRow.Cells[ index - indexOffset ].Value = _row.Cells[ index ].Value;
                     clonedRow.Cells[ index - indexOffset ].Style = _row.Cells[ index ].Style;
@@ -89,14 +80,11 @@ namespace SteelMeet
         }
         private void CloneColumns( DataGridViewColumnCollection _columns )
         {
+            dataGridViewSpectatorPanel.Columns.Clear();
+
             foreach( DataGridViewColumn column in _columns )
             {
-                if(
-                    column.Index != 7 && column.Index != 8 && column.Index != 9 &&
-                    column.Index != 10 && column.Index != 11 && column.Index != 12 &&
-                    column.Index != 16 && column.Index != 17 && column.Index != 18 &&
-                    column.Index != 4 && column.Index != 19 && column.Index != 20
-                ) // Does not clone rack heights
+                if( !ColumnsToIgnore.Contains( column.Index ) ) // Does not clone based on settings
                 {
                     DataGridViewColumn clonedCloumn = (DataGridViewColumn)column.Clone();
 
@@ -195,16 +183,21 @@ namespace SteelMeet
             dataGridViewSpectatorPanel.Rows.Clear();
             if( dataGridViewSpectatorPanel.ColumnCount > 0 ) // There must be columns to add more rows
             {
-                for (int i = 0; i < smk.dataGridViewControlPanel.RowCount; i++)
-                {
+                for( int i = 0 ; i < smk.dataGridViewControlPanel.RowCount ; i++ )
                     dataGridViewSpectatorPanel.Rows.Add( CloneRow( smk.dataGridViewControlPanel.Rows[ i ] ) );
-                }
 
                 // Select current lifter
                 dataGridViewSpectatorPanel.CurrentCell = null; // Otherwise it will always select the first cell
                 if( smk.dataGridViewControlPanel.RowCount > 1 && smk.LiftingOrderList.Count > 0 )
-                    for( int columnIndex = 1 ; columnIndex <= 5 ; columnIndex++ )
-                        dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
+                    if( dataGridViewSpectatorPanel.ColumnCount > 3 )
+                    {
+                        for( int columnIndex = 1 ; columnIndex <= 3 ; columnIndex++ )
+                            dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ columnIndex ].Selected = true;
+                    }
+                    else
+                    {
+                        dataGridViewSpectatorPanel.Rows[ smk.LiftingOrderList[ 0 ].index - smk.groupRowFixer ].Cells[ 0 ].Selected = true;
+                    }
             }
         }
         public void UpdateDataGridviewFont( float _fontSize )
@@ -320,6 +313,20 @@ namespace SteelMeet
             int offset = stepPixels * nextGroupCount;
 
             p_NextGroupLifters.Location = new Point( p_NextGroupLifters.Location.X, 1080 - offset - headerPixels );
+        }
+        public void UpdateColumnsToIgnoreList()
+        {
+            List<System.Windows.Forms.CheckBox> Checkboxes = new List<CheckBox>
+            {
+                smk.cb_place, smk.cb_name, smk.cb_lot, smk.cb_weightClass, smk.cb_kategory, smk.cb_accossiation, smk.cb_bodyweight, smk.cb_squatHeight, smk.cb_benchHeight, smk.cb_reckHeight,
+                smk.cb_s1, smk.cb_s2, smk.cb_s3, smk.cb_b1, smk.cb_b2, smk.cb_b3, smk.cb_d1, smk.cb_d2, smk.cb_d3, smk.cb_totalSpectator, smk.cb_estimatedTotal, smk.cb_GLPoints
+            };
+
+            // Clear and then fill ColumnsToIgnore list
+            ColumnsToIgnore.Clear();
+            for( int i = 0 ; i < Checkboxes.Count ; i++ )
+                if( !Checkboxes[ i ].Checked )
+                    ColumnsToIgnore.Add( i );
         }
 
         // Drwaing shit

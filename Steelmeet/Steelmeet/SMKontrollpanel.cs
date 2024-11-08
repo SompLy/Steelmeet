@@ -310,7 +310,7 @@ namespace SteelMeet
 
             for( int i = 1 ; i < realRowCount ; i++ )
             {
-                if( sl.GetCellValueAsString( i, 1 ) != "Grupp" )
+                if( sl.GetCellValueAsString( i, 1 ).ToLower() != "grupp" )
                 {
                     DisplayDebug(
                         sl.GetCellValueAsString( i, 1 ),
@@ -812,6 +812,132 @@ namespace SteelMeet
         {
             ColorPicker( btn025small );
         }
+
+        private void cb_place_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_name_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_lot_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_weightClass_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_kategory_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_accossiation_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_bodyweight_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_squatHeight_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_benchHeight_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_reckHeight_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_s1_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_s2_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_s3_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_b1_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_b2_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_b3_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_d1_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_d2_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_d3_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_totalSpectator_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_estimatedTotal_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_GLPoints_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void cb_estimatedGLPoints_CheckedChanged( object sender, EventArgs e )
+        {
+            UpdateColumnsToIgnoreListSpectator();
+        }
+
+        private void UpdateColumnsToIgnoreListSpectator()
+        {
+            foreach( var smsForm in smsList )
+                if( smsForm != null && !smsForm.IsDisposed )
+                {
+                    smsForm.SetupDataGridView();
+                    smsForm.UpdateDataGriview();
+                }
+        }
+
         //Intällningar
         //Intällningar
         //Intällningar
@@ -1177,7 +1303,7 @@ namespace SteelMeet
 
                 //Sätter total och GL points
                 LiftingOrderList[ 0 ].total = LiftingOrderList[ 0 ].bestS + LiftingOrderList[ 0 ].bestB + LiftingOrderList[ 0 ].bestD;
-                LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ] );
+                LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ], LiftingOrderList[ 0 ].total );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 21 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
@@ -1270,7 +1396,7 @@ namespace SteelMeet
 
                 //Sätter total och GL points
                 LiftingOrderList[ 0 ].total = LiftingOrderList[ 0 ].bestS + LiftingOrderList[ 0 ].bestB + LiftingOrderList[ 0 ].bestD;
-                LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ] );
+                LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ], LiftingOrderList[ 0 ].total );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 21 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
@@ -1358,7 +1484,7 @@ namespace SteelMeet
 
                 // Uppdaterar total och GLpoints
                 LiftingOrderList[ 0 ].total = LiftingOrderList[ 0 ].bestS + LiftingOrderList[ 0 ].bestB + LiftingOrderList[ 0 ].bestD;
-                LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ] );
+                LiftingOrderList[ 0 ].pointsGL = GLPointsCalculator( LiftingOrderList[ 0 ], LiftingOrderList[ 0 ].total );
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 19 ].Value = LiftingOrderList[ 0 ].total;
                 dataGridViewControlPanel.Rows[ SelectedRowIndex ].Cells[ 21 ].Value = LiftingOrderList[ 0 ].pointsGL.ToString( "0.00" );
 
@@ -1495,7 +1621,8 @@ namespace SteelMeet
             string d3,
             string total,
             string estimatedTotal,
-            string glPoäng )
+            string GLPoint,
+            string estimatedGLPoint )
         {
             if( b )
             {
@@ -1520,7 +1647,8 @@ namespace SteelMeet
                 dt2.Columns.Add( "D3" );           //18
                 dt2.Columns.Add( "Tot." );         //19
                 dt2.Columns.Add( "Est." );         //20
-                dt2.Columns.Add( "IPF\nGL" );      //21
+                dt2.Columns.Add( "GL" );      //21
+                dt2.Columns.Add( "Est.\nGL" );      //21
 
                 b = false;
             }
@@ -1547,7 +1675,8 @@ namespace SteelMeet
             dr2[ 18 ] = d3;
             dr2[ 19 ] = total;
             dr2[ 20 ] = estimatedTotal;
-            dr2[ 21 ] = glPoäng;
+            dr2[ 21 ] = GLPoint;
+            dr2[ 22 ] = estimatedGLPoint;
 
             List<string> sbdlist = new List<string>();
             sbdlist.AddRange( new string[] { s1, s2, s3, b1, b2, b3, d1, d2, d3 } );
@@ -2236,11 +2365,6 @@ namespace SteelMeet
 
         } //GroupLiftingOrder
 
-
-
-
-
-
         public void EstimatedUpdate( Lifter lifter )
         {
             // Needs to run after the following :
@@ -2253,9 +2377,13 @@ namespace SteelMeet
             float estimatedDeadlift = Math.Max( lifter.sbdList[ 6 ], Math.Max( lifter.sbdList[ 7 ], lifter.sbdList[ 8 ] ) );
 
             lifter.estimatedTotal = estimatedSquat + estimatedBench + estimatedDeadlift;
+            lifter.estimatedPointsGL = GLPointsCalculator( lifter, lifter.estimatedTotal );
 
             if( dataGridViewControlPanel.RowCount > lifter.index - groupRowFixer )
+            {
                 dataGridViewControlPanel.Rows[ lifter.index - groupRowFixer ].Cells[ 20 ].Value = lifter.estimatedTotal;
+                dataGridViewControlPanel.Rows[ lifter.index - groupRowFixer ].Cells[ 22 ].Value = lifter.estimatedPointsGL.ToString( "0.00" );
+            }
         }
         public void BestSBDUpdate( Lifter lifter )
         {
@@ -2589,7 +2717,8 @@ namespace SteelMeet
                                 , LifterID[ i ].sbdList[ 0 ].ToString(), LifterID[ i ].sbdList[ 1 ].ToString(), LifterID[ i ].sbdList[ 2 ].ToString()
                                 , LifterID[ i ].sbdList[ 3 ].ToString(), LifterID[ i ].sbdList[ 4 ].ToString(), LifterID[ i ].sbdList[ 5 ].ToString()
                                 , LifterID[ i ].sbdList[ 6 ].ToString(), LifterID[ i ].sbdList[ 7 ].ToString(), LifterID[ i ].sbdList[ 8 ].ToString()
-                                , LifterID[ i ].total.ToString(), LifterID[ i ].estimatedTotal.ToString(), LifterID[ i ].pointsGL.ToString( "0.00" ) );
+                                , LifterID[ i ].total.ToString(), LifterID[ i ].estimatedTotal.ToString(), LifterID[ i ].pointsGL.ToString( "0.00" )
+                                , LifterID[ i ].estimatedPointsGL.ToString( "0.00" ) );
         }
 
         private void combo_Aktivgrupp_SelectedIndexChanged( object sender, EventArgs e )
@@ -2774,7 +2903,7 @@ namespace SteelMeet
 
         }
 
-        public double GLPointsCalculator( Lifter lifter )
+        public double GLPointsCalculator( Lifter lifter, float total )
         {
 
             //Men
@@ -2857,7 +2986,7 @@ namespace SteelMeet
                     break;
             }
             GLPointsCoeff = 100 / ( A - B * Math.Pow( Math.E, -C * lifter.bodyWeight ) );
-            GLPoints = lifter.total * GLPointsCoeff;
+            GLPoints = total * GLPointsCoeff;
 
             return GLPoints;
         }
@@ -3254,6 +3383,7 @@ namespace SteelMeet
                 throw;
             }
         }
+
         //Resultat
         //Resultat
         //Resultat

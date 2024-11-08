@@ -74,7 +74,6 @@
             label5 =  new Label() ;
             panel1 =  new Panel() ;
             label8 =  new Label() ;
-            btn_Weightplates =  new Button() ;
             label17 =  new Label() ;
             btn50 =  new Button() ;
             txtb50 =  new TextBox() ;
@@ -121,7 +120,6 @@
             cb_squat =  new CheckBox() ;
             btn_rekord =  new Button() ;
             panel13 =  new Panel() ;
-            button1 =  new Button() ;
             cb_dataGridViewAutoSize =  new CheckBox() ;
             label4 =  new Label() ;
             button5 =  new Button() ;
@@ -214,6 +212,33 @@
             ctc_Main =  new CustomTabControl() ;
             WeightInTab =  new TabPage() ;
             settningsTab =  new TabPage() ;
+            panel4 =  new Panel() ;
+            cb_place =  new CheckBox() ;
+            cb_name =  new CheckBox() ;
+            cb_lot =  new CheckBox() ;
+            cb_weightClass =  new CheckBox() ;
+            cb_kategory =  new CheckBox() ;
+            cb_accossiation =  new CheckBox() ;
+            cb_bodyweight =  new CheckBox() ;
+            cb_squatHeight =  new CheckBox() ;
+            cb_benchHeight =  new CheckBox() ;
+            cb_reckHeight =  new CheckBox() ;
+            cb_s1 =  new CheckBox() ;
+            cb_s2 =  new CheckBox() ;
+            cb_s3 =  new CheckBox() ;
+            cb_b1 =  new CheckBox() ;
+            cb_b2 =  new CheckBox() ;
+            cb_b3 =  new CheckBox() ;
+            cb_d1 =  new CheckBox() ;
+            cb_d2 =  new CheckBox() ;
+            cb_d3 =  new CheckBox() ;
+            cb_totalSpectator =  new CheckBox() ;
+            cb_estimatedTotal =  new CheckBox() ;
+            cb_GLPoints =  new CheckBox() ;
+            label34 =  new Label() ;
+            label37 =  new Label() ;
+            label40 =  new Label() ;
+            cb_estimatedGLPoints =  new CheckBox() ;
             competitionTab =  new TabPage() ;
             lbl_liftOrder_control_15 =  new Label() ;
             lbl_liftOrder_control_16 =  new Label() ;
@@ -256,6 +281,7 @@
             ctc_Main.SuspendLayout();
             WeightInTab.SuspendLayout();
             settningsTab.SuspendLayout();
+            panel4.SuspendLayout();
             competitionTab.SuspendLayout();
             resultsTab.SuspendLayout();
             SuspendLayout();
@@ -519,7 +545,7 @@
             label21.Name =  "label21" ;
             label21.Size =  new Size( 370, 90 ) ;
             label21.TabIndex =  44 ;
-            label21.Text =  resources.GetString( "label21.Text" ) ;
+            label21.Text =  "Tack för att du använder STEELMEET\r\nSpreadSheetLight biblioteket används för hantering av excel filer,\r\nse LICENCE.txt\r\nApplikation skapad av Edvin Öhrström\r\nmed användning av .NET 6 ramverket." ;
             label21.TextAlign =  ContentAlignment.MiddleCenter ;
             // 
             // label18
@@ -753,7 +779,6 @@
             // 
             panel1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             panel1.Controls.Add( label8 );
-            panel1.Controls.Add( btn_Weightplates );
             panel1.Controls.Add( label17 );
             panel1.Controls.Add( btn50 );
             panel1.Controls.Add( txtb50 );
@@ -787,37 +812,26 @@
             panel1.Controls.Add( btn25 );
             panel1.Controls.Add( txtb25 );
             panel1.ForeColor =  SystemColors.Window ;
-            panel1.Location =  new Point( 410, 293 ) ;
+            panel1.Location =  new Point( 410, 506 ) ;
             panel1.Name =  "panel1" ;
-            panel1.Size =  new Size( 320, 277 ) ;
+            panel1.Size =  new Size( 326, 203 ) ;
             panel1.TabIndex =  14 ;
             // 
             // label8
             // 
             label8.AutoSize =  true ;
-            label8.Location =  new Point( 201, 49 ) ;
+            label8.Location =  new Point( 201, 40 ) ;
             label8.Name =  "label8" ;
             label8.Size =  new Size( 35, 15 ) ;
             label8.TabIndex =  42 ;
             label8.Text =  "Antal" ;
             label8.TextAlign =  ContentAlignment.MiddleCenter ;
             // 
-            // btn_Weightplates
-            // 
-            btn_Weightplates.FlatStyle =  FlatStyle.Popup ;
-            btn_Weightplates.Location =  new Point( 55, 220 ) ;
-            btn_Weightplates.Name =  "btn_Weightplates" ;
-            btn_Weightplates.Size =  new Size( 194, 33 ) ;
-            btn_Weightplates.TabIndex =  41 ;
-            btn_Weightplates.Text =  "Godta Viktändringar" ;
-            btn_Weightplates.UseVisualStyleBackColor =  true ;
-            btn_Weightplates.Click +=  btn_Weightplates_Click ;
-            // 
             // label17
             // 
             label17.AutoSize =  true ;
             label17.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label17.Location =  new Point( 12, 73 ) ;
+            label17.Location =  new Point( 12, 64 ) ;
             label17.Name =  "label17" ;
             label17.Size =  new Size( 39, 18 ) ;
             label17.TabIndex =  38 ;
@@ -828,9 +842,9 @@
             // 
             btn50.BackColor =  Color.ForestGreen ;
             btn50.FlatStyle =  FlatStyle.Popup ;
-            btn50.Location =  new Point( 74, 70 ) ;
+            btn50.Location =  new Point( 74, 61 ) ;
             btn50.Name =  "btn50" ;
-            btn50.Size =  new Size( 58, 23 ) ;
+            btn50.Size =  new Size( 77, 23 ) ;
             btn50.TabIndex =  40 ;
             btn50.Text =  "Välj färg" ;
             btn50.UseVisualStyleBackColor =  false ;
@@ -838,7 +852,7 @@
             // 
             // txtb50
             // 
-            txtb50.Location =  new Point( 51, 70 ) ;
+            txtb50.Location =  new Point( 51, 61 ) ;
             txtb50.Name =  "txtb50" ;
             txtb50.Size =  new Size( 17, 23 ) ;
             txtb50.TabIndex =  39 ;
@@ -848,7 +862,7 @@
             // 
             label16.AutoSize =  true ;
             label16.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label16.Location =  new Point( 168, 100 ) ;
+            label16.Location =  new Point( 168, 91 ) ;
             label16.Name =  "label16" ;
             label16.Size =  new Size( 43, 18 ) ;
             label16.TabIndex =  35 ;
@@ -859,9 +873,9 @@
             // 
             btn25small.BackColor =  Color.Black ;
             btn25small.FlatStyle =  FlatStyle.Popup ;
-            btn25small.Location =  new Point( 234, 97 ) ;
+            btn25small.Location =  new Point( 234, 88 ) ;
             btn25small.Name =  "btn25small" ;
-            btn25small.Size =  new Size( 62, 23 ) ;
+            btn25small.Size =  new Size( 68, 23 ) ;
             btn25small.TabIndex =  37 ;
             btn25small.Text =  "Välj färg" ;
             btn25small.UseVisualStyleBackColor =  false ;
@@ -869,7 +883,7 @@
             // 
             // txtb25small
             // 
-            txtb25small.Location =  new Point( 211, 97 ) ;
+            txtb25small.Location =  new Point( 211, 88 ) ;
             txtb25small.Name =  "txtb25small" ;
             txtb25small.Size =  new Size( 17, 23 ) ;
             txtb25small.TabIndex =  36 ;
@@ -879,7 +893,7 @@
             // 
             label15.AutoSize =  true ;
             label15.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label15.Location =  new Point( 162, 181 ) ;
+            label15.Location =  new Point( 162, 172 ) ;
             label15.Name =  "label15" ;
             label15.Size =  new Size( 49, 18 ) ;
             label15.TabIndex =  32 ;
@@ -889,9 +903,9 @@
             // btn025small
             // 
             btn025small.FlatStyle =  FlatStyle.Popup ;
-            btn025small.Location =  new Point( 234, 178 ) ;
+            btn025small.Location =  new Point( 234, 169 ) ;
             btn025small.Name =  "btn025small" ;
-            btn025small.Size =  new Size( 62, 23 ) ;
+            btn025small.Size =  new Size( 68, 23 ) ;
             btn025small.TabIndex =  34 ;
             btn025small.Text =  "Välj färg" ;
             btn025small.UseVisualStyleBackColor =  true ;
@@ -899,7 +913,7 @@
             // 
             // txtb025small
             // 
-            txtb025small.Location =  new Point( 211, 178 ) ;
+            txtb025small.Location =  new Point( 211, 169 ) ;
             txtb025small.Name =  "txtb025small" ;
             txtb025small.Size =  new Size( 17, 23 ) ;
             txtb025small.TabIndex =  33 ;
@@ -909,7 +923,7 @@
             // 
             label14.AutoSize =  true ;
             label14.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label14.Location =  new Point( 168, 154 ) ;
+            label14.Location =  new Point( 168, 145 ) ;
             label14.Name =  "label14" ;
             label14.Size =  new Size( 43, 18 ) ;
             label14.TabIndex =  29 ;
@@ -919,9 +933,9 @@
             // btn05small
             // 
             btn05small.FlatStyle =  FlatStyle.Popup ;
-            btn05small.Location =  new Point( 234, 151 ) ;
+            btn05small.Location =  new Point( 234, 142 ) ;
             btn05small.Name =  "btn05small" ;
-            btn05small.Size =  new Size( 62, 23 ) ;
+            btn05small.Size =  new Size( 68, 23 ) ;
             btn05small.TabIndex =  31 ;
             btn05small.Text =  "Välj färg" ;
             btn05small.UseVisualStyleBackColor =  true ;
@@ -929,7 +943,7 @@
             // 
             // txtb05small
             // 
-            txtb05small.Location =  new Point( 211, 151 ) ;
+            txtb05small.Location =  new Point( 211, 142 ) ;
             txtb05small.Name =  "txtb05small" ;
             txtb05small.Size =  new Size( 17, 23 ) ;
             txtb05small.TabIndex =  30 ;
@@ -939,7 +953,7 @@
             // 
             label13.AutoSize =  true ;
             label13.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label13.Location =  new Point( 162, 127 ) ;
+            label13.Location =  new Point( 162, 118 ) ;
             label13.Name =  "label13" ;
             label13.Size =  new Size( 49, 18 ) ;
             label13.TabIndex =  26 ;
@@ -950,9 +964,9 @@
             // 
             btn125small.BackColor =  Color.Silver ;
             btn125small.FlatStyle =  FlatStyle.Popup ;
-            btn125small.Location =  new Point( 234, 124 ) ;
+            btn125small.Location =  new Point( 234, 115 ) ;
             btn125small.Name =  "btn125small" ;
-            btn125small.Size =  new Size( 62, 23 ) ;
+            btn125small.Size =  new Size( 68, 23 ) ;
             btn125small.TabIndex =  28 ;
             btn125small.Text =  "Välj färg" ;
             btn125small.UseVisualStyleBackColor =  false ;
@@ -960,7 +974,7 @@
             // 
             // txtb125small
             // 
-            txtb125small.Location =  new Point( 211, 124 ) ;
+            txtb125small.Location =  new Point( 211, 115 ) ;
             txtb125small.Name =  "txtb125small" ;
             txtb125small.Size =  new Size( 17, 23 ) ;
             txtb125small.TabIndex =  27 ;
@@ -970,7 +984,7 @@
             // 
             label12.AutoSize =  true ;
             label12.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label12.Location =  new Point( 178, 73 ) ;
+            label12.Location =  new Point( 178, 64 ) ;
             label12.Name =  "label12" ;
             label12.Size =  new Size( 33, 18 ) ;
             label12.TabIndex =  23 ;
@@ -981,9 +995,9 @@
             // 
             btn5.BackColor =  Color.WhiteSmoke ;
             btn5.FlatStyle =  FlatStyle.Popup ;
-            btn5.Location =  new Point( 234, 70 ) ;
+            btn5.Location =  new Point( 234, 61 ) ;
             btn5.Name =  "btn5" ;
-            btn5.Size =  new Size( 62, 23 ) ;
+            btn5.Size =  new Size( 68, 23 ) ;
             btn5.TabIndex =  25 ;
             btn5.Text =  "Välj färg" ;
             btn5.UseVisualStyleBackColor =  false ;
@@ -991,7 +1005,7 @@
             // 
             // txtb5
             // 
-            txtb5.Location =  new Point( 211, 70 ) ;
+            txtb5.Location =  new Point( 211, 61 ) ;
             txtb5.Name =  "txtb5" ;
             txtb5.Size =  new Size( 17, 23 ) ;
             txtb5.TabIndex =  24 ;
@@ -1001,7 +1015,7 @@
             // 
             label11.AutoSize =  true ;
             label11.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label11.Location =  new Point( 12, 181 ) ;
+            label11.Location =  new Point( 12, 172 ) ;
             label11.Name =  "label11" ;
             label11.Size =  new Size( 39, 18 ) ;
             label11.TabIndex =  20 ;
@@ -1012,9 +1026,9 @@
             // 
             btn10.BackColor =  Color.ForestGreen ;
             btn10.FlatStyle =  FlatStyle.Popup ;
-            btn10.Location =  new Point( 74, 178 ) ;
+            btn10.Location =  new Point( 74, 169 ) ;
             btn10.Name =  "btn10" ;
-            btn10.Size =  new Size( 58, 23 ) ;
+            btn10.Size =  new Size( 77, 23 ) ;
             btn10.TabIndex =  22 ;
             btn10.Text =  "Välj färg" ;
             btn10.UseVisualStyleBackColor =  false ;
@@ -1022,7 +1036,7 @@
             // 
             // txtb10
             // 
-            txtb10.Location =  new Point( 51, 178 ) ;
+            txtb10.Location =  new Point( 51, 169 ) ;
             txtb10.Name =  "txtb10" ;
             txtb10.Size =  new Size( 17, 23 ) ;
             txtb10.TabIndex =  21 ;
@@ -1032,7 +1046,7 @@
             // 
             label10.AutoSize =  true ;
             label10.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label10.Location =  new Point( 12, 154 ) ;
+            label10.Location =  new Point( 12, 145 ) ;
             label10.Name =  "label10" ;
             label10.Size =  new Size( 39, 18 ) ;
             label10.TabIndex =  17 ;
@@ -1043,9 +1057,9 @@
             // 
             btn15.BackColor =  Color.Yellow ;
             btn15.FlatStyle =  FlatStyle.Popup ;
-            btn15.Location =  new Point( 74, 151 ) ;
+            btn15.Location =  new Point( 74, 142 ) ;
             btn15.Name =  "btn15" ;
-            btn15.Size =  new Size( 58, 23 ) ;
+            btn15.Size =  new Size( 77, 23 ) ;
             btn15.TabIndex =  19 ;
             btn15.Text =  "Välj färg" ;
             btn15.UseVisualStyleBackColor =  false ;
@@ -1053,7 +1067,7 @@
             // 
             // txtb15
             // 
-            txtb15.Location =  new Point( 51, 151 ) ;
+            txtb15.Location =  new Point( 51, 142 ) ;
             txtb15.Name =  "txtb15" ;
             txtb15.Size =  new Size( 17, 23 ) ;
             txtb15.TabIndex =  18 ;
@@ -1063,7 +1077,7 @@
             // 
             label9.AutoSize =  true ;
             label9.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label9.Location =  new Point( 12, 127 ) ;
+            label9.Location =  new Point( 12, 118 ) ;
             label9.Name =  "label9" ;
             label9.Size =  new Size( 39, 18 ) ;
             label9.TabIndex =  14 ;
@@ -1074,9 +1088,9 @@
             // 
             btn20.BackColor =  Color.Blue ;
             btn20.FlatStyle =  FlatStyle.Popup ;
-            btn20.Location =  new Point( 74, 124 ) ;
+            btn20.Location =  new Point( 74, 115 ) ;
             btn20.Name =  "btn20" ;
-            btn20.Size =  new Size( 58, 23 ) ;
+            btn20.Size =  new Size( 77, 23 ) ;
             btn20.TabIndex =  16 ;
             btn20.Text =  "Välj färg" ;
             btn20.UseVisualStyleBackColor =  false ;
@@ -1084,7 +1098,7 @@
             // 
             // txtb20
             // 
-            txtb20.Location =  new Point( 51, 124 ) ;
+            txtb20.Location =  new Point( 51, 115 ) ;
             txtb20.Name =  "txtb20" ;
             txtb20.Size =  new Size( 17, 23 ) ;
             txtb20.TabIndex =  15 ;
@@ -1093,7 +1107,7 @@
             // label7
             // 
             label7.AutoSize =  true ;
-            label7.Location =  new Point( 42, 49 ) ;
+            label7.Location =  new Point( 42, 40 ) ;
             label7.Name =  "label7" ;
             label7.Size =  new Size( 35, 15 ) ;
             label7.TabIndex =  12 ;
@@ -1115,7 +1129,7 @@
             // 
             label6.AutoSize =  true ;
             label6.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            label6.Location =  new Point( 12, 100 ) ;
+            label6.Location =  new Point( 12, 91 ) ;
             label6.Name =  "label6" ;
             label6.Size =  new Size( 39, 18 ) ;
             label6.TabIndex =  9 ;
@@ -1126,9 +1140,9 @@
             // 
             btn25.BackColor =  Color.Red ;
             btn25.FlatStyle =  FlatStyle.Popup ;
-            btn25.Location =  new Point( 74, 97 ) ;
+            btn25.Location =  new Point( 74, 88 ) ;
             btn25.Name =  "btn25" ;
-            btn25.Size =  new Size( 58, 23 ) ;
+            btn25.Size =  new Size( 77, 23 ) ;
             btn25.TabIndex =  11 ;
             btn25.Text =  "Välj färg" ;
             btn25.UseVisualStyleBackColor =  false ;
@@ -1136,7 +1150,7 @@
             // 
             // txtb25
             // 
-            txtb25.Location =  new Point( 51, 97 ) ;
+            txtb25.Location =  new Point( 51, 88 ) ;
             txtb25.Name =  "txtb25" ;
             txtb25.Size =  new Size( 17, 23 ) ;
             txtb25.TabIndex =  10 ;
@@ -1316,7 +1330,6 @@
             // panel13
             // 
             panel13.BackColor =  SystemColors.WindowText ;
-            panel13.Controls.Add( button1 );
             panel13.Controls.Add( cb_dataGridViewAutoSize );
             panel13.Controls.Add( label4 );
             panel13.Controls.Add( button5 );
@@ -1327,19 +1340,6 @@
             panel13.Name =  "panel13" ;
             panel13.Size =  new Size( 188, 147 ) ;
             panel13.TabIndex =  12 ;
-            // 
-            // button1
-            // 
-            button1.BackColor =  Color.FromArgb(       15  ,       76  ,       117   ) ;
-            button1.FlatStyle =  FlatStyle.Popup ;
-            button1.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            button1.ForeColor =  Color.FromArgb(       187  ,       225  ,       250   ) ;
-            button1.Location =  new Point( 8, 115 ) ;
-            button1.Name =  "button1" ;
-            button1.Size =  new Size( 173, 24 ) ;
-            button1.TabIndex =  32 ;
-            button1.Text =  "Växla resultat i Åskådarvy" ;
-            button1.UseVisualStyleBackColor =  false ;
             // 
             // cb_dataGridViewAutoSize
             // 
@@ -2553,6 +2553,7 @@
             // settningsTab
             // 
             settningsTab.BackColor =  Color.Black ;
+            settningsTab.Controls.Add( panel4 );
             settningsTab.Controls.Add( panel3 );
             settningsTab.Controls.Add( panel2 );
             settningsTab.Controls.Add( panel1 );
@@ -2562,6 +2563,438 @@
             settningsTab.Size =  new Size( 1912, 1048 ) ;
             settningsTab.TabIndex =  1 ;
             settningsTab.Text =  "Inställningar" ;
+            // 
+            // panel4
+            // 
+            panel4.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            panel4.Controls.Add( cb_place );
+            panel4.Controls.Add( cb_name );
+            panel4.Controls.Add( cb_lot );
+            panel4.Controls.Add( cb_weightClass );
+            panel4.Controls.Add( cb_kategory );
+            panel4.Controls.Add( cb_accossiation );
+            panel4.Controls.Add( cb_bodyweight );
+            panel4.Controls.Add( cb_squatHeight );
+            panel4.Controls.Add( cb_benchHeight );
+            panel4.Controls.Add( cb_reckHeight );
+            panel4.Controls.Add( cb_s1 );
+            panel4.Controls.Add( cb_s2 );
+            panel4.Controls.Add( cb_s3 );
+            panel4.Controls.Add( cb_b1 );
+            panel4.Controls.Add( cb_b2 );
+            panel4.Controls.Add( cb_b3 );
+            panel4.Controls.Add( cb_d1 );
+            panel4.Controls.Add( cb_d2 );
+            panel4.Controls.Add( cb_d3 );
+            panel4.Controls.Add( cb_totalSpectator );
+            panel4.Controls.Add( cb_estimatedTotal );
+            panel4.Controls.Add( cb_GLPoints );
+            panel4.Controls.Add( label34 );
+            panel4.Controls.Add( label37 );
+            panel4.Controls.Add( label40 );
+            panel4.Controls.Add( cb_estimatedGLPoints );
+            panel4.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            panel4.ForeColor =  SystemColors.Window ;
+            panel4.Location =  new Point( 410, 293 ) ;
+            panel4.Name =  "panel4" ;
+            panel4.Size =  new Size( 749, 207 ) ;
+            panel4.TabIndex =  71 ;
+            // 
+            // cb_place
+            // 
+            cb_place.AutoSize =  true ;
+            cb_place.BackColor =  Color.Transparent ;
+            cb_place.Checked =  true ;
+            cb_place.CheckState =  CheckState.Checked ;
+            cb_place.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_place.ForeColor =  SystemColors.Window ;
+            cb_place.Location =  new Point( 8, 86 ) ;
+            cb_place.Name =  "cb_place" ;
+            cb_place.Size =  new Size( 78, 22 ) ;
+            cb_place.TabIndex =  68 ;
+            cb_place.Text =  "Placering" ;
+            cb_place.TextAlign =  ContentAlignment.TopLeft ;
+            cb_place.UseVisualStyleBackColor =  false ;
+            cb_place.CheckedChanged +=  cb_place_CheckedChanged ;
+            // 
+            // cb_name
+            // 
+            cb_name.AutoSize =  true ;
+            cb_name.BackColor =  Color.Transparent ;
+            cb_name.Checked =  true ;
+            cb_name.CheckState =  CheckState.Checked ;
+            cb_name.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_name.ForeColor =  SystemColors.Window ;
+            cb_name.Location =  new Point( 85, 86 ) ;
+            cb_name.Name =  "cb_name" ;
+            cb_name.Size =  new Size( 57, 22 ) ;
+            cb_name.TabIndex =  69 ;
+            cb_name.Text =  "Namn" ;
+            cb_name.UseVisualStyleBackColor =  false ;
+            cb_name.CheckedChanged +=  cb_name_CheckedChanged ;
+            // 
+            // cb_lot
+            // 
+            cb_lot.AutoSize =  true ;
+            cb_lot.BackColor =  Color.Transparent ;
+            cb_lot.Checked =  true ;
+            cb_lot.CheckState =  CheckState.Checked ;
+            cb_lot.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_lot.ForeColor =  SystemColors.Window ;
+            cb_lot.Location =  new Point( 142, 86 ) ;
+            cb_lot.Name =  "cb_lot" ;
+            cb_lot.Size =  new Size( 45, 22 ) ;
+            cb_lot.TabIndex =  89 ;
+            cb_lot.Text =  "Lot" ;
+            cb_lot.UseVisualStyleBackColor =  false ;
+            cb_lot.CheckedChanged +=  cb_lot_CheckedChanged ;
+            // 
+            // cb_weightClass
+            // 
+            cb_weightClass.AutoSize =  true ;
+            cb_weightClass.BackColor =  Color.Transparent ;
+            cb_weightClass.Checked =  true ;
+            cb_weightClass.CheckState =  CheckState.Checked ;
+            cb_weightClass.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_weightClass.ForeColor =  SystemColors.Window ;
+            cb_weightClass.Location =  new Point( 187, 86 ) ;
+            cb_weightClass.Name =  "cb_weightClass" ;
+            cb_weightClass.Size =  new Size( 53, 22 ) ;
+            cb_weightClass.TabIndex =  90 ;
+            cb_weightClass.Text =  "Klass" ;
+            cb_weightClass.UseVisualStyleBackColor =  false ;
+            cb_weightClass.CheckedChanged +=  cb_weightClass_CheckedChanged ;
+            // 
+            // cb_kategory
+            // 
+            cb_kategory.AutoSize =  true ;
+            cb_kategory.BackColor =  Color.Transparent ;
+            cb_kategory.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_kategory.ForeColor =  SystemColors.Window ;
+            cb_kategory.Location =  new Point( 240, 86 ) ;
+            cb_kategory.Name =  "cb_kategory" ;
+            cb_kategory.Size =  new Size( 73, 22 ) ;
+            cb_kategory.TabIndex =  88 ;
+            cb_kategory.Text =  "Kategori" ;
+            cb_kategory.UseVisualStyleBackColor =  false ;
+            cb_kategory.CheckedChanged +=  cb_kategory_CheckedChanged ;
+            // 
+            // cb_accossiation
+            // 
+            cb_accossiation.AutoSize =  true ;
+            cb_accossiation.BackColor =  Color.Transparent ;
+            cb_accossiation.Checked =  true ;
+            cb_accossiation.CheckState =  CheckState.Checked ;
+            cb_accossiation.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_accossiation.ForeColor =  SystemColors.Window ;
+            cb_accossiation.Location =  new Point( 313, 86 ) ;
+            cb_accossiation.Name =  "cb_accossiation" ;
+            cb_accossiation.Size =  new Size( 75, 22 ) ;
+            cb_accossiation.TabIndex =  87 ;
+            cb_accossiation.Text =  "Förening" ;
+            cb_accossiation.UseVisualStyleBackColor =  false ;
+            cb_accossiation.CheckedChanged +=  cb_accossiation_CheckedChanged ;
+            // 
+            // cb_bodyweight
+            // 
+            cb_bodyweight.AutoSize =  true ;
+            cb_bodyweight.BackColor =  Color.Transparent ;
+            cb_bodyweight.Checked =  true ;
+            cb_bodyweight.CheckState =  CheckState.Checked ;
+            cb_bodyweight.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_bodyweight.ForeColor =  SystemColors.Window ;
+            cb_bodyweight.Location =  new Point( 388, 86 ) ;
+            cb_bodyweight.Name =  "cb_bodyweight" ;
+            cb_bodyweight.Size =  new Size( 84, 22 ) ;
+            cb_bodyweight.TabIndex =  86 ;
+            cb_bodyweight.Text =  "Kroppsvikt" ;
+            cb_bodyweight.UseVisualStyleBackColor =  false ;
+            cb_bodyweight.CheckedChanged +=  cb_bodyweight_CheckedChanged ;
+            // 
+            // cb_squatHeight
+            // 
+            cb_squatHeight.AutoSize =  true ;
+            cb_squatHeight.BackColor =  Color.Transparent ;
+            cb_squatHeight.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_squatHeight.ForeColor =  SystemColors.Window ;
+            cb_squatHeight.Location =  new Point( 472, 86 ) ;
+            cb_squatHeight.Name =  "cb_squatHeight" ;
+            cb_squatHeight.Size =  new Size( 75, 22 ) ;
+            cb_squatHeight.TabIndex =  85 ;
+            cb_squatHeight.Text =  "Höjd Böj" ;
+            cb_squatHeight.UseVisualStyleBackColor =  false ;
+            cb_squatHeight.CheckedChanged +=  cb_squatHeight_CheckedChanged ;
+            // 
+            // cb_benchHeight
+            // 
+            cb_benchHeight.AutoSize =  true ;
+            cb_benchHeight.BackColor =  Color.Transparent ;
+            cb_benchHeight.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_benchHeight.ForeColor =  SystemColors.Window ;
+            cb_benchHeight.Location =  new Point( 547, 86 ) ;
+            cb_benchHeight.Name =  "cb_benchHeight" ;
+            cb_benchHeight.Size =  new Size( 83, 22 ) ;
+            cb_benchHeight.TabIndex =  84 ;
+            cb_benchHeight.Text =  "Höjd Bänk" ;
+            cb_benchHeight.UseVisualStyleBackColor =  false ;
+            cb_benchHeight.CheckedChanged +=  cb_benchHeight_CheckedChanged ;
+            // 
+            // cb_reckHeight
+            // 
+            cb_reckHeight.AutoSize =  true ;
+            cb_reckHeight.BackColor =  Color.Transparent ;
+            cb_reckHeight.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_reckHeight.ForeColor =  SystemColors.Window ;
+            cb_reckHeight.Location =  new Point( 630, 86 ) ;
+            cb_reckHeight.Name =  "cb_reckHeight" ;
+            cb_reckHeight.Size =  new Size( 83, 22 ) ;
+            cb_reckHeight.TabIndex =  83 ;
+            cb_reckHeight.Text =  "Rack Bänk" ;
+            cb_reckHeight.UseVisualStyleBackColor =  false ;
+            cb_reckHeight.CheckedChanged +=  cb_reckHeight_CheckedChanged ;
+            // 
+            // cb_s1
+            // 
+            cb_s1.AutoSize =  true ;
+            cb_s1.BackColor =  Color.Transparent ;
+            cb_s1.Checked =  true ;
+            cb_s1.CheckState =  CheckState.Checked ;
+            cb_s1.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_s1.ForeColor =  SystemColors.Window ;
+            cb_s1.Location =  new Point( 8, 114 ) ;
+            cb_s1.Name =  "cb_s1" ;
+            cb_s1.Size =  new Size( 39, 22 ) ;
+            cb_s1.TabIndex =  70 ;
+            cb_s1.Text =  "S1" ;
+            cb_s1.UseVisualStyleBackColor =  false ;
+            cb_s1.CheckedChanged +=  cb_s1_CheckedChanged ;
+            // 
+            // cb_s2
+            // 
+            cb_s2.AutoSize =  true ;
+            cb_s2.BackColor =  Color.Transparent ;
+            cb_s2.Checked =  true ;
+            cb_s2.CheckState =  CheckState.Checked ;
+            cb_s2.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_s2.ForeColor =  SystemColors.Window ;
+            cb_s2.Location =  new Point( 47, 114 ) ;
+            cb_s2.Name =  "cb_s2" ;
+            cb_s2.Size =  new Size( 39, 22 ) ;
+            cb_s2.TabIndex =  71 ;
+            cb_s2.Text =  "S2" ;
+            cb_s2.UseVisualStyleBackColor =  false ;
+            cb_s2.CheckedChanged +=  cb_s2_CheckedChanged ;
+            // 
+            // cb_s3
+            // 
+            cb_s3.AutoSize =  true ;
+            cb_s3.BackColor =  Color.Transparent ;
+            cb_s3.Checked =  true ;
+            cb_s3.CheckState =  CheckState.Checked ;
+            cb_s3.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_s3.ForeColor =  SystemColors.Window ;
+            cb_s3.Location =  new Point( 86, 114 ) ;
+            cb_s3.Name =  "cb_s3" ;
+            cb_s3.Size =  new Size( 39, 22 ) ;
+            cb_s3.TabIndex =  72 ;
+            cb_s3.Text =  "S3" ;
+            cb_s3.UseVisualStyleBackColor =  false ;
+            cb_s3.CheckedChanged +=  cb_s3_CheckedChanged ;
+            // 
+            // cb_b1
+            // 
+            cb_b1.AutoSize =  true ;
+            cb_b1.BackColor =  Color.Transparent ;
+            cb_b1.Checked =  true ;
+            cb_b1.CheckState =  CheckState.Checked ;
+            cb_b1.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_b1.ForeColor =  SystemColors.Window ;
+            cb_b1.Location =  new Point( 125, 114 ) ;
+            cb_b1.Name =  "cb_b1" ;
+            cb_b1.Size =  new Size( 40, 22 ) ;
+            cb_b1.TabIndex =  73 ;
+            cb_b1.Text =  "B1" ;
+            cb_b1.UseVisualStyleBackColor =  false ;
+            cb_b1.CheckedChanged +=  cb_b1_CheckedChanged ;
+            // 
+            // cb_b2
+            // 
+            cb_b2.AutoSize =  true ;
+            cb_b2.BackColor =  Color.Transparent ;
+            cb_b2.Checked =  true ;
+            cb_b2.CheckState =  CheckState.Checked ;
+            cb_b2.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_b2.ForeColor =  SystemColors.Window ;
+            cb_b2.Location =  new Point( 165, 114 ) ;
+            cb_b2.Name =  "cb_b2" ;
+            cb_b2.Size =  new Size( 40, 22 ) ;
+            cb_b2.TabIndex =  74 ;
+            cb_b2.Text =  "B2" ;
+            cb_b2.UseVisualStyleBackColor =  false ;
+            cb_b2.CheckedChanged +=  cb_b2_CheckedChanged ;
+            // 
+            // cb_b3
+            // 
+            cb_b3.AutoSize =  true ;
+            cb_b3.BackColor =  Color.Transparent ;
+            cb_b3.Checked =  true ;
+            cb_b3.CheckState =  CheckState.Checked ;
+            cb_b3.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_b3.ForeColor =  SystemColors.Window ;
+            cb_b3.Location =  new Point( 205, 114 ) ;
+            cb_b3.Name =  "cb_b3" ;
+            cb_b3.Size =  new Size( 40, 22 ) ;
+            cb_b3.TabIndex =  75 ;
+            cb_b3.Text =  "B3" ;
+            cb_b3.UseVisualStyleBackColor =  false ;
+            cb_b3.CheckedChanged +=  cb_b3_CheckedChanged ;
+            // 
+            // cb_d1
+            // 
+            cb_d1.AutoSize =  true ;
+            cb_d1.BackColor =  Color.Transparent ;
+            cb_d1.Checked =  true ;
+            cb_d1.CheckState =  CheckState.Checked ;
+            cb_d1.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_d1.ForeColor =  SystemColors.Window ;
+            cb_d1.Location =  new Point( 245, 114 ) ;
+            cb_d1.Name =  "cb_d1" ;
+            cb_d1.Size =  new Size( 40, 22 ) ;
+            cb_d1.TabIndex =  76 ;
+            cb_d1.Text =  "D1" ;
+            cb_d1.UseVisualStyleBackColor =  false ;
+            cb_d1.CheckedChanged +=  cb_d1_CheckedChanged ;
+            // 
+            // cb_d2
+            // 
+            cb_d2.AutoSize =  true ;
+            cb_d2.BackColor =  Color.Transparent ;
+            cb_d2.Checked =  true ;
+            cb_d2.CheckState =  CheckState.Checked ;
+            cb_d2.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_d2.ForeColor =  SystemColors.Window ;
+            cb_d2.Location =  new Point( 285, 114 ) ;
+            cb_d2.Name =  "cb_d2" ;
+            cb_d2.Size =  new Size( 40, 22 ) ;
+            cb_d2.TabIndex =  77 ;
+            cb_d2.Text =  "D2" ;
+            cb_d2.UseVisualStyleBackColor =  false ;
+            cb_d2.CheckedChanged +=  cb_d2_CheckedChanged ;
+            // 
+            // cb_d3
+            // 
+            cb_d3.AutoSize =  true ;
+            cb_d3.BackColor =  Color.Transparent ;
+            cb_d3.Checked =  true ;
+            cb_d3.CheckState =  CheckState.Checked ;
+            cb_d3.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_d3.ForeColor =  SystemColors.Window ;
+            cb_d3.Location =  new Point( 325, 114 ) ;
+            cb_d3.Name =  "cb_d3" ;
+            cb_d3.Size =  new Size( 40, 22 ) ;
+            cb_d3.TabIndex =  78 ;
+            cb_d3.Text =  "D3" ;
+            cb_d3.UseVisualStyleBackColor =  false ;
+            cb_d3.CheckedChanged +=  cb_d3_CheckedChanged ;
+            // 
+            // cb_totalSpectator
+            // 
+            cb_totalSpectator.AutoSize =  true ;
+            cb_totalSpectator.BackColor =  Color.Transparent ;
+            cb_totalSpectator.Checked =  true ;
+            cb_totalSpectator.CheckState =  CheckState.Checked ;
+            cb_totalSpectator.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_totalSpectator.ForeColor =  SystemColors.Window ;
+            cb_totalSpectator.Location =  new Point( 365, 114 ) ;
+            cb_totalSpectator.Name =  "cb_totalSpectator" ;
+            cb_totalSpectator.Size =  new Size( 54, 22 ) ;
+            cb_totalSpectator.TabIndex =  79 ;
+            cb_totalSpectator.Text =  "Total" ;
+            cb_totalSpectator.UseVisualStyleBackColor =  false ;
+            cb_totalSpectator.CheckedChanged +=  cb_totalSpectator_CheckedChanged ;
+            // 
+            // cb_estimatedTotal
+            // 
+            cb_estimatedTotal.AutoSize =  true ;
+            cb_estimatedTotal.BackColor =  Color.Transparent ;
+            cb_estimatedTotal.Checked =  true ;
+            cb_estimatedTotal.CheckState =  CheckState.Checked ;
+            cb_estimatedTotal.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_estimatedTotal.ForeColor =  SystemColors.Window ;
+            cb_estimatedTotal.Location =  new Point( 419, 114 ) ;
+            cb_estimatedTotal.Name =  "cb_estimatedTotal" ;
+            cb_estimatedTotal.Size =  new Size( 114, 22 ) ;
+            cb_estimatedTotal.TabIndex =  80 ;
+            cb_estimatedTotal.Text =  "Estimeriad Total" ;
+            cb_estimatedTotal.UseVisualStyleBackColor =  false ;
+            cb_estimatedTotal.CheckedChanged +=  cb_estimatedTotal_CheckedChanged ;
+            // 
+            // cb_GLPoints
+            // 
+            cb_GLPoints.AutoSize =  true ;
+            cb_GLPoints.BackColor =  Color.Transparent ;
+            cb_GLPoints.Checked =  true ;
+            cb_GLPoints.CheckState =  CheckState.Checked ;
+            cb_GLPoints.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_GLPoints.ForeColor =  SystemColors.Window ;
+            cb_GLPoints.Location =  new Point( 533, 114 ) ;
+            cb_GLPoints.Name =  "cb_GLPoints" ;
+            cb_GLPoints.Size =  new Size( 77, 22 ) ;
+            cb_GLPoints.TabIndex =  81 ;
+            cb_GLPoints.Text =  "GL Poäng" ;
+            cb_GLPoints.UseVisualStyleBackColor =  false ;
+            cb_GLPoints.CheckedChanged +=  cb_GLPoints_CheckedChanged ;
+            // 
+            // label34
+            // 
+            label34.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
+            label34.AutoSize =  true ;
+            label34.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label34.Location =  new Point( 289, 156 ) ;
+            label34.Name =  "label34" ;
+            label34.Size =  new Size( 162, 24 ) ;
+            label34.TabIndex =  67 ;
+            label34.Text =  "--- Preview WIP---" ;
+            label34.TextAlign =  ContentAlignment.MiddleCenter ;
+            // 
+            // label37
+            // 
+            label37.AutoSize =  true ;
+            label37.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label37.Location =  new Point( 187, 50 ) ;
+            label37.Name =  "label37" ;
+            label37.Size =  new Size( 377, 18 ) ;
+            label37.TabIndex =  66 ;
+            label37.Text =  "Här kan du välja vilka kolumner du tycker är relevanta för publiken" ;
+            label37.TextAlign =  ContentAlignment.MiddleCenter ;
+            // 
+            // label40
+            // 
+            label40.Anchor =      AnchorStyles.Top  |  AnchorStyles.Bottom   ;
+            label40.AutoSize =  true ;
+            label40.Font =  new Font( "Trebuchet MS", 14F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            label40.Location =  new Point( 214, 10 ) ;
+            label40.Name =  "label40" ;
+            label40.Size =  new Size( 324, 24 ) ;
+            label40.TabIndex =  61 ;
+            label40.Text =  "Column visibility - Spectator window" ;
+            label40.TextAlign =  ContentAlignment.MiddleCenter ;
+            // 
+            // cb_estimatedGLPoints
+            // 
+            cb_estimatedGLPoints.AutoSize =  true ;
+            cb_estimatedGLPoints.BackColor =  Color.Transparent ;
+            cb_estimatedGLPoints.Checked =  true ;
+            cb_estimatedGLPoints.CheckState =  CheckState.Checked ;
+            cb_estimatedGLPoints.Font =  new Font( "Trebuchet MS", 9F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            cb_estimatedGLPoints.ForeColor =  SystemColors.Window ;
+            cb_estimatedGLPoints.Location =  new Point( 612, 114 ) ;
+            cb_estimatedGLPoints.Name =  "cb_estimatedGLPoints" ;
+            cb_estimatedGLPoints.Size =  new Size( 134, 22 ) ;
+            cb_estimatedGLPoints.TabIndex =  91 ;
+            cb_estimatedGLPoints.Text =  "Estimerad GL Poäng" ;
+            cb_estimatedGLPoints.UseVisualStyleBackColor =  false ;
+            cb_estimatedGLPoints.CheckedChanged +=  cb_estimatedGLPoints_CheckedChanged ;
             // 
             // competitionTab
             // 
@@ -2750,7 +3183,7 @@
             Icon =  ( Icon ) resources.GetObject( "$this.Icon" )  ;
             Name =  "SMKontrollpanel" ;
             StartPosition =  FormStartPosition.CenterScreen ;
-            Text =  "Steelmeet Kontrollpanel - v1.2.2" ;
+            Text =  "Steelmeet Kontrollpanel - v1.2.3" ;
             infoPanel_WeighInPanel.ResumeLayout( false );
             infoPanel_WeighInPanel.PerformLayout();
             ( ( System.ComponentModel.ISupportInitialize ) pictureBox1  ).EndInit();
@@ -2791,6 +3224,8 @@
             ctc_Main.ResumeLayout( false );
             WeightInTab.ResumeLayout( false );
             settningsTab.ResumeLayout( false );
+            panel4.ResumeLayout( false );
+            panel4.PerformLayout();
             competitionTab.ResumeLayout( false );
             resultsTab.ResumeLayout( false );
             ResumeLayout( false );
@@ -2846,7 +3281,6 @@
         public DataGridView dataGridViewControlPanel;
         private Panel infoPanel_WeighInPanel;
         private Panel infoPanel_Controlpanel;
-        private Button btn_Weightplates;
         public Label lbl_currentWeight;
         private Panel panel5;
         private Label label25;
@@ -2998,6 +3432,32 @@
         private CheckBox cb_emblemAdvertisementStretch;
         private CheckBox cb_bigAdvertisementStretch;
         private CheckBox cb_smallAdvertisementStretch;
-        private Button button1;
+        private Panel panel4;
+        public CheckBox cb_name;
+        public CheckBox cb_place;
+        private Label label34;
+        private Label label37;
+        private Label label40;
+        public CheckBox cb_lot;
+        public CheckBox cb_weightClass;
+        public CheckBox cb_kategory;
+        public CheckBox cb_accossiation;
+        public CheckBox cb_bodyweight;
+        public CheckBox cb_squatHeight;
+        public CheckBox cb_benchHeight;
+        public CheckBox cb_reckHeight;
+        public CheckBox cb_s1;
+        public CheckBox cb_s2;
+        public CheckBox cb_s3;
+        public CheckBox cb_b1;
+        public CheckBox cb_b2;
+        public CheckBox cb_b3;
+        public CheckBox cb_d1;
+        public CheckBox cb_d2;
+        public CheckBox cb_d3;
+        public CheckBox cb_totalSpectator;
+        public CheckBox cb_estimatedTotal;
+        public CheckBox cb_GLPoints;
+        public CheckBox cb_estimatedGLPoints;
     }
 }

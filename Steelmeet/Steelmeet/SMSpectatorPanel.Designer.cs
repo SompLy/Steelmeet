@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( SMSpectatorPanel ) );
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             ctc_Spectator =  new CustomTabControl() ;
             CompetitionTab =  new TabPage() ;
             pb_smallAdvertisement =  new PictureBox() ;
@@ -290,7 +290,7 @@
             label32.Name =  "label32" ;
             label32.Size =  new Size( 165, 35 ) ;
             label32.TabIndex =  53 ;
-            label32.Text =  "Version v1.2.2" ;
+            label32.Text =  "Version v1.2.3" ;
             label32.TextAlign =  ContentAlignment.TopCenter ;
             // 
             // lbl_groupLiftOrder_control_6
@@ -449,32 +449,32 @@
             dataGridViewSpectatorPanel.AllowUserToDeleteRows =  false ;
             dataGridViewSpectatorPanel.AllowUserToResizeColumns =  false ;
             dataGridViewSpectatorPanel.AllowUserToResizeRows =  false ;
-            dataGridViewCellStyle1.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            dataGridViewCellStyle1.ForeColor =  Color.White ;
-            dataGridViewSpectatorPanel.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle1 ;
+            dataGridViewCellStyle4.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle4.ForeColor =  Color.White ;
+            dataGridViewSpectatorPanel.AlternatingRowsDefaultCellStyle =  dataGridViewCellStyle4 ;
             dataGridViewSpectatorPanel.AutoSizeColumnsMode =  DataGridViewAutoSizeColumnsMode.AllCells ;
             dataGridViewSpectatorPanel.AutoSizeRowsMode =  DataGridViewAutoSizeRowsMode.AllCells ;
             dataGridViewSpectatorPanel.BackgroundColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
             dataGridViewSpectatorPanel.BorderStyle =  BorderStyle.None ;
             dataGridViewSpectatorPanel.CellBorderStyle =  DataGridViewCellBorderStyle.SingleHorizontal ;
             dataGridViewSpectatorPanel.ColumnHeadersBorderStyle =  DataGridViewHeaderBorderStyle.None ;
-            dataGridViewCellStyle2.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle2.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
-            dataGridViewCellStyle2.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle2.ForeColor =  Color.White ;
-            dataGridViewCellStyle2.SelectionBackColor =  SystemColors.Highlight ;
-            dataGridViewCellStyle2.SelectionForeColor =  SystemColors.HighlightText ;
-            dataGridViewCellStyle2.WrapMode =  DataGridViewTriState.True ;
-            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle2 ;
+            dataGridViewCellStyle5.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
+            dataGridViewCellStyle5.BackColor =  Color.FromArgb(       27  ,       38  ,       44   ) ;
+            dataGridViewCellStyle5.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            dataGridViewCellStyle5.ForeColor =  Color.White ;
+            dataGridViewCellStyle5.SelectionBackColor =  SystemColors.Highlight ;
+            dataGridViewCellStyle5.SelectionForeColor =  SystemColors.HighlightText ;
+            dataGridViewCellStyle5.WrapMode =  DataGridViewTriState.True ;
+            dataGridViewSpectatorPanel.ColumnHeadersDefaultCellStyle =  dataGridViewCellStyle5 ;
             dataGridViewSpectatorPanel.ColumnHeadersHeightSizeMode =  DataGridViewColumnHeadersHeightSizeMode.AutoSize ;
-            dataGridViewCellStyle3.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
-            dataGridViewCellStyle3.BackColor =  Color.Black ;
-            dataGridViewCellStyle3.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
-            dataGridViewCellStyle3.ForeColor =  Color.White ;
-            dataGridViewCellStyle3.SelectionBackColor =  SystemColors.Highlight ;
-            dataGridViewCellStyle3.SelectionForeColor =  SystemColors.HighlightText ;
-            dataGridViewCellStyle3.WrapMode =  DataGridViewTriState.False ;
-            dataGridViewSpectatorPanel.DefaultCellStyle =  dataGridViewCellStyle3 ;
+            dataGridViewCellStyle6.Alignment =  DataGridViewContentAlignment.MiddleLeft ;
+            dataGridViewCellStyle6.BackColor =  Color.Black ;
+            dataGridViewCellStyle6.Font =  new Font( "Trebuchet MS", 10F, FontStyle.Regular, GraphicsUnit.Point ) ;
+            dataGridViewCellStyle6.ForeColor =  Color.White ;
+            dataGridViewCellStyle6.SelectionBackColor =  SystemColors.Highlight ;
+            dataGridViewCellStyle6.SelectionForeColor =  SystemColors.HighlightText ;
+            dataGridViewCellStyle6.WrapMode =  DataGridViewTriState.False ;
+            dataGridViewSpectatorPanel.DefaultCellStyle =  dataGridViewCellStyle6 ;
             dataGridViewSpectatorPanel.EnableHeadersVisualStyles =  false ;
             dataGridViewSpectatorPanel.GridColor =  SystemColors.WindowText ;
             dataGridViewSpectatorPanel.ImeMode =  ImeMode.NoControl ;
@@ -1090,7 +1090,7 @@
             ClientSize =  new Size( 1984, 1351 ) ;
             Controls.Add( ctc_Spectator );
             Name =  "SMSpectatorPanel" ;
-            Text =  "Steelmeet Åskådarpanel - v1.2.2" ;
+            Text =  "Steelmeet Åskådarpanel - v1.2.3" ;
             Load +=  SMSpectatorPanel_Load ;
             ctc_Spectator.ResumeLayout( false );
             CompetitionTab.ResumeLayout( false );

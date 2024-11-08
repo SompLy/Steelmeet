@@ -873,13 +873,6 @@ Ta bort lyftare : Markera lyftaren och klicka "Del" / "Delete" på tagentbordet<
         RU5ErkJggg==
 </value>
   </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Tack för att du använder STEELMEET
-SpreadSheetLight biblioteket används för hantering av excel filer,
-se LICENCE.txt
-Applikation skapad av Edvin Öhrström
-med användning av .NET 6 ramverket och WinForms.</value>
-  </data>
   <data name="pb_smallAdvertisement.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABRcAAADlCAYAAADJJ8DwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAu
@@ -1984,7 +1977,7 @@ med användning av .NET 6 ramverket och WinForms.</value>
     <value>216, 14</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>46</value>
+    <value>35</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

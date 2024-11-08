@@ -98,6 +98,7 @@ namespace SteelMeet
         public float estimatedTotal { get; set; }
         public int pointsWilks { get; set; }
         public double pointsGL { get; set; }
+        public double estimatedPointsGL { get; set; }
 
         public int CurrentLift { get; set; }
         public float bestS { get; set; }
